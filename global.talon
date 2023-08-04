@@ -1,3 +1,7 @@
+undo:
+	key(ctrl-z)
+(we do)|(redo):
+	key(ctrl-y)
 punch <number>:
 	edit.right()
 	repeat(number_1 - 1)
@@ -36,3 +40,13 @@ release keys:
 	key(ctrl:up)
 	key(alt:up)
 	key(super:up)
+escape out:
+	key(esc)
+	key(esc)
+	key(esc)
+	key(esc)
+	key(esc)
+save:
+	key(ctrl-s)
+search:
+	key(ctrl-f)

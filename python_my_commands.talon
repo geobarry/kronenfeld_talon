@@ -9,7 +9,7 @@ whack:
 	key('end')
 	insert(':')
 	edit.line_insert_down()
-absolute value:
+(absolute value)|(funk absolute):
 	insert('abs')
 	user.engine_mimic('args')
 set equal [to]:

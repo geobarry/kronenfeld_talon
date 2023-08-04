@@ -52,7 +52,7 @@ clear (plot|plots):
 clear (console|interpreter):
 	key(ctrl-shift-i)
 	key(ctrl-l)
-change layout:
+(next|change) layout:
 	key(alt-shift-pagedown)
 check error:
     user.mouse_helper_position_save()
@@ -61,6 +61,11 @@ check error:
     mouse_click(0)
     sleep(0.05)
     #user.mouse_helper_position_restore()
+go to line <number>:
+	key(ctrl-l)
+	sleep(0.1)
+	insert(number_1)
+	key(enter)
 go to line:
 	key(ctrl-l)
 debug print :
@@ -80,9 +85,13 @@ debug:
 	key(ctrl-f5)
 step:
 	key(ctrl-f10)
+step into:
+	key(ctrl-f11)
 continue:
 	key(ctrl-f12)
 stop:
 	key(ctrl-shift-f12)
 toggle breakpoint:
 	key(f12)
+toggle comment: 
+	key(ctrl-1)

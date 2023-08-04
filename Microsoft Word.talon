@@ -1,6 +1,25 @@
 app: Microsoft Word
-app-name:
 -
+sub <user.letter>:
+	insert(" ")
+	edit.left()
+	key(alt-h)
+	key(5)
+	insert("{user.letter}")
+	key(alt-h)
+	key(5)
+	edit.right()
+	
+sub <number>:
+	insert(" ")
+	edit.left()
+	key(alt-h)
+	key(5)
+	insert("{number}")
+	key(alt-h)
+	key(5)
+	edit.right()
+	
 apply style:
 	key(alt-h)
 	key(z)
@@ -15,7 +34,7 @@ apply heading <number>:
 	key(y)
 	key(1)
 	insert("Heading ")
-	insert(number_1)
+	insert("{number}")
 	key(enter)
 
 apply normal:
@@ -40,11 +59,20 @@ style match selection:
 
 figure <number> here:
 	insert("<figure ")
-	insert(number_1)
+	insert("{number}")
 	insert(" approximately here>")
-
 
 table <number> here:
 	insert("<table ")
-	insert(number_1)
+	insert("{number}")
 	insert(" approximately here>")
+	
+apply bullets:
+	key(alt-h)
+	key(u)
+	key(right)
+
+save as:
+	key(alt-f)
+	sleep(0.05)
+	key(a)
