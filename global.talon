@@ -2,6 +2,8 @@ undo:
 	key(ctrl-z)
 (we do)|(redo):
 	key(ctrl-y)
+focus taskbar:
+	key(super-b)
 punch <number>:
 	edit.right()
 	repeat(number_1 - 1)
@@ -50,3 +52,24 @@ save:
 	key(ctrl-s)
 search:
 	key(ctrl-f)
+tab jiggle:
+	key(tab)
+	sleep(0.05)
+	key(shift-tab)
+F6 jiggle:
+	key(f6)
+	sleep(0.05)
+	key(shift-f6)
+right jiggle:
+	key(right)
+	sleep(0.05)
+	key(left)
+left jiggle:
+	key(left)
+	sleep(0.5)
+	key(right)
+down jiggle:
+	key(down)
+	sleep(0.05)
+	key(up)
+	

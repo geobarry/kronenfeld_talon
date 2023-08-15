@@ -62,11 +62,13 @@ check error:
     sleep(0.05)
     #user.mouse_helper_position_restore()
 go to line <number>:
+	key(esc)
 	key(ctrl-l)
 	sleep(0.1)
-	insert(number_1)
+	insert("{number}")
 	key(enter)
 go to line:
+	key(esc)
 	key(ctrl-l)
 debug print :
 	insert('print("')

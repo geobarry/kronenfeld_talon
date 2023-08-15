@@ -5,3 +5,13 @@ show cheat sheet:
 	key("enter")
 	insert("python -m http.server 8080")
 	key("enter")
+
+start server:
+	insert("python -m http.server 8080")
+	
+start server <number>:
+	insert("python -m http.server {number}")
+	
+start node server:
+	insert("npm start")
+	key("enter")

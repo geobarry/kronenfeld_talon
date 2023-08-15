@@ -2,6 +2,8 @@ tag: user.python
 -
 loop on:
 	user.insert_between('for ',' in :')
+check if:
+	user.insert_between('if ',' in :' )
 slide over:
 	key(end)
 	edit.left()
@@ -39,4 +41,5 @@ algebra (divide):
 	user.code_operator_division()
 algebra (mod|modulus):
 	user.code_operator_modulo()
-hello world: "hello world"
+select scope:
+	code.extend_scope_out()
