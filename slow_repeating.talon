@@ -1,5 +1,5 @@
 tag: user.slow_repeating
 -
 # STOP REPEATING
-stop (repeating):
+stop [repeating]:
 	user.stop_repeating()

@@ -19,7 +19,7 @@ stop [repeating]:
 taber:
 	user.start_repeating("tab",1000)
 (six sir)|sixer:
-	user.start_repeating("tab",1000)
+	user.start_repeating("f6",1000)
 laughter|leper:
 	user.start_repeating('left',1000)
 writer:

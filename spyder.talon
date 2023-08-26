@@ -83,6 +83,8 @@ format <number> decimal places:
 	insert("{:.")
 	insert(number_1)
 	insert("f}")
+run code:
+	key(f5)
 debug:
 	key(ctrl-f5)
 step:
