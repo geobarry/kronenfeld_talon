@@ -167,6 +167,13 @@ menu table layout:
 	sleep(0.05)
 	key(j)
 	key(l)
+menu picture format:
+	key(alt)
+	sleep(0.05)
+	key(j)
+	sleep(0.05)
+	key(p)
+
 
 # common operations	
 copy style:

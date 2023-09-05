@@ -25,7 +25,7 @@ list by data source:
     sleep(0.05)
     user.mouse_helper_position_restore()
 
-attribute table:
+[open] attribute table:
 	key(ctrl-t)
 symbology menu:
 	key(alt)
@@ -33,7 +33,6 @@ symbology menu:
 	key(a)
 	key(d)
 	key(s)
-
 symbology (pain|pane|panel):
 	key(alt)
 	key(j)
@@ -42,7 +41,6 @@ symbology (pain|pane|panel):
 	key(s)
 	key(esc)
 	key(enter)
-
 focus catalog:
 	key(alt-v)
 	key(c)
@@ -50,7 +48,6 @@ focus catalog:
 	sleep(0.25)
     user.mouse_helper_move_image_relative("ArcGIS Pro catalog selected.png", 0, 53, 287)
 	mouse_click(0)
-
 focus Geoprocessing:
 	key(alt-v)
 	key(c)
@@ -65,12 +62,7 @@ focus Geoprocessing:
 	mouse_click(0)
 
 add data:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+	key(esc:5)
 	key(alt)
 	sleep(0.05)
 	key(m)
@@ -81,117 +73,65 @@ add data:
 	key(enter)
 
 zoom in:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+	key(esc:5)
 	key(alt)
 	sleep(0.05)
 	key(m)
 	key(z)
 	key(i)
 zoom out:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+	key(esc:5)
 	key(alt)
 	sleep(0.05)
 	key(m)
 	key(z)
-	key(o)
-	
+	key(o)	
 focus map:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+	key(esc:5)
 	key(alt)
 	sleep(0.05)
 	key(m)
 	sleep(0.05)
-	key(esc)
-	key(esc)
-
-pan right:
-	user.mouse_helper_move_image_relative("ArcGIS Pro map icon.png", 0, 99, 100)
-	user.mouse_drag(0)
-	sleep(0.05)
-	user.mouse_helper_move_image_relative("ArcGIS Pro map icon.png", 0, 100, 100)
-	sleep(0.1)
-	user.mouse_helper_move_image_relative("ArcGIS Pro map icon.png", 0, 101, 100)
-	sleep(0.1)
-	user.mouse_helper_move_image_relative("ArcGIS Pro map icon.png", 0, 200, 100)
-	sleep(0.1)
-	user.mouse_drag_end()
-
-map:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+	key(esc:2)
+pan west:
+	user.pan_arcgis_pro_map('west',1)
+pan east:
+	user.pan_arcgis_pro_map("east",1)
+pan north:
+	user.pan_arcgis_pro_map('north',1)
+pan south:
+	user.pan_arcgis_pro_map('south',1)
+pan west <number>:
+	user.pan_arcgis_pro_map('west',number)
+pan east <number>:
+	user.pan_arcgis_pro_map("east",number)
+pan north <number>:
+	user.pan_arcgis_pro_map('north',number)
+pan south <number>:
+	user.pan_arcgis_pro_map('south',number)
+menu map:
+	key(esc:5)
 	key(alt)
 	sleep(0.05)
 	key(m)
-
-insert:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+menu insert:
+	key(esc:5)
 	key(alt-n)
-	
-analysis:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
-	key(alt-a)
-	
-view: 
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+menu analysis:
+	key(esc:5)
+	key(alt-a)	
+menu view: 
+	key(esc:5)
 	key(alt-v)
-
-edit:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
-	key(alt-e)
-	
-imagery:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
-	key(alt-i)
-	
-share:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
+menu edit:
+	key(esc:5)
+	key(alt-e)	
+menu imagery:
+	key(esc:5)
+	key(alt-i)	
+menu share:
+	key(esc:5)
 	key(alt-s)
+menu layout:
+	key(esc:5)
+	key(alt-y)

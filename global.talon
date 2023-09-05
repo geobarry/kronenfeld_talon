@@ -72,4 +72,14 @@ down jiggle:
 	key(down)
 	sleep(0.05)
 	key(up)
+switch (application|applications):
+	key(alt-tab)
+switch (other|second) application:
+	key(alt:down)
+	key(tab:3)
+	key(alt:up)
+switch third application:
+	key(alt:down)
+	key(tab:4)
+	key(alt:up)
 	
