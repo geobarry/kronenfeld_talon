@@ -8,6 +8,7 @@ focus contents:
 	sleep(0.25)
     user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, -25, 235)
 	mouse_click(0)
+	key(shift-tab)
 
 list by drawing order:
     user.mouse_helper_position_save()
@@ -135,3 +136,8 @@ menu share:
 menu layout:
 	key(esc:5)
 	key(alt-y)
+show panels:
+	key(ctrl:down)
+	key(tab)
+choose panel:
+	key(ctrl:up)
