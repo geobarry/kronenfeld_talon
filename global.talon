@@ -82,4 +82,17 @@ switch third application:
 	key(alt:down)
 	key(tab:4)
 	key(alt:up)
+shutdown computer:
+	key(super)
+	sleep(0.2)
+	key(up)
+	sleep(0.1)
+	key(right)
+	key(enter)
+	sleep(0.1)
+	key(down:2)
+	sleep(0.1)
+	key(enter)
+	
+	
 	

@@ -20,6 +20,8 @@ tab previous:
 	key(ctrl-pageup)
 tab next:
 	key(ctrl-pagedown)
+tab close:
+	key(ctrl-w)
 focus (variable|variables):
 	key(ctrl-shift-v)
 focus (interpreter|console):

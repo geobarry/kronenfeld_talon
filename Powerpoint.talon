@@ -19,7 +19,10 @@ menu (animation|animations):
 menu slide show:
 	key(alt-s)
 menu record:
-	key(alt-c)
+	key(alt)
+	sleep(0.05)
+	key(c)
+	key(1)
 menu review:
 	key(alt-r)
 menu view:
@@ -27,25 +30,35 @@ menu view:
 menu help:
 	key(alt-h)
 menu shape format:
-	key(alt-j)
+	key(alt)
 	sleep(0.05)
+	key(j)
 	key(d)
 menu table design:
-	key(alt-j)
+	key(alt)
 	sleep(0.05)
+	key(j)
 	key(t)
 menu table layout:
-	key(alt-j)
+	key(alt)
 	sleep(0.05)
+	key(j)
 	key(l)
-menu equation:
-	key(alt-j)
-	sleep(0.05)
-	key(e)
 menu picture format:
-	key(alt-j)
+	key(alt)
 	sleep(0.05)
+	key(j)
 	key(p)
+menu graphics format:
+	key(alt)
+	sleep(0.05)
+	key(j)
+	key(g)
+menu equation:
+	key(alt)
+	sleep(0.05)
+	key(j)
+	key(e)
 
 #home menu
 new slide:
@@ -71,7 +84,7 @@ font size <number>:
 	key(f)
 	key(s)
 	sleep(0.05)
-	insert({number})
+	insert(number)
 	sleep(0.05)
 	key(enter)
 font color:
@@ -94,6 +107,11 @@ clear (fill|fell|feel):
 	key(s)
 	key(f)
 	key(n)
+send to back:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(k)
 	
 #insert menu
 text box:
@@ -107,7 +125,7 @@ present slide show:
 	key(alt-s)
 	sleep(0.05)
 	key(b)
-key(w):
+present current slide:
 	key(alt-s)
 	sleep(0.05)
 	key(c)
@@ -151,16 +169,25 @@ shape fill:
 	sleep(0.05)
 	key(f)
 shape outline:
-	key(alt-j)
+	key(alt)
 	sleep(0.05)
+	key(j)
 	key(d)
 	key(s)
 	sleep(0.05)
 	key(o)
 
+#equation menu
 	
 # common operations	
 copy style:
 	key(ctrl-shift-c)
 paste style:
 	key(ctrl-shift-v)
+paste without formatting:
+	key(alt-e)
+	sleep(0.05)
+	key(s)
+	key(tab)
+	key(down:2)
+	key(enter)
