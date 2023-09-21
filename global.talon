@@ -28,7 +28,7 @@ show cheat sheet:
 	sleep(0.25)
 	key(enter)
 	sleep(2.5)
-	insert("cd %appdata%/Talon/user/cheat sheet")
+	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
 	key("enter")
 	insert("python -m http.server 8080")
 	key("enter")
