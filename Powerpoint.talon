@@ -4,6 +4,8 @@ os: windows
 and app.exe: POWERPNT.EXE
 -
 #main menu headings
+menu file:
+	key(alt-f)
 menu home:
 	key(alt-h)
 menu insert:
@@ -59,6 +61,14 @@ menu equation:
 	sleep(0.05)
 	key(j)
 	key(e)
+
+#file menu
+save as:
+	key(alt-f)
+	sleep(0.05)
+	key(a)
+	sleep(0.5)
+	key(o)
 
 #home menu
 new slide:
@@ -120,6 +130,20 @@ text box:
 	key(x)
 	key(h)
 
+#animation ribbon shortcuts
+(animations fade|apply animation):
+	key(alt-a)
+	key(s)
+	key(down)
+	key(right)
+	key(enter)
+#animation ribbon shortcuts
+animations appear:
+	key(alt-a)
+	key(s)
+	key(down)
+	key(enter)
+	
 #slide show menu
 present slide show:
 	key(alt-s)
@@ -141,9 +165,12 @@ outline view:
 normal view:
 	key(alt-w)
 	key(l)
-slide master:
+(master view|slide master):
 	key(alt-w)
 	key(m)
+close (master view|slide master):
+	key(alt-m)
+	key(c)
 zoom fit:
 	key(alt-w)
 	key(q)

@@ -18,6 +18,9 @@ inside (angle|angles):
 	user.insert_between('<','>')
 alt:
 	key('alt')
+launch:
+	key(super)
+	sleep(0.2)
 show cheat sheet:
 	key(super)
 	sleep(0.2)
@@ -49,7 +52,7 @@ escape out:
 	key(esc)
 	key(esc)
 save:
-	key(ctrl-s)
+	key(ctrl-s)	
 search:
 	key(ctrl-f)
 tab jiggle:
@@ -82,6 +85,13 @@ switch third application:
 	key(alt:down)
 	key(tab:4)
 	key(alt:up)
+delete line:
+	edit.line_start()
+	edit.line_start()
+	edit.line_start()
+	edit.line_start()
+	edit.extend_line_end()
+	key(backspace:2)
 shutdown computer:
 	key(super)
 	sleep(0.2)

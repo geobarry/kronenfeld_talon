@@ -31,3 +31,9 @@ conda create:
 	
 open spider app:
 	insert('spyder')
+
+# ffmpeg
+convert clipboard movie:
+	insert('ffmpeg -i ')
+	edit.paste()
+	insert(' -c:v libx264 -c:a aac ')

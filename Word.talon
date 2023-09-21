@@ -26,6 +26,17 @@ apply style:
 	key(1)
 	key(y)
 	key(1)
+
+new style:
+	key(alt-h)
+	key(f)
+	key(y)
+	sleep(0.05)
+	# trick: if we press right enough times we will always end up in the same place
+    key(right:10)
+	# tab to the ad style button
+	key(tab:3)
+	key(enter)
 	
 apply heading <number>:
 	key(alt-h)
@@ -82,9 +93,8 @@ style match selection:
 	key(f)
 	key(y)
 	sleep(0.05)
-	key(right)
 	# trick: if we press right enough times we will always end up in the same place
-	repeat(7) 
+	key(right:2)
 	sleep(0.05)
 	key(alt-down)
 	sleep(0.05)
@@ -133,30 +143,23 @@ save as:
 	
 menu view:
 	key(alt-w)
-	
 menu file:
 	key(alt-f)
-	
 menu home:
-	key(alt-h)
-	
+	key(alt-h)	
 menu insert:
 	key(alt-n)
 menu draw:
 	key(alt-j)
 	key(i)
 menu design:
-	key(alt-g)
-	
+	key(alt-g)	
 menu layout:
-	key(alt-p)
-	
+	key(alt-p)	
 menu references:
 	key(alt-s)
-	
 menu review:
 	key(alt-r)
-
 menu table design:
 	key(alt)
 	sleep(0.05)
@@ -174,6 +177,80 @@ menu picture format:
 	sleep(0.05)
 	key(p)
 
+#file ribbon shortcuts
+export to PDF:
+	key(alt-f)
+	key(e)
+	key(a)
+
+#home ribbon shortcuts
+font:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(f)
+font size:
+	key(alt-h)
+	key(f)
+	key(s)
+font size <number>:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(s)
+	sleep(0.05)
+	insert(number)
+	sleep(0.05)
+	key(enter)
+font color:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(c)
+paragraph formatting:
+	key(alt-h)
+	sleep(0.05)
+	key(p)
+	key(g)
+apply bold:
+	key(alt-h)
+	key(1)
+apply (italic|italics):
+	key(alt-h)
+	key(2)
+apply underline:
+	key(alt-h)
+	key(3)
+
+#edit ribbon shortcuts
+paste without formatting:
+	key(alt-e)
+	sleep(0.05)
+	key(s)
+	key(up:3)
+	key(down)
+	key(tab)
+	key(up:9)
+	key(down)
+	key(enter)
+
+#view ribbon shortcuts
+zoom fit:
+	key(alt-w)
+	key(q)
+	sleep(0.05)
+	key(i)
+	key(enter)
+zoom <number> [percent]:
+	key(alt-w)
+	sleep(0.1)
+	key(q)
+	sleep(0.1)
+	key(e)
+	sleep(0.1)
+	insert(number)
+	insert("%")
+	key(enter)
 
 # common operations	
 copy style:

@@ -1,6 +1,14 @@
 os: windows
 and app.exe: ArcGISPro.exe
 -
+toggle ribbon:
+	key(ctrl-f1)
+tab close:
+	key(ctrl-f4)
+map next:
+	key(ctrl-f6)
+map previous:
+	key(ctrl-shift-f6)
 focus contents:
 	key(alt-v)
 	key(c)
@@ -136,6 +144,12 @@ menu share:
 menu layout:
 	key(esc:5)
 	key(alt-y)
+menu table:
+	key(esc:5)
+	key(alt)
+	sleep(0.1)
+	key(t)
+	key(v)
 show panels:
 	key(ctrl:down)
 	key(tab)

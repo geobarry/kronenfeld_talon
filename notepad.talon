@@ -1,27 +1,15 @@
 app.name: Notepad++
 - 
-# commands for talon files
-(key|he):
-	user.insert_between('key(',')')
-sleep:
-	user.insert_between('sleep(',')')
-repeat <number>:
-	insert("repeat({number})")
-# were going to set this up for JavaScript
 go to line:
 	key(ctrl-g)
+open workspace:
+	key(alt-f)
+	key(w)
+	key(enter)
 toggle workspace:
 	key(alt-shift-W)
-variable:
-	insert("var ")
-set equal:
-	insert(" = ")
-define function:
-	user.insert_between("function ","(){}")
-report message:
-	user.insert_between('console.log("','")')
-report variable:
-	user.insert_between('console.log(',')')
+focus workspace:
+	key(alt-shift-W:2)
 zoom in:
 	key(alt-v)
 	key(down)
@@ -39,3 +27,27 @@ select block:
 	key(ctrl-alt-b)
 
 	
+# commands for talon files
+(key|he):
+	user.insert_between('key(',')')
+sleep:
+	user.insert_between('sleep(',')')
+repeat <number>:
+	insert("repeat({number})")
+open containing folder:
+	key(alt-f)
+	key(o)
+	key(shift-tab:2)
+
+
+# were going to set this up for JavaScript
+variable:
+	insert("var ")
+set equal:
+	insert(" = ")
+define function:
+	user.insert_between("function ","(){}")
+report message:
+	user.insert_between('console.log("','")')
+report variable:
+	user.insert_between('console.log(',')')

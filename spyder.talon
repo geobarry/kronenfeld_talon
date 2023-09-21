@@ -95,7 +95,7 @@ step into:
 	key(ctrl-f11)
 continue:
 	key(ctrl-f12)
-stop:
+stop code:
 	key(ctrl-shift-f12)
 toggle breakpoint:
 	key(f12)
