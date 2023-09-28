@@ -7,9 +7,19 @@ open workspace:
 	key(w)
 	key(enter)
 toggle workspace:
-	key(alt-shift-W)
+#	key(alt-shift-W)
+	key(alt-v)
+	key(up:9)
+	key(enter)
 focus workspace:
-	key(alt-shift-W:2)
+#	key(alt-shift-W:2)
+	key(alt-v)
+	key(up:9)
+	key(enter)
+	key(alt-v)
+	key(up:9)
+	key(enter)
+	
 zoom in:
 	key(alt-v)
 	key(down)
