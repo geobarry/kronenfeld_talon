@@ -9,6 +9,12 @@ map next:
 	key(ctrl-f6)
 map previous:
 	key(ctrl-shift-f6)
+show panels:
+	key(ctrl:down)
+	key(tab)
+choose panel:
+	key(ctrl:up)
+
 focus contents:
 	key(alt-v)
 	key(c)
@@ -17,6 +23,11 @@ focus contents:
     user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, -25, 235)
 	mouse_click(0)
 	key(shift-tab)
+
+expand all:
+	key(ctrl+)
+collapse all:
+	key(ctrl-)
 
 list by drawing order:
     user.mouse_helper_position_save()
@@ -150,8 +161,3 @@ menu table:
 	sleep(0.1)
 	key(t)
 	key(v)
-show panels:
-	key(ctrl:down)
-	key(tab)
-choose panel:
-	key(ctrl:up)

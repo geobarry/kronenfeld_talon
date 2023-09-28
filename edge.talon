@@ -10,11 +10,8 @@ refresh:
 	key(f11)
 [toggle] read aloud:
 	key(ctrl-shift-u)
-read aloud:
-	key(ctrl-minus)
-	sleep(0.05)
-	key(left)
-	key(enter)
+[toggle] immersive reader:
+	key(f9)
 address bar:
 	key(alt-d)
 move tab to window:

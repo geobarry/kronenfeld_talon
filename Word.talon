@@ -176,6 +176,12 @@ menu picture format:
 	key(j)
 	sleep(0.05)
 	key(p)
+menu equation:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(e)
+
 
 #file ribbon shortcuts
 export to PDF:
@@ -235,11 +241,23 @@ paste without formatting:
 	key(enter)
 
 #view ribbon shortcuts
-zoom fit:
+zoom fit [(width|with)]:
 	key(alt-w)
 	key(q)
 	sleep(0.05)
-	key(i)
+	key(p)
+	key(enter)
+zoom [fit] text:
+	key(alt-w)
+	key(q)
+	sleep(0.05)
+	key(t)
+	key(enter)
+zoom [fit] page:
+	key(alt-w)
+	key(q)
+	sleep(0.05)
+	key(w)
 	key(enter)
 zoom <number> [percent]:
 	key(alt-w)
