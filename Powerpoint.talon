@@ -111,6 +111,14 @@ apply (italic|italics):
 apply underline:
 	key(alt-h)
 	key(3)
+indent:
+	key(alt-h)
+	key(a)
+	key(i)
+dedent:
+	key(alt-h)
+	key(a)
+	key(o)
 clear (fill|fell|feel):
 	key(alt-h)
 	sleep(0.05)
@@ -129,16 +137,22 @@ text box:
 	sleep(0.05)
 	key(x)
 	key(h)
+insert [hyper] link:
+	key(alt-n)
+	sleep(0.05)
+	key(z)
+	key(l)
+	key(i:2)
 
 #animation ribbon shortcuts
-(animations fade|apply animation):
+(animation fade|apply animation):
 	key(alt-a)
 	key(s)
 	key(down)
 	key(right)
 	key(enter)
 #animation ribbon shortcuts
-animations appear:
+animation appear:
 	key(alt-a)
 	key(s)
 	key(down)

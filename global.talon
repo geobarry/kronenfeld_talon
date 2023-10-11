@@ -1,3 +1,11 @@
+hello hello:
+	speech.disable()
+hello come in:
+	speech.disable()
+hello come on in:
+	speech.disable()
+hello what's up:
+	speech.disable()
 undo:
 	key(ctrl-z)
 (we do)|(redo):

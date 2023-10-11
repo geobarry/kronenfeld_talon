@@ -1,5 +1,5 @@
 #add links to cheat sheet
-file_name=r'C:\Users\Administrator\AppData\Roaming\talon\user\CHEAT SHEET\cheatsheet.html'
+file_name=r'%appdata%\talon\user\kronenfeld_talon\CHEAT SHEET\cheatsheet.html'
 
 with open(file_name) as f:
     lines = f.readlines()
