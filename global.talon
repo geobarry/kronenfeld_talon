@@ -100,6 +100,8 @@ delete line:
 	edit.line_start()
 	edit.extend_line_end()
 	key(backspace:2)
+stop: 
+	user.mouse_scroll_stop()
 shutdown computer:
 	key(super)
 	sleep(0.2)
@@ -111,6 +113,6 @@ shutdown computer:
 	key(down:2)
 	sleep(0.1)
 	key(enter)
-	
+
 	
 	
