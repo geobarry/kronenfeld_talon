@@ -55,7 +55,6 @@ row height:
 auto fit row:
 	key(alt-h)
 	key(o)
-	key(h)	
 	key(a)
 	
 # [ribbon|menu] headings
