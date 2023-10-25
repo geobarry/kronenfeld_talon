@@ -2,6 +2,7 @@ os: windows
 and app.name: Windows Explorer
 os: windows
 and app.exe: explorer.exe
+
 -
 open with notepad:
 	key(menu)
@@ -10,4 +11,6 @@ open with notepad:
 	sleep(0.5)
 	key(n)
 	key(enter)
-	
+
+go to <user.text>:
+	insert(text)

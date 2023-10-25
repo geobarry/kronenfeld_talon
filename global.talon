@@ -6,6 +6,67 @@ hello come on in:
 	speech.disable()
 hello what's up:
 	speech.disable()
+open up <user.text>:
+	insert(text)
+	sleep(0.05)
+	key(enter)
+(my|bee jay) name:
+	insert("Barry Kronenfeld")
+(my|bee jay) gmail:
+	insert("barrykronenfeld@gmail.com")
+(my|bee jay) (email|mail):
+	insert("bjkronenfeld@eiu.edu")
+
+dotcom:
+	insert(".com")
+daddy to you:
+	insert(".edu")
+
+(numb|number) phrase <user.formatters> <user.text> <number>:
+	insert(user.formatted_text(text, formatters))
+	insert(" ")
+	insert(number)
+
+(numb|number) phrase <user.text> <number>:
+	insert(text)
+	insert(" ")
+	insert(number)
+(numb|number) phrase <number> <user.text>:
+	insert(number)
+	insert(" ")
+	insert(text)
+(numb|number) phrase <number> <user.text> <number>:
+	insert(number_1)
+	insert(" ")
+	insert(text)
+	insert(" ")
+	insert(number_2)
+(numb|number) phrase <user.text> <number> <user.text>:
+	insert(text_1)
+	insert(" ")
+	insert(number)
+	insert(" ")
+	insert(text_2)
+(numb|number) phrase <number> <user.text> <number> <user.text>:
+	insert(number_1)
+	insert(" ")
+	insert(text_1)
+	insert(" ")
+	insert(number_2)
+	insert(" ")
+	insert(text_2)
+(numb|number) phrase <user.text> <number> <user.text> <number>:
+	insert(text_1)
+	insert(" ")
+	insert(number_1)
+	insert(" ")
+	insert(text_2)
+	insert(" ")
+	insert(number_2)
+	
+
+
+
 undo:
 	key(ctrl-z)
 (we do)|(redo):
@@ -83,6 +144,10 @@ down jiggle:
 	key(down)
 	sleep(0.05)
 	key(up)
+up jiggle:
+	key(up)
+	sleep(0.05)
+	key(down)
 switch (application|applications):
 	key(alt-tab)
 switch (other|second) application:
@@ -102,6 +167,7 @@ delete line:
 	key(backspace:2)
 stop: 
 	user.mouse_scroll_stop()
+	user.stop_repeating()
 shutdown computer:
 	key(super)
 	sleep(0.2)

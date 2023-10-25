@@ -3,6 +3,12 @@ and app.name: Microsoft Excel
 os: windows
 and app.exe: EXCEL.EXE
 -
+# common office shortcuts
+save as:
+	key(alt-f)
+	sleep(0.05)
+	key(a)
+
 # worksheets
 next (tab|sheet|worksheet):
 	key(ctrl-pagedown)
@@ -34,7 +40,7 @@ column width:
 	key(alt-h)
 	key(o)
 	key(w)
-auto fit column:
+auto fit (column|width|column width):
 	key(alt-h)
 	key(o)
 	key(i)
@@ -52,11 +58,11 @@ row height:
 	key(alt-h)
 	key(o)
 	key(h)
-auto fit row:
+auto fit (row|height|row height):
 	key(alt-h)
 	key(o)
-	key(h)	
-	key(a)
+	key(a)	
+	
 	
 # [ribbon|menu] headings
 file [ribbon|menu]:
@@ -84,6 +90,22 @@ excel toolbox [ribbon|menu]:
 	key(alt-y)
 	key(2)
 
+# home menu
+paste values:
+	key(alt-e)
+	key(s)
+	key(v)
+	key(enter)
+font color: 
+	key(alt-h)
+	key(f)
+	key(c)
+highlight cell:
+	key(alt-h)
+	key(h)
+	key(up:4)
+	key(left:6)
+
 # data menu
 sort:
 	key(alt-a)
@@ -99,4 +121,24 @@ freeze panes:
 	key(alt-w)
 	key(f)
 	key(f)
+
+##formulas
+(formula|equation) concatenate:
+	insert("concat(")
+(formula|equation) (max|maximum):
+	insert("max(")
+(formula|equation) minimum:
+	insert("min(")
+(formula|equation) sum:
+	insert("sum(")
+(formula|equation) some product:
+	insert("sumproduct(")
+(formula|equation) if:
+	insert("if(")
+(formula|equation) text join:
+	insert("textjoin(")
+(formula|equation) character:
+	insert("char(")
+
 	
+

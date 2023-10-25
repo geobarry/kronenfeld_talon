@@ -233,28 +233,32 @@ paste without formatting:
 	key(alt-e)
 	sleep(0.05)
 	key(s)
-	key(up:3)
-	key(down)
-	key(tab)
-	key(up:9)
-	key(down)
+	sleep(0.15)
+	key(a)
+	sleep(.75)
+	key(u)
+	sleep(0.15)
 	key(enter)
 
 #view ribbon shortcuts
 zoom fit [(width|with)]:
 	key(alt-w)
+	sleep(0.1)
 	key(q)
-	sleep(0.05)
+	sleep(0.1)
 	key(p)
+	sleep(0.1)
 	key(enter)
 zoom [fit] text:
 	key(alt-w)
+	sleep(0.1)
 	key(q)
 	sleep(0.05)
 	key(t)
 	key(enter)
 zoom [fit] page:
 	key(alt-w)
+	sleep(0.1)
 	key(q)
 	sleep(0.05)
 	key(w)
@@ -270,11 +274,49 @@ zoom <number> [percent]:
 	insert("%")
 	key(enter)
 
+#menu table layout 
+insert row [above]:
+	key(alt)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(a)
+insert [row] below:
+	key(alt)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(b)
+	key(e)
+delete row:
+	key(alt)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(d)
+	key(r)
+delete column:
+	key(alt)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(d)
+	key(c)
+column (with|width):
+	key(alt)
+	sleep(0.2)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(w)
+
 # common operations	
 copy style:
 	key(ctrl-shift-c)
 paste style:
 	key(ctrl-shift-v)
+underline [that]:
+	key(ctrl-u)
 
 view text width:
 	key(alt-w)
@@ -284,9 +326,10 @@ view text width:
 	key(enter)	
 # center on screen by toggling between webview and print view
 # strangely this doesn't work when we put the two key sequences together
-view web:
-	key(alt-w)
-	sleep(0.15)
+view webpage:
+	key(alt)
+	key(w)
+	sleep(0.25)
 	key(l)
 	key(1)
 view print:
@@ -362,3 +405,11 @@ finish export styles:
 	key(alt-h)
 	key(f)
 	key(y)
+
+#special symbols
+insert checkmark:
+	insert("2713")
+	key(alt-x)
+insert ex mark:
+	insert("2715")
+	key(alt-x)
