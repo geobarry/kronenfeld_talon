@@ -168,7 +168,7 @@ delete line:
 stop: 
 	user.mouse_scroll_stop()
 	user.stop_repeating()
-shutdown key():
+shutdown computer:
 	key(super)
 	sleep(0.2)
 	key(up)
