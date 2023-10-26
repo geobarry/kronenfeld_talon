@@ -3,11 +3,12 @@ and app.exe: ArcGISPro.exe
 -
 toggle ribbon:
 	key(ctrl-f1)
+# A tab is within a group, i.e. [maps,layouts,tables] or [catalog, ...]
 tab close:
 	key(ctrl-f4)
-map next:
+tab next:
 	key(ctrl-f6)
-map previous:
+tab previous:
 	key(ctrl-shift-f6)
 show panels:
 	key(ctrl:down)
