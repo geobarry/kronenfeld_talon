@@ -186,12 +186,12 @@ shutdown computer:
 	key(super)
 	sleep(0.2)
 	key(up)
-	sleep(0.1)
+	sleep(0.2)
 	key(right)
 	key(enter)
-	sleep(0.1)
+	sleep(0.2)
 	key(down:2)
-	sleep(0.1)
+	sleep(0.2)
 	key(enter)
 
 	
