@@ -3,6 +3,7 @@ and app.name: Microsoft Excel
 os: windows
 and app.exe: EXCEL.EXE
 -
+tag(): user.excel_powerpoint_shared
 # common office shortcuts
 save as:
 	key(alt-f)
@@ -103,6 +104,7 @@ font color:
 highlight cell:
 	key(alt-h)
 	key(h)
+	sleep(0.1)
 	key(up:4)
 	key(left:6)
 
@@ -140,5 +142,5 @@ freeze panes:
 (formula|equation) character:
 	insert("char(")
 
-	
-
+column <user.letter>:
+	insert("{letter}:{letter}")
