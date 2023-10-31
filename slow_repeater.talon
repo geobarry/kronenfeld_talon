@@ -9,5 +9,9 @@
 	user.start_repeating("{key}",2500)
 <user.key> steady:
 	user.start_repeating("{key}",1500)
+<user.key> quick:
+	users.start_repeating("{key}",500)
 <user.key> fast:	
-	user.start_repeating("{key}",500)
+	user.start_repeating("{key}",350)
+<user.key> lightning:	
+	user.start_repeating("{key}",100)

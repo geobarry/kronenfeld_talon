@@ -2,6 +2,11 @@ app.name: Notepad++
 - 
 go to line:
 	key(ctrl-g)
+go to line <number>:
+	key(ctrl-g)
+	sleep(0.1)
+	insert(number)
+	key(enter)
 open workspace:
 	key(alt-f)
 	key(w)

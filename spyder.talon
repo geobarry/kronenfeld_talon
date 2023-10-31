@@ -2,7 +2,15 @@ app.name: Python
 -
 tag(): user.python
 tag(): user.line_commands
-# focus on the code window
+
+tab previous:
+	key(ctrl-pageup)
+tab next:
+	key(ctrl-pagedown)
+tab close:
+	key(ctrl-w)
+
+# focus on a particular pane
 focus code:
 	key(alt-v)
 	key(enter)
@@ -10,30 +18,25 @@ focus code:
 	key(alt-v)
 	key(enter)
 	key(enter)
+focus project:
+	key(ctrl-shift-p)
+    user.mouse_helper_position_save()
+    user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
+    sleep(0.5)
+    mouse_click(0)
+    sleep(0.05)
+    #user.mouse_helper_position_restore()
+
 focus outline:
 	key(ctrl-shift-o)
     user.mouse_helper_position_save()
     user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
     sleep(0.3)
     mouse_click(0)
-tab previous:
-	key(ctrl-pageup)
-tab next:
-	key(ctrl-pagedown)
-tab close:
-	key(ctrl-w)
 focus (variable|variables):
 	key(ctrl-shift-v)
 focus (interpreter|console):
 	key(ctrl-shift-i)
-focus project:
-	key(ctrl-shift-p)
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
-    sleep(0.05)
-    mouse_click(0)
-    sleep(0.05)
-    #user.mouse_helper_position_restore()
 focus (plot|plots):
 	key(ctrl-shift-g)
     user.mouse_helper_position_save()
@@ -101,3 +104,30 @@ toggle breakpoint:
 	key(f12)
 toggle comment: 
 	key(ctrl-1)
+go to definition:
+	key(ctrl-g)
+
+# menu
+file menu:
+	key(alt-f)
+#	escrd
+edit menu:
+	key(alt-e)
+search menu:
+	key(alt-s)
+source menu:
+	key(alt-c)
+run menu:
+	key(alt-r)
+debug menu:
+	key(alt-d)
+(console|consoles) menu:
+	key(alt-o)
+(project|projects) menu:
+	key(alt-p)
+(tool|tools) menu:
+	key(alt-t)
+view menu:
+	key(alt-v)
+help menu:
+	key(alt-h)

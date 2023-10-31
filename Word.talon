@@ -413,3 +413,25 @@ insert checkmark:
 insert ex mark:
 	insert("2715")
 	key(alt-x)
+insert alpha:
+	insert("03b1")
+	key(alt-x)
+
+# hyperlinks
+copy hyperlink:
+	key(alt-n)
+	key(i)
+	key(i)
+	sleep(0.1)
+	key(ctrl-c)
+	key(esc:3)
+paste hyperlink:
+	key(alt-n)
+	key(i)
+	key(i)
+	sleep(0.1)
+	key(ctrl-v)
+	sleep(0.1)
+	key(enter)
+
+	

@@ -3,6 +3,9 @@ from talon import Context, Module, ctrl, cron, actions, imgui, ui
 
 # parameters
 reaction_time = 1500 # set to 0 if you don't want backwards-correction
+check_repeat_time = 20 # milliseconds to check to see if it's time to repeat
+minimum_repeat_interval = 30 # milliseconds
+speed_change = 100 # milliseconds per repeat
 opposites = {
     'left': 'right',
     'right': 'left',
@@ -28,7 +31,8 @@ class SlowRepeater:
         if self.enabled:
             cron.cancel(self.job)
         self.enabled = True
-        self.job = cron.interval('{}ms'.format(self.ms), self.repeat_command)
+        # check for repeat every 20 milliseconds
+        self.job = cron.interval('{}ms'.format(check_repeat_time), self.repeat_command)
     def disable(self):
         if not self.enabled:
             return
@@ -48,8 +52,10 @@ class SlowRepeater:
         self.enabled = False
 
     def repeat_command(self):
-        actions.key(self.key)
-        self.cumulative_time += self.ms
+        self.cumulative_time += check_repeat_time
+        # time to repeat command if modulus remainder < check_repeat_time
+        if self.cumulative_time % self.ms < check_repeat_time:
+            actions.key(self.key)
 
 repeater_object = SlowRepeater()
 mod = Module()
@@ -75,5 +81,11 @@ class Actions:
         """Terminate repetition"""
         gui_repeater.hide()
         repeater_object.disable()
-
+    def repeat_faster():
+        """Reduce repeat interval"""
+        repeater_object.ms = max(repeater_object.ms-speed_change,minimum_repeat_interval)
+    def repeat_slower():
+        """Increase repeat interval"""
+        repeater_object.ms = max(repeater_object.ms+speed_change,minimum_repeat_interval)
+        
 ctx = Context()

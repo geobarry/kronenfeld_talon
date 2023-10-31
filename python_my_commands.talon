@@ -43,3 +43,50 @@ algebra (mod|modulus):
 	user.code_operator_modulo()
 select scope:
 	code.extend_scope_out()
+
+# variables
+variable {user.variable_list}:
+	insert(variable_list)
+	
+{user.variable_list} equals:
+	insert(variable_list)
+	insert(" = ")
+	
+for {user.variable_list} in:
+	insert("for ")
+	insert(variable_list)
+	insert(" in ")
+
+range length {user.variable_list}:
+	insert("range(len(")
+	insert(variable_list)
+	insert("))")
+	
+if {user.variable_list}:
+	insert("if ")
+	insert(variable_list)
+
+if length {user.variable_list}:
+	insert("if len(")
+	insert(variable_list)
+	insert(")")
+
+{user.variable_list} sub:
+	insert(variable_list)
+	user.insert_between("[","]")
+	
+range {user.variable_list}:
+	insert("range(")
+	insert(variable_list)
+	insert(")")
+range <number>:
+	insert("range(")
+	insert(number)
+	insert(")")
+
+return {user.variable_list}:
+	insert("return ")
+	insert(variable_list)
+{user.variable_list} dot append:
+	insert(variable_list)
+	user.insert_between(".append(",")")

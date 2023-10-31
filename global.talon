@@ -22,6 +22,11 @@ dotcom:
 daddy to you:
 	insert(".edu")
 
+inside inches:
+	user.insert_between('"', '"')
+inside feet:
+	user.insert_between("'", "'")
+
 (numb|number) phrase <user.formatters> <user.text> <number>:
 	insert(user.formatted_text(text, formatters))
 	insert(" ")
@@ -165,6 +170,15 @@ delete line:
 	edit.line_start()
 	edit.extend_line_end()
 	key(backspace:2)
+(delete|flick) way right:
+	edit.extend_line_end()
+	sleep(0.1)
+	key(delete)
+{user.search_engine} hunt:
+	user.search_with_search_engine(search_engine, "")
+	sleep(0.5)
+
+
 stop: 
 	user.mouse_scroll_stop()
 	user.stop_repeating()
