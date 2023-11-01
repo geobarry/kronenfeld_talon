@@ -25,3 +25,12 @@ move tab to window:
 	key(ctrl-a)
 	key(ctrl-v)
 	key(enter)
+clear cache:
+	key(ctrl-shift-del)
+	sleep(2)
+	key(tab:11)
+	key(enter)
+	sleep(0.3)
+	user.tab_close_wrapper()
+	
+	
