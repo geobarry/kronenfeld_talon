@@ -11,38 +11,60 @@ whack:
 	key('end')
 	insert(':')
 	edit.line_insert_down()
-(absolute value)|(funk absolute):
-	insert('abs')
-	user.engine_mimic('args')
 set equal [to]:
 	user.engine_mimic('op equals')
-funk sign:
+is equal to:
+	insert(" == ")
+
+# FUNCTIONS
+(absolute value)|(funk absolute)|(function absolute)|(function absolute value)|(funk absolute value):
+	insert('abs')
+	user.engine_mimic('args')
+(funk|function) sine:
 	insert('math.sin()')
 	edit.left()
-funk cosine:
+(funk|function) cosine:
 	insert('math.cos()')
 	edit.left()
-funk radians:
+(funk|function) radians:
 	insert('math.radians()')
 	edit.left()
-funk max:
+(funk|function) (maximum|max):
 	insert('max()')
 	edit.left()
-funk admin:
+(funk|function) (minimum|min):
 	insert('min()')
 	edit.left()
-algebra (minus|subtract):
+	
+# OPERATIONS
+(operation|algebra) (minus|subtract):
 	user.code_operator_subtraction()
-algebra (times|multiply):
+(operation|algebra)(times|multiply):
 	user.code_operator_multiplication()
-algebra (plus|add):
+(operation|algebra) (plus|add):
 	user.code_operator_addition()
-algebra (divide):
+(operation|algebra) (divide):
 	user.code_operator_division()
-algebra (mod|modulus):
+(operation|algebra) (mod|modulus):
 	user.code_operator_modulo()
+(operation|algebra) squared:
+	insert("**2")
+(operation increment|increment by):
+	insert(" += ")
+(operation|algebra) square root:
+	insert("**0.5")
+square root [of] <number>:
+	insert(number)
+	insert("**0.5")
+square root [of] {user.variable_list}:
+	insert(variable_list)
+	insert("**0.5")
 select scope:
 	code.extend_scope_out()
+
+# indices
+sub:
+	user.insert_between("[","]")
 
 # variables
 variable {user.variable_list}:
@@ -56,6 +78,24 @@ for {user.variable_list} in:
 	insert("for ")
 	insert(variable_list)
 	insert(" in ")
+
+for {user.variable_list} in range:
+	insert("for ")
+	insert(variable_list)
+	user.insert_between(" in range(","):")
+
+for {user.variable_list} in range length:
+	insert("for ")
+	insert(variable_list)
+	user.insert_between(" in range(length(",")):")
+
+for {user.variable_list} in range length {user.variable_list}:
+	insert("for ")
+	insert(variable_list_1)
+	insert(" in range(len(")
+	insert(variable_list_2)
+	insert(")):")
+	key(enter)
 
 range length {user.variable_list}:
 	insert("range(len(")
@@ -84,9 +124,71 @@ range <number>:
 	insert(number)
 	insert(")")
 
+list:
+	user.insert_between("[","]")
+dictionary:
+	user.insert_between("{","}")
+tuple:
+	user.insert_between("(",")")
+empty list:
+	insert("[]")
+empty dictionary:
+	insert("{}")
+empty tuple:
+	insert("()")
+
+# VARIABLES
+{user.variable_list} sub:
+	insert(variable_list)
+	user.insert_between("[","]")
+{user.variable_list} sub {user.variable_list}:
+	insert(variable_list_1)
+	insert("[")
+	insert(variable_list_2)
+	insert("]")
+length {user.variable_list}:
+	insert("len(")
+	insert(variable_list)
+	insert(")")
 return {user.variable_list}:
 	insert("return ")
 	insert(variable_list)
 {user.variable_list} dot append:
 	insert(variable_list)
 	user.insert_between(".append(",")")
+{user.variable_list} dot:
+	insert(variable_list)
+	insert(".")
+for {user.variable_list} in:
+	insert("for ")
+	insert{user.variable_list}
+	insert(" in ")
+for {user.variable_list} in {user.variable_list}:
+	insert("for ")
+	insert(user.variable_list_1)
+	insert(" in ")
+	insert(user.variable_list_2)
+	insert(":")
+	
+# modules
+import {user.module_list}:
+	insert("import ")
+	insert(module_list)
+from {user.module_list} import: 
+	insert("from ")
+	insert(module_list)
+	insert(" import ")
+from {user.module_list} import {user.module_list}:
+	insert("from ")
+	insert(module_list_1)
+	insert(" import ")
+	insert(module_list_2)
+module {user.module_list}:
+	insert(module_list)
+module {user.module_list} dot:
+	insert(module_list)
+	insert(".")
+
+# numpy
+numpy (linear|line) (space|spacing):
+	user.insert_between("np.linspace(",")")

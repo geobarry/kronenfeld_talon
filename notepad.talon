@@ -1,11 +1,11 @@
-app.name: Notepad++
+  app.name: Notepad++
 - 
 go to line:
 	key(ctrl-g)
 go to line <number>:
 	key(ctrl-g)
 	sleep(0.1)
-	insert(number)
+	insert("{number}")
 	key(enter)
 open workspace:
 	key(alt-f)
@@ -43,7 +43,7 @@ select block:
 
 	
 # commands for talon files
-(key|he):
+key:
 	user.insert_between('key(',')')
 sleep:
 	user.insert_between('sleep(',')')

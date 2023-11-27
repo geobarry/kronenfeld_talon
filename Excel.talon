@@ -107,6 +107,19 @@ highlight cell:
 	sleep(0.1)
 	key(up:4)
 	key(left:6)
+(apply|toggle) word wrap:
+	key(alt-h)
+	key(w)
+format number <number> decimal places:
+	key(alt-h)
+	key(f)
+	key(m)
+	key(tab)
+	key(up:12)
+	key(down)
+	key(alt-d)
+	insert(number)
+	key(enter)
 
 # data menu
 sort:
@@ -119,10 +132,21 @@ freeze top row:
 	key(alt-w)
 	key(f)
 	key(r)
-freeze panes:
+[toggle] freeze panes:
 	key(alt-w)
 	key(f)
 	key(f)
+#view ribbon shortcuts
+zoom <number> [percent]:
+	key(alt-w)
+	sleep(0.1)
+	key(q)
+	sleep(0.1)
+	key(c)
+	sleep(0.1)
+	insert(number)
+	key(enter)
+
 
 ##formulas
 (formula|equation) concatenate:
@@ -137,10 +161,14 @@ freeze panes:
 	insert("sumproduct(")
 (formula|equation) if:
 	insert("if(")
+(formula|equation) text:
+	insert("text(")
 (formula|equation) text join:
 	insert("textjoin(")
 (formula|equation) character:
 	insert("char(")
+(formula|equation) square root:
+	insert("sqrt(")
 
 column <user.letter>:
 	insert("{letter}:{letter}")

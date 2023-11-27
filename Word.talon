@@ -1,4 +1,5 @@
 app: Microsoft Word
+
 -
 sub <user.letter>:
 	insert(" ")
@@ -228,6 +229,14 @@ apply underline:
 	key(alt-h)
 	key(3)
 
+# insert menu shortcuts
+insert table:
+	key(alt-n)
+	key(t)
+insert comment:
+	key(alt-n)
+	key(l)
+	
 #edit ribbon shortcuts
 paste without formatting:
 	key(alt-e)
@@ -416,6 +425,28 @@ insert ex mark:
 insert alpha:
 	insert("03b1")
 	key(alt-x)
+insert beta:
+	insert("03b2")
+	key(alt-x)
+insert gamma:
+	insert("03b3")
+	key(alt-x)
+insert delta:
+	insert("03b4")
+	key(alt-x)
+insert theta:
+	insert("03b8")
+	key(alt-x)
+insert lambda:
+	insert("03bb")
+	key(alt-x)
+insert mu:
+	insert("03bc")
+	key(alt-x)
+insert sigma:
+	insert("03c3")
+	key(alt-x)
+
 
 # hyperlinks
 copy hyperlink:

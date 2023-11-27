@@ -14,3 +14,36 @@ open with notepad:
 
 go to <user.text>:
 	insert(text)
+
+# sorting
+sort:
+	# get into the menu
+	key(alt)
+	# a sort menu is third from the right
+	key(right:20)
+	key(left:2)
+	key(enter)
+sort by name:
+	# get into the menu
+	key(alt)
+	# sort menu is third from the right
+	key(right:20)
+	key(left:2)
+	key(enter)
+	# default is by name
+	sleep(0.05)
+	key(enter)
+sort by date:
+	# get into the menu
+	key(alt)
+	# sort menu is third from the right
+	key(right:20)
+	key(left:2)
+	key(enter)
+	# go down one to sort by date
+	sleep(0.05)
+	key(down)
+	sleep(0.05)
+	key(enter)
+address bar:
+	key(alt-d)

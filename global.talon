@@ -10,6 +10,10 @@ open up <user.text>:
 	insert(text)
 	sleep(0.05)
 	key(enter)
+open up <user.letter>:
+	key(letter)
+	sleep(0.05)
+	key(enter)
 (my|bee jay) name:
 	insert("Barry Kronenfeld")
 (my|bee jay) gmail:
@@ -49,7 +53,7 @@ inside feet:
 (numb|number) phrase <user.text> <number> <user.text>:
 	insert(text_1)
 	insert(" ")
-	insert(number)
+	insert("{number}")
 	insert(" ")
 	insert(text_2)
 (numb|number) phrase <number> <user.text> <number> <user.text>:
@@ -74,7 +78,7 @@ inside feet:
 
 undo:
 	key(ctrl-z)
-(we do)|(redo):
+redo:
 	key(ctrl-y)
 focus taskbar:
 	key(super-b)
@@ -191,6 +195,17 @@ shutdown computer:
 	key(enter)
 	sleep(0.2)
 	key(down:2)
+	sleep(0.2)
+	key(enter)
+restart computer:
+	key(super)
+	sleep(0.2)
+	key(up)
+	sleep(0.2)
+	key(right)
+	key(enter)
+	sleep(0.2)
+	key(down:3)
 	sleep(0.2)
 	key(enter)
 

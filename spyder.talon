@@ -10,6 +10,9 @@ tab next:
 tab close:
 	key(ctrl-w)
 
+save as:
+	key(ctrl-shift-s)
+
 # focus on a particular pane
 focus code:
 	key(alt-v)
@@ -110,7 +113,6 @@ go to definition:
 # menu
 file menu:
 	key(alt-f)
-#	escrd
 edit menu:
 	key(alt-e)
 search menu:
