@@ -112,6 +112,18 @@ apply (italic|italics):
 apply underline:
 	key(alt-h)
 	key(3)
+apply subscript:
+	key(alt-h)
+	key(f)
+	key(n)
+	key(b)
+	key(enter)
+apply superscript:
+	key(alt-h)
+	key(f)
+	key(n)
+	key(p)
+	key(enter)
 apply bullets:
 	key(alt-h)
 	key(u)
@@ -136,11 +148,11 @@ apply numbers [with] parentheses:
 	key(left:12)
 	key(right:2)
 	key(enter)
-indent:
+(indent|demote):
 	key(alt-h)
 	key(a)
 	key(i)
-dedent:
+(dedent|promote):
 	key(alt-h)
 	key(a)
 	key(o)
@@ -154,7 +166,7 @@ bring to front:
 	key(alt-h)
 	sleep(0.05)
 	key(g)
-	key(f)
+	key(r)
 
 send to back:
 	key(alt-h)
@@ -314,9 +326,13 @@ normal view:
 (master view|slide master):
 	key(alt-w)
 	key(m)
-close (master view|slide master):
+rename [slide] layout:
+	key(alt-m)
+	key(r)
+close (master [view]|slide master):
 	key(alt-m)
 	key(c)
+	
 zoom fit:
 	key(alt-w)
 	key(q)
@@ -396,6 +412,17 @@ shape width <number>:
 	insert(number)
 	key(enter)
 	key(esc)
+shape width <number> point <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(d)
+	key(w)
+	insert(number_1)
+	insert(".")
+	insert(number_2)
+	key(enter)
+	key(esc)
 shape height:
 	key(alt)
 	sleep(0.08)
@@ -410,7 +437,6 @@ shape height <number>:
 	key(h)
 	insert(number)
 	key(enter)
-	key(esc)
 shape height <number> point <number>:
 	key(alt)
 	sleep(0.08)
@@ -421,7 +447,6 @@ shape height <number> point <number>:
 	insert(".")
 	insert(number_2)
 	key(enter)
-	key(esc)
 
 shape position:
 	# first need to collapse all menus
@@ -432,6 +457,10 @@ shape position:
 	key(s)
 	key(z)
 
+close panel:
+	key(f6)
+	key(ctrl-space)
+	key(c)
 exit panel:
 	key(ctrl-space)
 	key(c)
@@ -483,6 +512,124 @@ delete table:
 	key(d)
 	key(t)
 	
+# picture format menu
+picture width:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(w)
+picture width <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(w)
+	insert(number)
+	key(enter)
+	key(esc)
+picture width <number> point <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(w)
+	insert(number_1)
+	insert(".")
+	insert(number_2)
+	key(enter)
+picture height:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(h)
+picture height <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(h)
+	insert(number)
+	key(enter)
+picture height <number> point <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(h)
+	insert(number_1)
+	insert(".")
+	insert(number_2)
+	key(enter)
+picture position:
+	# first need to collapse all menus
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(s)
+	key(z)
+
+graphics width:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(w)
+graphics width <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(w)
+	insert(number)
+	key(enter)
+	key(esc)
+graphics width <number> point <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(w)
+	insert(number_1)
+	insert(".")
+	insert(number_2)
+	key(enter)
+graphics height:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(h)
+graphics height <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(h)
+	insert(number)
+	key(enter)
+graphics height <number> point <number>:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(h)
+	insert(number_1)
+	insert(".")
+	insert(number_2)
+	key(enter)
+graphics position:
+	# first need to collapse all menus
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(g)
+	key(s)
+	key(z)
+
+
 
 #equation menu
 insert fraction:

@@ -90,7 +90,17 @@ help [ribbon|menu]:
 excel toolbox [ribbon|menu]:
 	key(alt-y)
 	key(2)
-
+chart design menu:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(c)
+chart format menu:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(a)
+	
 # home menu
 paste values:
 	key(alt-e)
@@ -136,7 +146,6 @@ freeze top row:
 	key(alt-w)
 	key(f)
 	key(f)
-#view ribbon shortcuts
 zoom <number> [percent]:
 	key(alt-w)
 	sleep(0.1)
@@ -146,7 +155,58 @@ zoom <number> [percent]:
 	sleep(0.1)
 	insert(number)
 	key(enter)
+	
+# chart shortcuts
+select (object|chart|graph):
+	key(alt-w)
+	key(k)
+	sleep(1)
+	key(tab)
+	sleep(0.1)
+	key(tab)
+	sleep(0.1)
+	key(tab)
+	key(down:2)
+close navigation [pane]:
+	key(alt-w)
+	key(k)
+	sleep(0.08)
+	key(ctrl-space)
+	sleep(0.08)
+	key(c)
+select only (object|chart|graph):
+	key(alt-w)
+	key(k)
+	sleep(1)
+	key(tab)
+	sleep(0.1)
+	key(tab)
+	sleep(0.1)
+	key(tab)
+	key(down:2)
+	key(enter)
+	sleep(0.5)
+	key(alt-w)
+	key(k)
+	sleep(0.5)
+	key(ctrl-space)
+	key(c)
 
+select [chart] item:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(a)
+	key(e)
+	key(alt-down)
+format [chart] item:
+	key(menu)
+	key(up)
+	key(enter)
+
+exit (pane|panel):
+	key(ctrl-space)
+	key(c)
 
 ##formulas
 (formula|equation) concatenate:
