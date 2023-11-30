@@ -161,7 +161,7 @@ return {user.variable_list}:
 	insert(".")
 for {user.variable_list} in:
 	insert("for ")
-	insert{user.variable_list}
+	insert(variable_list)
 	insert(" in ")
 for {user.variable_list} in {user.variable_list}:
 	insert("for ")
