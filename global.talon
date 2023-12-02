@@ -1,3 +1,6 @@
+os: windows
+-
+# disabling talon
 hello hello:
 	speech.disable()
 hello come in:
@@ -6,6 +9,8 @@ hello come on in:
 	speech.disable()
 hello what's up:
 	speech.disable()
+	
+# websites and system paths
 open up <user.text>:
 	insert(text)
 	sleep(0.05)

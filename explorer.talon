@@ -12,6 +12,18 @@ open with notepad:
 	key(n)
 	key(enter)
 
+# override default because default doesn't work
+go <user.system_path>:
+	key(alt-d)
+	key(tab)
+	key(alt-d)
+	key(esc)
+	sleep(2.5)
+	user.file_manager_open_directory(system_path)
+	key(alt-d)
+	key(esc)
+	key(tab:2)
+
 go to <user.text>:
 	insert(text)
 

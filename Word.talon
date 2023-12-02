@@ -449,6 +449,15 @@ insert sigma:
 
 
 # hyperlinks
+(insert|add|create) hyperlink:
+	key(alt-n)
+	key(i)
+	key(i)
+remove hyperlink:
+	key(alt-n)
+	key(i)
+	key(i)
+	key(alt-r)
 copy hyperlink:
 	key(alt-n)
 	key(i)
@@ -456,7 +465,7 @@ copy hyperlink:
 	sleep(0.1)
 	key(ctrl-c)
 	key(esc:3)
-paste hyperlink:
+(apply|paste) hyperlink:
 	key(alt-n)
 	key(i)
 	key(i)

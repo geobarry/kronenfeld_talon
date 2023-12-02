@@ -437,6 +437,7 @@ shape height <number>:
 	key(h)
 	insert(number)
 	key(enter)
+	key(esc)
 shape height <number> point <number>:
 	key(alt)
 	sleep(0.08)
@@ -447,7 +448,7 @@ shape height <number> point <number>:
 	insert(".")
 	insert(number_2)
 	key(enter)
-
+	key(esc)
 shape position:
 	# first need to collapse all menus
 	key(alt)
