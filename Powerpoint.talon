@@ -191,7 +191,7 @@ outline color:
 	key(s)
 	key(o)
 	key(down:6)
-outline red:
+outline [color] red:
 	key(alt-h)
 	sleep(0.05)
 	key(s)
@@ -744,3 +744,8 @@ duplicate small right:
 	# move right
 	key(right:5)
 	# Why does this do weird things when you try to repeat?
+	
+close [designer] panel:
+	key(f6)
+	key(ctrl-space)
+	key(c)
