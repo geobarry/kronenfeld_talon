@@ -15,14 +15,12 @@ open with notepad:
 # override default because default doesn't work
 go <user.system_path>:
 	key(alt-d)
-	key(tab)
-	key(alt-d)
-	key(esc)
-	sleep(2.5)
-	user.file_manager_open_directory(system_path)
-	key(alt-d)
-	key(esc)
-	key(tab:2)
+	sleep(0.5)
+	insert(system_path)
+	key(enter)
+	key(escape)
+
+#	user.file_manager_open_directory(system_path)
 
 go to <user.text>:
 	insert(text)

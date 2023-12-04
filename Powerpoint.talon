@@ -98,6 +98,7 @@ font size <number>:
 	insert(number)
 	sleep(0.05)
 	key(enter)
+	key(esc)
 font color:
 	key(alt-h)
 	sleep(0.05)
@@ -571,6 +572,21 @@ picture position:
 	key(p)
 	key(s)
 	key(z)
+crop [picture]:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(v)
+	key(c)
+[picture] transparent color:
+	key(alt)
+	sleep(0.08)
+	key(j)
+	key(p)
+	key(i)
+	key(s)
+
 
 graphics width:
 	key(alt)
@@ -657,7 +673,7 @@ insert large operator:
 	key(j)
 	key(e)
 	key(g)
-insert symbol:
+equation insert symbol:
 	key(alt)
 	sleep(0.05)
 	key(j)
