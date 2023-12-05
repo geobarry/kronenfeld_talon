@@ -401,6 +401,9 @@ zoom <number> [percent]:
 	key(enter)
 
 #shape format menu
+[shape] format panel:
+	key(menu)
+	key(o)
 shape fill:
 	key(alt)
 	sleep(0.05)
@@ -604,6 +607,7 @@ picture height <number>:
 	key(h)
 	insert(number)
 	key(enter)
+	key(esc)
 picture height <number> point <number>:
 	key(alt)
 	sleep(0.08)
@@ -614,6 +618,7 @@ picture height <number> point <number>:
 	insert(".")
 	insert(number_2)
 	key(enter)
+	key(esc)
 picture position:
 	# first need to collapse all menus
 	key(alt)
