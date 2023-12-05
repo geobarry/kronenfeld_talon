@@ -9,6 +9,16 @@ insert symbol:
 
 insert checkmark:
 	user.unicode_excel_power("00fc","Wingdings")
+insert double arrow:
+	user.unicode_excel_power("00ab","Symbol")
+insert left arrow:
+	user.unicode_excel_power("00ac","Symbol")
+insert up arrow:
+	user.unicode_excel_power("00ad","Symbol")
+insert right arrow:
+	user.unicode_excel_power("00ae","Symbol")
+insert down arrow:
+	user.unicode_excel_power("00af","Symbol")
 insert alpha:
 	user.unicode_excel_power("03b1")
 insert beta:

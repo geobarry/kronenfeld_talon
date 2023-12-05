@@ -78,7 +78,8 @@ inside feet:
 	insert(" ")
 	insert(number_2)
 	
-
+enter object:
+	key(f2)
 
 
 undo:

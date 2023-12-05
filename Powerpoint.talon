@@ -157,23 +157,39 @@ apply numbers [with] parentheses:
 	key(alt-h)
 	key(a)
 	key(o)
+text align left:
+	key(alt-h)
+	key(a)
+	key(l)
+text align center:
+	key(alt-h)
+	key(a)
+	key(c)
+text align right:
+	key(alt-h)
+	key(a)
+	key(r)
+text align top:
+	key(alt-h)
+	key(a)
+	key(t)
+	key(t)
+text align middle:
+	key(alt-h)
+	key(a)
+	key(t)
+	key(m)
+text align bottom:
+	key(alt-h)
+	key(a)
+	key(t)
+	key(b)
 clear (fill|fell|feel):
 	key(alt-h)
 	sleep(0.05)
 	key(s)
 	key(f)
 	key(n)
-bring to front:
-	key(alt-h)
-	sleep(0.05)
-	key(g)
-	key(r)
-
-send to back:
-	key(alt-h)
-	sleep(0.05)
-	key(g)
-	key(k)
 fill color:
 	key(alt-h)
 	sleep(0.05)
@@ -226,6 +242,40 @@ outline width three:
 	key(down:6)
 	sleep(0.1)
 	key(enter)
+bring to front:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(r)
+send to back:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(k)
+rotate right:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(o)
+	key(r)
+rotate left: 
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(o)
+	key(l)
+flip vertical:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(o)
+	key(v)
+flip horizontal:
+	key(alt-h)
+	sleep(0.05)
+	key(g)
+	key(o)
+	key(h)
 	
 #insert menu
 [insert] text box:
