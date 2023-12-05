@@ -15,9 +15,10 @@ open with notepad:
 # override default because default doesn't work
 go <user.system_path>:
 	key(alt-d)
-	sleep(0.5)
+	sleep(0.2)
 	insert(system_path)
 	key(enter)
+	sleep(0.2)
 	key(escape)
 
 #	user.file_manager_open_directory(system_path)
