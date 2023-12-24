@@ -17,9 +17,10 @@ go <user.system_path>:
 	key(alt-d)
 	sleep(0.2)
 	insert(system_path)
-	key(enter)
 	sleep(0.2)
-	key(escape)
+	key(enter)
+#	sleep(1.5)
+#	key(escape)
 
 #	user.file_manager_open_directory(system_path)
 
@@ -58,3 +59,7 @@ sort by date:
 	key(enter)
 address bar:
 	key(alt-d)
+	
+# very specific idiosyncratic commands
+process desire to learn downloads:
+	user.process_desire_to_learn_downloads()

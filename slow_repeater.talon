@@ -13,5 +13,7 @@
 	users.start_repeating("{key}",500)
 <user.key> fast:	
 	user.start_repeating("{key}",350)
+<user.key> faster:
+	user.start_repeating("{key}",200)
 <user.key> lightning:	
 	user.start_repeating("{key}",100)

@@ -219,6 +219,14 @@ paragraph formatting:
 	sleep(0.05)
 	key(p)
 	key(g)
+remove (paragraph|line) spacing:
+	key(alt-h)
+	sleep(0.05)
+	key(p)
+	key(g)
+	key(alt-f)
+	insert("0")
+	key(enter)
 apply bold:
 	key(alt-h)
 	key(1)
@@ -228,7 +236,38 @@ apply (italic|italics):
 apply underline:
 	key(alt-h)
 	key(3)
+apply strike through:
+	key(alt-h)
+	key(4)
+apply subscript:
+	key(alt-h)
+	key(f)
+	key(n)
+	key(alt-b)
+	key(enter)
+apply superscript:
+	key(alt-h)
+	key(f)
+	key(n)
+	key(alt-p)
+	key(enter)
+align left:
+	key(alt-h)
+	key(a)
+	key(l)
+align center:
+	key(alt-h)
+	key(a)
+	key(c)
+align right:
+	key(alt-h)
+	key(a)
+	key(r)
+justify top:
+	key(alt-h)
+	
 
+	
 # insert menu shortcuts
 insert table:
 	key(alt-n)
@@ -236,6 +275,9 @@ insert table:
 insert comment:
 	key(alt-n)
 	key(l)
+insert page break:
+	key(alt-n)
+	key(b)
 	
 #edit ribbon shortcuts
 paste without formatting:
@@ -279,10 +321,54 @@ zoom <number> [percent]:
 	sleep(0.1)
 	key(e)
 	sleep(0.1)
-	insert(number)
+	insert("{number}")
 	insert("%")
 	key(enter)
-
+	
+# menu table design
+table border none:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(n)
+table border top:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(p)
+table border bottom:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(b)
+table border left:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(l)
+table border right:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(r)
+table border all:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(t)
+	key(b)
+	key(a)
+	
 #menu table layout 
 insert row [above]:
 	key(alt)
@@ -318,7 +404,138 @@ column (with|width):
 	sleep(0.2)
 	key(l)
 	key(w)
+delete table:
+	key(alt)
+	key(j)
+	sleep(0.2)
+	key(l)
+	key(d)
+	key(t)
+(align|justify) top left:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(t)
+	key(l)
+(align|justify) top center:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(t)
+	key(c)
+(align|justify) top right:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(t)
+	key(r)
+(align|justify) center left:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(c)
+	key(l)
+(align center middle|justify center [middle]):
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(c)
+	key(c)
+(align|justify) center right:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(c)
+	key(r)
+(align|justify) bottom left:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(b)
+	key(l)
+(align|justify) bottom center:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(b)
+	key(c)
+(align|justify) bottom right:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(b)
+	key(r)
 
+# picture format menu
+toggle [lock] picture aspect [ratio]:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(p)
+	key(s)
+	key(z)
+	sleep(0.1)
+	key(a)
+	key(enter)
+picture height:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(p)
+	key(h)
+picture height <number>:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(p)
+	key(h)
+	sleep(0.1)
+	insert(number)
+	key(enter)
+	key(esc)
+	
+# equation menu 
+insert equation:
+	key(alt)
+	sleep(0.2)
+	key(n)
+	key(e)
+	key(i)
+(equation|insert) script:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	sleep(0.2)
+	key(e)
+	key(s)
+(equation|insert) fraction:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(e)
+	key(f)
+(equation|insert) accent:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(e)
+	key(a)
+equation symbol:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(e)
+	key(q)
+	
 # common operations	
 copy style:
 	key(ctrl-shift-c)
@@ -416,37 +633,32 @@ finish export styles:
 	key(y)
 
 #special symbols
-insert checkmark:
-	insert("2713")
-	key(alt-x)
-insert ex mark:
-	insert("2715")
-	key(alt-x)
-insert alpha:
-	insert("03b1")
-	key(alt-x)
-insert beta:
-	insert("03b2")
-	key(alt-x)
-insert gamma:
-	insert("03b3")
-	key(alt-x)
-insert delta:
-	insert("03b4")
-	key(alt-x)
-insert theta:
-	insert("03b8")
-	key(alt-x)
-insert lambda:
-	insert("03bb")
-	key(alt-x)
-insert mu:
-	insert("03bc")
-	key(alt-x)
-insert sigma:
-	insert("03c3")
-	key(alt-x)
-
+insert symbol:
+	key(alt-n)
+	key(u)
+	key(m)
+	sleep(0.2)
+	key(alt-f)
+	insert("symbol")
+	key(enter)
+	key(tab)
+insert dot symbol: user.unicode_word("2022","Times New Roman")
+insert (times|multiply|multiplication) symbol: user.unicode_word("00d7","Times New Roman")
+insert checkmark: user.unicode_word("2713","Times New Roman")
+insert ex mark:	user.unicode_word("2715","Times New Roman")
+insert alpha: user.unicode_word("03b1","Times New Roman")
+insert beta: user.unicode_word("03b2","Times New Roman")
+insert gamma: user.unicode_word("03b3","Times New Roman")
+insert delta: user.unicode_word("03b4","Times New Roman")
+insert theta: user.unicode_word("03b8","Times New Roman")
+insert lambda: user.unicode_word("03bb","Times New Roman")
+insert mu: user.unicode_word("03bc","Times New Roman")
+insert sigma: user.unicode_word("03c3","Times New Roman")
+insert double arrow: user.unicode_word("00ab","Symbol")
+insert left arrow: user.unicode_word("00ac","Symbol")
+insert up arrow: user.unicode_word("00ad","Symbol")
+insert right arrow: user.unicode_word("00ae","Symbol")
+insert down arrow: user.unicode_word("00af","Symbol")
 
 # hyperlinks
 (insert|add|create) hyperlink:

@@ -23,5 +23,13 @@ greet {user.person_list}:
 	insert(person_list)
 	insert(",")
 	key(enter)
-
-
+	key(enter)
+greet {user.person_list} and {user.person_list}:
+	insert("Hi ")
+	insert("{person_list_1} and {person_list_2},")
+	key(enter)
+	key(enter)
+{user.person_list} no:
+	insert("{person_list}'s ")
+{user.person_list} and others know:
+	insert("{person_list} et al's ")

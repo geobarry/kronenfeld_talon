@@ -1,4 +1,8 @@
-app.name: Python
+os: windows
+and app.name: Python
+os: windows
+and app.exe: pythonw.exe
+
 -
 tag(): user.python
 tag(): user.line_commands

@@ -9,7 +9,23 @@ hello come on in:
 	speech.disable()
 hello what's up:
 	speech.disable()
-	
+computer [go to] sleep:
+	speech.disable()
+computer stop listening:
+	speech.disable()
+computer close your ears:
+	speech.disable()
+computer start listening:
+	user.engine_wake()
+	speech.enable()
+computer open your ears:
+	speech.enable()
+
+# windows volume
+volume up:
+	user.change_volume(10)
+volume down:
+	user.change_volume(-10)
 # websites and system paths
 open up <user.text>:
 	insert(text)
@@ -19,8 +35,12 @@ open up <user.letter>:
 	key(letter)
 	sleep(0.05)
 	key(enter)
+# common words
 (my|bee jay) name:
 	insert("Barry Kronenfeld")
+my first name:
+	insert("Barry")
+	
 (my|bee jay) gmail:
 	insert("barrykronenfeld@gmail.com")
 (my|bee jay) (email|mail):
@@ -84,7 +104,7 @@ enter object:
 
 undo:
 	key(ctrl-z)
-redo:
+redo$:
 	key(ctrl-y)
 focus taskbar:
 	key(super-b)
@@ -96,7 +116,7 @@ right parent:
 	insert(")")
 [left] parent:
 	insert("(")
-inside (parent|parents):
+(inside (parent|parents)|parentheses):
 	user.insert_between('(',')')
 inside (angle|angles):
 	user.insert_between('<','>')
@@ -143,7 +163,7 @@ tab jiggle:
 	key(tab)
 	sleep(0.05)
 	key(shift-tab)
-F6 jiggle:
+ef six jiggle:
 	key(f6)
 	sleep(0.05)
 	key(shift-f6)
@@ -216,4 +236,19 @@ restart computer:
 	key(enter)
 
 	
-	
+# key presses
+# works in conjunction with the words to replace
+press A:
+	key(a)
+press B:
+	key(b)
+press C:
+	key(c)
+press D:
+	key(d)
+press E:
+	key(e)
+press F:
+	key(f)
+press G:
+	key(g)

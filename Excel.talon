@@ -15,7 +15,7 @@ next (tab|sheet|worksheet):
 	key(ctrl-pagedown)
 previous (tab|sheet|worksheet):
 	key(ctrl-pageup)
-new (tab|sheet|worksheet):
+(insert|new) (tab|sheet|worksheet):
 	key(alt-h)
 	key(i)
 	key(s)
@@ -27,6 +27,10 @@ rename (tab|sheet|worksheet):
 	key(alt-h)
 	key(o)
 	key(r)
+move (tab|sheet|worksheet):
+	key(alt-h)
+	key(o)
+	key(m)
 	
 # columns
 insert column:
@@ -117,7 +121,7 @@ highlight cell:
 	sleep(0.1)
 	key(up:4)
 	key(left:6)
-(apply|toggle) word wrap:
+[(apply|toggle)] word wrap:
 	key(alt-h)
 	key(w)
 format number <number> decimal places:
@@ -229,6 +233,9 @@ exit (pane|panel):
 	insert("char(")
 (formula|equation) square root:
 	insert("sqrt(")
-
+(formula|equation) normal distribution:
+	insert("norm.dist(")
+[(formula|equation)] line break:
+	insert("char(10)")
 column <user.letter>:
 	insert("{letter}:{letter}")

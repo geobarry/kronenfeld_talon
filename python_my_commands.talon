@@ -1,4 +1,5 @@
 tag: user.python
+
 -
 loop on:
 	user.insert_between('for ',' in :')
@@ -12,14 +13,17 @@ whack:
 	insert(':')
 	edit.line_insert_down()
 set equal [to]:
-	user.engine_mimic('op equals')
-is equal to:
+	insert(" = ")
+is equal [to]:
 	insert(" == ")
+[is] not equal [to]:
+	insert(" != ")
 
 # FUNCTIONS
+define function:
+	user.insert_between("def ",":")
 (absolute value)|(funk absolute)|(function absolute)|(function absolute value)|(funk absolute value):
-	insert('abs')
-	user.engine_mimic('args')
+	edit.insert_between("abs(",")")
 (funk|function) sine:
 	insert('math.sin()')
 	edit.left()
@@ -38,18 +42,23 @@ is equal to:
 	
 # OPERATIONS
 (operation|algebra) (minus|subtract):
-	user.code_operator_subtraction()
-(operation|algebra)(times|multiply):
-	user.code_operator_multiplication()
+	insert(" - ")
+(operation|algebra) (times|multiply):
+	insert(" * ")
 (operation|algebra) (plus|add):
-	user.code_operator_addition()
-(operation|algebra) (divide):
-	user.code_operator_division()
+	insert(" + ")
+(operation|algebra) (divide|over|divided by):
+	insert(" / ")
 (operation|algebra) (mod|modulus):
-	user.code_operator_modulo()
+	insert(" % ")
 (operation|algebra) squared:
-	insert("**2")
+	insert(" ** 2")
+[(operation|algebra)] to the power of:
+	insert(" ** ")
 (operation increment|increment by):
+	insert(" += ")
+increment {user.variable_list} [by]:
+	insert(variable_list)
 	insert(" += ")
 (operation|algebra) square root:
 	insert("**0.5")
@@ -69,7 +78,10 @@ sub:
 # variables
 variable {user.variable_list}:
 	insert(variable_list)
-	
+{user.variable_list} comma {user.variable_list}:
+	insert(variable_list_1)
+	insert(",")
+	insert(variable_list_2)
 {user.variable_list} equals:
 	insert(variable_list)
 	insert(" = ")
@@ -78,6 +90,12 @@ for {user.variable_list} in:
 	insert("for ")
 	insert(variable_list)
 	insert(" in ")
+for {user.variable_list} in {user.variable_list}:
+	insert("for ")
+	insert(user.variable_list_1)
+	insert(" in ")
+	insert(user.variable_list_2)
+	insert(":")
 
 for {user.variable_list} in range:
 	insert("for ")
@@ -111,19 +129,28 @@ if length {user.variable_list}:
 	insert(variable_list)
 	insert(")")
 
-{user.variable_list} sub:
-	insert(variable_list)
-	user.insert_between("[","]")
-	
 range {user.variable_list}:
 	insert("range(")
 	insert(variable_list)
 	insert(")")
+self dot {user.variable_list}:
+	insert("self.{variable_list}")
+	
 range <number>:
 	insert("range(")
 	insert(number)
 	insert(")")
 
+string:
+	user.insert_between('"','"')
+raw string:
+	user.insert_between('r"','"')
+unicode string:
+	user.insert_between('u"','"')
+dot format:
+	user.insert_between(".format(",")")
+dot split:
+	user.insert_between(".split(",")>")
 list:
 	user.insert_between("[","]")
 dictionary:
@@ -146,6 +173,12 @@ empty tuple:
 	insert("[")
 	insert(variable_list_2)
 	insert("]")
+{user.variable_list} sub <number>:
+	insert(variable_list)
+	insert("[")
+	insert(number)
+	insert("]")
+
 length {user.variable_list}:
 	insert("len(")
 	insert(variable_list)
@@ -159,16 +192,12 @@ return {user.variable_list}:
 {user.variable_list} dot:
 	insert(variable_list)
 	insert(".")
-for {user.variable_list} in:
-	insert("for ")
-	insert(variable_list)
-	insert(" in ")
-for {user.variable_list} in {user.variable_list}:
-	insert("for ")
-	insert(user.variable_list_1)
-	insert(" in ")
-	insert(user.variable_list_2)
-	insert(":")
+debug print {user.variable_list}:
+	insert("print('{user.variable_list}: ")
+	sleep(0.1)
+	key({)
+	key(})
+	insert("'.format({user.variable_list})")
 	
 # modules
 import {user.module_list}:

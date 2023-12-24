@@ -4,6 +4,38 @@ mod.tag("excel_powerpoint_shared", desc="keyboard sequences that work in both ex
 
 @mod.action_class
 class Actions:
+    def unicode_word(unicode_code: str, font_name: str="Symbol"):
+        """insert a unicode character into word"""
+        def change_font(new_font):
+            actions.key("alt-h")
+            actions.sleep(0.05)
+            actions.key("f:2")
+            actions.sleep(0.1)
+            actions.insert(new_font)
+            actions.key("enter")
+            actions.key("esc")
+        # first change font to Times New Roman, otherwise strange things happen
+        change_font("Times New Roman")
+        # insert unicode
+        actions.insert(unicode_code)
+        actions.sleep(0.4)
+        actions.key("alt-x")
+        # change font
+        actions.sleep(0.2)  
+        actions.insert(" ")
+        actions.edit.left()
+        actions.edit.extend_left()
+        actions.sleep(0.1)
+        actions.key("alt-h")
+        actions.sleep(0.05)
+        actions.key("f:2")
+        actions.sleep(0.1)
+        actions.insert(font_name)
+        actions.key("enter")
+        actions.key("esc")
+        actions.edit.right()
+        actions.edit.right()
+        actions.key("backspace")
     def unicode_excel_power(unicode_code: str, font_name: str="Times New Roman"):
         """insert a unicode character into excel or powerpoint"""
         actions.key("alt-n")

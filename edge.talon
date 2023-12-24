@@ -32,5 +32,7 @@ clear cache:
 	key(enter)
 	sleep(0.3)
 	user.tab_close_wrapper()
-	
-	
+mark for deletion:
+	key(x)
+	sleep(0.2)
+	key(down)

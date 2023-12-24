@@ -15,6 +15,8 @@ menu draw:
 	key(alt-j)
 	sleep(0.05)
 	key(i)
+menu design:
+	key(alt-g)
 menu (transition|transitions):
 	key(alt-k)
 menu (animation|animations):
@@ -295,6 +297,12 @@ insert icon:
 	key(n)
 	key(s)
 	sleep(0.5)
+
+insert shape:
+	key(alt-n)
+	sleep(0.05)
+	key(s)
+	key(h)
 insert rectangle:
 	key(alt-n)
 	sleep(0.05)
@@ -312,6 +320,15 @@ insert rectangle:
 	sleep(0.05)
 	key(right:6)
 	key(enter)
+insert Bezier curve:
+	key(alt-n)
+	sleep(0.05)
+	key(s)
+	key(h)
+	sleep(0.05)
+	key(down)
+	key(enter)
+	
 insert equation:
 	key(alt-n)
 	sleep(0.05)

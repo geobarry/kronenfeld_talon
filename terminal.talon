@@ -31,6 +31,11 @@ conda create:
 	
 open spider app:
 	insert('spyder')
+	key(enter)
+
+open jupiter notebook:
+	insert("jupyter notebook")
+	key(enter)
 
 # ffmpeg
 convert clipboard movie:
