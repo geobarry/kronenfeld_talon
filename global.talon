@@ -35,6 +35,10 @@ open up <user.letter>:
 	key(letter)
 	sleep(0.05)
 	key(enter)
+open up <number>:
+	insert("{number}")
+	sleep(0.15)
+	key(enter)
 # common words
 (my|bee jay) name:
 	insert("Barry Kronenfeld")
