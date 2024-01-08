@@ -59,7 +59,31 @@ sort by date:
 	key(enter)
 address bar:
 	key(alt-d)
+
+compress video [file]:
+	user.compress_video_file()
+
+open jupyter [notebook]:
+	# grab path to current folder
+	key(alt-d)
+	edit.copy()
+	# open the python command prompt
+	key(super)
+	sleep(0.5)
+	insert("python command prompt")
+	sleep(0.5)
+	key(enter)
+	sleep(1.5)
+	# changed directories and open jupyter notebook
+	insert("cd ")
+	edit.paste()
+	key(enter)
+	insert("jupyter notebook")
+	key(enter)
+	
+	
 	
 # very specific idiosyncratic commands
 process desire to learn downloads:
 	user.process_desire_to_learn_downloads()
+	

@@ -1,4 +1,4 @@
-tag: user.excel_powerpoint_shared
+in search checktag: user.excel_powerpoint_shared
 -
 insert symbol:
 	key(alt-n)
@@ -9,6 +9,13 @@ insert symbol:
 
 insert checkmark:
 	user.unicode_excel_power("00fc","Wingdings")
+insert ex mark:
+	user.unicode_excel_power("00fb","Wingdings")
+insert boxed checkmark:
+	user.unicode_excel_power("00fe","Wingdings")
+insert boxed ex mark:
+	user.unicode_excel_power("00fd","Wingdings")
+
 insert double arrow:
 	user.unicode_excel_power("00ab","Symbol")
 insert left arrow:

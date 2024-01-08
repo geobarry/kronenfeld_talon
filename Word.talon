@@ -383,6 +383,10 @@ insert [row] below:
 	key(l)
 	key(b)
 	key(e)
+insert column [left]:
+	key(alt)
+	sleep(0.2)
+	key(j l l)
 delete row:
 	key(alt)
 	key(j)
@@ -659,6 +663,7 @@ insert left arrow: user.unicode_word("00ac","Symbol")
 insert up arrow: user.unicode_word("00ad","Symbol")
 insert right arrow: user.unicode_word("00ae","Symbol")
 insert down arrow: user.unicode_word("00af","Symbol")
+insert cursive el: user.unicode_word("2113","Times New Roman")
 
 # hyperlinks
 (insert|add|create) hyperlink:

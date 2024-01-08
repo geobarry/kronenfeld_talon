@@ -145,6 +145,8 @@ string:
 	user.insert_between('"','"')
 raw string:
 	user.insert_between('r"','"')
+formatted string:
+	user.insert_between('f"','"')	
 unicode string:
 	user.insert_between('u"','"')
 dot format:
@@ -198,6 +200,8 @@ debug print {user.variable_list}:
 	key({)
 	key(})
 	insert("'.format({user.variable_list})")
+unzip {user.variable_list}:
+	insert("zip(*{user.variable_list})")
 	
 # modules
 import {user.module_list}:

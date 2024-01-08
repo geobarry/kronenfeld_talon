@@ -1,7 +1,8 @@
 tag: user.power_screen_recording
 -
+select area:
+	user.click_spot("select area")
 start recording:
-	key(super-shift-r)
-[stop|exit] recording:
-	user.deactivate_power_screen_recording()
-	key(super-shift-q)
+	user.click_spot("record")
+	speech.disable()
+#	key(super-shift-r)

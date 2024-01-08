@@ -64,6 +64,16 @@ menu equation:
 	sleep(0.05)
 	key(j)
 	key(e)
+menu video format:
+	key(alt)
+	sleep(0.1)
+	key(j)
+	key(p)
+menu [video] playback:
+	key(alt)
+	sleep(0.1)
+	key(j)
+	key(n)
 
 #file menu
 save as:
@@ -74,7 +84,7 @@ save as:
 	key(o)
 
 #home menu
-new slide:
+(insert|new) slide:
 	key(alt-h)
 	sleep(0.05)
 	key(i)
@@ -100,12 +110,36 @@ font size <number>:
 	insert(number)
 	sleep(0.05)
 	key(enter)
-	key(esc)
+
+	
 font color:
 	key(alt-h)
 	sleep(0.05)
 	key(f)
 	key(c)
+font color red:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(c)
+	key(down:6)
+	key(enter)
+font color black:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(c)
+	key(right)
+	key(enter)
+font color teal:
+	key(alt-h)
+	sleep(0.05)
+	key(f)
+	key(c)
+	key(down:4)
+	key(right:8)
+	key(enter)
+
 apply bold:
 	key(alt-h)
 	key(1)
@@ -151,6 +185,9 @@ apply numbers [with] parentheses:
 	key(left:12)
 	key(right:2)
 	key(enter)
+paragraph formatting:
+	key(alt-h p g)
+	
 (indent|demote):
 	key(alt-h)
 	key(a)
@@ -349,6 +386,12 @@ record screen:
 	key(r)
 	key(1)
 	user.activate_power_screen_recording()
+insert cameo:
+	key(alt-c)
+	sleep(0.05)
+	key(c)
+	key(1)
+	
 #animation ribbon shortcuts
 apply animation [fade]:
 	key(alt-a)
@@ -769,7 +812,29 @@ insert accent:
 	key(right:9)
 	key(enter)
 	key(left)
+
+# playback menu
+update timing:
+	# updates transition timing to length of selected video
+	key(alt)
+	sleep(0.3)
+	key(j)
+	key(n)
+	key(t)
+	sleep(0.1)
+	key(alt-e)
+	edit.copy()
+	key(tab)
+	key(enter)
+	key(alt)
+	sleep(0.1)
+	key(k)
+	key(i)
+	edit.paste()
+	key(enter)
+	key(esc)
 	
+
 # common operations	
 copy style:
 	key(ctrl-shift-c)

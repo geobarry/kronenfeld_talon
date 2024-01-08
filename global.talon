@@ -15,12 +15,8 @@ computer stop listening:
 	speech.disable()
 computer close your ears:
 	speech.disable()
-computer start listening:
-	user.engine_wake()
-	speech.enable()
-computer open your ears:
-	speech.enable()
 
+	
 # windows volume
 volume up:
 	user.change_volume(10)
@@ -68,9 +64,9 @@ inside feet:
 (numb|number) phrase <user.text> <number>:
 	insert(text)
 	insert(" ")
-	insert(number)
+	insert("{number}")
 (numb|number) phrase <number> <user.text>:
-	insert(number)
+	insert("{number}")
 	insert(" ")
 	insert(text)
 (numb|number) phrase <number> <user.text> <number>:

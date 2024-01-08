@@ -18,6 +18,10 @@ scroll up:
 start recording:
 	speech.disable()
 	key(r)
+okay moving on:
+	speech.enable()
+stop recording:
+	key(s)
 retake recording:
 	speech.disable()
 	key(ctrl-r)

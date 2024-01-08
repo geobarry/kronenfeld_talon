@@ -19,17 +19,17 @@ person name {user.person_list}:
 	insert(person_list)
 	insert(" ")
 greet {user.person_list}:
-	insert("Hi ")
-	insert(person_list)
-	insert(",")
-	key(enter)
-	key(enter)
+	insert("Hi {person_list},")
+	key(enter:2)
 greet {user.person_list} and {user.person_list}:
-	insert("Hi ")
-	insert("{person_list_1} and {person_list_2},")
-	key(enter)
-	key(enter)
+	insert("Hi {person_list_1} and {person_list_2},")
+	key(enter:2)
+(formal|formally) greet {user.person_list}:
+	insert("Dear {person_list},")
+	key(enter:2)
 {user.person_list} no:
 	insert("{person_list}'s ")
 {user.person_list} and others know:
 	insert("{person_list} et al's ")
+{user.person_list} and others:
+	insert("{person_list} et al. ")

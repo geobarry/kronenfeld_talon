@@ -46,4 +46,12 @@ import matplotlib path:
 [matplotlib] insert Bezier vertex:
 	edit.line_insert_down()
 	user.insert_between("[(","),Path.CURVE3],")
-	
+
+{user.variable_list} [dot] plot:
+	user.insert_between("{user.variable_list}.plot(",")")
+{user.variable_list} [dot] text:
+	user.insert_between("{user.variable_list}.text(",")")
+[plot] axis equal:
+	insert("plt.axis('equal')")
+[plot] save figure:
+	user.insert_between("plt.savefig(",")")
