@@ -196,29 +196,29 @@ paragraph formatting:
 	key(alt-h)
 	key(a)
 	key(o)
-text align left:
+[text] align left:
 	key(alt-h)
 	key(a)
 	key(l)
-text align center:
+[text] align center:
 	key(alt-h)
 	key(a)
 	key(c)
-text align right:
+[text] align right:
 	key(alt-h)
 	key(a)
 	key(r)
-text align top:
+[text] align top:
 	key(alt-h)
 	key(a)
 	key(t)
 	key(t)
-text align middle:
+[text] align middle:
 	key(alt-h)
 	key(a)
 	key(t)
 	key(m)
-text align bottom:
+[text] align bottom:
 	key(alt-h)
 	key(a)
 	key(t)
