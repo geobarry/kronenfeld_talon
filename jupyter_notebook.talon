@@ -5,7 +5,7 @@ edit mode:
 command mode:
 	key(esc)
 open command palette: key(ctrl-shift-f)
-(run|execute) cell:
+(run|execute) (code|cell):
 	key(shift-enter)
 (run|execute) in place:
 	key(shift-enter)
@@ -75,5 +75,5 @@ begin code style:
 	insert("<a style='color:#ee7;font-weight:bold;background-color:#225;font-family:Courier New,monospace;padding: 0.2em'>")
 end code style:
 	insert("</a>")
-inside (angle|angles):
+angle brackets:
 	user.insert_between("&lt;","&gt;")

@@ -185,11 +185,19 @@ apply numbers [with] parentheses:
 	key(left:12)
 	key(right:2)
 	key(enter)
+start [(numbers|numbering)] at <number>:
+	key(alt-h n n t)
+	insert("{number}")
+	key(enter)
+	
 paragraph formatting:
 	key(alt-h p g)
 	
 (indent|demote):
-	key(alt-h)
+	key(alt)
+	sleep(0.2)
+	key(h)
+	sleep(0.2)
 	key(a)
 	key(i)
 (dedent|promote):
@@ -281,6 +289,10 @@ outline width three:
 	key(down:6)
 	sleep(0.1)
 	key(enter)
+outline style:
+	key(alt-h)
+	sleep(0.05)
+	key(s o)
 bring to front:
 	key(alt-h)
 	sleep(0.05)
@@ -391,20 +403,44 @@ insert cameo:
 	sleep(0.05)
 	key(c)
 	key(1)
-	
+
+# transitions menu ribbon shortcuts
+clear (transition|timing):
+	key(alt-k)
+	key(i)
+	insert("0")
+	key(enter)
+	key(esc)
+
 #animation ribbon shortcuts
-apply animation [fade]:
+apply animation:
 	key(alt-a)
 	key(s)
+	key(pageup:3)
+
+apply animation fade:
+	key(alt-a)
+	key(s)
+	key(pageup:3)
 	key(down)
 	key(right)
 	key(enter)
-#animation ribbon shortcuts
 apply animation appear:
 	key(alt-a)
 	key(s)
+	key(pageup:3)
 	key(down)
 	key(enter)
+apply animation wipe [right]:
+	key(alt-a)
+	key(s)
+	key(pageup:3)
+	key(down)
+	key(right:5)
+	key(enter)
+	key(alt-a)
+	key(o)
+	key(l)
 animation panel:
 	key(alt-a)
 	key(c)
@@ -510,7 +546,7 @@ shape no outline:
 	key(s)
 	sleep(0.05)
 	key(o)
-	key(n)
+	key(n)  
 shape width:
 	key(alt)
 	sleep(0.08)
@@ -571,6 +607,10 @@ shape position:
 	key(d)
 	key(s)
 	key(z)
+text halo:
+	key(alt)
+	sleep(0.2)
+	key(j d t x g g alt-c)
 
 close panel:
 	key(f6)
@@ -626,6 +666,13 @@ delete table:
 	key(l)
 	key(d)
 	key(t)
+(cell|column) width:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	key(l)
+	key(w)
+
 	
 # picture format menu
 picture width:

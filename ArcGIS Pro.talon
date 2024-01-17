@@ -17,13 +17,13 @@ choose panel:
 	key(ctrl:up)
 
 focus contents:
-	key(alt-v)
-	key(c)
-	key(t)
-	sleep(0.25)
-    user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, -25, 235)
-	mouse_click(0)
-	key(shift-tab)
+	key(alt-v c t)
+#	key(c)
+#	key(t)
+#	sleep(0.25)
+#    user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, #-25, 235)
+	#mouse_click(0)
+	#key(shift-tab)
 
 expand all:
 	key(ctrl+)
@@ -93,27 +93,6 @@ add data:
 	key(down)
 	key(enter)
 
-zoom in:
-	key(esc:5)
-	key(alt)
-	sleep(0.05)
-	key(m)
-	key(z)
-	key(i)
-zoom out:
-	key(esc:5)
-	key(alt)
-	sleep(0.05)
-	key(m)
-	key(z)
-	key(o)	
-focus map:
-	key(esc:5)
-	key(alt)
-	sleep(0.05)
-	key(m)
-	sleep(0.05)
-	key(esc:2)
 pan west:
 	user.pan_arcgis_pro_map('west',1)
 pan east:
@@ -162,3 +141,28 @@ menu table:
 	sleep(0.1)
 	key(t)
 	key(v)
+
+# map menu shortcuts
+zoom [to] (world|full extent):
+	key(alt-m f e)
+zoom in:
+	key(esc:5)
+	key(alt)
+	sleep(0.05)
+	key(m)
+	key(z)
+	key(i)
+zoom out:
+	key(esc:5)
+	key(alt)
+	sleep(0.05)
+	key(m)
+	key(z)
+	key(o)	
+focus map:
+	key(esc:5)
+	key(alt)
+	sleep(0.05)
+	key(m)
+	sleep(0.05)
+	key(esc:2)

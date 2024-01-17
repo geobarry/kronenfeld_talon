@@ -124,7 +124,7 @@ alt:
 	key('alt')
 launch:
 	key(super)
-	sleep(0.2)
+	sleep(0.3)
 show cheat sheet:
 	key(super)
 	sleep(0.2)

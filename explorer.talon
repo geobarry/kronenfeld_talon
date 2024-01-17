@@ -66,6 +66,7 @@ compress video [file]:
 open jupyter [notebook]:
 	# grab path to current folder
 	key(alt-d)
+	sleep(0.5)
 	edit.copy()
 	# open the python command prompt
 	key(super)
@@ -73,8 +74,8 @@ open jupyter [notebook]:
 	insert("python command prompt")
 	sleep(0.5)
 	key(enter)
-	sleep(1.5)
-	# changed directories and open jupyter notebook
+	sleep(2.5)
+	# change directories and open jupyter notebook
 	insert("cd ")
 	edit.paste()
 	key(enter)
