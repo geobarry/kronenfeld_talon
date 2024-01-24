@@ -141,6 +141,9 @@ save as:
 	key(alt-f)
 	sleep(0.05)
 	key(a)
+
+close panel: key(f6 ctrl-space c)
+exit panel:	key(ctrl-space c)
 	
 menu view:
 	key(alt-w)
@@ -190,7 +193,7 @@ export to PDF:
 	key(e)
 	key(a)
 
-#home ribbon shortcuts
+#home menu ribbon shortcuts
 font:
 	key(alt-h)
 	sleep(0.05)
@@ -251,6 +254,14 @@ apply superscript:
 	key(n)
 	key(alt-p)
 	key(enter)
+list indent:
+	key(alt)
+	sleep(0.2)
+	key(h a i)
+list dedent:
+	key(alt)
+	sleep(0.2)
+	key(h a o)
 align left:
 	key(alt-h)
 	key(a)
@@ -275,9 +286,7 @@ insert table:
 insert comment:
 	key(alt-n)
 	key(l)
-insert page break:
-	key(alt-n)
-	key(b)
+
 	
 #edit ribbon shortcuts
 paste without formatting:
@@ -290,6 +299,16 @@ paste without formatting:
 	key(u)
 	sleep(0.15)
 	key(enter)
+
+# layout menu shortcuts
+insert page break:
+	key(alt)
+	sleep(0.2)
+	key(p b p)
+insert column break:
+	key(alt)
+	sleep(0.2)
+	key(p b c)
 
 #view ribbon shortcuts
 zoom fit [(width|with)]:
@@ -506,6 +525,10 @@ picture height <number>:
 	insert(number)
 	key(enter)
 	key(esc)
+picture color options:
+	key(alt)
+	sleep(0.2)
+	key(j p i c)
 	
 # equation menu 
 insert equation:
@@ -664,6 +687,8 @@ insert up arrow: user.unicode_word("00ad","Symbol")
 insert right arrow: user.unicode_word("00ae","Symbol")
 insert down arrow: user.unicode_word("00af","Symbol")
 insert cursive el: user.unicode_word("2113","Times New Roman")
+insert circled <user.letter>: user.circle_letter_word(letter)
+insert cursive look: user.unicode_word("2113","times new roman")
 
 # hyperlinks
 (insert|add|create) hyperlink:

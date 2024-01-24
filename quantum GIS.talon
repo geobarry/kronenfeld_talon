@@ -9,3 +9,15 @@ add (geodatabase|geo database):
 	sleep(0.1)
 	key(alt-d tab:2 alt-down pageup down)
 	
+remove layer:
+	key(menu r)
+	sleep(0.5)
+	key(enter)
+add shape file:
+	key(ctrl-shift-v tab:6)
+	sleep(0.2)
+	key(space)
+	sleep(0.2)
+	key(tab down e down:2 enter shift-tab)
+	
+	

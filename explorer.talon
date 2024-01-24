@@ -78,6 +78,7 @@ open jupyter [notebook]:
 	# change directories and open jupyter notebook
 	insert("cd ")
 	edit.paste()
+	sleep(0.5)
 	key(enter)
 	insert("jupyter notebook")
 	key(enter)

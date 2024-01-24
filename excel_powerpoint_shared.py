@@ -71,5 +71,13 @@ class Actions:
         integer_code += number
         hex_code = hex(integer_code)
         actions.user.unicode_excel_power(hex_code,"Wingdings")
+    def circle_letter_word(user_letter: str):
+        """insert a lower case letter inside a circle"""
+        a_integer_code = int("24d0",16) # unicode for circled lowercase a
+        user_letter_increment = ord(user_letter) - 97 # difference between user selected letter and a
+        letter_integer_code = a_integer_code + user_letter_increment
+        letter_hex_code = hex(letter_integer_code)[2:]
+        actions.user.unicode_word(letter_hex_code,"times new roman")
+        print(f"User stated letter: {user_letter} {ord(user_letter)} {letter_hex_code}")
 
 ctx = Context()

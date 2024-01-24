@@ -85,26 +85,27 @@ save as:
 
 #home menu
 (insert|new) slide:
-	key(alt-h)
-	sleep(0.05)
-	key(i)
+	key(alt)
+	sleep(0.2)
+	key(h i)
 slide layout:
-	key(alt-h)
-	sleep(0.05)
-	key(l)
+	key(alt)
+	sleep(0.2)
+	key(h l)
 font:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.3)
+	key(h f)
 	key(f)
 font size:
-	key(alt-h)
-	key(f)
+	key(alt)
+	sleep(0.3)
+	key(h f)
 	key(s)
 font size <number>:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.3)
+	key(h f)
 	key(s)
 	sleep(0.05)
 	insert(number)
@@ -113,42 +114,45 @@ font size <number>:
 
 	
 font color:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.4)
+	key(h f)
 	key(c)
 font color red:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.2)
+	key(h f)
 	key(c)
 	key(down:6)
 	key(enter)
 font color black:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.2)
+	key(h f)
 	key(c)
 	key(right)
 	key(enter)
 font color teal:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
+	key(alt)
+	sleep(0.2)
+	key(h f)
 	key(c)
 	key(down:4)
 	key(right:8)
 	key(enter)
 
 apply bold:
-	key(alt-h)
-	key(1)
+	key(alt)
+	sleep(0.2)
+	key(h 1)
 apply (italic|italics):
-	key(alt-h)
-	key(2)
+	key(alt)
+	sleep(0.2)
+	key(h 2)
 apply underline:
-	key(alt-h)
-	key(3)
+	key(alt)
+	sleep(0.2)
+	key(h 53)
 apply subscript:
 	key(alt-h)
 	key(f)
@@ -162,36 +166,45 @@ apply superscript:
 	key(p)
 	key(enter)
 apply bullets:
-	key(alt-h)
-	key(u)
+	key(alt)
+	sleep(0.3)
+	key(h u)
 apply (default bullets|bullets default):
-	key(alt-h)
-	key(u)
+	key(alt)
+	sleep(0.3)
+	key(h u)
 	key(left:12)
 	key(right)
 	key(enter)
 apply numbers:
-	key(alt-h)
-	key(n)
+	key(alt)
+	sleep(0.3)
+	key(h n)
 apply numbers [with] dots:
-	key(alt-h)
-	key(n)
+	key(alt)
+	sleep(0.3)
+	key(h n)
 	key(left:12)
 	key(right)
 	key(enter)
 apply numbers [with] parentheses:
-	key(alt-h)
-	key(n)
+	key(alt)
+	sleep(0.3)
+	key(h n)
 	key(left:12)
 	key(right:2)
 	key(enter)
 start [(numbers|numbering)] at <number>:
-	key(alt-h n n t)
+	key(alt)
+	sleep(0.3)
+	key(n n t)
 	insert("{number}")
 	key(enter)
 	
 paragraph formatting:
-	key(alt-h p g)
+	key(alt)
+	sleep(0.3)
+	key(h p g)
 	
 (indent|demote):
 	key(alt)
@@ -201,8 +214,9 @@ paragraph formatting:
 	key(a)
 	key(i)
 (dedent|promote):
-	key(alt-h)
-	key(a)
+	key(alt)
+	sleep(0.3)
+	key(h a)
 	key(o)
 [text] align left:
 	key(alt-h)
@@ -280,9 +294,9 @@ outline width one:
 	sleep(0.1)
 	key(enter)
 outline width three:
-	key(alt-h)
-	sleep(0.05)
-	key(s)
+	key(alt)
+	sleep(0.3)
+	key(h s)
 	key(o)
 	key(w)
 	sleep(0.9)
@@ -290,18 +304,18 @@ outline width three:
 	sleep(0.1)
 	key(enter)
 outline style:
-	key(alt-h)
-	sleep(0.05)
-	key(s o)
+	key(alt)
+	sleep(0.3)
+	key(h s o)
 bring to front:
-	key(alt-h)
-	sleep(0.05)
-	key(g)
+	key(alt)
+	sleep(0.3)
+	key(h g)
 	key(r)
 send to back:
-	key(alt-h)
-	sleep(0.05)
-	key(g)
+	key(alt)
+	sleep(0.3)
+	key(h g)
 	key(k)
 rotate right:
 	key(alt-h)
@@ -607,10 +621,10 @@ shape position:
 	key(d)
 	key(s)
 	key(z)
-text halo:
+apply [text] halo:
 	key(alt)
 	sleep(0.2)
-	key(j d t x g g alt-c)
+	key(j d t x g g c)
 
 close panel:
 	key(f6)
@@ -887,6 +901,10 @@ copy style:
 	key(ctrl-shift-c)
 paste style:
 	key(ctrl-shift-v)
+paste special:
+	key(alt)
+	sleep(0.2)
+	key(h v s tab)
 paste without formatting:
 	key(alt-e)
 	sleep(0.05)

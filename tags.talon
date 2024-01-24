@@ -8,3 +8,7 @@ activate fast spots:
 	user.activate("fast_spots")
 deactivate fast spots:
 	user.deactivate("fast_spots")
+activate zoom:
+	user.activate("zoom")
+deactivate zoom:
+	user.activate("zoom")

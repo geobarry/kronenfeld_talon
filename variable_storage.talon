@@ -33,3 +33,5 @@ greet {user.person_list} and {user.person_list}:
 	insert("{person_list} et al's ")
 {user.person_list} and others:
 	insert("{person_list} et al. ")
+doctor {user.person_list}:
+	insert("Dr. {person_list}")

@@ -101,6 +101,14 @@ pan north:
 	user.pan_arcgis_pro_map('north',1)
 pan south:
 	user.pan_arcgis_pro_map('south',1)
+pan tiny west:
+	user.pan_arcgis_pro_map('west',0.1)
+pan tiny east:
+	user.pan_arcgis_pro_map('east',0.1)
+pan tiny north:
+	user.pan_arcgis_pro_map('north',0.1)
+pan tiny south:
+	user.pan_arcgis_pro_map('south',0.1)
 pan west <number>:
 	user.pan_arcgis_pro_map('west',number)
 pan east <number>:
@@ -112,35 +120,59 @@ pan south <number>:
 menu map:
 	key(esc:5)
 	key(alt)
-	sleep(0.05)
+	sleep(0.2)
 	key(m)
 menu insert:
 	key(esc:5)
-	key(alt-n)
+	key(alt)
+	sleep(0.2)
+	key(n)
 menu analysis:
 	key(esc:5)
-	key(alt-a)	
+	key(alt)	
+	sleep(.2)
+	key(a)
 menu view: 
 	key(esc:5)
-	key(alt-v)
+	key(alt)
+	sleep(0.2)
+	key(v)
 menu edit:
 	key(esc:5)
-	key(alt-e)	
+	key(alt-	
+	sleep(0.2)
+	key(e)
 menu imagery:
 	key(esc:5)
-	key(alt-i)	
+	key(alt)
+	sleep(0.2)
+	key(i)
 menu share:
 	key(esc:5)
-	key(alt-s)
+	key(alt)
+	sleep(0.2)
+	key(s)
 menu layout:
 	key(esc:5)
-	key(alt-y)
+	key(alt)
+	sleep(0.2)
+	key(y)
 menu table:
 	key(esc:5)
 	key(alt)
-	sleep(0.1)
+	sleep(0.2)
 	key(t)
 	key(v)
+menu lay out:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(j l)
+menu animation:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(x a)
 
 # map menu shortcuts
 zoom [to] (world|full extent):
@@ -166,3 +198,49 @@ focus map:
 	key(m)
 	sleep(0.05)
 	key(esc:2)
+select by attributes:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(m s b a)
+clear selection:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(m c l)
+	
+# edit short cuts
+save edits:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(e s v)
+	
+# layout menu shortcuts
+activate map:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(y a)
+	
+# table menu shortcuts
+add field:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(t v f n)
+	
+# field many shortcuts
+save fields:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(f s v)
+# share menu shortcuts
+export layout:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(s x l)
+	sleep(0.5)
+	key(down:3)

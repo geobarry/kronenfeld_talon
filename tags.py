@@ -5,6 +5,7 @@ mod = Module()
 mod.tag("python", desc="apps that use my own python commands")
 mod.tag("jupyter_notebook", desc="apps that use my own jupyter notebook commands")
 mod.tag("fast_spots", desc="eliminates need to say 'spot' to click on screen spots")
+mod.tag("zoom", desc = "in a zoom meeting")
 
 @mod.action_class
 class Actions:

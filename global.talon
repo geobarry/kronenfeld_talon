@@ -124,7 +124,7 @@ alt:
 	key('alt')
 launch:
 	key(super)
-	sleep(0.3)
+	sleep(1.0)
 show cheat sheet:
 	key(super)
 	sleep(0.2)
@@ -159,6 +159,8 @@ save:
 	key(ctrl-s)	
 search:
 	key(ctrl-f)
+
+
 tab jiggle:
 	key(tab)
 	sleep(0.05)
