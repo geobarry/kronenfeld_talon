@@ -27,9 +27,9 @@ greet {user.person_list} and {user.person_list}:
 (formal|formally) greet {user.person_list}:
 	insert("Dear {person_list},")
 	key(enter:2)
-{user.person_list} no:
+{user.person_list} possessive:
 	insert("{person_list}'s ")
-{user.person_list} and others know:
+{user.person_list} and others possessive:
 	insert("{person_list} et al's ")
 {user.person_list} and others:
 	insert("{person_list} et al. ")
