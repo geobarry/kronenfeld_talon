@@ -10,6 +10,12 @@ remove variable <user.text>:
 remove module <user.text>:
 	user.remove_module(text)
 
+# function list
+(create|save) function <user.text>:
+	user.save_function(text, edit.selected_text())
+remove function <user.text>:
+	user.remove_function(text)
+
 # person list
 (create|save) person <user.text>:
 	user.save_person(text, edit.selected_text())

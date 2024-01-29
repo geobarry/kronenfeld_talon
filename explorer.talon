@@ -77,13 +77,33 @@ open jupyter [notebook]:
 	sleep(2.5)
 	# change directories and open jupyter notebook
 	insert("cd ")
+	sleep(0.5)
 	edit.paste()
 	sleep(0.5)
 	key(enter)
 	insert("jupyter notebook")
 	key(enter)
 	
-	
+new file:
+	key(alt-up)
+	sleep(0.2)
+	key(enter)
+	sleep(1.0)
+	key(menu)
+	sleep(0.2)
+	key(w 1)
+	sleep(0.2)
+	key(up:3)
+new folder:
+	key(alt-up)
+	sleep(0.2)
+	key(enter)
+	sleep(1.0)
+	key(menu)
+	sleep(0.5)
+	key(w 1)
+	sleep(0.2)
+	key(f)
 	
 # very specific idiosyncratic commands
 process desire to learn downloads:

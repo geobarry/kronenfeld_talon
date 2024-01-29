@@ -19,9 +19,11 @@ computer close your ears:
 	
 # windows volume
 volume up:
-	user.change_volume(10)
+	key(volup)
 volume down:
-	user.change_volume(-10)
+	key(voldown)
+volume mute:
+	key(mute)
 # websites and system paths
 open up <user.text>:
 	insert(text)
@@ -45,7 +47,6 @@ my first name:
 	insert("barrykronenfeld@gmail.com")
 (my|bee jay) (email|mail):
 	insert("bjkronenfeld@eiu.edu")
-
 dotcom:
 	insert(".com")
 daddy to you:

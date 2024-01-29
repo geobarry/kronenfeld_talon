@@ -222,6 +222,10 @@ module {user.module_list} dot:
 	insert(module_list)
 	insert(".")
 
+# functions
+function {user.function_list}:
+	user.insert_between("{function_list}(",")")
+
 # numpy
 numpy (linear|line) (space|spacing):
 	user.insert_between("np.linspace(",")")

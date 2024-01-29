@@ -4,10 +4,12 @@ mod = Module()
 mod.list("variable_list", desc="saved variable name abbreviations")
 mod.list("person_list", desc="saved person names")
 mod.list("module_list", desc="saved module names")
+mod.list("function_list", desc="saved function names")
 
 ctx = Context()
 variable_list = {}
 module_list = {}
+function_list = {}
 
 @mod.action_class
 class Actions:
@@ -53,6 +55,20 @@ class Actions:
         ctx.lists["user.module_list"] = module_list
         storage.set("module_list", module_list)
 
+    def save_function(spoken: str, text: str):
+        "save a new function name to user.function_list"
+        function_list = storage.get("function_list", {})
+        function_list[spoken] = text
+        ctx.lists["user.function_list"] = function_list
+        storage.set("function_list", function_list)
+
+    def remove_function(spoken: str):
+        "removed a function from user.function_list"
+        function_list = storage.get("function_list", {})        
+        del function_list[spoken]
+        ctx.lists["user.function_list"] = function_list
+        storage.set("function_list", function_list)
+
 
 
 def on_ready():
@@ -65,5 +81,10 @@ def on_ready():
     # global module_list
     module_list = storage.get("module_list", {})
     ctx.lists["user.module_list"] = module_list
+    # global function_list
+    function_list = storage.get("function_list", {})
+    ctx.lists["user.function_list"] = function_list
+
+
 
 app.register("ready", on_ready)

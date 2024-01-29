@@ -4,6 +4,7 @@ os: windows
 and app.exe: msedge.exe
 
 -
+
 refresh:
 	key(ctrl-f5)
 [toggle] full screen:
@@ -38,3 +39,6 @@ mark for deletion:
 	sleep(0.2)
 	key(down)
 
+# downloads
+save download [as]:
+	key(ctrl-j tab:2 enter)
