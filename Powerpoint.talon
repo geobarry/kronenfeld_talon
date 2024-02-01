@@ -211,13 +211,11 @@ paragraph formatting:
 	sleep(0.2)
 	key(h)
 	sleep(0.2)
-	key(a)
-	key(i)
+	key(z p a i)
 (dedent|promote):
 	key(alt)
 	sleep(0.3)
-	key(h a)
-	key(o)
+	key(h z p a o)
 [text] align left:
 	key(alt-h)
 	key(a)
