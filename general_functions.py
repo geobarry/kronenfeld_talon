@@ -63,6 +63,25 @@ class Actions:
             print("got exactly two pops")
             actions.speech.enable()
             actions.key("alt-a")
+    def mute_teams_on_double_pop():
+        """Looks for two pops in a row in order to mute Teams"""
+        print(f"mute_teams_on_double_pop: FUNCTION START")
+        global time_last_pop
+        global num_recent_pops
+        delta = time.time() - time_last_pop
+        time_last_pop = time.time()
+        
+        if delta > 0.5:
+            num_recent_pops = 1
+        else:
+            num_recent_pops += 1
+        
+        print(f"delta: {delta} num_pops: {num_recent_pops}")
+        
+        if num_recent_pops == 2:
+            print("got exactly two pops")
+            actions.speech.enable()
+            actions.key("ctrl-shift-m")
 
         
         

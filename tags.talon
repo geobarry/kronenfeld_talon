@@ -11,4 +11,8 @@ deactivate fast spots:
 activate zoom:
 	user.activate("zoom")
 deactivate zoom:
-	user.activate("zoom")
+	user.deactivate("zoom")
+activate teams:
+	user.activate("teams")
+deactivate teams:
+	user.deactivate("teams")

@@ -203,39 +203,52 @@ select [chart] item:
 	key(a)
 	key(e)
 	key(alt-down)
-format [chart] item:
+format selected (element|item):
 	key(menu)
 	key(up)
 	key(enter)
+add [chart] (element|item):
+	key(alt)
+	sleep(0.2)
+	key(j c a)
+add horizontal axis title:
+	key(alt)
+	sleep(0.2)
+	key(j c a a h)
+add vertical axis title:
+	key(alt)
+	sleep(0.2)
+	key(j c a a v)
+add [chart] title:
+	key(alt)
+	sleep(0.2)
+	key(j c a c a)
+format [chart] title:
+	key(alt)
+	sleep(0.2)
+	key(j a e alt-down down)
+	sleep(0.2)
+	key(enter)
+
 
 exit (pane|panel):
 	key(ctrl-space)
 	key(c)
 
 ##formulas
-(formula|equation) concatenate:
-	insert("concat(")
-(formula|equation) (max|maximum):
-	insert("max(")
-(formula|equation) minimum:
-	insert("min(")
-(formula|equation) sum:
-	insert("sum(")
-(formula|equation) some product:
-	insert("sumproduct(")
-(formula|equation) if:
-	insert("if(")
-(formula|equation) text:
-	insert("text(")
-(formula|equation) text join:
-	insert("textjoin(")
-(formula|equation) character:
-	insert("char(")
-(formula|equation) square root:
-	insert("sqrt(")
-(formula|equation) normal distribution:
-	insert("norm.dist(")
-[(formula|equation)] line break:
-	insert("char(10)")
-column <user.letter>:
-	insert("{letter}:{letter}")
+(formula|equation) concatenate: insert("concat(")
+(formula|equation) (max|maximum): insert("max(")
+(formula|equation) minimum: insert("min(")
+(formula|equation) sum: insert("sum(")
+(formula|equation) some product:	insert("sumproduct(")
+(formula|equation) if: insert("if(")
+(formula|equation) text: insert("text(")
+(formula|equation) text join: insert("textjoin(")
+(formula|equation) character: insert("char(")
+(formula|equation) square root: insert("sqrt(")
+(formula|equation) normal distribution: insert("norm.dist(")
+(formula|equation) count if: insert("countif(")
+
+[(formula|equation)] line break: insert("char(10)")
+column <user.letter>: insert("{letter}:{letter}")
+
