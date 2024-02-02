@@ -18,9 +18,7 @@ choose panel:
 
 focus contents:
 	key(alt-v c t)
-#	key(c)
-#	key(t)
-#	sleep(0.25)
+
 #    user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, #-25, 235)
 	#mouse_click(0)
 	#key(shift-tab)
@@ -46,8 +44,6 @@ list by data source:
     sleep(0.05)
     user.mouse_helper_position_restore()
 
-[open] attribute table:
-	key(ctrl-t)
 symbology menu:
 	key(alt)
 	key(j)
@@ -62,22 +58,11 @@ symbology (pain|pane|panel):
 	key(s)
 	key(esc)
 	key(enter)
-focus catalog:
-	key(alt-v)
-	key(c)
-	key(p)
-	sleep(0.25)
-    user.mouse_helper_move_image_relative("ArcGIS Pro catalog selected.png", 0, 53, 287)
-	mouse_click(0)
-focus Geoprocessing:
-	key(alt-v)
-	key(c)
-	key(t)
-	sleep(0.25)
 
-	key(alt-v)
-	key(t)
-	key(s)
+focus Geoprocessing:
+	key(alt-v c t)
+	sleep(0.25)
+	key(alt-v t s)
 	sleep(0.25)
     user.mouse_helper_move_image_relative("ArcGIS Pro Geoprocessing selected.png", 0, 20, 50)
 	mouse_click(0)
@@ -86,37 +71,124 @@ add data:
 	key(esc:5)
 	key(alt)
 	sleep(0.05)
-	key(m)
-	key(a)
-	key(d)
+	key(m a d)
 	sleep(0.25)
-	key(down)
-	key(enter)
+	key(down enter)
 
-pan west:
-	user.pan_arcgis_pro_map('west',1)
-pan east:
-	user.pan_arcgis_pro_map("east",1)
-pan north:
-	user.pan_arcgis_pro_map('north',1)
-pan south:
-	user.pan_arcgis_pro_map('south',1)
-pan tiny west:
-	user.pan_arcgis_pro_map('west',0.1)
-pan tiny east:
-	user.pan_arcgis_pro_map('east',0.1)
-pan tiny north:
-	user.pan_arcgis_pro_map('north',0.1)
-pan tiny south:
-	user.pan_arcgis_pro_map('south',0.1)
-pan west <number>:
-	user.pan_arcgis_pro_map('west',number)
-pan east <number>:
-	user.pan_arcgis_pro_map("east",number)
-pan north <number>:
-	user.pan_arcgis_pro_map('north',number)
-pan south <number>:
-	user.pan_arcgis_pro_map('south',number)
+# ESRI shortcuts
+toggle ribbon: key(ctrl-f1)
+keyboard shortcuts: key(f12)
+copy path: key(ctrl-alt-p)
+new map: key(ctrl-m)
+export: key(ctrl-e)
+command search: key(alt-q)
+panel options: key(alt-minus)
+close panel: key(shift-esc)
+tab next: key(right)
+tab previous: key(left)
+next command: key(tab)
+previous command: key(shift-esc)
+next (element|item): key(down)
+previous (element|item): key(up)
+next (map|layout|view): key(ctrl-f6)
+previous (map|layout|view): key(ctrl-shift-f6)
+
+# Catalog Pane
+focus catalog: key(esc:5 alt-v c p alt-f6)
+focus [catalog] folders: key(esc:5 alt-v c p alt-f6 pageup f)
+focus [catalogue] maps: key(esc:5 alt-v c p alt-f6 pageup m down up)
+focus [catalogue] (database|databases): key(esc:5 alt-v c p alt-f6 pageup d)
+focus [catalogue] layouts: key(esc:5 alt-v c p alt-f6 pageup l)
+focus [catalogue] notebooks: key(esc:5 alt-v c p alt-f6 pageup n)
+add folder connection: key(ctrl-shift-c)
+add [geo] database connection: key(ctrl-shift-e)
+project context menu: key(ctrl-shift-n)
+# When folder is selected in catalog pane
+new folder: key(ctrl-shift-f)
+new [geo] database: key(ctrl-shift-d)
+
+# Contents Pane
+expand: key(plus)
+collapse: key(minus)
+expand level: key(ctrl-plus)
+collapse level: key(ctrl-minus)
+expand all: key(ctrl-shift-plus)
+collapse all: key(ctrl-shift-minus)
+toggle layer: key(space)
+
+# Table View
+[open] attribute table: key(ctrl-t)
+toggle (select|selection): key(ctrl-space)
+select next: key(ctrl-enter)
+select previous: key(shift-enter)
+(switch|invert) selection: key(ctrl-u)
+clear selection: key(ctrl-shift-a)
+zoom to selected: key(ctrl-shift-plus)
+flash (selected|active): key(ctrl-8)
+pan to (selected|active): key(ctrl-n)
+next column: key(tab)
+previous column: key(shift-tab)
+next row: key(enter)
+go first (column|cell): key(home)
+go last (column|cell): key(end)
+go first row: key(ctrl-up)
+go last row: key(ctrl-down)
+go to row: key(ctrl-g)
+[custom] sort: key(ctrl-shift-s)
+toggle aliases: key(ctrl-shift-n)
+
+
+# Map Navigation
+pan west: user.pan_arcgis_pro_map('west',1)
+pan east: user.pan_arcgis_pro_map("east",1)
+pan north: user.pan_arcgis_pro_map('north',1)
+pan south: user.pan_arcgis_pro_map('south',1)
+pan tiny west: user.pan_arcgis_pro_map('west',0.1)
+pan tiny east: user.pan_arcgis_pro_map('east',0.1)
+pan tiny north: user.pan_arcgis_pro_map('north',0.1)
+pan tiny south: user.pan_arcgis_pro_map('south',0.1)
+pan west <number>: user.pan_arcgis_pro_map('west',number)
+pan east <number>: user.pan_arcgis_pro_map("east",number)
+pan north <number>: user.pan_arcgis_pro_map('north',number)
+pan south <number>: user.pan_arcgis_pro_map('south',number)
+orient [north]: key(o)
+look up: 
+	key(b:down)
+	sleep(0.2)
+	key(up:down)
+	sleep(0.1)
+	key(b:up)
+	key(up:up)
+look down: 
+	key(b:down)
+	sleep(0.2)
+	key(down:down)
+	sleep(0.1)
+	key(b:up)
+	key(down:up)
+look right: 
+	key(b:down)
+	sleep(0.2)
+	key(right:down)
+	sleep(0.1)
+	key(b:up)
+	key(right:up)
+look left: 
+	key(b:down)
+	sleep(0.2)
+	key(left:down)
+	sleep(0.1)
+	key(b:up)
+	key(left:up)
+
+
+
+# MAIN MENU
+menu project:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(p)
 menu map:
 	key(esc:5)
 	key(alt)
@@ -175,22 +247,12 @@ menu animation:
 	key(x a)
 
 # map menu shortcuts
-zoom [to] (world|full extent):
-	key(alt-m f e)
-zoom in:
-	key(esc:5)
-	key(alt)
-	sleep(0.05)
-	key(m)
-	key(z)
-	key(i)
-zoom out:
-	key(esc:5)
-	key(alt)
-	sleep(0.05)
-	key(m)
-	key(z)
-	key(o)	
+zoom [to] (world|full extent): key(alt-m f e)
+zoom in: key(alt m z i)
+zoom out: key(alt m z o)
+[go to] previous extent: key(alt m p e)
+[go to] next extent: key(alt m n e)
+
 focus map:
 	key(esc:5)
 	key(alt)

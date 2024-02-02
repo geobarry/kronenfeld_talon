@@ -186,7 +186,7 @@ up jiggle:
 	key(up)
 	sleep(0.05)
 	key(down)
-switch (application|applications):
+(switch|touch) (application|applications):
 	key(alt-tab)
 switch (other|second) application:
 	key(alt:down)
