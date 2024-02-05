@@ -94,17 +94,14 @@ new file:
 	key(w 1)
 	sleep(0.2)
 	key(up:3)
-new folder:
-	key(alt-up)
-	sleep(0.2)
-	key(enter)
-	sleep(1.0)
-	key(menu)
-	sleep(0.5)
-	key(w 1)
-	sleep(0.2)
-	key(f)
-	
+new folder: key(ctrl-shift-n)
+
+large icons: key(ctrl-shift-1)
+medium icons: key(ctrl-shift-2)
+small icons: key(ctrl-shift-3)
+list view: key(ctrl-shift-4)
+detailed view: key(ctrl-shift-5)
+distraction free [view]: key(ctrl-shift-6)
 # very specific idiosyncratic commands
 process desire to learn downloads:
 	user.process_desire_to_learn_downloads()

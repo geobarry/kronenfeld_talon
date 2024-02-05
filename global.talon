@@ -1,29 +1,32 @@
 os: windows
 -
 # disabling talon
-hello hello:
-	speech.disable()
-hello come in:
-	speech.disable()
-hello come on in:
-	speech.disable()
-hello what's up:
-	speech.disable()
-computer [go to] sleep:
-	speech.disable()
-computer stop listening:
-	speech.disable()
-computer close your ears:
-	speech.disable()
+hello hello: speech.disable()
+[hello] come [on] in$: speech.disable()
+hello what's up: speech.disable()
+computer [go to] sleep: speech.disable()
+computer stop listening: speech.disable()
+computer close your ears: speech.disable()
 
 	
 # windows volume
-volume up:
-	key(volup)
-volume down:
-	key(voldown)
-volume mute:
-	key(mute)
+volume up: key(volup)
+volume down: key(voldown)
+volume mute: key(mute)
+
+# windows keyboard shortcuts
+launch explorer: key(super-e)
+screen snip: key(super-shift-s)
+toggle Bluetooth: 
+	key(super-a)
+	sleep(1)
+	key(right)
+	sleep(0.5)
+	key(tab enter)
+	sleep(0.7)
+	key(space esc)	
+		
+	
 # websites and system paths
 open up <user.text>:
 	insert(text)

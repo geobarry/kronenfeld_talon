@@ -20,8 +20,8 @@ select section: key(shift-right)
 expand all: key(ctrl-shift-right)
 insert heading [cell] [above]: key(shift-a)
 insert heading [cell] below: key(shift-b)
-convert to code: key(y)
-convert to markdown: key(m)
+convert to code: key(esc y)
+convert to markdown: key(esc m)
 convert to heading [one]: key(1)
 convert to heading two: key(2)
 convert to heading three: key(3)
@@ -29,7 +29,7 @@ select up: key(shift-up)
 select down: key(shift-down)
 insert [cell] [above]: key(a)
 insert [cell] below: key(b)
-(delete|cut) cells: key(x)
+(delete|cut) cells: key(esc x)
 copy cells: key(c)
 paste [cells] [above]: key(shift-v)
 paste [cells] below: key(v)
@@ -88,15 +88,22 @@ insert comment cell below:
 	insert("</a>")
 	sleep(0.2)
 	key(up)
-begin [unordered] list:
-	insert("<ul>")
-end [unordered] list:
-	insert("</ul>")
-[insert] list item:
-	insert("<li>")
+insert good comment:
+	key(b m enter)
+	insert("<a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'>")
+	sleep(0.3)
+	key(enter:2)
+	insert("</a>")
+	sleep(0.2)
+	key(up)
+	insert("good")
+	sleep(0.2)
+	key(shift-enter)
 	
-	
-	
-
-angle brackets:
-	user.insert_between("&lt;","&gt;")
+# Hypertext Markup Language	
+# This really should be broken out into a different talon file
+begin [unordered] list: insert("<ul>")
+end [unordered] list: insert("</ul>")
+[insert] list item: insert("<li>")
+angle brackets: user.insert_between("&lt;","&gt;")
+character space: insert("&nbsp;")

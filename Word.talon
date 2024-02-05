@@ -1,6 +1,9 @@
 app: Microsoft Word
 
 -
+toggle ribbon:
+	key(ctrl-f1)
+  
 sub <user.letter>:
 	insert(" ")
 	edit.left()
@@ -344,6 +347,15 @@ zoom <number> [percent]:
 	insert("%")
 	key(enter)
 	
+# menu review
+delete all comments:
+	key(alt)
+	sleep(0.2)
+	key(r d o)
+accept all changes [and stop tracking]:
+	key(alt)
+	sleep(0.2)
+	key(r a 2 s)
 # menu table design
 table border none:
 	key(alt)
