@@ -4,7 +4,7 @@ os: windows
 and app.exe: pythonw.exe
 
 -
-tag(): user.python
+tag(): user.my_python
 tag(): user.line_commands
 
 tab previous:

@@ -11,7 +11,7 @@ mod = Module()
 
 @mod.action_class
 class Actions:
-    def pan_arcgis_pro_map(direction: str, duration: int):
+    def pan_arcgis_pro_map(direction: str, duration: float):
         """Pans the map for duration expressed relative to the default duration 
         which is 0.5 seconds."""
         if direction == 'west':

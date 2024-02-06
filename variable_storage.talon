@@ -1,7 +1,7 @@
 # variable list
 (create|save) variable <user.text>:
 	user.save_variable(text, edit.selected_text())
-remove variable <user.text>:
+remove variable <user.variable_list>:
 	user.remove_variable(text)
 
 # module list

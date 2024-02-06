@@ -1,4 +1,4 @@
-tag: user.python
+tag: user.my_python
 
 -
 loop on:
@@ -18,6 +18,14 @@ is equal [to]:
 	insert(" == ")
 [is] not equal [to]:
 	insert(" != ")
+[is] less then:
+	insert(" < ")
+[is] less than or equal [to]:
+	insert(" <= ")
+[is] greater than:
+	insert(" > ")
+[is] greater than or equal [to]:
+	insert(" >= ")
 
 # FUNCTIONS
 define function:

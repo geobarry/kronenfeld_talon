@@ -1,32 +1,13 @@
 os: windows
 and app.exe: ArcGISPro.exe
 -
-toggle ribbon:
-	key(ctrl-f1)
 # A tab is within a group, i.e. [maps,layouts,tables] or [catalog, ...]
-tab close:
-	key(ctrl-f4)
-tab next:
-	key(ctrl-f6)
-tab previous:
-	key(ctrl-shift-f6)
-show panels:
-	key(ctrl:down)
-	key(tab)
-choose panel:
-	key(ctrl:up)
-
-focus contents:
-	key(alt-v c t)
-
-#    user.mouse_helper_move_image_relative("ArcGIS Pro contents selected.png", 0, #-25, 235)
-	#mouse_click(0)
-	#key(shift-tab)
-
-expand all:
-	key(ctrl+)
-collapse all:
-	key(ctrl-)
+tab close: key(ctrl-f4)
+tab next: key(ctrl-f6)
+tab previous: key(ctrl-shift-f6)
+show panels: key(ctrl:down tab)
+choose panel: key(ctrl:up)
+focus contents: key(alt-v c t)
 
 list by drawing order:
     user.mouse_helper_position_save()
@@ -44,20 +25,8 @@ list by data source:
     sleep(0.05)
     user.mouse_helper_position_restore()
 
-symbology menu:
-	key(alt)
-	key(j)
-	key(a)
-	key(d)
-	key(s)
-symbology (pain|pane|panel):
-	key(alt)
-	key(j)
-	key(a)
-	key(d)
-	key(s)
-	key(esc)
-	key(enter)
+symbology menu: key(alt j a d s)
+symbology (pain|pane|panel): key(alt j a d s esc enter)
 
 focus Geoprocessing:
 	key(alt-v c t)
@@ -84,8 +53,6 @@ export: key(ctrl-e)
 command search: key(alt-q)
 panel options: key(alt-minus)
 close panel: key(shift-esc)
-tab next: key(right)
-tab previous: key(left)
 next command: key(tab)
 previous command: key(shift-esc)
 next (element|item): key(down)
@@ -122,7 +89,7 @@ toggle (select|selection): key(ctrl-space)
 select next: key(ctrl-enter)
 select previous: key(shift-enter)
 (switch|invert) selection: key(ctrl-u)
-clear selection: key(ctrl-shift-a)
+clear table selection: key(ctrl-shift-a)
 zoom to selected: key(ctrl-shift-plus)
 flash (selected|active): key(ctrl-8)
 pan to (selected|active): key(ctrl-n)
@@ -245,6 +212,10 @@ menu animation:
 	key(alt)
 	sleep(0.2)
 	key(x a)
+menu map frame: 
+	key(esc:5 alt)
+	sleep(0.2)
+	key(j f)
 
 # map menu shortcuts
 zoom [to] (world|full extent): key(alt-m f e)
@@ -284,6 +255,7 @@ activate map:
 	key(alt)
 	sleep(0.2)
 	key(y a)
+close activation: key(esc:5 alt j l c)
 	
 # table menu shortcuts
 add field:
