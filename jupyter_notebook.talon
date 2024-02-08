@@ -80,7 +80,7 @@ begin comment style:
 end comment style:
 	insert("</a>")
 
-insert comment cell below:
+insert comment cell [below]:
 	key(b m enter)
 	insert("<a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'>")
 	sleep(0.3)

@@ -240,6 +240,7 @@ exit (pane|panel):
 (formula|equation) (max|maximum): insert("max(")
 (formula|equation) minimum: insert("min(")
 (formula|equation) sum: insert("sum(")
+(formula|equation) average: insert("average(")
 (formula|equation) some product:	insert("sumproduct(")
 (formula|equation) if: insert("if(")
 (formula|equation) text: insert("text(")
@@ -248,6 +249,17 @@ exit (pane|panel):
 (formula|equation) square root: insert("sqrt(")
 (formula|equation) normal distribution: insert("norm.dist(")
 (formula|equation) count if: insert("countif(")
+
+average <user.letter>:
+	insert("=average({letter}:{letter})")
+	key(enter)
+minimum <user.letter>:
+	insert("=min({letter}:{letter})")
+	key(enter)
+maximum <user.letter>:
+	insert("=max({letter}:{letter})")
+	key(enter)
+
 
 [(formula|equation)] line break: insert("char(10)")
 column <user.letter>: insert("{letter}:{letter}")

@@ -95,6 +95,10 @@ new file:
 	sleep(0.2)
 	key(up:3)
 new folder: key(ctrl-shift-n)
+zip selected:
+	key(menu)
+	sleep(0.5)
+	key(z)
 
 large icons: key(ctrl-shift-1)
 medium icons: key(ctrl-shift-2)

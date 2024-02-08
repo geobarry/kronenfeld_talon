@@ -116,30 +116,23 @@ font size <number>:
 font color:
 	key(alt)
 	sleep(0.4)
-	key(h f)
-	key(c)
+	key(h f c)
+font color white:
+	key(alt)
+	sleep(0.2)
+	key(h f c enter)
 font color red:
 	key(alt)
 	sleep(0.2)
-	key(h f)
-	key(c)
-	key(down:6)
-	key(enter)
+	key(h f c down:6 enter)
 font color black:
 	key(alt)
 	sleep(0.2)
-	key(h f)
-	key(c)
-	key(right)
-	key(enter)
+	key(h f c right enter)
 font color teal:
 	key(alt)
 	sleep(0.2)
-	key(h f)
-	key(c)
-	key(down:4)
-	key(right:8)
-	key(enter)
+	key(h f c down:4 right:8 enter)
 
 apply bold:
 	key(alt)
@@ -153,29 +146,20 @@ apply underline:
 	key(alt)
 	sleep(0.2)
 	key(h 53)
-apply subscript:
-	key(alt-h)
-	key(f)
-	key(n)
-	key(b)
-	key(enter)
-apply superscript:
-	key(alt-h)
-	key(f)
-	key(n)
-	key(p)
-	key(enter)
+apply subscript: key(alt-h f n b enter)
+apply superscript: key(alt-h f n p enter)
 apply bullets:
 	key(alt)
 	sleep(0.3)
 	key(h u)
+apply bullets none:
+	key(alt)
+	sleep(0.3)
+	key(h u left:12 enter)
 apply (default bullets|bullets default):
 	key(alt)
 	sleep(0.3)
-	key(h u)
-	key(left:12)
-	key(right)
-	key(enter)
+	key(h u left:12 right enter)
 apply numbers:
 	key(alt)
 	sleep(0.3)
@@ -359,20 +343,12 @@ insert icon:
 	key(s)
 	sleep(0.5)
 
-insert shape:
-	key(alt-n)
-	sleep(0.05)
-	key(s)
-	key(h)
+insert shape: key(alt-n s h)
 insert rectangle:
-	key(alt-n)
+	key(alt-n s h)
 	sleep(0.05)
-	key(s)
-	key(h)
-	sleep(0.05)
-	key(right:4)
-	key(enter)
-
+	key(right:4 enter)
+insert table: key(alt-n t)
 [insert] rounded rectangle:
 	key(alt-n)
 	sleep(0.05)
