@@ -5,35 +5,25 @@ and app.exe: POWERPNT.EXE
 -
 tag(): user.excel_powerpoint_shared
 #main menu headings
-menu file:
-	key(alt-f)
-menu home:
-	key(alt-h)
-menu insert:
-	key(alt-n)
+menu file: key(alt-f)
+menu home: key(alt-h)
+menu insert: key(alt-n)
 menu draw:
 	key(alt-j)
 	sleep(0.05)
 	key(i)
-menu design:
-	key(alt-g)
-menu (transition|transitions):
-	key(alt-k)
-menu (animation|animations):
-	key(alt-a)
-menu slide show:
-	key(alt-s)
+menu design: key(alt-g)
+menu (transition|transitions): key(alt-k)
+menu (animation|animations): key(alt-a)
+menu slide show: key(alt-s)
 menu record:
 	key(alt)
 	sleep(0.05)
 	key(c)
 	key(1)
-menu review:
-	key(alt-r)
-menu view:
-	key(alt-w)
-menu help:
-	key(alt-h)
+menu review: key(alt-r)
+menu view: key(alt-w)
+menu help: key(alt-h)
 menu shape format:
 	key(alt)
 	sleep(0.05)
@@ -42,38 +32,31 @@ menu shape format:
 menu table design:
 	key(alt)
 	sleep(0.05)
-	key(j)
-	key(t)
+	key(j t)
 menu table layout:
 	key(alt)
 	sleep(0.05)
-	key(j)
-	key(l)
+	key(j l)
 menu picture format:
 	key(alt)
 	sleep(0.05)
-	key(j)
-	key(p)
+	key(j p)
 menu graphics format:
 	key(alt)
 	sleep(0.05)
-	key(j)
-	key(g)
+	key(j g)
 menu equation:
 	key(alt)
 	sleep(0.05)
-	key(j)
-	key(e)
+	key(j e)
 menu video format:
 	key(alt)
 	sleep(0.1)
-	key(j)
-	key(p)
+	key(j p)
 menu [video] playback:
 	key(alt)
 	sleep(0.1)
-	key(j)
-	key(n)
+	key(j n)
 
 #file menu
 save as:
@@ -100,13 +83,11 @@ font:
 font size:
 	key(alt)
 	sleep(0.3)
-	key(h f)
-	key(s)
+	key(h f s)
 font size <number>:
 	key(alt)
 	sleep(0.3)
-	key(h f)
-	key(s)
+	key(h f s)
 	sleep(0.05)
 	insert(number)
 	sleep(0.05)
@@ -174,10 +155,7 @@ apply numbers [with] dots:
 apply numbers [with] parentheses:
 	key(alt)
 	sleep(0.3)
-	key(h n)
-	key(left:12)
-	key(right:2)
-	key(enter)
+	key(h n left:12 right:2 enter)
 start [(numbers|numbering)] at <number>:
 	key(alt)
 	sleep(0.3)
@@ -200,33 +178,12 @@ paragraph formatting:
 	key(alt)
 	sleep(0.3)
 	key(h z p a o)
-[text] align left:
-	key(alt-h)
-	key(a)
-	key(l)
-[text] align center:
-	key(alt-h)
-	key(a)
-	key(c)
-[text] align right:
-	key(alt-h)
-	key(a)
-	key(r)
-[text] align top:
-	key(alt-h)
-	key(a)
-	key(t)
-	key(t)
-[text] align middle:
-	key(alt-h)
-	key(a)
-	key(t)
-	key(m)
-[text] align bottom:
-	key(alt-h)
-	key(a)
-	key(t)
-	key(b)
+[text] align left: key(alt-h a l)
+[text] align center: key(alt-h a c)
+[text] align right: key(alt-h a r)
+[text] align top: key(alt-h a t:2)
+[text] align middle: key(alt-h a t m)
+[text] align bottom: key(alt-h a t b)
 clear (fill|fell|feel):
 	key(alt-h)
 	sleep(0.05)

@@ -257,11 +257,11 @@ apply superscript:
 	key(n)
 	key(alt-p)
 	key(enter)
-list indent:
+(demote|list indent):
 	key(alt)
 	sleep(0.2)
 	key(h a i)
-list dedent:
+(promote|list dedent):
 	key(alt)
 	sleep(0.2)
 	key(h a o)
@@ -591,7 +591,7 @@ view text width:
 	key(enter)	
 # center on screen by toggling between webview and print view
 # strangely this doesn't work when we put the two key sequences together
-view webpage:
+view web [page] [layout]:
 	key(alt)
 	key(w)
 	sleep(0.25)

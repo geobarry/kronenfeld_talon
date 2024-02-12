@@ -4,9 +4,21 @@ os: windows
 and app.exe: msedge.exe
 
 -
+# official keyboard shortcuts ()
+focus favorites: key(alt-shift-b)
+focus toolbar: key(alt-shift-t)
+settings: key(alt-e)
+open downloads: key(ctrl-j)
+duplicate tab: key(ctrl-shift-k)
+refresh: key(ctrl-f5)
+(open|reopen) last [closed]: key(ctrl-shift-t)
+toggle fit: key(ctrl-backslash)
+rotate: key(ctrl-rbrack)
+clear browsing data: key(ctrl-shift-del)
+focus content: key(ctrl-f6)
+immersive reader: key(f9)
+caret browsing: key(f7)
 
-refresh:
-	key(ctrl-f5)
 [toggle] full screen:
 	key(f11)
 [toggle] read aloud:

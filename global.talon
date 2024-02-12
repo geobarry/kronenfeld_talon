@@ -26,6 +26,10 @@ toggle Bluetooth:
 	sleep(0.7)
 	key(space esc)	
 		
+# cross application common shortcuts
+save: key(ctrl-s)	
+search: key(ctrl-f)
+context menu: key(menu)
 	
 # websites and system paths
 open up <user.text>:
@@ -129,6 +133,23 @@ alt:
 launch:
 	key(super)
 	sleep(1.0)
+update cheat sheet:
+	user.cheatsheet()
+	sleep(1.5)
+	key(super)
+	sleep(0.2)
+	insert("Anaconda")
+	sleep(0.25)
+	key(enter)
+	sleep(2.5)
+	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
+	key(enter)	
+	insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
+	key(enter)
+	sleep(1.5)
+	user.add_links_to_cheatsheet()
+	sleep(0.5)
+	app.window_close()
 show cheat sheet:
 	key(super)
 	sleep(0.2)
@@ -138,7 +159,9 @@ show cheat sheet:
 	sleep(2.5)
 	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
 	key("enter")
+	sleep(0.5)
 	insert("python -m http.server 8080")
+	sleep(0.5)
 	key("enter")
 	key(super)
 	sleep(0.2)
@@ -159,10 +182,6 @@ escape out:
 	key(esc)
 	key(esc)
 	key(esc)
-save:
-	key(ctrl-s)	
-search:
-	key(ctrl-f)
 
 
 tab jiggle:

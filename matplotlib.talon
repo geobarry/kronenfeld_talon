@@ -1,4 +1,4 @@
-tag: user.python
+tag: user.my_python
 -
 import matplotlib:
 	insert("import matplotlib.pyplot as plt")
@@ -14,7 +14,7 @@ import matplotlib path:
 [matplotlib] create subplots:
 	key(enter)
 	key(up)
-	user.insert_between("fig, ax = plt.subplots(",")")
+	user.insert_between("fig, axes = plt.subplots(",")")
 [matplotlib] show plot:
 	insert("plt.show()")
 	key(enter)
@@ -46,6 +46,11 @@ import matplotlib path:
 [matplotlib] insert Bezier vertex:
 	edit.line_insert_down()
 	user.insert_between("[(","),Path.CURVE3],")
+
+# AXIS LABELS AND TICK MARKS
+axis off: insert("ax.axis('off')")
+axis equaln: insert("ax.axis('equal')")
+set axis title: user.insert_between("ax.set_title('","', y = -0.3)")
 
 {user.variable_list} [dot] plot:
 	user.insert_between("{user.variable_list}.plot(",")")

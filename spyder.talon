@@ -70,7 +70,7 @@ check error:
     mouse_click(0)
     sleep(0.05)
     #user.mouse_helper_position_restore()
-go to line <number>:
+go [to line] <number>:
 	key(esc ctrl-l)
 	sleep(0.1)
 	insert("{number}")

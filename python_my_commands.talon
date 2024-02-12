@@ -28,62 +28,27 @@ is equal [to]:
 	insert(" >= ")
 
 # FUNCTIONS
-define function:
-	user.insert_between("def ",":")
-(absolute value)|(funk absolute)|(function absolute)|(function absolute value)|(funk absolute value):
-	edit.insert_between("abs(",")")
-(funk|function) sine:
-	insert('math.sin()')
-	edit.left()
-(funk|function) cosine:
-	insert('math.cos()')
-	edit.left()
-(funk|function) radians:
-	insert('math.radians()')
-	edit.left()
-(funk|function) (maximum|max):
-	insert('max()')
-	edit.left()
-(funk|function) (minimum|min):
-	insert('min()')
-	edit.left()
+define function: user.insert_between("def ",":")
 	
 # OPERATIONS
-(operation|algebra) (minus|subtract):
-	insert(" - ")
-(operation|algebra) (times|multiply):
-	insert(" * ")
-(operation|algebra) (plus|add):
-	insert(" + ")
-(operation|algebra) (divide|over|divided by):
-	insert(" / ")
-(operation|algebra) (mod|modulus):
-	insert(" % ")
-(operation|algebra) squared:
-	insert(" ** 2")
-[(operation|algebra)] to the power of:
-	insert(" ** ")
-(operation increment|increment by):
-	insert(" += ")
-increment {user.variable_list} [by]:
-	insert(variable_list)
-	insert(" += ")
-(operation|algebra) square root:
-	insert("**0.5")
-square root [of] <number>:
-	insert(number)
-	insert("**0.5")
-square root [of] {user.variable_list}:
-	insert(variable_list)
-	insert("**0.5")
-select scope:
-	code.extend_scope_out()
+(operation|algebra) (minus|subtract): insert(" - ")
+(operation|algebra) (times|multiply): insert(" * ")
+(operation|algebra) (plus|add): insert(" + ")
+(operation|algebra) (divide|over|divided by): insert(" / ")
+(operation|algebra) (mod|modulus): insert(" % ")
+(operation|algebra) squared: insert(" ** 2")
+[(operation|algebra)] to the power of: insert(" ** ")
+(operation increment|increment by): insert(" += ")
+increment {user.variable_list} [by]: insert("{variable_list} += ")
+(operation|algebra) square root: insert("**0.5")
+square root [of] <number>: insert("{number} ** 0.5")
+square root [of] {user.variable_list}: insert("{variable_list} ** 0.5")
+select scope: code.extend_scope_out()
 
-# indices
-sub:
-	user.insert_between("[","]")
+# INDICES
+sub: user.insert_between("[","]")
 
-# variables
+# VARIABLES
 variable {user.variable_list}:
 	insert(variable_list)
 {user.variable_list} comma {user.variable_list}:
@@ -230,9 +195,9 @@ module {user.module_list} dot:
 	insert(module_list)
 	insert(".")
 
-# functions
-function {user.function_list}:
-	user.insert_between("{function_list}(",")")
+# FUNCTIONS
+function {user.function_list}: user.insert_between("{function_list}(",")")
+function name {user.function_list}: insert("{function_list}")
 
 # numpy
 numpy (linear|line) (space|spacing):

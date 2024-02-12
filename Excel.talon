@@ -11,64 +11,37 @@ save as:
 	key(a)
 
 # worksheets
-next (tab|sheet|worksheet):
-	key(ctrl-pagedown)
-previous (tab|sheet|worksheet):
-	key(ctrl-pageup)
-(insert|new) (tab|sheet|worksheet):
-	key(alt-h)
-	key(i)
-	key(s)
-delete (tab|sheet|worksheet):
-	key(alt-h)
-	key(d)
-	key(s)
-rename (tab|sheet|worksheet):
-	key(alt-h)
-	key(o)
-	key(r)
-move (tab|sheet|worksheet):
-	key(alt-h)
-	key(o)
-	key(m)
+next (tab|sheet|worksheet): key(ctrl-pagedown)
+previous (tab|sheet|worksheet): key(ctrl-pageup)
+(insert|new) (tab|sheet|worksheet): key(alt-h i s)
+delete (tab|sheet|worksheet): key(alt-h d s)
+rename (tab|sheet|worksheet): key(alt-h o r)
+move (tab|sheet|worksheet): key(alt-h o m)
+select row: key(shift-space)
+hide row: key(ctrl-9)
 	
 # columns
-insert column:
-	key(alt-h)
-	key(i)
-	key(c)
-delete column:
-	key(alt-h)
-	key(d)
-	key(c)
-column width:
-	key(alt-h)
-	key(o)
-	key(w)
-auto fit (column|width|column width):
-	key(alt-h)
-	key(o)
-	key(i)
+insert column: key(alt-h i c)
+delete column: key(alt-h d c)
+column width: key(alt-h o w)
+auto fit (column|width|column width): key(alt-h o i)
+select column: key(ctrl-space)
+hide column: key(ctrl-0)
 	
 # rows
-insert row:
-	key(alt-h)
-	key(i)
-	key(r)
-delete row:
-	key(alt-h)
-	key(d)
-	key(r)
-row height:
-	key(alt-h)
-	key(o)
-	key(h)
-auto fit (row|height|row height):
-	key(alt-h)
-	key(o)
-	key(a)	
+insert row: key(alt-h i r)
+delete row: key(alt-h d r)
+row height: key(alt-h o h)
+auto fit (row|height|row height): key(alt-h o a)
+
+# cells
+go to cell: key(alt-f3)
+go to cell <user.letter> <number>:  
+	key(alt-f3)
+	insert("{user.letter}{number}")
+	key(enter)
 	
-	
+
 # [ribbon|menu] headings
 file [ribbon|menu]:
 	key(alt-f)

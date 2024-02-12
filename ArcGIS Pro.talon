@@ -1,5 +1,6 @@
 os: windows
-and app.exe: ArcGISPro.exe
+and app.exe: arcgispro.exe
+
 -
 # A tab is within a group, i.e. [maps,layouts,tables] or [catalog, ...]
 tab close: key(ctrl-f4)
@@ -8,6 +9,9 @@ tab previous: key(ctrl-shift-f6)
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
 focus contents: key(alt-v c t)
+
+do test:
+	print("Is this working?")
 
 list by drawing order:
     user.mouse_helper_position_save()
@@ -82,6 +86,13 @@ collapse level: key(ctrl-minus)
 expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
 toggle layer: key(space)
+layer properties: key(menu p)
+definition query: key(menu p pageup:3 down:7 tab)
+toggle (label|labels|labeling): key(menu b)
+(label|labels|labeling) properties: key(menu o)
+remove layer: key(menu r)
+export features: key(alt t v e f)
+export table: key(alt t v e t)
 
 # Table View
 [open] attribute table: key(ctrl-t)
@@ -90,9 +101,6 @@ select next: key(ctrl-enter)
 select previous: key(shift-enter)
 (switch|invert) selection: key(ctrl-u)
 clear table selection: key(ctrl-shift-a)
-zoom to selected: key(ctrl-shift-plus)
-flash (selected|active): key(ctrl-8)
-pan to (selected|active): key(ctrl-n)
 next column: key(tab)
 previous column: key(shift-tab)
 next row: key(enter)
@@ -104,6 +112,8 @@ go to row: key(ctrl-g)
 [custom] sort: key(ctrl-shift-s)
 toggle aliases: key(ctrl-shift-n)
 
+# Catalogue Pane
+add to current map: key(menu a)
 
 # Map Navigation
 pan west: user.pan_arcgis_pro_map('west',1)
@@ -212,10 +222,7 @@ menu animation:
 	key(alt)
 	sleep(0.2)
 	key(x a)
-menu map frame: 
-	key(esc:5 alt)
-	sleep(0.2)
-	key(j f)
+menu map frame: key(esc:5 alt j 5) 
 
 # map menu shortcuts
 zoom [to] (world|full extent): key(alt-m f e)
@@ -236,11 +243,13 @@ select by attributes:
 	key(alt)
 	sleep(0.2)
 	key(m s b a)
-clear selection:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(m c l)
+clear selection: key(esc:5 alt m c x)
+
+# insert menu shortcuts
+# new map command already mapped above
+new layout: key(alt n n l)
+new custom layout: key(alt n n l c tab:4)
+insert map: key(alt n m g)
 	
 # edit short cuts
 save edits:
@@ -263,6 +272,10 @@ add field:
 	key(alt)
 	sleep(0.2)
 	key(t v f n)
+zoom [to] selected: key(alt t v r z)
+flash (selected|active): key(alt t v r f)
+pan [to] (selected|active): key(alt t v r p)
+
 	
 # field many shortcuts
 save fields:
@@ -278,3 +291,5 @@ export layout:
 	key(s x l)
 	sleep(0.5)
 	key(down:3)
+# map frame menu shortcuts
+set map location: key(esc:5 alt j f s p)

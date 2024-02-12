@@ -82,32 +82,5 @@ class Actions:
             print("got exactly two pops")
             actions.speech.enable()
             actions.key("ctrl-shift-m")
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
 ctx = Context()
