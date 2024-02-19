@@ -13,7 +13,7 @@
 >
 > **easy** *e*
 >
-> **fine** *f*
+> **fit** *f*
 >
 > **gust** *g*
 >
@@ -49,7 +49,7 @@
 >
 > **wine** *w*
 >
-> **ex** *x*
+> **plex** *x*
 >
 > **yank** *y*
 >
@@ -601,7 +601,7 @@
 #  anaconda
 
 
- - **anaconda**  `"conda "`
+ - **anaconda**  `insert("conda ")`
 
  - **anaconda help**  `"conda --help\n"`
 
@@ -739,6 +739,24 @@
 
  - **resume**  `insert("fg")
 		key(enter)`
+
+
+
+# mac arc mac
+
+
+ - **please [<user.text>]**  `key("cmd-l")
+		sleep(200ms)
+		insert(user.text or "")`
+
+
+
+# mac little-arc mac
+
+
+ - **little arc [<user.text>]**  `key("cmd-alt-n")
+		sleep(200ms)
+		insert(user.text or "")`
 
 
 
@@ -902,6 +920,527 @@
  - **copy line down**  `key(ctrl-alt-down)`
 
  - **copy line up**  `key(ctrl-alt-up)`
+
+
+
+# mac emacs
+
+
+ - **cancel**  `user.emacs("keyboard-quit")`
+
+ - **exchange**  `user.emacs("exchange-point-and-mark")`
+
+ - **execute**  `user.emacs("execute-extended-command")`
+
+ - **execute {user.emacs_command}**  `user.emacs(emacs_command)`
+
+ - **execute <user.text>**  `user.emacs("execute-extended-command")
+		user.insert_formatted(text, "DASH_SEPARATED")`
+
+ - **evaluate | (evaluate | eval) (exper | expression)**  `user.emacs("eval-expression")`
+
+ - **prefix**  `user.emacs_prefix()`
+
+ - **prefix <user.number_signed_small>**  `user.emacs_prefix(number_signed_small)`
+
+ - **abort recursive [edit]**  `user.emacs("abort-recursive-edit")`
+
+ - **browse kill ring**  `user.emacs("browse-kill-ring")`
+
+ - **fill paragraph**  `user.emacs("fill-paragraph")`
+
+ - **insert char**  `user.emacs("insert-char")`
+
+ - **occurs**  `user.emacs("occur")`
+
+ - **other scroll [down]**  `user.emacs("scroll-other-window")`
+
+ - **other scroll up**  `user.emacs("scroll-other-window-down")`
+
+ - **package autoremove**  `user.emacs("package-autoremove")`
+
+ - **package list | [package] list packages**  `user.emacs("list-packages")`
+
+ - **reverse (lines | region)**  `user.emacs("reverse-region")`
+
+ - **save buffers kill emacs**  `user.emacs("save-buffers-kill-emacs")`
+
+ - **save some buffers**  `user.emacs("save-some-buffers")`
+
+ - **sort lines**  `user.emacs("sort-lines")`
+
+ - **sort words**  `user.emacs("sort-words")`
+
+ - **file [loop] continue**  `user.emacs("fileloop-continue")`
+
+ - **go directory**  `user.emacs("dired-jump")`
+
+ - **other go directory**  `user.emacs("dired-jump-other-window")`
+
+ - **[toggle] debug on error**  `user.emacs("toggle-debug-on-error")`
+
+ - **[toggle] debug on quit**  `user.emacs("toggle-debug-on-quit")`
+
+ - **[toggle] input method**  `user.emacs("toggle-input-method")`
+
+ - **[toggle] truncate lines**  `user.emacs("toggle-truncate-lines")`
+
+ - **[toggle] word wrap**  `user.emacs("toggle-word-wrap")`
+
+ - **manual**  `user.emacs("man")`
+
+ - **manual <user.text>**  `user.emacs("man")
+		user.insert_formatted(text, "DASH_SEPARATED")
+		
+		# BUFFER SWITCHING #`
+
+ - **switch**  `user.emacs("switch-to-buffer")`
+
+ - **other switch**  `user.emacs("switch-to-buffer-other-window")`
+
+ - **display**  `user.emacs("display-buffer")`
+
+ - **shell command**  `user.emacs("shell-command")`
+
+ - **shell command inserting**  `user.emacs_prefix()
+		user.emacs("shell-command")`
+
+ - **shell command on region**  `user.emacs("shell-command-on-region")`
+
+ - **shell command on region replacing**  `user.emacs_prefix()
+		user.emacs("shell-command-on-region")
+		
+		# CUSTOMIZE #`
+
+ - **customize face**  `user.emacs("customize-face")`
+
+ - **customize face <user.text>**  `user.emacs("customize-face")
+		user.insert_formatted(text, "DASH_SEPARATED")`
+
+ - **customize group**  `user.emacs("customize-group")`
+
+ - **customize variable**  `user.emacs("customize-variable")`
+
+ - **(customize | custom) [theme] visit theme**  `user.emacs("custom-theme-visit-theme")`
+
+ - **auto fill mode**  `user.emacs("auto-fill-mode")`
+
+ - **dired omit mode**  `user.emacs("dired-omit-mode")`
+
+ - **display line numbers mode**  `user.emacs("display-line-numbers-mode")`
+
+ - **electric quote local mode**  `user.emacs("electric-quote-local-mode")`
+
+ - **emacs lisp mode**  `user.emacs("emacs-lisp-mode")`
+
+ - **fundamental mode**  `user.emacs("fundamental-mode")`
+
+ - **global display line numbers mode**  `user.emacs("global-display-line-numbers-mode")`
+
+ - **global highlight line mode**  `user.emacs("global-hl-line-mode")`
+
+ - **global visual line mode**  `user.emacs("global-visual-line-mode")`
+
+ - **highlight line mode**  `user.emacs("hl-line-mode")`
+
+ - **lisp interaction mode**  `user.emacs("lisp-interaction-mode")`
+
+ - **markdown mode**  `user.emacs("markdown-mode")`
+
+ - **menu bar mode**  `user.emacs("menu-bar-mode")`
+
+ - **overwrite mode**  `user.emacs("overwrite-mode")`
+
+ - **paredit mode**  `user.emacs("paredit-mode")`
+
+ - **rainbow mode**  `user.emacs("rainbow-mode")`
+
+ - **read only mode**  `user.emacs("read-only-mode")`
+
+ - **shell script mode**  `user.emacs("sh-mode")`
+
+ - **sub word mode**  `user.emacs("subword-mode")`
+
+ - **tab bar mode**  `user.emacs("tab-bar-mode")`
+
+ - **talon script mode**  `user.emacs("talonscript-mode")`
+
+ - **text mode**  `user.emacs("text-mode")`
+
+ - **transient mark mode**  `user.emacs("transient-mark-mode")`
+
+ - **visual line mode**  `user.emacs("visual-line-mode")`
+
+ - **whitespace mode**  `user.emacs("whitespace-mode")`
+
+ - **emacs record**  `user.emacs("kmacro-start-macro")`
+
+ - **emacs stop**  `user.emacs("kmacro-end-macro")`
+
+ - **emacs play**  `user.emacs("kmacro-end-and-call-macro")`
+
+ - **profiler start**  `user.emacs("profiler-start")`
+
+ - **profiler stop**  `user.emacs("profiler-stop")`
+
+ - **profiler report**  `user.emacs("profiler-report")`
+
+ - **split solo**  `user.emacs("delete-other-windows")`
+
+ - **[split] rebalance**  `user.emacs("balance-windows")`
+
+ - **split shrink**  `user.emacs("shrink-window-if-larger-than-buffer")`
+
+ - **other [split] shrink**  `user.split_next()
+		user.emacs("shrink-window-if-larger-than-buffer")
+		user.split_last()`
+
+ - **split grow**  `user.emacs("enlarge-window")`
+
+ - **split grow <number_small>**  `user.emacs("enlarge-window", number_small)`
+
+ - **split shrink <number_small>**  `amount = number_small or 1
+		user.emacs("enlarge-window", 0 - amount)`
+
+ - **split widen [<number_small>]**  `user.emacs("enlarge-window-horizontally", number_small or 1)`
+
+ - **split narrow [<number_small>]**  `user.emacs("shrink-window-horizontally", number_small or 1)
+		
+		# ----- HELP ----- #`
+
+ - **apropos**  `user.emacs_help("a")`
+
+ - **describe (fun | function)**  `user.emacs_help("f")`
+
+ - **describe key**  `user.emacs_help("k")`
+
+ - **describe key briefly**  `user.emacs_help("c")`
+
+ - **describe symbol**  `user.emacs_help("o")`
+
+ - **describe variable**  `user.emacs_help("v")`
+
+ - **describe mode**  `user.emacs_help("m")`
+
+ - **describe bindings**  `user.emacs_help("b")`
+
+ - **describe (char | character)**  `user.emacs("describe-character")`
+
+ - **describe text properties**  `user.emacs("describe-text-properties")`
+
+ - **describe face**  `user.emacs("describe-face")`
+
+ - **view lossage**  `user.emacs_help("l")`
+
+ - **apropos <user.text>**  `user.emacs_help("a")
+		user.insert_formatted(text, "DASH_SEPARATED")
+		key(enter)`
+
+ - **describe (fun | function) <user.text>**  `user.emacs_help("f")
+		user.insert_formatted(text, "DASH_SEPARATED")
+		key(enter)`
+
+ - **describe symbol <user.text>**  `user.emacs_help("o")
+		user.insert_formatted(text, "DASH_SEPARATED")
+		key(enter)`
+
+ - **describe variable <user.text>**  `user.emacs_help("v")
+		user.insert_formatted(text, "DASH_SEPARATED")
+		key(enter)
+		
+		# ----- FILES & BUFFERS -----`
+
+ - **file open**  `user.emacs("find-file")`
+
+ - **file rename**  `user.emacs("rename-file")`
+
+ - **(file open | find file) at point**  `user.emacs("ffap")`
+
+ - **other file open**  `user.emacs("find-file-other-window")`
+
+ - **(file | buffer) close**  `user.emacs("kill-buffer")
+		key(enter)
+		`
+
+ - **buffer kill**  `user.emacs("kill-buffer")`
+
+ - **buffer bury**  `user.emacs("bury-buffer")`
+
+ - **buffer revert | revert buffer**  `user.emacs("revert-buffer")`
+
+ - **buffer finish**  `edit.save()
+		user.emacs("server-edit")`
+
+ - **buffer list**  `user.emacs("buffer-menu")`
+
+ - **buffer next**  `user.emacs("next-buffer")`
+
+ - **buffer last**  `user.emacs("previous-buffer")`
+
+ - **buffer rename**  `user.emacs("rename-buffer")`
+
+ - **buffer widen**  `user.emacs("widen")`
+
+ - **buffer narrow | [buffer] narrow to region**  `user.emacs("narrow-to-region")`
+
+ - **diff (buffer | [buffer] with file)**  `user.emacs("diff-buffer-with-file")
+		key(enter)
+		
+		# ----- MOTION AND EDITING ----- #`
+
+ - **mark**  `user.emacs("set-mark-command")`
+
+ - **go back**  `user.emacs("pop-to-mark-command")`
+
+ - **global [go] back**  `user.emacs("pop-global-mark")`
+
+ - **auto indent**  `user.emacs("indent-region")`
+
+ - **indent <user.number_signed_small>**  `user.emacs("indent-rigidly", number_signed_small)`
+
+ - **search back**  `user.emacs("isearch-backward")`
+
+ - **(search regex | regex search)**  `user.emacs("isearch-forward-regexp")`
+
+ - **(search regex | regex search) back**  `user.emacs("isearch-backward-regexp")`
+
+ - **replace**  `user.emacs("query-replace")`
+
+ - **replace regex | regex replace**  `user.emacs("query-replace-regexp")`
+
+ - **search [toggle] words**  `user.emacs("isearch-forward-word")`
+
+ - **search [toggle] symbol**  `user.emacs("isearch-forward-symbol")`
+
+ - **search edit**  `user.emacs_meta("e")`
+
+ - **search toggle case [fold | sensitive]**  `user.emacs_meta("c")`
+
+ - **search toggle regex**  `user.emacs_meta("r")`
+
+ - **highlight lines matching [regex]**  `user.emacs("highlight-lines-matching-regexp")`
+
+ - **highlight phrase**  `user.emacs("highlight-phrase")`
+
+ - **highlight regex**  `user.emacs("highlight-regexp")`
+
+ - **unhighlight (regex | phrase)**  `user.emacs("unhighlight-regexp")`
+
+ - **unhighlight all**  `user.emacs_prefix()
+		user.emacs("unhighlight-regexp")
+		`
+
+ - **recenter**  `user.emacs_prefix()
+		user.emacs("recenter-top-bottom")`
+
+ - **(center | [center] <number_small> from) top**  `user.emacs("recenter-top-bottom", number_small or 0)`
+
+ - **(center | [center] <number_small> from) bottom**  `number = number_small or 0
+		user.emacs("recenter-top-bottom", -1 - number)`
+
+ - **go <number> top**  `edit.jump_line(number)
+		user.emacs("recenter-top-bottom", 0)`
+
+ - **go <number> bottom**  `edit.jump_line(number)
+		user.emacs("recenter-top-bottom", -2)
+		`
+
+ - **next error | error next**  `user.emacs("next-error")`
+
+ - **last error | error last**  `user.emacs("previous-error")`
+
+ - **term right**  `user.emacs("forward-sexp")`
+
+ - **term left**  `user.emacs("backward-sexp")`
+
+ - **term up**  `user.emacs("backward-up-list")`
+
+ - **term end**  `user.emacs("up-list")`
+
+ - **term down**  `user.emacs("down-list")`
+
+ - **term kill**  `user.emacs("kill-sexp")`
+
+ - **term wipe**  `user.emacs("kill-sexp", -1)`
+
+ - **term (mark | select)**  `user.emacs("mark-sexp")`
+
+ - **term copy**  `user.emacs("mark-sexp")
+		edit.copy()`
+
+ - **term freeze**  `user.emacs("mark-sexp")
+		user.emacs("comment-region")`
+
+ - **term [auto] indent**  `user.emacs("mark-sexp")
+		user.emacs("indent-region")
+		`
+
+ - **(sentence | sent) (right | end)**  `edit.sentence_end()`
+
+ - **(sentence | sent) (left | start)**  `edit.sentence_start()`
+
+ - **(sentence | sent) kill**  `user.emacs("kill-sentence")`
+
+ - **graph kill**  `user.emacs("kill-paragraph")`
+
+ - **graph up**  `edit.paragraph_start()`
+
+ - **graph down**  `edit.paragraph_end()`
+
+ - **graph mark**  `user.emacs("mark-paragraph")`
+
+ - **graph copy**  `user.emacs("mark-paragraph")
+		edit.copy()`
+
+ - **graph cut**  `user.emacs("mark-paragraph")
+		edit.cut()
+		
+		# NB. can use these to implement "drag <X> left/right/up/down" commands,
+		# but note that 'transpose line' and 'drag line down' are different.`
+
+ - **transpose [word | words]**  `user.emacs("transpose-words")`
+
+ - **transpose (term | terms)**  `user.emacs("transpose-sexps")`
+
+ - **transpose (char | chars)**  `user.emacs("transpose-chars")`
+
+ - **transpose (line | lines)**  `user.emacs("transpose-lines")`
+
+ - **transpose (sentence | sentences)**  `user.emacs("transpose-sentences")`
+
+ - **transpose (graph | graphs | paragraphs)**  `user.emacs("transpose-paragraphs")`
+
+ - **register (copy | save)**  `user.emacs("copy-to-register")`
+
+ - **register (paste | insert)**  `user.emacs("insert-register")`
+
+ - **register jump**  `user.emacs("jump-to-register")`
+
+ - **register (copy | save) rectangle**  `user.emacs("copy-rectangle-to-register")`
+
+ - **rectangle clear**  `user.emacs("clear-rectangle")`
+
+ - **rectangle delete**  `user.emacs("delete-rectangle")`
+
+ - **rectangle kill**  `user.emacs("kill-rectangle")`
+
+ - **rectangle open**  `user.emacs("open-rectangle")`
+
+ - **rectangle (copy | save) [to] register**  `user.emacs("copy-rectangle-to-register")`
+
+ - **rectangle (yank | paste)**  `user.emacs("yank-rectangle")`
+
+ - **rectangle copy**  `user.emacs("copy-rectangle-as-kill")`
+
+ - **rectangle number lines**  `user.emacs("rectangle-number-lines")`
+
+ - **project [find] file**  `user.emacs("project-find-file")`
+
+ - **project [find] (regex | grep)**  `user.emacs("project-find-regexp")`
+
+ - **project [query] replace regex**  `user.emacs("project-query-replace-regexp")`
+
+ - **project (dired | directory)**  `user.emacs("projectile-dired")`
+
+ - **project [run] shell**  `user.emacs("projectile-run-shell")`
+
+ - **project [run] eshell**  `user.emacs("projectile-run-eshell")`
+
+ - **project search**  `user.emacs("project-search")`
+
+ - **project vc dir**  `user.emacs("project-vc-dir")`
+
+ - **project compile [project]**  `user.emacs("projectile-compile-project")`
+
+ - **project [run] shell command**  `user.emacs("projectile-run-shell-command-in-root")`
+
+ - **project [run] async shell command**  `user.emacs("projectile-run-async-shell-command-in-root")`
+
+ - **project (switch [to buffer] | buffer | buff)**  `user.emacs("projectile-switch-to-buffer")`
+
+ - **project kill [buffers]**  `user.emacs("projectile-kill-buffers")`
+
+ - **project switch [project]**  `user.emacs("project-switch-project")`
+
+ - **vc (annotate | blame)**  `user.emacs("vc-annotate")`
+
+ - **python mode**  `user.emacs("python-mode")`
+
+ - **run python**  `user.emacs("run-python")`
+
+ - **python [shell] send buffer**  `user.emacs("python-shell-send-buffer")`
+
+ - **python [shell] send file**  `user.emacs("python-shell-send-file")`
+
+ - **python [shell] send region**  `user.emacs("python-shell-send-region")`
+
+ - **python [shell] send (function | defun)**  `user.emacs("python-shell-send-defun")`
+
+ - **python [shell] send statement**  `user.emacs("python-shell-send-statement")`
+
+ - **python (shell switch | switch [to] shell)**  `user.emacs("python-shell-switch-to-shell")`
+
+ - **smerge mode**  `user.emacs("smerge-mode")`
+
+ - **merge next**  `user.emacs("smerge-next")`
+
+ - **merge last**  `user.emacs("smerge-prev")`
+
+ - **merge keep upper**  `user.emacs("smerge-keep-upper")`
+
+ - **merge keep lower**  `user.emacs("smerge-keep-lower")`
+
+ - **merge keep this**  `user.emacs("smerge-keep-current")`
+
+ - **merge refine**  `user.emacs("smerge-refine")`
+
+ - **merge split**  `user.emacs("smerge-resolve")`
+
+ - **outline minor mode**  `user.emacs("outline-minor-mode")`
+
+ - **outline show all**  `user.emacs("outline-show-all")`
+
+ - **outline show entry**  `user.emacs("outline-show-entry")`
+
+ - **outline hide entry**  `user.emacs("outline-hide-entry")`
+
+ - **outline show [subtree]**  `user.emacs("outline-show-subtree")`
+
+ - **outline hide [subtree]**  `user.emacs("outline-hide-subtree")`
+
+ - **outline show children**  `user.emacs("outline-show-children")`
+
+ - **outline show branches**  `user.emacs("outline-show-branches")`
+
+ - **outline hide leaves**  `user.emacs("outline-hide-leaves")`
+
+ - **outline hide sublevels**  `user.emacs("outline-hide-sublevels")`
+
+ - **outline (hide body | [show] (overview | outline))**  `user.emacs("outline-hide-body")`
+
+ - **outline hide other**  `user.emacs("outline-hide-other")`
+
+ - **outline forward [same level]**  `user.emacs("outline-forward-same-level")`
+
+ - **outline (backward | back) [same level]**  `user.emacs("outline-backward-same-level")`
+
+ - **outline next [visible heading]**  `user.emacs("outline-next-visible-heading")`
+
+ - **outline (previous | last) [visible heading]**  `user.emacs("outline-previous-visible-heading")`
+
+ - **outline insert [heading]**  `user.emacs("outline-insert-heading")`
+
+ - **outline up [heading]**  `user.emacs("outline-up-heading")`
+
+ - **outline promote**  `user.emacs("outline-promote")`
+
+ - **outline demote**  `user.emacs("outline-demote")`
+
+ - **outline move [subtree] down**  `user.emacs("outline-move-subtree-down")`
+
+ - **outline move [subtree] up**  `user.emacs("outline-move-subtree-up")`
+
+ - **outline mark [subtree]**  `user.emacs("outline-mark-subtree")`
 
 
 
@@ -1092,6 +1631,62 @@
  - **[enable] debug mode**  `user.gdb_enable()`
 
  - **disable debug mode**  `user.gdb_disable()`
+
+
+
+#  git
+
+
+ - **git {user.git_command} [<user.git_arguments>]**  `args = git_arguments or ""
+		"git {git_command}{args} "`
+
+ - **git commit [<user.git_arguments>] message [<user.prose>]**  `args = git_arguments or ""
+		message = prose or ""
+		user.insert_between('git commit{args} --message "{message}', '"')`
+
+ - **git stash [push] [<user.git_arguments>] message [<user.prose>]**  `args = git_arguments or ""
+		message = prose or ""
+		user.insert_between('git stash push{args} --message "{message}', '"')
+		
+		# Optimistic execution for frequently used commands that are harmless (don't
+		# change repository or index state).`
+
+ - **git status**  `"git status\n"`
+
+ - **git add patch**  `"git add --patch\n"`
+
+ - **git show head**  `"git show HEAD\n"`
+
+ - **git diff**  `"git diff\n"`
+
+ - **git diff (cached | cashed)**  `"git diff --cached\n"`
+
+ - **git clone clipboard**  `insert("git clone ")
+		edit.paste()
+		key(enter)`
+
+ - **git diff highlighted**  `edit.copy()
+		insert("git diff ")
+		edit.paste()
+		key(enter)`
+
+ - **git diff clipboard**  `insert("git diff ")
+		edit.paste()
+		key(enter)`
+
+ - **git add highlighted**  `edit.copy()
+		insert("git add ")
+		edit.paste()
+		key(enter)`
+
+ - **git add clipboard**  `insert("git add ")
+		edit.paste()
+		key(enter)`
+
+ - **git commit highlighted**  `edit.copy()
+		insert("git add ")
+		edit.paste()
+		insert("\ngit commit\n")`
 
 
 
@@ -4320,6 +4915,18 @@
 
 
 
+#  sleep mode
+
+
+ - **(welcome back)+**  `user.mouse_wake()
+		user.history_enable()
+		user.talon_mode()
+		`
+
+ - **(talon wake)+**  `speech.enable()`
+
+
+
 #  sleep mode not dragon
 
 
@@ -4524,6 +5131,45 @@
 
 
 
+# win window management
+
+
+ - **window (new | open)**  `app.window_open()`
+
+ - **window next**  `app.window_next()`
+
+ - **window last**  `app.window_previous()`
+
+ - **window close**  `app.window_close()`
+
+ - **window hide**  `app.window_hide()`
+
+ - **focus <user.running_applications>**  `user.switcher_focus(running_applications)`
+
+ - **focus**  `user.switcher_menu()`
+
+ - **focus last**  `user.switcher_focus_last()`
+
+ - **running list**  `user.switcher_toggle_running()`
+
+ - **running close**  `user.switcher_hide_running()`
+
+ - **launch <user.launch_applications>**  `user.switcher_launch(launch_applications)`
+
+ - **snap <user.window_snap_position>**  `user.snap_window(window_snap_position)`
+
+ - **snap next [screen]**  `user.move_window_next_screen()`
+
+ - **snap last [screen]**  `user.move_window_previous_screen()`
+
+ - **snap screen <number>**  `user.move_window_to_screen(number)`
+
+ - **snap <user.running_applications> <user.window_snap_position>**  `user.snap_app(running_applications, window_snap_position)`
+
+ - **snap <user.running_applications> [screen] <number>**  `user.move_app_to_screen(running_applications, number)`
+
+
+
 #  batch
 
 
@@ -4546,6 +5192,193 @@
  - **delayed expansion**  `"SETLOCAL EnableDelayedExpansion\n"`
 
  - **arg <number_small>**  `"%{number_small}"`
+
+
+
+#  c
+
+
+ - **state include**  `insert("#include ")`
+
+ - **state include system**  `user.insert_between("#include <", ">")`
+
+ - **state include local**  `user.insert_between('#include "', '"')`
+
+ - **state type deaf**  `insert("typedef ")`
+
+ - **state type deaf struct**  `insert("typedef struct")
+		insert("{\n\n}")
+		edit.up()
+		key('tab')
+		
+		# XXX - create a preprocessor tag for these, as they will match cpp, etc`
+
+ - **state define**  `"#define "`
+
+ - **state (undefine | undeaf)**  `"#undef "`
+
+ - **state if (define | deaf)**  `"#ifdef "`
+
+ - **[state] define <user.text>**  `"#define {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"`
+
+ - **[state] (undefine | undeaf) <user.text>**  `"#undef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"`
+
+ - **[state] if (define | deaf) <user.text>**  `"#ifdef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"
+		
+		# XXX - preprocessor instead of pre?`
+
+ - **state pre if**  `"#if "`
+
+ - **state error**  `"#error "`
+
+ - **state pre else if**  `"#elif "`
+
+ - **state pre end**  `"#endif "`
+
+ - **state pragma**  `"#pragma "`
+
+ - **state default**  `"default:\nbreak;"`
+
+ - **push braces**  `edit.line_end()
+		#insert("{")
+		#key(enter)
+		insert("{}")
+		edit.left()
+		key(enter)
+		key(enter)
+		edit.up()
+		
+		# Declare variables or structs etc.
+		# Ex. * int myList`
+
+ - **<user.c_variable> <phrase>**  `insert("{c_variable} ")
+		insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE,NO_SPACES"))
+		`
+
+ - **<user.c_variable> <user.letter>**  `insert("{c_variable} {letter} ")`
+
+ - **cast to <user.c_cast>**  `"{c_cast}"`
+
+ - **standard cast to <user.stdint_cast>**  `"{stdint_cast}"`
+
+ - **<user.c_types>**  `"{c_types}"`
+
+ - **<user.c_pointers>**  `"{c_pointers}"`
+
+ - **<user.c_keywords>**  `"{c_keywords}"`
+
+ - **<user.c_signed>**  `"{c_signed}"`
+
+ - **standard <user.stdint_types>**  `"{stdint_types}"`
+
+ - **int main**  `user.insert_between("int main(", ")")`
+
+ - **toggle includes**  `user.code_toggle_libraries()`
+
+ - **include <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
+		key(end enter)`
+
+
+
+#  css
+
+
+ - **block**  `user.code_block()`
+
+ - **attribute [<user.text>]**  `name = user.formatted_text(text or "", "DASH_SEPARATED")
+		user.insert_between("[{name}", "]")
+		`
+
+ - **prop <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
+		user.insert_between("{name}: ", ";")
+		
+		# for media/supports queries, or if you don't like prop`
+
+ - **rule <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
+		insert("{name}: ")
+		`
+
+ - **value <user.number_string> [{user.css_unit}]**  `"{number_string}{css_unit or ''}"`
+
+ - **value <user.number_string> point <digit_string> [{user.css_unit}]**  `"{number_string}.{digit_string}{css_unit or ''}"
+		`
+
+ - **(value | state) {user.css_global_value}**  `"{css_global_value}"`
+
+ - **value <user.text>**  `user.insert_formatted(text, "DASH_SEPARATED")`
+
+ - **variable <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
+		insert("var(--{name})")
+		`
+
+ - **op var**  `user.insert_between("var(--", ")")`
+
+ - **at {user.css_at_rule}**  `"@{css_at_rule} "`
+
+ - **unit {user.css_unit}**  `insert(css_unit)`
+
+ - **[value] current color**  `"currentColor"`
+
+ - **op important**  `" !important"`
+
+
+
+#  java
+
+
+ - **state var**  `"var "`
+
+ - **boxed [type] {user.java_boxed_type}**  `insert(user.java_boxed_type + " ")`
+
+ - **generic [type] {user.java_generic_data_structure}**  `user.insert_between(java_generic_data_structure + "<", ">")
+		
+		# Arrays`
+
+ - **type {user.code_type} array**  `insert(user.code_type)
+		user.code_operator_subscript()
+		`
+
+ - **[state] {user.java_modifier}**  `insert(user.java_modifier + " ")`
+
+ - **op array**  `user.code_operator_subscript()`
+
+ - **op new**  `insert("new ")`
+
+
+
+#  javascript
+
+
+ - **(op | is) strict equal**  `" === "`
+
+ - **(op | is) strict not equal**  `" !== "`
+
+ - **op null else**  `" ?? "`
+
+ - **state const**  `"const "`
+
+ - **state let**  `"let "`
+
+ - **state var**  `"var "`
+
+ - **state export**  `"export "`
+
+ - **state async**  `"async "`
+
+ - **state await**  `"await "`
+
+ - **dot {user.code_common_member_function}**  `user.insert_between(".{code_common_member_function}(", ")")
+		`
+
+ - **state map**  `app.notify('ERROR: Command deprecated; please use "dot map"')`
+
+ - **state filter**  `app.notify('ERROR: Command deprecated; please use "dot filter"')`
+
+ - **state reduce**  `app.notify('ERROR: Command deprecated; please use "dot reduce"')`
+
+ - **state spread**  `"..."`
+
+ - **from import**  `user.insert_between(' from  "', '"')`
 
 
 
@@ -4617,6 +5450,100 @@
 
 
 
+#  markdown
+
+
+ - **(level | heading | header) one**  `edit.line_start()
+		"# "`
+
+ - **(level | heading | header) two**  `edit.line_start()
+		"## "`
+
+ - **(level | heading | header) three**  `edit.line_start()
+		"### "`
+
+ - **(level | heading | header) four**  `edit.line_start()
+		"#### "`
+
+ - **(level | heading | header) five**  `edit.line_start()
+		"##### "`
+
+ - **(level | heading | header) six**  `edit.line_start()
+		"###### "
+		`
+
+ - **list [one]**  `edit.line_start()
+		"- "`
+
+ - **list two**  `edit.line_start()
+		"    - "`
+
+ - **list three**  `edit.line_start()
+		"        - "`
+
+ - **list four**  `edit.line_start()
+		"            - "`
+
+ - **list five**  `edit.line_start()
+		"                - "`
+
+ - **list six**  `edit.line_start()
+		"                    - "
+		`
+
+ - **{user.markdown_code_block_language} block**  `user.insert_snippet("```{markdown_code_block_language}\n$0\n```")
+		`
+
+ - **link**  `"[]()"
+		key(left:3)`
+
+
+
+#  php
+
+
+ - **(op | is) loosely equal**  `" == "`
+
+ - **(op | is) loosely not equal**  `" != "`
+
+ - **state try**  `"try {\n"`
+
+ - **state catch**  `"catch (\\Throwable $exception) {\n"`
+
+ - **var <phrase> [over]**  `insert("$")
+		insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE"))`
+
+
+
+#  proto
+
+
+ - **block**  `user.code_block()`
+
+ - **state message**  `"message "`
+
+ - **state package**  `"package "`
+
+ - **state reserved**  `"reserved "`
+
+ - **state enum**  `"enum "`
+
+ - **op equals**  `" = "`
+
+ - **state import**  `"import "`
+
+ - **state import public**  `"import public "`
+
+ - **state option**  `"option "`
+
+ - **state repeated**  `"repeated "`
+
+ - **type {user.code_type}**  `"{code_type}"`
+
+ - **repeated type {user.code_type}**  `"repeated {code_type}"`
+
+
+
 #  python
 
 
@@ -4659,6 +5586,30 @@
 
 
 
+#  r
+
+
+ - **(op | is) in**  `" %in% "`
+
+ - **toggle library**  `user.code_toggle_libraries()`
+
+ - **library <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
+		key(end enter)
+		
+		# R specific commands`
+
+ - **(chain | pipe that)**  `key(end)
+		" %>%"
+		key(enter)`
+
+ - **state na**  `insert("NA")`
+
+ - **function define <user.text>**  `user.code_private_function(text)`
+
+ - **named arg {user.code_parameter_name}**  `user.code_insert_named_argument(code_parameter_name)`
+
+
+
 #  ruby
 
 
@@ -4676,6 +5627,130 @@
 
  - **instance <user.text>**  `insert("@")
 		user.code_public_variable_formatter(text)`
+
+
+
+#  rust
+
+
+ - **state unsafe**  `"unsafe "`
+
+ - **unsafe block**  `user.code_state_unsafe()`
+
+ - **state (struct | structure) <user.text>**  `insert("struct ")
+		insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
+		`
+
+ - **state enum <user.text>**  `insert("enum ")
+		insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
+		`
+
+ - **toggle use**  `user.code_toggle_libraries()`
+
+ - **borrow**  `"&"`
+
+ - **borrow mutable**  `"&mut "`
+
+ - **state (a sink | async | asynchronous)**  `"async "`
+
+ - **state (pub | public)**  `"pub "`
+
+ - **state (pub | public) crate**  `"pub(crate) "`
+
+ - **state (dyn | dynamic)**  `"dyn "`
+
+ - **state constant**  `"const "`
+
+ - **state (funk | func | function)**  `"fn "`
+
+ - **state (imp | implements)**  `"impl "`
+
+ - **state let mute**  `"let mut "`
+
+ - **state let**  `"let "`
+
+ - **state (mute | mutable)**  `"mut "`
+
+ - **state (mod | module)**  `"mod "`
+
+ - **state ref (mute | mutable)**  `"ref mut "`
+
+ - **state ref**  `"ref "`
+
+ - **state trait**  `"trait "`
+
+ - **state match**  `user.code_state_switch()`
+
+ - **state (some | sum)**  `"Some"`
+
+ - **state static**  `"static "`
+
+ - **self taught**  `"self."`
+
+ - **state use**  `user.code_import()`
+
+ - **use <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
+		key(; enter)
+		
+		## specialist flow control`
+
+ - **state if let some**  `user.insert_between("if let Some(", ")")`
+
+ - **state if let (ok | okay)**  `user.insert_between("if let Ok(", ")")`
+
+ - **state if let error**  `user.insert_between("if let Err(", ")")`
+
+ - **is some**  `user.code_insert_is_not_null()`
+
+ - **implement (struct | structure)**  `user.code_state_implements()`
+
+ - **is implemented trait {user.code_trait}**  `": impl {code_trait}"`
+
+ - **is implemented trait**  `": impl "`
+
+ - **returns implemented trait {user.code_trait}**  `" -> impl {code_trait}"`
+
+ - **returns implemented trait**  `" -> impl "`
+
+ - **trait {user.code_trait}**  `insert("{code_trait}")`
+
+ - **implemented trait {user.code_trait}**  `insert("impl {code_trait}")`
+
+ - **dynamic trait {user.code_trait}**  `insert("dyn {code_trait}")`
+
+ - **macro {user.code_macros}**  `user.code_insert_macro(code_macros, "")`
+
+ - **macro wrap {user.code_macros}**  `user.code_insert_macro(code_macros, edit.selected_text())
+		
+		## rust specific document comments`
+
+ - **block dock comment**  `user.code_comment_documentation_block()`
+
+ - **inner dock comment**  `user.code_comment_documentation_inner()`
+
+ - **inner block dock comment**  `user.code_comment_documentation_block_inner()`
+
+
+
+#  scala
+
+
+ - **state {user.scala_modifier}**  `insert("{user.scala_modifier} ")`
+
+ - **state {user.scala_keyword}**  `insert("{scala_keyword} ")`
+
+ - **op right arrow**  `" -> "`
+
+ - **op left arrow**  `" <- "`
+
+ - **op plus plus**  `" ++ "`
+
+ - **op subtype**  `" <: "`
+
+ - **state match**  `user.code_state_switch()`
+
+ - **block string**  `insert('""""""')
+		key("left left left")`
 
 
 
@@ -4970,6 +6045,37 @@
 
 
 
+#  operators assignment
+
+
+ - **op (equals | assign)**  `user.code_operator_assignment()`
+
+ - **op or equals**  `user.code_or_operator_assignment()`
+
+ - **op (minus | subtract) equals**  `user.code_operator_subtraction_assignment()`
+
+ - **op (plus | add) equals**  `user.code_operator_addition_assignment()`
+
+ - **op (times | multiply) equals**  `user.code_operator_multiplication_assignment()`
+
+ - **op divide equals**  `user.code_operator_division_assignment()`
+
+ - **op mod equals**  `user.code_operator_modulo_assignment()`
+
+ - **[op] increment**  `user.code_operator_increment()`
+
+ - **[op] bit [wise] and equals**  `user.code_operator_bitwise_and_assignment()`
+
+ - **[op] bit [wise] or equals**  `user.code_operator_bitwise_or_assignment()`
+
+ - **(op | logical | bitwise) (ex | exclusive) or equals**  `user.code_operator_bitwise_exclusive_or_assignment()`
+
+ - **[(op | logical | bitwise)] (left shift | shift left) equals**  `user.code_operator_bitwise_left_shift_assignment()`
+
+ - **[(op | logical | bitwise)] (right shift | shift right) equals**  `user.code_operator_bitwise_right_shift_assignment()`
+
+
+
 #  operators bitwise
 
 
@@ -5092,6 +6198,26 @@
  - **funk wrap <user.code_common_function>**  `user.code_insert_function(code_common_function, edit.selected_text())`
 
  - **funk wrap <number>**  `user.code_select_function(number - 1, edit.selected_text())`
+
+
+
+#  terraform
+
+
+ - **block**  `user.code_block()`
+
+ - **state {user.terraform_module_block}**  `user.code_terraform_module_block(user.terraform_module_block)
+		`
+
+ - **resource <user.text>**  `user.code_terraform_resource(text)`
+
+ - **data [source] <user.text>**  `user.code_terraform_data_source(text)`
+
+ - **[state] prop {user.terraform_common_property}**  `insert(user.terraform_common_property)
+		user.code_operator_assignment()
+		`
+
+ - **type {user.code_type}**  `insert("{code_type}")`
 
 
 
@@ -5291,6 +6417,167 @@
 
 
 
+#  mouse
+
+
+ - **control mouse**  `tracking.control_toggle()`
+
+ - **control off**  `user.mouse_sleep()`
+
+ - **zoom mouse**  `tracking.control_zoom_toggle()`
+
+ - **camera overlay**  `tracking.control_debug_toggle()`
+
+ - **run calibration**  `tracking.calibrate()`
+
+ - **touch**  `# close zoom if open
+		user.zoom_close()
+		mouse_click(0)
+		# close the mouse grid if open
+		user.grid_close()
+		# End any open drags
+		# Touch automatically ends left drags so this is for right drags specifically
+		user.mouse_drag_end()
+		`
+
+ - **righty**  `# close zoom if open
+		user.zoom_close()
+		mouse_click(1)
+		# close the mouse grid if open
+		user.grid_close()
+		`
+
+ - **mid click**  `# close zoom if open
+		user.zoom_close()
+		mouse_click(2)
+		# close the mouse grid
+		user.grid_close()
+		
+		#see keys.py for modifiers.
+		#defaults
+		#command
+		#control
+		#option = alt
+		#shift
+		#super = windows key`
+
+ - **<user.modifiers> touch**  `# close zoom if open
+		user.zoom_close()
+		key("{modifiers}:down")
+		mouse_click(0)
+		key("{modifiers}:up")
+		# close the mouse grid
+		user.grid_close()`
+
+ - **<user.modifiers> righty**  `# close zoom if open
+		user.zoom_close()
+		key("{modifiers}:down")
+		mouse_click(1)
+		key("{modifiers}:up")
+		# close the mouse grid
+		user.grid_close()`
+
+ - **(dub click | duke)**  `# close zoom if open
+		user.zoom_close()
+		mouse_click()
+		mouse_click()
+		# close the mouse grid
+		user.grid_close()`
+
+ - **(trip click | trip lick)**  `# close zoom if open
+		user.zoom_close()
+		mouse_click()
+		mouse_click()
+		mouse_click()
+		# close the mouse grid
+		user.grid_close()`
+
+ - **left drag | drag | drag start**  `# close zoom if open
+		user.zoom_close()
+		user.mouse_drag(0)
+		# close the mouse grid
+		user.grid_close()`
+
+ - **right drag | righty drag**  `# close zoom if open
+		user.zoom_close()
+		user.mouse_drag(1)
+		# close the mouse grid
+		user.grid_close()`
+
+ - **end drag | drag end**  `user.mouse_drag_end()`
+
+ - **wheel down**  `user.mouse_scroll_down()`
+
+ - **wheel down here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_down()`
+
+ - **wheel tiny [down]**  `user.mouse_scroll_down(0.2)`
+
+ - **wheel tiny [down] here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_down(0.2)`
+
+ - **wheel downer**  `user.mouse_scroll_down_continuous()`
+
+ - **wheel downer here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_down_continuous()`
+
+ - **wheel up**  `user.mouse_scroll_up()`
+
+ - **wheel up here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_up()`
+
+ - **wheel tiny up**  `user.mouse_scroll_up(0.2)`
+
+ - **wheel tiny up here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_up(0.2)`
+
+ - **wheel upper**  `user.mouse_scroll_up_continuous()`
+
+ - **wheel upper here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_up_continuous()`
+
+ - **wheel gaze**  `user.mouse_gaze_scroll()`
+
+ - **wheel gaze here**  `user.mouse_move_center_active_window()
+		user.mouse_gaze_scroll()`
+
+ - **wheel stop**  `user.mouse_scroll_stop()`
+
+ - **wheel stop here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_stop()`
+
+ - **wheel left**  `user.mouse_scroll_left()`
+
+ - **wheel left here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_left()`
+
+ - **wheel tiny left**  `user.mouse_scroll_left(0.5)`
+
+ - **wheel tiny left here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_left(0.5)`
+
+ - **wheel right**  `user.mouse_scroll_right()`
+
+ - **wheel right here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_right()`
+
+ - **wheel tiny right**  `user.mouse_scroll_right(0.5)`
+
+ - **wheel tiny right here**  `user.mouse_move_center_active_window()
+		user.mouse_scroll_right(0.5)`
+
+ - **copy mouse position**  `user.copy_mouse_position()`
+
+ - **curse no**  `# Command added 2021-12-13, can remove after 2022-06-01
+		app.notify("Please activate the user.mouse_cursor_commands_enable tag to enable this command")
+		`
+
+ - **mouse hiss up**  `user.hiss_scroll_up()`
+
+ - **mouse hiss down**  `user.hiss_scroll_down()`
+
+
+
 #  mouse cursor
 
 
@@ -5338,6 +6625,75 @@
 
 
 
+#  symbols
+
+
+ - **new line**  `"\n"`
+
+ - **double dash**  `"--"`
+
+ - **triple quote**  `"'''"`
+
+ - **(triple grave | triple back tick | gravy)**  `insert("```")`
+
+ - **(dot dot | dotdot)**  `".."`
+
+ - **ellipsis**  `"..."`
+
+ - **(comma and | spamma)**  `", "`
+
+ - **arrow**  `"->"`
+
+ - **dub arrow**  `"=>"`
+
+ - **empty dub string**  `user.insert_between('"', '"')`
+
+ - **empty escaped (dub string | dub quotes)**  `user.insert_between('\\"', '\\"')`
+
+ - **empty string**  `user.insert_between("'", "'")`
+
+ - **empty escaped string**  `user.insert_between("\\'", "\\'")`
+
+ - **(inside parens | args)**  `user.insert_between("(", ")")`
+
+ - **inside (squares | brackets | square brackets | list)**  `user.insert_between("[", "]")`
+
+ - **inside (braces | curly brackets)**  `user.insert_between("{", "}")`
+
+ - **inside percent**  `user.insert_between("%", "%")`
+
+ - **inside (quotes | string)**  `user.insert_between("'", "'")`
+
+ - **inside (double quotes | dub quotes)**  `user.insert_between('"', '"')`
+
+ - **inside (graves | back ticks)**  `user.insert_between("`", "`")`
+
+ - **angle that**  `text = edit.selected_text()
+		user.paste("<{text}>")`
+
+ - **(square | bracket | square bracket) that**  `text = edit.selected_text()
+		user.paste("[{text}]")`
+
+ - **(brace | curly bracket) that**  `text = edit.selected_text()
+		user.paste("{{{text}}}")`
+
+ - **(parens | args) that**  `text = edit.selected_text()
+		user.paste("({text})")`
+
+ - **percent that**  `text = edit.selected_text()
+		user.paste("%{text}%")`
+
+ - **quote that**  `text = edit.selected_text()
+		user.paste("'{text}'")`
+
+ - **(double quote | dub quote) that**  `text = edit.selected_text()
+		user.paste('"{text}"')`
+
+ - **(grave | back tick) that**  `text = edit.selected_text()
+		user.paste("`{text}`")`
+
+
+
 # win draft global
 
 
@@ -5375,6 +6731,49 @@
 		text = edit.selected_text()
 		key(backspace)
 		user.draft_show(text)`
+
+
+
+# win draft window
+
+
+ - **replace <user.draft_anchor> with <user.text>**  `user.draft_select("{draft_anchor}")
+		result = user.formatted_text(text, "NOOP")
+		insert(result)
+		
+		# Position cursor before word`
+
+ - **(pre | cursor | cursor before) <user.draft_anchor>**  `user.draft_position_caret("{draft_anchor}")
+		
+		# Position cursor after word`
+
+ - **(post | cursor after) <user.draft_anchor>**  `user.draft_position_caret("{draft_anchor}", 1)
+		
+		# Select a whole word`
+
+ - **(take | select) <user.draft_anchor>**  `user.draft_select("{draft_anchor}")`
+
+ - **(take | select) <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select("{draft_anchor_1}", "{draft_anchor_2}")
+		
+		# Delete a word`
+
+ - **(change | chuck | clear) <user.draft_anchor>**  `user.draft_select("{draft_anchor}", "", 1)
+		key(backspace)
+		
+		# Delete a range of words`
+
+ - **(change | chuck | clear) <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select(draft_anchor_1, draft_anchor_2, 1)
+		key(backspace)
+		
+		# reformat word`
+
+ - **<user.formatters> word <user.draft_anchor>**  `user.draft_select("{draft_anchor}", "", 1)
+		user.formatters_reformat_selection(user.formatters)
+		
+		# reformat range`
+
+ - **<user.formatters> <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select(draft_anchor_1, draft_anchor_2, 1)
+		user.formatters_reformat_selection(user.formatters)`
 
 
 
@@ -6127,11 +7526,11 @@
 #  eagle
 
 
- - **eagle [(on|mouse)]**  `user.eagle_enable()`
+ - **(eagle|head go|we go)  [(on|mouse)]**  `user.eagle_enable()`
 
- - **eagle <user.bearing>**  `user.set_cardinal(user.bearing)`
+ - **(eagle|head go|we go) <user.bearing>**  `user.set_cardinal(user.bearing)`
 
- - **eagle (center|compass)**  `user.center_eagle()`
+ - **(eagle|head go|we go)  (center|compass)**  `user.center_eagle()`
 
 
 
@@ -6165,7 +7564,7 @@
 #  eagle open
 
 
- - **(eagle off|eagle laugh|eagle out|grid off)**  `user.eagle_disable()
+ - **(eagle|head go|we go) (off|laugh|out)**  `user.eagle_disable()
 		
 		# CHANGE DISPLAY MODE`
 
@@ -6174,27 +7573,27 @@
 		# SET DIRECTION
 		# set the movement direction to a compasss direction, e.g. 'north-northeast','up'`
 
- - **(eagle|head go) <user.bearing>**  `user.set_cardinal(user.bearing)`
+ - **(eagle|head go|we go) <user.bearing>**  `user.set_cardinal(user.bearing)`
 
- - **(eagle|head go) reverse**  `user.reverse()`
+ - **(eagle|head go|we go) reverse**  `user.reverse()`
 
- - **(eagle|head go) <number> <user.bearing>**  `user.move_cardinal(number, user.bearing)`
+ - **(eagle|head go|we go) <number> <user.bearing>**  `user.move_cardinal(number, user.bearing)`
 
- - **(eagle|head go) <user.ordinals> <user.bearing>**  `user.move_cardinal(ordinals,user.bearing)`
+ - **(eagle|head go|we go) <user.ordinals> <user.bearing>**  `user.move_cardinal(ordinals,user.bearing)`
 
- - **(eagle|head go) nudge <user.bearing>**  `user.move_cardinal(0.3,user.bearing)`
+ - **(eagle|head go|we go) nudge <user.bearing>**  `user.move_cardinal(0.3,user.bearing)`
 
- - **(eagle|head go) jump <number>**  `user.fly_out(number,10)`
+ - **(eagle|head go|we go) jump <number>**  `user.fly_out(number,10)`
 
- - **(eagle|head go) fly <number>**  `user.fly_out(number,1000)`
+ - **(eagle|head go|we go) fly <number>**  `user.fly_out(number,1000)`
 
- - **(eagle|head go) walk <number>**  `user.fly_out(number,3000)`
+ - **(eagle|head go|we go) walk <number>**  `user.fly_out(number,3000)`
 
- - **(eagle|head go) crawl <number>**  `user.fly_out(number,8000)`
+ - **(eagle|head go|we go) crawl <number>**  `user.fly_out(number,8000)`
 
- - **(eagle|head go) (back|backup) <number>**  `user.fly_back(number)`
+ - **(eagle|head go|we go) (back|backup) <number>**  `user.fly_back(number)`
 
- - **(eagle|head go) <user.number_string>**  `user.five_fly_out(number_string)`
+ - **(eagle|head go|we go) <user.number_string>**  `user.five_fly_out(number_string)`
 
 
 
@@ -6219,6 +7618,9 @@
  - **choose panel**  `key(ctrl:up)`
 
  - **focus contents**  `key(alt-v c t)`
+
+ - **do test**  `print("Is this working?")
+		`
 
  - **list by drawing order**  `user.mouse_helper_position_save()
 		user.mouse_helper_move_image_relative("ArcGIS Pro list by drawing order.png", 0)
@@ -6321,6 +7723,20 @@
 
  - **toggle layer**  `key(space)`
 
+ - **layer properties**  `key(menu p)`
+
+ - **definition query**  `key(menu p pageup:3 down:7 tab)`
+
+ - **toggle (label|labels|labeling)**  `key(menu b)`
+
+ - **(label|labels|labeling) properties**  `key(menu o)`
+
+ - **remove layer**  `key(menu r)`
+
+ - **export features**  `key(alt t v e f)`
+
+ - **export table**  `key(alt t v e t)`
+
  - **[open] attribute table**  `key(ctrl-t)`
 
  - **toggle (select|selection)**  `key(ctrl-space)`
@@ -6332,12 +7748,6 @@
  - **(switch|invert) selection**  `key(ctrl-u)`
 
  - **clear table selection**  `key(ctrl-shift-a)`
-
- - **zoom to selected**  `key(ctrl-shift-plus)`
-
- - **flash (selected|active)**  `key(ctrl-8)`
-
- - **pan to (selected|active)**  `key(ctrl-n)`
 
  - **next column**  `key(tab)`
 
@@ -6358,6 +7768,8 @@
  - **[custom] sort**  `key(ctrl-shift-s)`
 
  - **toggle aliases**  `key(ctrl-shift-n)`
+
+ - **add to current map**  `key(menu a)`
 
  - **pan west**  `user.pan_arcgis_pro_map('west',1)`
 
@@ -6478,11 +7890,7 @@
 		sleep(0.2)
 		key(x a)`
 
- - **menu map frame**  `key(esc:5 alt)
-		sleep(0.2)
-		key(j f)
-		
-		# map menu shortcuts`
+ - **menu map frame**  `key(esc:5 alt j 5)`
 
  - **zoom [to] (world|full extent)**  `key(alt-m f e)`
 
@@ -6506,12 +7914,13 @@
 		sleep(0.2)
 		key(m s b a)`
 
- - **clear selection**  `key(esc:5)
-		key(alt)
-		sleep(0.2)
-		key(m c l)
-		
-		# edit short cuts`
+ - **clear selection**  `key(esc:5 alt m c x)`
+
+ - **new layout**  `key(alt n n l)`
+
+ - **new custom layout**  `key(alt n n l c tab:4)`
+
+ - **insert map**  `key(alt n m g)`
 
  - **save edits**  `key(esc:5)
 		key(alt)
@@ -6530,9 +7939,13 @@
  - **add field**  `key(esc:5)
 		key(alt)
 		sleep(0.2)
-		key(t v f n)
-		
-		# field many shortcuts`
+		key(t v f n)`
+
+ - **zoom [to] selected**  `key(alt t v r z)`
+
+ - **flash (selected|active)**  `key(alt t v r f)`
+
+ - **pan [to] (selected|active)**  `key(alt t v r p)`
 
  - **save fields**  `key(esc:5)
 		key(alt)
@@ -6545,14 +7958,273 @@
 		sleep(0.2)
 		key(s x l)
 		sleep(0.5)
-		key(down:3)`
+		key(down:3)
+		# map frame menu shortcuts`
+
+ - **[set] map position**  `key(esc:5 alt j f s p)`
 
 
 
-#  cheatsheet
+#  Excel
 
 
- - **print cheatsheet**  `user.cheatsheet()`
+ - **save as**  `key(alt-f)
+		sleep(0.05)
+		key(a)
+		
+		# worksheets`
+
+ - **next (tab|sheet|worksheet)**  `key(ctrl-pagedown)`
+
+ - **previous (tab|sheet|worksheet)**  `key(ctrl-pageup)`
+
+ - **(insert|new) (tab|sheet|worksheet)**  `key(alt-h i s)`
+
+ - **delete (tab|sheet|worksheet)**  `key(alt-h d s)`
+
+ - **rename (tab|sheet|worksheet)**  `key(alt-h o r)`
+
+ - **move (tab|sheet|worksheet)**  `key(alt-h o m)`
+
+ - **select row**  `key(shift-space)`
+
+ - **hide row**  `key(ctrl-9)`
+
+ - **insert column**  `key(alt-h i c)`
+
+ - **delete column**  `key(alt-h d c)`
+
+ - **column width**  `key(alt-h o w)`
+
+ - **auto fit (column|width|column width)**  `key(alt-h o i)`
+
+ - **select column**  `key(ctrl-space)`
+
+ - **hide column**  `key(ctrl-0)`
+
+ - **insert row**  `key(alt-h i r)`
+
+ - **delete row**  `key(alt-h d r)`
+
+ - **row height**  `key(alt-h o h)`
+
+ - **auto fit (row|height|row height)**  `key(alt-h o a)`
+
+ - **go to cell**  `key(alt-f3)`
+
+ - **go to cell <user.letter> <number>**  `key(alt-f3)
+		insert("{user.letter}{number}")
+		key(enter)
+		
+		
+		# [ribbon|menu] headings`
+
+ - **file [ribbon|menu]**  `key(alt-f)`
+
+ - **home [ribbon|menu]**  `key(alt-h)`
+
+ - **insert [ribbon|menu]**  `key(alt-n)`
+
+ - **page layout [ribbon|menu]**  `key(alt-p)`
+
+ - **formula [ribbon|menu]**  `key(alt-m)`
+
+ - **data [ribbon|menu]**  `key(alt-a)`
+
+ - **review [ribbon|menu]**  `key(alt-r)`
+
+ - **(view|you) [ribbon|menu]**  `key(alt-w)`
+
+ - **automate [ribbon|menu]**  `key(alt-u)`
+
+ - **help [ribbon|menu]**  `key(alt-y)
+		key(1)`
+
+ - **excel toolbox [ribbon|menu]**  `key(alt-y)
+		key(2)`
+
+ - **chart design menu**  `key(alt)
+		sleep(0.08)
+		key(j)
+		key(c)`
+
+ - **chart format menu**  `key(alt)
+		sleep(0.08)
+		key(j)
+		key(a)
+		
+		# home menu`
+
+ - **paste values**  `key(alt-e)
+		key(s)
+		key(v)
+		key(enter)`
+
+ - **font color**  `key(alt-h)
+		key(f)
+		key(c)`
+
+ - **highlight cell**  `key(alt-h)
+		key(h)
+		sleep(0.1)
+		key(up:4)
+		key(left:6)`
+
+ - **[(apply|toggle)] word wrap**  `key(alt-h)
+		key(w)`
+
+ - **format number <number> decimal places**  `key(alt-h)
+		key(f)
+		key(m)
+		key(tab)
+		key(up:12)
+		key(down)
+		key(alt-d)
+		insert(number)
+		key(enter)
+		
+		# data menu`
+
+ - **sort**  `key(alt-a)
+		key(s)
+		key(s)
+		
+		# view menu`
+
+ - **freeze top row**  `key(alt-w)
+		key(f)
+		key(r)`
+
+ - **[toggle] freeze panes**  `key(alt-w)
+		key(f)
+		key(f)`
+
+ - **zoom <number> [percent]**  `key(alt-w)
+		sleep(0.1)
+		key(q)
+		sleep(0.1)
+		key(c)
+		sleep(0.1)
+		insert(number)
+		key(enter)
+		
+		# chart shortcuts`
+
+ - **select (object|chart|graph)**  `key(alt-w)
+		key(k)
+		sleep(1)
+		key(tab)
+		sleep(0.1)
+		key(tab)
+		sleep(0.1)
+		key(tab)
+		key(down:2)`
+
+ - **close navigation [pane]**  `key(alt-w)
+		key(k)
+		sleep(0.08)
+		key(ctrl-space)
+		sleep(0.08)
+		key(c)`
+
+ - **select only (object|chart|graph)**  `key(alt-w)
+		key(k)
+		sleep(1)
+		key(tab)
+		sleep(0.1)
+		key(tab)
+		sleep(0.1)
+		key(tab)
+		key(down:2)
+		key(enter)
+		sleep(0.5)
+		key(alt-w)
+		key(k)
+		sleep(0.5)
+		key(ctrl-space)
+		key(c)
+		`
+
+ - **select [chart] item**  `key(alt)
+		sleep(0.08)
+		key(j)
+		key(a)
+		key(e)
+		key(alt-down)`
+
+ - **format selected (element|item)**  `key(menu)
+		key(up)
+		key(enter)`
+
+ - **add [chart] (element|item)**  `key(alt)
+		sleep(0.2)
+		key(j c a)`
+
+ - **add horizontal axis title**  `key(alt)
+		sleep(0.2)
+		key(j c a a h)`
+
+ - **add vertical axis title**  `key(alt)
+		sleep(0.2)
+		key(j c a a v)`
+
+ - **add [chart] title**  `key(alt)
+		sleep(0.2)
+		key(j c a c a)`
+
+ - **format [chart] title**  `key(alt)
+		sleep(0.2)
+		key(j a e alt-down down)
+		sleep(0.2)
+		key(enter)
+		
+		`
+
+ - **exit (pane|panel)**  `key(ctrl-space)
+		key(c)
+		
+		##formulas`
+
+ - **(formula|equation) concatenate**  `insert("concat(")`
+
+ - **(formula|equation) (max|maximum)**  `insert("max(")`
+
+ - **(formula|equation) minimum**  `insert("min(")`
+
+ - **(formula|equation) sum**  `insert("sum(")`
+
+ - **(formula|equation) average**  `insert("average(")`
+
+ - **(formula|equation) some product**  `insert("sumproduct(")`
+
+ - **(formula|equation) if**  `insert("if(")`
+
+ - **(formula|equation) text**  `insert("text(")`
+
+ - **(formula|equation) text join**  `insert("textjoin(")`
+
+ - **(formula|equation) character**  `insert("char(")`
+
+ - **(formula|equation) square root**  `insert("sqrt(")`
+
+ - **(formula|equation) normal distribution**  `insert("norm.dist(")`
+
+ - **(formula|equation) count if**  `insert("countif(")`
+
+ - **average <user.letter>**  `insert("=average({letter}:{letter})")
+		key(enter)`
+
+ - **minimum <user.letter>**  `insert("=min({letter}:{letter})")
+		key(enter)`
+
+ - **maximum <user.letter>**  `insert("=max({letter}:{letter})")
+		key(enter)
+		
+		`
+
+ - **[(formula|equation)] line break**  `insert("char(10)")`
+
+ - **column <user.letter>**  `insert("{letter}:{letter}")`
 
 
 
@@ -6636,38 +8308,31 @@
 
  - **menu table design**  `key(alt)
 		sleep(0.05)
-		key(j)
-		key(t)`
+		key(j t)`
 
  - **menu table layout**  `key(alt)
 		sleep(0.05)
-		key(j)
-		key(l)`
+		key(j l)`
 
  - **menu picture format**  `key(alt)
 		sleep(0.05)
-		key(j)
-		key(p)`
+		key(j p)`
 
  - **menu graphics format**  `key(alt)
 		sleep(0.05)
-		key(j)
-		key(g)`
+		key(j g)`
 
  - **menu equation**  `key(alt)
 		sleep(0.05)
-		key(j)
-		key(e)`
+		key(j e)`
 
  - **menu video format**  `key(alt)
 		sleep(0.1)
-		key(j)
-		key(p)`
+		key(j p)`
 
  - **menu [video] playback**  `key(alt)
 		sleep(0.1)
-		key(j)
-		key(n)
+		key(j n)
 		
 		#file menu`
 
@@ -6694,13 +8359,11 @@
 
  - **font size**  `key(alt)
 		sleep(0.3)
-		key(h f)
-		key(s)`
+		key(h f s)`
 
  - **font size <number>**  `key(alt)
 		sleep(0.3)
-		key(h f)
-		key(s)
+		key(h f s)
 		sleep(0.05)
 		insert(number)
 		sleep(0.05)
@@ -6770,10 +8433,7 @@
 
  - **apply numbers [with] parentheses**  `key(alt)
 		sleep(0.3)
-		key(h n)
-		key(left:12)
-		key(right:2)
-		key(enter)`
+		key(h n left:12 right:2 enter)`
 
  - **start [(numbers|numbering)] at <number>**  `key(alt)
 		sleep(0.3)
@@ -6797,32 +8457,17 @@
 		sleep(0.3)
 		key(h z p a o)`
 
- - **[text] align left**  `key(alt-h)
-		key(a)
-		key(l)`
+ - **[text] align left**  `key(alt-h a l)`
 
- - **[text] align center**  `key(alt-h)
-		key(a)
-		key(c)`
+ - **[text] align center**  `key(alt-h a c)`
 
- - **[text] align right**  `key(alt-h)
-		key(a)
-		key(r)`
+ - **[text] align right**  `key(alt-h a r)`
 
- - **[text] align top**  `key(alt-h)
-		key(a)
-		key(t)
-		key(t)`
+ - **[text] align top**  `key(alt-h a t:2)`
 
- - **[text] align middle**  `key(alt-h)
-		key(a)
-		key(t)
-		key(m)`
+ - **[text] align middle**  `key(alt-h a t m)`
 
- - **[text] align bottom**  `key(alt-h)
-		key(a)
-		key(t)
-		key(b)`
+ - **[text] align bottom**  `key(alt-h a t b)`
 
  - **clear (fill|fell|feel)**  `key(alt-h)
 		sleep(0.05)
@@ -7802,11 +9447,11 @@
 		key(alt-p)
 		key(enter)`
 
- - **list indent**  `key(alt)
+ - **(demote|list indent)**  `key(alt)
 		sleep(0.2)
 		key(h a i)`
 
- - **list dedent**  `key(alt)
+ - **(promote|list dedent)**  `key(alt)
 		sleep(0.2)
 		key(h a o)`
 
@@ -8136,13 +9781,13 @@
 		# center on screen by toggling between webview and print view
 		# strangely this doesn't work when we put the two key sequences together`
 
- - **view webpage**  `key(alt)
+ - **[view] web [page] layout**  `key(alt)
 		key(w)
 		sleep(0.25)
 		key(l)
 		key(1)`
 
- - **view print**  `key(alt-w)
+ - **[view] print layout**  `key(alt-w)
 		sleep(0.15)
 		key(p)
 		`
@@ -8321,48 +9966,6 @@
 
 
 
-#  edge
-
-
- - **refresh**  `key(ctrl-f5)`
-
- - **[toggle] full screen**  `key(f11)`
-
- - **[toggle] read aloud**  `key(ctrl-shift-u)`
-
- - **[toggle] immersive reader**  `key(f9)`
-
- - **address bar**  `key(alt-d)`
-
- - **move tab to window**  `key(alt-d)
-		key(ctrl-a)
-		key(ctrl-c)
-		key(ctrl-w)
-		key(ctrl-n)
-		sleep(0.1)
-		key(alt-d)
-		key(ctrl-a)
-		key(ctrl-v)
-		key(enter)`
-
- - **clear cache**  `key(ctrl-shift-del)
-		sleep(2)
-		key(tab:11)
-		key(enter)
-		sleep(0.3)
-		user.tab_close_wrapper()
-		# for use in gmail (to delete emails)`
-
- - **mark for deletion**  `key(x)
-		sleep(0.2)
-		key(down)
-		
-		# downloads`
-
- - **save download [as]**  `key(ctrl-j tab:2 enter)`
-
-
-
 #  excel powerpoint shared
 
 
@@ -8530,9 +10133,9 @@
 
  - **list view**  `key(ctrl-shift-4)`
 
- - **detailed view**  `key(ctrl-shift-5)`
+ - **detailed view**  `key(ctrl-shift-6)`
 
- - **distraction free [view]**  `key(ctrl-shift-6)`
+ - **distraction free [view]**  `key(ctrl-shift-5)`
 
  - **process desire to learn downloads**  `user.process_desire_to_learn_downloads()
 		`
@@ -8552,6 +10155,298 @@
 
 
  - **(git|get)**  `insert('git ')`
+
+
+
+#  global
+
+
+ - **hello hello**  `speech.disable()`
+
+ - **[hello] come [on] in**  `speech.disable()`
+
+ - **hello what's up**  `speech.disable()`
+
+ - **computer [go to] sleep**  `speech.disable()`
+
+ - **computer stop listening**  `speech.disable()`
+
+ - **computer close your ears**  `speech.disable()`
+
+ - **volume up**  `key(volup)`
+
+ - **volume down**  `key(voldown)`
+
+ - **volume mute**  `key(mute)`
+
+ - **launch explorer**  `key(super-e)`
+
+ - **screen snip**  `key(super-shift-s)`
+
+ - **toggle Bluetooth**  `key(super-a)
+		sleep(1)
+		key(right)
+		sleep(0.5)
+		key(tab enter)
+		sleep(0.7)
+		key(space esc)
+		
+		# cross application common shortcuts`
+
+ - **save**  `key(ctrl-s)`
+
+ - **search**  `key(ctrl-f)`
+
+ - **context menu**  `key(menu)`
+
+ - **open up <user.text>**  `insert(text)
+		sleep(0.05)
+		key(enter)`
+
+ - **open up <user.letter>**  `key(letter)
+		sleep(0.05)
+		key(enter)`
+
+ - **open up <number>**  `insert("{number}")
+		sleep(0.15)
+		key(enter)
+		# common words`
+
+ - **(my|bee jay) name**  `insert("Barry Kronenfeld")`
+
+ - **my first name**  `insert("Barry")
+		`
+
+ - **(my|bee jay) gmail**  `insert("barrykronenfeld@gmail.com")`
+
+ - **(my|bee jay) (email|mail)**  `insert("bjkronenfeld@eiu.edu")`
+
+ - **dotcom**  `insert(".com")`
+
+ - **daddy to you**  `insert(".edu")
+		`
+
+ - **inside inches**  `user.insert_between('"', '"')`
+
+ - **inside feet**  `user.insert_between("'", "'")
+		`
+
+ - **double brief {user.abbreviation} {user.abbreviation}**  `"{abbreviation} {abbreviation_2}"`
+
+ - **double under brief {user.abbreviation} excel{user.abbreviation}**  `"{abbreviation}_{abbreviation_2}"`
+
+ - **(numb|number) phrase <user.formatters> <user.text> <number>**  `insert(user.formatted_text(text, formatters))
+		insert(" ")
+		insert(number)
+		`
+
+ - **(numb|number) phrase <user.text> <number>**  `insert(text)
+		insert(" ")
+		insert("{number}")`
+
+ - **(numb|number) phrase <number> <user.text>**  `insert("{number}")
+		insert(" ")
+		insert(text)`
+
+ - **(numb|number) phrase <number> <user.text> <number>**  `insert(number_1)
+		insert(" ")
+		insert(text)
+		insert(" ")
+		insert(number_2)`
+
+ - **(numb|number) phrase <user.text> <number> <user.text>**  `insert(text_1)
+		insert(" ")
+		insert("{number}")
+		insert(" ")
+		insert(text_2)`
+
+ - **(numb|number) phrase <number> <user.text> <number> <user.text>**  `insert(number_1)
+		insert(" ")
+		insert(text_1)
+		insert(" ")
+		insert(number_2)
+		insert(" ")
+		insert(text_2)`
+
+ - **(numb|number) phrase <user.text> <number> <user.text> <number>**  `insert(text_1)
+		insert(" ")
+		insert(number_1)
+		insert(" ")
+		insert(text_2)
+		insert(" ")
+		insert(number_2)
+		`
+
+ - **enter object**  `key(f2)
+		
+		`
+
+ - **undo**  `key(ctrl-z)`
+
+ - **redo**  `key(ctrl-y)`
+
+ - **focus taskbar**  `key(super-b)`
+
+ - **punch <number>**  `edit.right()
+		repeat(number_1 - 1)
+		insert(' ')`
+
+ - **right parent**  `insert(")")`
+
+ - **[left] parent**  `insert("(")`
+
+ - **(inside (parent|parents)|parentheses)**  `user.insert_between('(',')')`
+
+ - **inside (angle|angles)**  `user.insert_between('<','>')`
+
+ - **alt**  `key('alt')`
+
+ - **launch**  `key(super)
+		sleep(1.0)`
+
+ - **update cheat sheet**  `user.cheatsheet()
+		sleep(1.5)
+		key(super)
+		sleep(0.2)
+		insert("Anaconda")
+		sleep(0.25)
+		key(enter)
+		sleep(2.5)
+		insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
+		key(enter)
+		insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
+		key(enter)
+		sleep(1.5)
+		user.add_links_to_cheatsheet()
+		sleep(0.5)
+		app.window_close()`
+
+ - **show cheat sheet**  `key(super)
+		sleep(0.2)
+		insert("Anaconda")
+		sleep(0.25)
+		key(enter)
+		sleep(2.5)
+		insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
+		key("enter")
+		sleep(0.5)
+		insert("python -m http.server 8080")
+		sleep(0.5)
+		key("enter")
+		key(super)
+		sleep(0.2)
+		insert("Edge")
+		sleep(0.5)
+		key("enter")
+		sleep(0.3)
+		insert("localhost:8080/cheatsheet.html")
+		key("enter")`
+
+ - **release keys**  `key(shift:up)
+		key(ctrl:up)
+		key(alt:up)
+		key(super:up)`
+
+ - **escape out**  `key(esc)
+		key(esc)
+		key(esc)
+		key(esc)
+		key(esc)
+		
+		`
+
+ - **tab jiggle**  `key(tab)
+		sleep(0.05)
+		key(shift-tab)`
+
+ - **ef six jiggle**  `key(f6)
+		sleep(0.05)
+		key(shift-f6)`
+
+ - **right jiggle**  `key(right)
+		sleep(0.05)
+		key(left)`
+
+ - **left jiggle**  `key(left)
+		sleep(0.5)
+		key(right)`
+
+ - **down jiggle**  `key(down)
+		sleep(0.05)
+		key(up)`
+
+ - **up jiggle**  `key(up)
+		sleep(0.05)
+		key(down)`
+
+ - **(switch|touch) (application|applications)**  `key(alt-tab)`
+
+ - **switch (other|second) application**  `key(alt:down)
+		key(tab:3)
+		key(alt:up)`
+
+ - **switch third application**  `key(alt:down)
+		key(tab:4)
+		key(alt:up)`
+
+ - **delete line**  `edit.line_start()
+		edit.line_start()
+		edit.line_start()
+		edit.line_start()
+		edit.extend_line_end()
+		key(backspace:2)`
+
+ - **(delete|flick) way right**  `edit.extend_line_end()
+		sleep(0.1)
+		key(delete)`
+
+ - **{user.search_engine} hunt**  `user.search_with_search_engine(search_engine, "")
+		sleep(0.5)
+		
+		`
+
+ - **stop**  `user.mouse_scroll_stop()
+		user.stop_repeating()`
+
+ - **shutdown computer**  `key(super)
+		sleep(0.2)
+		key(up)
+		sleep(0.2)
+		key(right)
+		key(enter)
+		sleep(0.2)
+		key(down:2)
+		sleep(0.2)
+		key(enter)`
+
+ - **restart computer**  `key(super)
+		sleep(0.2)
+		key(up)
+		sleep(0.2)
+		key(right)
+		key(enter)
+		sleep(0.2)
+		key(down:3)
+		sleep(0.2)
+		key(enter)
+		
+		
+		# key presses
+		# works in conjunction with the words to replace`
+
+ - **press A**  `key(a)`
+
+ - **press B**  `key(b)`
+
+ - **press C**  `key(c)`
+
+ - **press D**  `key(d)`
+
+ - **press E**  `key(e)`
+
+ - **press F**  `key(f)`
+
+ - **press G**  `key(g)`
 
 
 
@@ -8820,7 +10715,7 @@
 
  - **[matplotlib] create subplots**  `key(enter)
 		key(up)
-		user.insert_between("fig, ax = plt.subplots(",")")`
+		user.insert_between("fig, axes = plt.subplots(",")")`
 
  - **[matplotlib] show plot**  `insert("plt.show()")
 		key(enter)`
@@ -8852,7 +10747,14 @@
 
  - **[matplotlib] insert Bezier vertex**  `edit.line_insert_down()
 		user.insert_between("[(","),Path.CURVE3],")
-		`
+		
+		# AXIS LABELS AND TICK MARKS`
+
+ - **axis off**  `insert("ax.axis('off')")`
+
+ - **axis equaln**  `insert("ax.axis('equal')")`
+
+ - **set axis title**  `user.insert_between("ax.set_title('","', y = -0.3)")`
 
  - **{user.variable_list} [dot] plot**  `user.insert_between("{user.variable_list}.plot(",")")`
 
@@ -9042,25 +10944,6 @@
 
  - **define function**  `user.insert_between("def ",":")`
 
- - **(absolute value)|(funk absolute)|(function absolute)|(function absolute value)|(funk absolute value)**  `edit.insert_between("abs(",")")`
-
- - **(funk|function) sine**  `insert('math.sin()')
-		edit.left()`
-
- - **(funk|function) cosine**  `insert('math.cos()')
-		edit.left()`
-
- - **(funk|function) radians**  `insert('math.radians()')
-		edit.left()`
-
- - **(funk|function) (maximum|max)**  `insert('max()')
-		edit.left()`
-
- - **(funk|function) (minimum|min)**  `insert('min()')
-		edit.left()
-		
-		# OPERATIONS`
-
  - **(operation|algebra) (minus|subtract)**  `insert(" - ")`
 
  - **(operation|algebra) (times|multiply)**  `insert(" * ")`
@@ -9077,24 +10960,17 @@
 
  - **(operation increment|increment by)**  `insert(" += ")`
 
- - **increment {user.variable_list} [by]**  `insert(variable_list)
-		insert(" += ")`
+ - **increment {user.variable_list} [by]**  `insert("{variable_list} += ")`
 
  - **(operation|algebra) square root**  `insert("**0.5")`
 
- - **square root [of] <number>**  `insert(number)
-		insert("**0.5")`
+ - **square root [of] <number>**  `insert("{number} ** 0.5")`
 
- - **square root [of] {user.variable_list}**  `insert(variable_list)
-		insert("**0.5")`
+ - **square root [of] {user.variable_list}**  `insert("{variable_list} ** 0.5")`
 
- - **select scope**  `code.extend_scope_out()
-		
-		# indices`
+ - **select scope**  `code.extend_scope_out()`
 
- - **sub**  `user.insert_between("[","]")
-		
-		# variables`
+ - **sub**  `user.insert_between("[","]")`
 
  - **variable {user.variable_list}**  `insert(variable_list)`
 
@@ -9241,11 +11117,11 @@
  - **module {user.module_list} dot**  `insert(module_list)
 		insert(".")
 		
-		# functions`
+		# FUNCTIONS`
 
- - **function {user.function_list}**  `user.insert_between("{function_list}(",")")
-		
-		# numpy`
+ - **function {user.function_list}**  `user.insert_between("{function_list}(",")")`
+
+ - **function name {user.function_list}**  `insert("{function_list}")`
 
  - **numpy (linear|line) (space|spacing)**  `user.insert_between("np.linspace(",")")`
 
@@ -9408,7 +11284,7 @@
 		sleep(0.05)
 		#user.mouse_helper_position_restore()`
 
- - **go to line <number>**  `key(esc ctrl-l)
+ - **go [to line] <number>**  `key(esc ctrl-l)
 		sleep(0.1)
 		insert("{number}")
 		key(enter)`
@@ -9882,1804 +11758,84 @@
 
 
 
-# mac emacs
+#  edge
 
 
- - **cancel**  `user.emacs("keyboard-quit")`
+ - **focus favorites**  `key(alt-shift-b)`
 
- - **exchange**  `user.emacs("exchange-point-and-mark")`
+ - **focus toolbar**  `key(alt-shift-t)`
 
- - **execute**  `user.emacs("execute-extended-command")`
+ - **settings**  `key(alt-e)`
 
- - **execute {user.emacs_command}**  `user.emacs(emacs_command)`
+ - **open downloads**  `key(ctrl-j)`
 
- - **execute <user.text>**  `user.emacs("execute-extended-command")
-		user.insert_formatted(text, "DASH_SEPARATED")`
+ - **duplicate tab**  `key(ctrl-shift-k)`
 
- - **evaluate | (evaluate | eval) (exper | expression)**  `user.emacs("eval-expression")`
+ - **refresh**  `key(ctrl-f5)`
 
- - **prefix**  `user.emacs_prefix()`
+ - **(open|reopen) last [closed]**  `key(ctrl-shift-t)`
 
- - **prefix <user.number_signed_small>**  `user.emacs_prefix(number_signed_small)`
+ - **toggle fit**  `key(ctrl-backslash)`
 
- - **abort recursive [edit]**  `user.emacs("abort-recursive-edit")`
+ - **rotate**  `key(ctrl-rbrack)`
 
- - **browse kill ring**  `user.emacs("browse-kill-ring")`
+ - **clear browsing data**  `key(ctrl-shift-del)`
 
- - **fill paragraph**  `user.emacs("fill-paragraph")`
+ - **focus content**  `key(ctrl-f6)`
 
- - **insert char**  `user.emacs("insert-char")`
+ - **immersive reader**  `key(f9)`
 
- - **occurs**  `user.emacs("occur")`
+ - **caret browsing**  `key(f7)`
 
- - **other scroll [down]**  `user.emacs("scroll-other-window")`
+ - **[toggle] full screen**  `key(f11)`
 
- - **other scroll up**  `user.emacs("scroll-other-window-down")`
+ - **[toggle] read aloud**  `key(ctrl-shift-u)`
 
- - **package autoremove**  `user.emacs("package-autoremove")`
+ - **[toggle] immersive reader**  `key(f9)`
 
- - **package list | [package] list packages**  `user.emacs("list-packages")`
+ - **address bar**  `key(alt-d)`
 
- - **reverse (lines | region)**  `user.emacs("reverse-region")`
-
- - **save buffers kill emacs**  `user.emacs("save-buffers-kill-emacs")`
-
- - **save some buffers**  `user.emacs("save-some-buffers")`
-
- - **sort lines**  `user.emacs("sort-lines")`
-
- - **sort words**  `user.emacs("sort-words")`
-
- - **file [loop] continue**  `user.emacs("fileloop-continue")`
-
- - **go directory**  `user.emacs("dired-jump")`
-
- - **other go directory**  `user.emacs("dired-jump-other-window")`
-
- - **[toggle] debug on error**  `user.emacs("toggle-debug-on-error")`
-
- - **[toggle] debug on quit**  `user.emacs("toggle-debug-on-quit")`
-
- - **[toggle] input method**  `user.emacs("toggle-input-method")`
-
- - **[toggle] truncate lines**  `user.emacs("toggle-truncate-lines")`
-
- - **[toggle] word wrap**  `user.emacs("toggle-word-wrap")`
-
- - **manual**  `user.emacs("man")`
-
- - **manual <user.text>**  `user.emacs("man")
-		user.insert_formatted(text, "DASH_SEPARATED")
-		
-		# BUFFER SWITCHING #`
-
- - **switch**  `user.emacs("switch-to-buffer")`
-
- - **other switch**  `user.emacs("switch-to-buffer-other-window")`
-
- - **display**  `user.emacs("display-buffer")`
-
- - **shell command**  `user.emacs("shell-command")`
-
- - **shell command inserting**  `user.emacs_prefix()
-		user.emacs("shell-command")`
-
- - **shell command on region**  `user.emacs("shell-command-on-region")`
-
- - **shell command on region replacing**  `user.emacs_prefix()
-		user.emacs("shell-command-on-region")
-		
-		# CUSTOMIZE #`
-
- - **customize face**  `user.emacs("customize-face")`
-
- - **customize face <user.text>**  `user.emacs("customize-face")
-		user.insert_formatted(text, "DASH_SEPARATED")`
-
- - **customize group**  `user.emacs("customize-group")`
-
- - **customize variable**  `user.emacs("customize-variable")`
-
- - **(customize | custom) [theme] visit theme**  `user.emacs("custom-theme-visit-theme")`
-
- - **auto fill mode**  `user.emacs("auto-fill-mode")`
-
- - **dired omit mode**  `user.emacs("dired-omit-mode")`
-
- - **display line numbers mode**  `user.emacs("display-line-numbers-mode")`
-
- - **electric quote local mode**  `user.emacs("electric-quote-local-mode")`
-
- - **emacs lisp mode**  `user.emacs("emacs-lisp-mode")`
-
- - **fundamental mode**  `user.emacs("fundamental-mode")`
-
- - **global display line numbers mode**  `user.emacs("global-display-line-numbers-mode")`
-
- - **global highlight line mode**  `user.emacs("global-hl-line-mode")`
-
- - **global visual line mode**  `user.emacs("global-visual-line-mode")`
-
- - **highlight line mode**  `user.emacs("hl-line-mode")`
-
- - **lisp interaction mode**  `user.emacs("lisp-interaction-mode")`
-
- - **markdown mode**  `user.emacs("markdown-mode")`
-
- - **menu bar mode**  `user.emacs("menu-bar-mode")`
-
- - **overwrite mode**  `user.emacs("overwrite-mode")`
-
- - **paredit mode**  `user.emacs("paredit-mode")`
-
- - **rainbow mode**  `user.emacs("rainbow-mode")`
-
- - **read only mode**  `user.emacs("read-only-mode")`
-
- - **shell script mode**  `user.emacs("sh-mode")`
-
- - **sub word mode**  `user.emacs("subword-mode")`
-
- - **tab bar mode**  `user.emacs("tab-bar-mode")`
-
- - **talon script mode**  `user.emacs("talonscript-mode")`
-
- - **text mode**  `user.emacs("text-mode")`
-
- - **transient mark mode**  `user.emacs("transient-mark-mode")`
-
- - **visual line mode**  `user.emacs("visual-line-mode")`
-
- - **whitespace mode**  `user.emacs("whitespace-mode")`
-
- - **emacs record**  `user.emacs("kmacro-start-macro")`
-
- - **emacs stop**  `user.emacs("kmacro-end-macro")`
-
- - **emacs play**  `user.emacs("kmacro-end-and-call-macro")`
-
- - **profiler start**  `user.emacs("profiler-start")`
-
- - **profiler stop**  `user.emacs("profiler-stop")`
-
- - **profiler report**  `user.emacs("profiler-report")`
-
- - **split solo**  `user.emacs("delete-other-windows")`
-
- - **[split] rebalance**  `user.emacs("balance-windows")`
-
- - **split shrink**  `user.emacs("shrink-window-if-larger-than-buffer")`
-
- - **other [split] shrink**  `user.split_next()
-		user.emacs("shrink-window-if-larger-than-buffer")
-		user.split_last()`
-
- - **split grow**  `user.emacs("enlarge-window")`
-
- - **split grow <number_small>**  `user.emacs("enlarge-window", number_small)`
-
- - **split shrink <number_small>**  `amount = number_small or 1
-		user.emacs("enlarge-window", 0 - amount)`
-
- - **split widen [<number_small>]**  `user.emacs("enlarge-window-horizontally", number_small or 1)`
-
- - **split narrow [<number_small>]**  `user.emacs("shrink-window-horizontally", number_small or 1)
-		
-		# ----- HELP ----- #`
-
- - **apropos**  `user.emacs_help("a")`
-
- - **describe (fun | function)**  `user.emacs_help("f")`
-
- - **describe key**  `user.emacs_help("k")`
-
- - **describe key briefly**  `user.emacs_help("c")`
-
- - **describe symbol**  `user.emacs_help("o")`
-
- - **describe variable**  `user.emacs_help("v")`
-
- - **describe mode**  `user.emacs_help("m")`
-
- - **describe bindings**  `user.emacs_help("b")`
-
- - **describe (char | character)**  `user.emacs("describe-character")`
-
- - **describe text properties**  `user.emacs("describe-text-properties")`
-
- - **describe face**  `user.emacs("describe-face")`
-
- - **view lossage**  `user.emacs_help("l")`
-
- - **apropos <user.text>**  `user.emacs_help("a")
-		user.insert_formatted(text, "DASH_SEPARATED")
-		key(enter)`
-
- - **describe (fun | function) <user.text>**  `user.emacs_help("f")
-		user.insert_formatted(text, "DASH_SEPARATED")
-		key(enter)`
-
- - **describe symbol <user.text>**  `user.emacs_help("o")
-		user.insert_formatted(text, "DASH_SEPARATED")
-		key(enter)`
-
- - **describe variable <user.text>**  `user.emacs_help("v")
-		user.insert_formatted(text, "DASH_SEPARATED")
-		key(enter)
-		
-		# ----- FILES & BUFFERS -----`
-
- - **file open**  `user.emacs("find-file")`
-
- - **file rename**  `user.emacs("rename-file")`
-
- - **(file open | find file) at point**  `user.emacs("ffap")`
-
- - **other file open**  `user.emacs("find-file-other-window")`
-
- - **(file | buffer) close**  `user.emacs("kill-buffer")
-		key(enter)
-		`
-
- - **buffer kill**  `user.emacs("kill-buffer")`
-
- - **buffer bury**  `user.emacs("bury-buffer")`
-
- - **buffer revert | revert buffer**  `user.emacs("revert-buffer")`
-
- - **buffer finish**  `edit.save()
-		user.emacs("server-edit")`
-
- - **buffer list**  `user.emacs("buffer-menu")`
-
- - **buffer next**  `user.emacs("next-buffer")`
-
- - **buffer last**  `user.emacs("previous-buffer")`
-
- - **buffer rename**  `user.emacs("rename-buffer")`
-
- - **buffer widen**  `user.emacs("widen")`
-
- - **buffer narrow | [buffer] narrow to region**  `user.emacs("narrow-to-region")`
-
- - **diff (buffer | [buffer] with file)**  `user.emacs("diff-buffer-with-file")
-		key(enter)
-		
-		# ----- MOTION AND EDITING ----- #`
-
- - **mark**  `user.emacs("set-mark-command")`
-
- - **go back**  `user.emacs("pop-to-mark-command")`
-
- - **global [go] back**  `user.emacs("pop-global-mark")`
-
- - **auto indent**  `user.emacs("indent-region")`
-
- - **indent <user.number_signed_small>**  `user.emacs("indent-rigidly", number_signed_small)`
-
- - **search back**  `user.emacs("isearch-backward")`
-
- - **(search regex | regex search)**  `user.emacs("isearch-forward-regexp")`
-
- - **(search regex | regex search) back**  `user.emacs("isearch-backward-regexp")`
-
- - **replace**  `user.emacs("query-replace")`
-
- - **replace regex | regex replace**  `user.emacs("query-replace-regexp")`
-
- - **search [toggle] words**  `user.emacs("isearch-forward-word")`
-
- - **search [toggle] symbol**  `user.emacs("isearch-forward-symbol")`
-
- - **search edit**  `user.emacs_meta("e")`
-
- - **search toggle case [fold | sensitive]**  `user.emacs_meta("c")`
-
- - **search toggle regex**  `user.emacs_meta("r")`
-
- - **highlight lines matching [regex]**  `user.emacs("highlight-lines-matching-regexp")`
-
- - **highlight phrase**  `user.emacs("highlight-phrase")`
-
- - **highlight regex**  `user.emacs("highlight-regexp")`
-
- - **unhighlight (regex | phrase)**  `user.emacs("unhighlight-regexp")`
-
- - **unhighlight all**  `user.emacs_prefix()
-		user.emacs("unhighlight-regexp")
-		`
-
- - **recenter**  `user.emacs_prefix()
-		user.emacs("recenter-top-bottom")`
-
- - **(center | [center] <number_small> from) top**  `user.emacs("recenter-top-bottom", number_small or 0)`
-
- - **(center | [center] <number_small> from) bottom**  `number = number_small or 0
-		user.emacs("recenter-top-bottom", -1 - number)`
-
- - **go <number> top**  `edit.jump_line(number)
-		user.emacs("recenter-top-bottom", 0)`
-
- - **go <number> bottom**  `edit.jump_line(number)
-		user.emacs("recenter-top-bottom", -2)
-		`
-
- - **next error | error next**  `user.emacs("next-error")`
-
- - **last error | error last**  `user.emacs("previous-error")`
-
- - **term right**  `user.emacs("forward-sexp")`
-
- - **term left**  `user.emacs("backward-sexp")`
-
- - **term up**  `user.emacs("backward-up-list")`
-
- - **term end**  `user.emacs("up-list")`
-
- - **term down**  `user.emacs("down-list")`
-
- - **term kill**  `user.emacs("kill-sexp")`
-
- - **term wipe**  `user.emacs("kill-sexp", -1)`
-
- - **term (mark | select)**  `user.emacs("mark-sexp")`
-
- - **term copy**  `user.emacs("mark-sexp")
-		edit.copy()`
-
- - **term freeze**  `user.emacs("mark-sexp")
-		user.emacs("comment-region")`
-
- - **term [auto] indent**  `user.emacs("mark-sexp")
-		user.emacs("indent-region")
-		`
-
- - **(sentence | sent) (right | end)**  `edit.sentence_end()`
-
- - **(sentence | sent) (left | start)**  `edit.sentence_start()`
-
- - **(sentence | sent) kill**  `user.emacs("kill-sentence")`
-
- - **graph kill**  `user.emacs("kill-paragraph")`
-
- - **graph up**  `edit.paragraph_start()`
-
- - **graph down**  `edit.paragraph_end()`
-
- - **graph mark**  `user.emacs("mark-paragraph")`
-
- - **graph copy**  `user.emacs("mark-paragraph")
-		edit.copy()`
-
- - **graph cut**  `user.emacs("mark-paragraph")
-		edit.cut()
-		
-		# NB. can use these to implement "drag <X> left/right/up/down" commands,
-		# but note that 'transpose line' and 'drag line down' are different.`
-
- - **transpose [word | words]**  `user.emacs("transpose-words")`
-
- - **transpose (term | terms)**  `user.emacs("transpose-sexps")`
-
- - **transpose (char | chars)**  `user.emacs("transpose-chars")`
-
- - **transpose (line | lines)**  `user.emacs("transpose-lines")`
-
- - **transpose (sentence | sentences)**  `user.emacs("transpose-sentences")`
-
- - **transpose (graph | graphs | paragraphs)**  `user.emacs("transpose-paragraphs")`
-
- - **register (copy | save)**  `user.emacs("copy-to-register")`
-
- - **register (paste | insert)**  `user.emacs("insert-register")`
-
- - **register jump**  `user.emacs("jump-to-register")`
-
- - **register (copy | save) rectangle**  `user.emacs("copy-rectangle-to-register")`
-
- - **rectangle clear**  `user.emacs("clear-rectangle")`
-
- - **rectangle delete**  `user.emacs("delete-rectangle")`
-
- - **rectangle kill**  `user.emacs("kill-rectangle")`
-
- - **rectangle open**  `user.emacs("open-rectangle")`
-
- - **rectangle (copy | save) [to] register**  `user.emacs("copy-rectangle-to-register")`
-
- - **rectangle (yank | paste)**  `user.emacs("yank-rectangle")`
-
- - **rectangle copy**  `user.emacs("copy-rectangle-as-kill")`
-
- - **rectangle number lines**  `user.emacs("rectangle-number-lines")`
-
- - **project [find] file**  `user.emacs("project-find-file")`
-
- - **project [find] (regex | grep)**  `user.emacs("project-find-regexp")`
-
- - **project [query] replace regex**  `user.emacs("project-query-replace-regexp")`
-
- - **project (dired | directory)**  `user.emacs("projectile-dired")`
-
- - **project [run] shell**  `user.emacs("projectile-run-shell")`
-
- - **project [run] eshell**  `user.emacs("projectile-run-eshell")`
-
- - **project search**  `user.emacs("project-search")`
-
- - **project vc dir**  `user.emacs("project-vc-dir")`
-
- - **project compile [project]**  `user.emacs("projectile-compile-project")`
-
- - **project [run] shell command**  `user.emacs("projectile-run-shell-command-in-root")`
-
- - **project [run] async shell command**  `user.emacs("projectile-run-async-shell-command-in-root")`
-
- - **project (switch [to buffer] | buffer | buff)**  `user.emacs("projectile-switch-to-buffer")`
-
- - **project kill [buffers]**  `user.emacs("projectile-kill-buffers")`
-
- - **project switch [project]**  `user.emacs("project-switch-project")`
-
- - **vc (annotate | blame)**  `user.emacs("vc-annotate")`
-
- - **python mode**  `user.emacs("python-mode")`
-
- - **run python**  `user.emacs("run-python")`
-
- - **python [shell] send buffer**  `user.emacs("python-shell-send-buffer")`
-
- - **python [shell] send file**  `user.emacs("python-shell-send-file")`
-
- - **python [shell] send region**  `user.emacs("python-shell-send-region")`
-
- - **python [shell] send (function | defun)**  `user.emacs("python-shell-send-defun")`
-
- - **python [shell] send statement**  `user.emacs("python-shell-send-statement")`
-
- - **python (shell switch | switch [to] shell)**  `user.emacs("python-shell-switch-to-shell")`
-
- - **smerge mode**  `user.emacs("smerge-mode")`
-
- - **merge next**  `user.emacs("smerge-next")`
-
- - **merge last**  `user.emacs("smerge-prev")`
-
- - **merge keep upper**  `user.emacs("smerge-keep-upper")`
-
- - **merge keep lower**  `user.emacs("smerge-keep-lower")`
-
- - **merge keep this**  `user.emacs("smerge-keep-current")`
-
- - **merge refine**  `user.emacs("smerge-refine")`
-
- - **merge split**  `user.emacs("smerge-resolve")`
-
- - **outline minor mode**  `user.emacs("outline-minor-mode")`
-
- - **outline show all**  `user.emacs("outline-show-all")`
-
- - **outline show entry**  `user.emacs("outline-show-entry")`
-
- - **outline hide entry**  `user.emacs("outline-hide-entry")`
-
- - **outline show [subtree]**  `user.emacs("outline-show-subtree")`
-
- - **outline hide [subtree]**  `user.emacs("outline-hide-subtree")`
-
- - **outline show children**  `user.emacs("outline-show-children")`
-
- - **outline show branches**  `user.emacs("outline-show-branches")`
-
- - **outline hide leaves**  `user.emacs("outline-hide-leaves")`
-
- - **outline hide sublevels**  `user.emacs("outline-hide-sublevels")`
-
- - **outline (hide body | [show] (overview | outline))**  `user.emacs("outline-hide-body")`
-
- - **outline hide other**  `user.emacs("outline-hide-other")`
-
- - **outline forward [same level]**  `user.emacs("outline-forward-same-level")`
-
- - **outline (backward | back) [same level]**  `user.emacs("outline-backward-same-level")`
-
- - **outline next [visible heading]**  `user.emacs("outline-next-visible-heading")`
-
- - **outline (previous | last) [visible heading]**  `user.emacs("outline-previous-visible-heading")`
-
- - **outline insert [heading]**  `user.emacs("outline-insert-heading")`
-
- - **outline up [heading]**  `user.emacs("outline-up-heading")`
-
- - **outline promote**  `user.emacs("outline-promote")`
-
- - **outline demote**  `user.emacs("outline-demote")`
-
- - **outline move [subtree] down**  `user.emacs("outline-move-subtree-down")`
-
- - **outline move [subtree] up**  `user.emacs("outline-move-subtree-up")`
-
- - **outline mark [subtree]**  `user.emacs("outline-mark-subtree")`
-
-
-
-#  git
-
-
- - **git {user.git_command} [<user.git_arguments>]**  `args = git_arguments or ""
-		"git {git_command}{args} "`
-
- - **git commit [<user.git_arguments>] message [<user.prose>]**  `args = git_arguments or ""
-		message = prose or ""
-		user.insert_between('git commit{args} --message "{message}', '"')`
-
- - **git stash [push] [<user.git_arguments>] message [<user.prose>]**  `args = git_arguments or ""
-		message = prose or ""
-		user.insert_between('git stash push{args} --message "{message}', '"')
-		
-		# Optimistic execution for frequently used commands that are harmless (don't
-		# change repository or index state).`
-
- - **git status**  `"git status\n"`
-
- - **git add patch**  `"git add --patch\n"`
-
- - **git show head**  `"git show HEAD\n"`
-
- - **git diff**  `"git diff\n"`
-
- - **git diff (cached | cashed)**  `"git diff --cached\n"`
-
- - **git clone clipboard**  `insert("git clone ")
-		edit.paste()
-		key(enter)`
-
- - **git diff highlighted**  `edit.copy()
-		insert("git diff ")
-		edit.paste()
-		key(enter)`
-
- - **git diff clipboard**  `insert("git diff ")
-		edit.paste()
-		key(enter)`
-
- - **git add highlighted**  `edit.copy()
-		insert("git add ")
-		edit.paste()
-		key(enter)`
-
- - **git add clipboard**  `insert("git add ")
-		edit.paste()
-		key(enter)`
-
- - **git commit highlighted**  `edit.copy()
-		insert("git add ")
-		edit.paste()
-		insert("\ngit commit\n")`
-
-
-
-# mac arc mac
-
-
- - **please [<user.text>]**  `key("cmd-l")
-		sleep(200ms)
-		insert(user.text or "")`
-
-
-
-# mac little-arc mac
-
-
- - **little arc [<user.text>]**  `key("cmd-alt-n")
-		sleep(200ms)
-		insert(user.text or "")`
-
-
-
-#  sleep mode
-
-
- - **(welcome back)+**  `user.mouse_wake()
-		user.history_enable()
-		user.talon_mode()
-		`
-
- - **(talon wake)+**  `speech.enable()`
-
-
-
-# win window management
-
-
- - **window (new | open)**  `app.window_open()`
-
- - **window next**  `app.window_next()`
-
- - **window last**  `app.window_previous()`
-
- - **window close**  `app.window_close()`
-
- - **window hide**  `app.window_hide()`
-
- - **focus <user.running_applications>**  `user.switcher_focus(running_applications)`
-
- - **focus**  `user.switcher_menu()`
-
- - **focus last**  `user.switcher_focus_last()`
-
- - **running list**  `user.switcher_toggle_running()`
-
- - **running close**  `user.switcher_hide_running()`
-
- - **launch <user.launch_applications>**  `user.switcher_launch(launch_applications)`
-
- - **snap <user.window_snap_position>**  `user.snap_window(window_snap_position)`
-
- - **snap next [screen]**  `user.move_window_next_screen()`
-
- - **snap last [screen]**  `user.move_window_previous_screen()`
-
- - **snap screen <number>**  `user.move_window_to_screen(number)`
-
- - **snap <user.running_applications> <user.window_snap_position>**  `user.snap_app(running_applications, window_snap_position)`
-
- - **snap <user.running_applications> [screen] <number>**  `user.move_app_to_screen(running_applications, number)`
-
-
-
-#  c
-
-
- - **state include**  `insert("#include ")`
-
- - **state include system**  `user.insert_between("#include <", ">")`
-
- - **state include local**  `user.insert_between('#include "', '"')`
-
- - **state type deaf**  `insert("typedef ")`
-
- - **state type deaf struct**  `insert("typedef struct")
-		insert("{\n\n}")
-		edit.up()
-		key('tab')
-		
-		# XXX - create a preprocessor tag for these, as they will match cpp, etc`
-
- - **state define**  `"#define "`
-
- - **state (undefine | undeaf)**  `"#undef "`
-
- - **state if (define | deaf)**  `"#ifdef "`
-
- - **[state] define <user.text>**  `"#define {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"`
-
- - **[state] (undefine | undeaf) <user.text>**  `"#undef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"`
-
- - **[state] if (define | deaf) <user.text>**  `"#ifdef {user.formatted_text(text, 'ALL_CAPS,SNAKE_CASE')}"
-		
-		# XXX - preprocessor instead of pre?`
-
- - **state pre if**  `"#if "`
-
- - **state error**  `"#error "`
-
- - **state pre else if**  `"#elif "`
-
- - **state pre end**  `"#endif "`
-
- - **state pragma**  `"#pragma "`
-
- - **state default**  `"default:\nbreak;"`
-
- - **push braces**  `edit.line_end()
-		#insert("{")
-		#key(enter)
-		insert("{}")
-		edit.left()
-		key(enter)
-		key(enter)
-		edit.up()
-		
-		# Declare variables or structs etc.
-		# Ex. * int myList`
-
- - **<user.c_variable> <phrase>**  `insert("{c_variable} ")
-		insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE,NO_SPACES"))
-		`
-
- - **<user.c_variable> <user.letter>**  `insert("{c_variable} {letter} ")`
-
- - **cast to <user.c_cast>**  `"{c_cast}"`
-
- - **standard cast to <user.stdint_cast>**  `"{stdint_cast}"`
-
- - **<user.c_types>**  `"{c_types}"`
-
- - **<user.c_pointers>**  `"{c_pointers}"`
-
- - **<user.c_keywords>**  `"{c_keywords}"`
-
- - **<user.c_signed>**  `"{c_signed}"`
-
- - **standard <user.stdint_types>**  `"{stdint_types}"`
-
- - **int main**  `user.insert_between("int main(", ")")`
-
- - **toggle includes**  `user.code_toggle_libraries()`
-
- - **include <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
-		key(end enter)`
-
-
-
-#  css
-
-
- - **block**  `user.code_block()`
-
- - **attribute [<user.text>]**  `name = user.formatted_text(text or "", "DASH_SEPARATED")
-		user.insert_between("[{name}", "]")
-		`
-
- - **prop <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
-		user.insert_between("{name}: ", ";")
-		
-		# for media/supports queries, or if you don't like prop`
-
- - **rule <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
-		insert("{name}: ")
-		`
-
- - **value <user.number_string> [{user.css_unit}]**  `"{number_string}{css_unit or ''}"`
-
- - **value <user.number_string> point <digit_string> [{user.css_unit}]**  `"{number_string}.{digit_string}{css_unit or ''}"
-		`
-
- - **(value | state) {user.css_global_value}**  `"{css_global_value}"`
-
- - **value <user.text>**  `user.insert_formatted(text, "DASH_SEPARATED")`
-
- - **variable <user.text>**  `name = user.formatted_text(text, "DASH_SEPARATED")
-		insert("var(--{name})")
-		`
-
- - **op var**  `user.insert_between("var(--", ")")`
-
- - **at {user.css_at_rule}**  `"@{css_at_rule} "`
-
- - **unit {user.css_unit}**  `insert(css_unit)`
-
- - **[value] current color**  `"currentColor"`
-
- - **op important**  `" !important"`
-
-
-
-#  java
-
-
- - **state var**  `"var "`
-
- - **boxed [type] {user.java_boxed_type}**  `insert(user.java_boxed_type + " ")`
-
- - **generic [type] {user.java_generic_data_structure}**  `user.insert_between(java_generic_data_structure + "<", ">")
-		
-		# Arrays`
-
- - **type {user.code_type} array**  `insert(user.code_type)
-		user.code_operator_subscript()
-		`
-
- - **[state] {user.java_modifier}**  `insert(user.java_modifier + " ")`
-
- - **op array**  `user.code_operator_subscript()`
-
- - **op new**  `insert("new ")`
-
-
-
-#  javascript
-
-
- - **(op | is) strict equal**  `" === "`
-
- - **(op | is) strict not equal**  `" !== "`
-
- - **op null else**  `" ?? "`
-
- - **state const**  `"const "`
-
- - **state let**  `"let "`
-
- - **state var**  `"var "`
-
- - **state export**  `"export "`
-
- - **state async**  `"async "`
-
- - **state await**  `"await "`
-
- - **dot {user.code_common_member_function}**  `user.insert_between(".{code_common_member_function}(", ")")
-		`
-
- - **state map**  `app.notify('ERROR: Command deprecated; please use "dot map"')`
-
- - **state filter**  `app.notify('ERROR: Command deprecated; please use "dot filter"')`
-
- - **state reduce**  `app.notify('ERROR: Command deprecated; please use "dot reduce"')`
-
- - **state spread**  `"..."`
-
- - **from import**  `user.insert_between(' from  "', '"')`
-
-
-
-#  markdown
-
-
- - **(level | heading | header) one**  `edit.line_start()
-		"# "`
-
- - **(level | heading | header) two**  `edit.line_start()
-		"## "`
-
- - **(level | heading | header) three**  `edit.line_start()
-		"### "`
-
- - **(level | heading | header) four**  `edit.line_start()
-		"#### "`
-
- - **(level | heading | header) five**  `edit.line_start()
-		"##### "`
-
- - **(level | heading | header) six**  `edit.line_start()
-		"###### "
-		`
-
- - **list [one]**  `edit.line_start()
-		"- "`
-
- - **list two**  `edit.line_start()
-		"    - "`
-
- - **list three**  `edit.line_start()
-		"        - "`
-
- - **list four**  `edit.line_start()
-		"            - "`
-
- - **list five**  `edit.line_start()
-		"                - "`
-
- - **list six**  `edit.line_start()
-		"                    - "
-		`
-
- - **{user.markdown_code_block_language} block**  `user.insert_snippet("```{markdown_code_block_language}\n$0\n```")
-		`
-
- - **link**  `"[]()"
-		key(left:3)`
-
-
-
-#  php
-
-
- - **(op | is) loosely equal**  `" == "`
-
- - **(op | is) loosely not equal**  `" != "`
-
- - **state try**  `"try {\n"`
-
- - **state catch**  `"catch (\\Throwable $exception) {\n"`
-
- - **var <phrase> [over]**  `insert("$")
-		insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE"))`
-
-
-
-#  proto
-
-
- - **block**  `user.code_block()`
-
- - **state message**  `"message "`
-
- - **state package**  `"package "`
-
- - **state reserved**  `"reserved "`
-
- - **state enum**  `"enum "`
-
- - **op equals**  `" = "`
-
- - **state import**  `"import "`
-
- - **state import public**  `"import public "`
-
- - **state option**  `"option "`
-
- - **state repeated**  `"repeated "`
-
- - **type {user.code_type}**  `"{code_type}"`
-
- - **repeated type {user.code_type}**  `"repeated {code_type}"`
-
-
-
-#  r
-
-
- - **(op | is) in**  `" %in% "`
-
- - **toggle library**  `user.code_toggle_libraries()`
-
- - **library <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
-		key(end enter)
-		
-		# R specific commands`
-
- - **(chain | pipe that)**  `key(end)
-		" %>%"
-		key(enter)`
-
- - **state na**  `insert("NA")`
-
- - **function define <user.text>**  `user.code_private_function(text)`
-
- - **named arg {user.code_parameter_name}**  `user.code_insert_named_argument(code_parameter_name)`
-
-
-
-#  rust
-
-
- - **state unsafe**  `"unsafe "`
-
- - **unsafe block**  `user.code_state_unsafe()`
-
- - **state (struct | structure) <user.text>**  `insert("struct ")
-		insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
-		`
-
- - **state enum <user.text>**  `insert("enum ")
-		insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
-		`
-
- - **toggle use**  `user.code_toggle_libraries()`
-
- - **borrow**  `"&"`
-
- - **borrow mutable**  `"&mut "`
-
- - **state (a sink | async | asynchronous)**  `"async "`
-
- - **state (pub | public)**  `"pub "`
-
- - **state (pub | public) crate**  `"pub(crate) "`
-
- - **state (dyn | dynamic)**  `"dyn "`
-
- - **state constant**  `"const "`
-
- - **state (funk | func | function)**  `"fn "`
-
- - **state (imp | implements)**  `"impl "`
-
- - **state let mute**  `"let mut "`
-
- - **state let**  `"let "`
-
- - **state (mute | mutable)**  `"mut "`
-
- - **state (mod | module)**  `"mod "`
-
- - **state ref (mute | mutable)**  `"ref mut "`
-
- - **state ref**  `"ref "`
-
- - **state trait**  `"trait "`
-
- - **state match**  `user.code_state_switch()`
-
- - **state (some | sum)**  `"Some"`
-
- - **state static**  `"static "`
-
- - **self taught**  `"self."`
-
- - **state use**  `user.code_import()`
-
- - **use <user.code_libraries>**  `user.code_insert_library(code_libraries, "")
-		key(; enter)
-		
-		## specialist flow control`
-
- - **state if let some**  `user.insert_between("if let Some(", ")")`
-
- - **state if let (ok | okay)**  `user.insert_between("if let Ok(", ")")`
-
- - **state if let error**  `user.insert_between("if let Err(", ")")`
-
- - **is some**  `user.code_insert_is_not_null()`
-
- - **implement (struct | structure)**  `user.code_state_implements()`
-
- - **is implemented trait {user.code_trait}**  `": impl {code_trait}"`
-
- - **is implemented trait**  `": impl "`
-
- - **returns implemented trait {user.code_trait}**  `" -> impl {code_trait}"`
-
- - **returns implemented trait**  `" -> impl "`
-
- - **trait {user.code_trait}**  `insert("{code_trait}")`
-
- - **implemented trait {user.code_trait}**  `insert("impl {code_trait}")`
-
- - **dynamic trait {user.code_trait}**  `insert("dyn {code_trait}")`
-
- - **macro {user.code_macros}**  `user.code_insert_macro(code_macros, "")`
-
- - **macro wrap {user.code_macros}**  `user.code_insert_macro(code_macros, edit.selected_text())
-		
-		## rust specific document comments`
-
- - **block dock comment**  `user.code_comment_documentation_block()`
-
- - **inner dock comment**  `user.code_comment_documentation_inner()`
-
- - **inner block dock comment**  `user.code_comment_documentation_block_inner()`
-
-
-
-#  scala
-
-
- - **state {user.scala_modifier}**  `insert("{user.scala_modifier} ")`
-
- - **state {user.scala_keyword}**  `insert("{scala_keyword} ")`
-
- - **op right arrow**  `" -> "`
-
- - **op left arrow**  `" <- "`
-
- - **op plus plus**  `" ++ "`
-
- - **op subtype**  `" <: "`
-
- - **state match**  `user.code_state_switch()`
-
- - **block string**  `insert('""""""')
-		key("left left left")`
-
-
-
-#  operators assignment
-
-
- - **op (equals | assign)**  `user.code_operator_assignment()`
-
- - **op or equals**  `user.code_or_operator_assignment()`
-
- - **op (minus | subtract) equals**  `user.code_operator_subtraction_assignment()`
-
- - **op (plus | add) equals**  `user.code_operator_addition_assignment()`
-
- - **op (times | multiply) equals**  `user.code_operator_multiplication_assignment()`
-
- - **op divide equals**  `user.code_operator_division_assignment()`
-
- - **op mod equals**  `user.code_operator_modulo_assignment()`
-
- - **[op] increment**  `user.code_operator_increment()`
-
- - **[op] bit [wise] and equals**  `user.code_operator_bitwise_and_assignment()`
-
- - **[op] bit [wise] or equals**  `user.code_operator_bitwise_or_assignment()`
-
- - **(op | logical | bitwise) (ex | exclusive) or equals**  `user.code_operator_bitwise_exclusive_or_assignment()`
-
- - **[(op | logical | bitwise)] (left shift | shift left) equals**  `user.code_operator_bitwise_left_shift_assignment()`
-
- - **[(op | logical | bitwise)] (right shift | shift right) equals**  `user.code_operator_bitwise_right_shift_assignment()`
-
-
-
-#  terraform
-
-
- - **block**  `user.code_block()`
-
- - **state {user.terraform_module_block}**  `user.code_terraform_module_block(user.terraform_module_block)
-		`
-
- - **resource <user.text>**  `user.code_terraform_resource(text)`
-
- - **data [source] <user.text>**  `user.code_terraform_data_source(text)`
-
- - **[state] prop {user.terraform_common_property}**  `insert(user.terraform_common_property)
-		user.code_operator_assignment()
-		`
-
- - **type {user.code_type}**  `insert("{code_type}")`
-
-
-
-#  mouse
-
-
- - **control mouse**  `tracking.control_toggle()`
-
- - **control off**  `user.mouse_sleep()`
-
- - **zoom mouse**  `tracking.control_zoom_toggle()`
-
- - **camera overlay**  `tracking.control_debug_toggle()`
-
- - **run calibration**  `tracking.calibrate()`
-
- - **touch**  `# close zoom if open
-		user.zoom_close()
-		mouse_click(0)
-		# close the mouse grid if open
-		user.grid_close()
-		# End any open drags
-		# Touch automatically ends left drags so this is for right drags specifically
-		user.mouse_drag_end()
-		`
-
- - **righty**  `# close zoom if open
-		user.zoom_close()
-		mouse_click(1)
-		# close the mouse grid if open
-		user.grid_close()
-		`
-
- - **mid click**  `# close zoom if open
-		user.zoom_close()
-		mouse_click(2)
-		# close the mouse grid
-		user.grid_close()
-		
-		#see keys.py for modifiers.
-		#defaults
-		#command
-		#control
-		#option = alt
-		#shift
-		#super = windows key`
-
- - **<user.modifiers> touch**  `# close zoom if open
-		user.zoom_close()
-		key("{modifiers}:down")
-		mouse_click(0)
-		key("{modifiers}:up")
-		# close the mouse grid
-		user.grid_close()`
-
- - **<user.modifiers> righty**  `# close zoom if open
-		user.zoom_close()
-		key("{modifiers}:down")
-		mouse_click(1)
-		key("{modifiers}:up")
-		# close the mouse grid
-		user.grid_close()`
-
- - **(dub click | duke)**  `# close zoom if open
-		user.zoom_close()
-		mouse_click()
-		mouse_click()
-		# close the mouse grid
-		user.grid_close()`
-
- - **(trip click | trip lick)**  `# close zoom if open
-		user.zoom_close()
-		mouse_click()
-		mouse_click()
-		mouse_click()
-		# close the mouse grid
-		user.grid_close()`
-
- - **left drag | drag | drag start**  `# close zoom if open
-		user.zoom_close()
-		user.mouse_drag(0)
-		# close the mouse grid
-		user.grid_close()`
-
- - **right drag | righty drag**  `# close zoom if open
-		user.zoom_close()
-		user.mouse_drag(1)
-		# close the mouse grid
-		user.grid_close()`
-
- - **end drag | drag end**  `user.mouse_drag_end()`
-
- - **wheel down**  `user.mouse_scroll_down()`
-
- - **wheel down here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_down()`
-
- - **wheel tiny [down]**  `user.mouse_scroll_down(0.2)`
-
- - **wheel tiny [down] here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_down(0.2)`
-
- - **wheel downer**  `user.mouse_scroll_down_continuous()`
-
- - **wheel downer here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_down_continuous()`
-
- - **wheel up**  `user.mouse_scroll_up()`
-
- - **wheel up here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_up()`
-
- - **wheel tiny up**  `user.mouse_scroll_up(0.2)`
-
- - **wheel tiny up here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_up(0.2)`
-
- - **wheel upper**  `user.mouse_scroll_up_continuous()`
-
- - **wheel upper here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_up_continuous()`
-
- - **wheel gaze**  `user.mouse_gaze_scroll()`
-
- - **wheel gaze here**  `user.mouse_move_center_active_window()
-		user.mouse_gaze_scroll()`
-
- - **wheel stop**  `user.mouse_scroll_stop()`
-
- - **wheel stop here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_stop()`
-
- - **wheel left**  `user.mouse_scroll_left()`
-
- - **wheel left here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_left()`
-
- - **wheel tiny left**  `user.mouse_scroll_left(0.5)`
-
- - **wheel tiny left here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_left(0.5)`
-
- - **wheel right**  `user.mouse_scroll_right()`
-
- - **wheel right here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_right()`
-
- - **wheel tiny right**  `user.mouse_scroll_right(0.5)`
-
- - **wheel tiny right here**  `user.mouse_move_center_active_window()
-		user.mouse_scroll_right(0.5)`
-
- - **copy mouse position**  `user.copy_mouse_position()`
-
- - **curse no**  `# Command added 2021-12-13, can remove after 2022-06-01
-		app.notify("Please activate the user.mouse_cursor_commands_enable tag to enable this command")
-		`
-
- - **mouse hiss up**  `user.hiss_scroll_up()`
-
- - **mouse hiss down**  `user.hiss_scroll_down()`
-
-
-
-#  symbols
-
-
- - **new line**  `"\n"`
-
- - **double dash**  `"--"`
-
- - **triple quote**  `"'''"`
-
- - **(triple grave | triple back tick | gravy)**  `insert("```")`
-
- - **(dot dot | dotdot)**  `".."`
-
- - **ellipsis**  `"..."`
-
- - **(comma and | spamma)**  `", "`
-
- - **arrow**  `"->"`
-
- - **dub arrow**  `"=>"`
-
- - **empty dub string**  `user.insert_between('"', '"')`
-
- - **empty escaped (dub string | dub quotes)**  `user.insert_between('\\"', '\\"')`
-
- - **empty string**  `user.insert_between("'", "'")`
-
- - **empty escaped string**  `user.insert_between("\\'", "\\'")`
-
- - **(inside parens | args)**  `user.insert_between("(", ")")`
-
- - **inside (squares | brackets | square brackets | list)**  `user.insert_between("[", "]")`
-
- - **inside (braces | curly brackets)**  `user.insert_between("{", "}")`
-
- - **inside percent**  `user.insert_between("%", "%")`
-
- - **inside (quotes | string)**  `user.insert_between("'", "'")`
-
- - **inside (double quotes | dub quotes)**  `user.insert_between('"', '"')`
-
- - **inside (graves | back ticks)**  `user.insert_between("`", "`")`
-
- - **angle that**  `text = edit.selected_text()
-		user.paste("<{text}>")`
-
- - **(square | bracket | square bracket) that**  `text = edit.selected_text()
-		user.paste("[{text}]")`
-
- - **(brace | curly bracket) that**  `text = edit.selected_text()
-		user.paste("{{{text}}}")`
-
- - **(parens | args) that**  `text = edit.selected_text()
-		user.paste("({text})")`
-
- - **percent that**  `text = edit.selected_text()
-		user.paste("%{text}%")`
-
- - **quote that**  `text = edit.selected_text()
-		user.paste("'{text}'")`
-
- - **(double quote | dub quote) that**  `text = edit.selected_text()
-		user.paste('"{text}"')`
-
- - **(grave | back tick) that**  `text = edit.selected_text()
-		user.paste("`{text}`")`
-
-
-
-# win draft window
-
-
- - **replace <user.draft_anchor> with <user.text>**  `user.draft_select("{draft_anchor}")
-		result = user.formatted_text(text, "NOOP")
-		insert(result)
-		
-		# Position cursor before word`
-
- - **(pre | cursor | cursor before) <user.draft_anchor>**  `user.draft_position_caret("{draft_anchor}")
-		
-		# Position cursor after word`
-
- - **(post | cursor after) <user.draft_anchor>**  `user.draft_position_caret("{draft_anchor}", 1)
-		
-		# Select a whole word`
-
- - **(take | select) <user.draft_anchor>**  `user.draft_select("{draft_anchor}")`
-
- - **(take | select) <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select("{draft_anchor_1}", "{draft_anchor_2}")
-		
-		# Delete a word`
-
- - **(change | chuck | clear) <user.draft_anchor>**  `user.draft_select("{draft_anchor}", "", 1)
-		key(backspace)
-		
-		# Delete a range of words`
-
- - **(change | chuck | clear) <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select(draft_anchor_1, draft_anchor_2, 1)
-		key(backspace)
-		
-		# reformat word`
-
- - **<user.formatters> word <user.draft_anchor>**  `user.draft_select("{draft_anchor}", "", 1)
-		user.formatters_reformat_selection(user.formatters)
-		
-		# reformat range`
-
- - **<user.formatters> <user.draft_anchor> (through | past) <user.draft_anchor>**  `user.draft_select(draft_anchor_1, draft_anchor_2, 1)
-		user.formatters_reformat_selection(user.formatters)`
-
-
-
-#  Excel
-
-
- - **save as**  `key(alt-f)
-		sleep(0.05)
-		key(a)
-		
-		# worksheets`
-
- - **next (tab|sheet|worksheet)**  `key(ctrl-pagedown)`
-
- - **previous (tab|sheet|worksheet)**  `key(ctrl-pageup)`
-
- - **(insert|new) (tab|sheet|worksheet)**  `key(alt-h i s)`
-
- - **delete (tab|sheet|worksheet)**  `key(alt-h d s)`
-
- - **rename (tab|sheet|worksheet)**  `key(alt-h o r)`
-
- - **move (tab|sheet|worksheet)**  `key(alt-h o m)`
-
- - **select row**  `key(shift-space)`
-
- - **hide row**  `key(ctrl-9)`
-
- - **insert column**  `key(alt-h i c)`
-
- - **delete column**  `key(alt-h d c)`
-
- - **column width**  `key(alt-h o w)`
-
- - **auto fit (column|width|column width)**  `key(alt-h o i)`
-
- - **select column**  `key(ctrl-space)`
-
- - **hide column**  `key(ctrl-0)`
-
- - **insert row**  `key(alt-h i r)`
-
- - **delete row**  `key(alt-h d r)`
-
- - **row height**  `key(alt-h o h)`
-
- - **auto fit (row|height|row height)**  `key(alt-h o a)`
-
- - **go to cell**  `key(alt-f3)`
-
- - **go to cell <user.letter> <number>**  `key(alt-f3)
-		insert("{user.letter}{number}")
-		key(enter)
-		
-		
-		# [ribbon|menu] headings`
-
- - **file [ribbon|menu]**  `key(alt-f)`
-
- - **home [ribbon|menu]**  `key(alt-h)`
-
- - **insert [ribbon|menu]**  `key(alt-n)`
-
- - **page layout [ribbon|menu]**  `key(alt-p)`
-
- - **formula [ribbon|menu]**  `key(alt-m)`
-
- - **data [ribbon|menu]**  `key(alt-a)`
-
- - **review [ribbon|menu]**  `key(alt-r)`
-
- - **(view|you) [ribbon|menu]**  `key(alt-w)`
-
- - **automate [ribbon|menu]**  `key(alt-u)`
-
- - **help [ribbon|menu]**  `key(alt-y)
-		key(1)`
-
- - **excel toolbox [ribbon|menu]**  `key(alt-y)
-		key(2)`
-
- - **chart design menu**  `key(alt)
-		sleep(0.08)
-		key(j)
-		key(c)`
-
- - **chart format menu**  `key(alt)
-		sleep(0.08)
-		key(j)
-		key(a)
-		
-		# home menu`
-
- - **paste values**  `key(alt-e)
-		key(s)
-		key(v)
-		key(enter)`
-
- - **font color**  `key(alt-h)
-		key(f)
-		key(c)`
-
- - **highlight cell**  `key(alt-h)
-		key(h)
+ - **move tab to window**  `key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)
 		sleep(0.1)
-		key(up:4)
-		key(left:6)`
+		key(alt-d ctrl-a ctrl-v enter)`
 
- - **[(apply|toggle)] word wrap**  `key(alt-h)
-		key(w)`
+ - **clear cache**  `key(ctrl-shift-del)
+		sleep(2)
+		key(tab:11)
+		key(enter)
+		sleep(0.3)
+		user.tab_close_wrapper()
+		
+		# for use in devtools`
 
- - **format number <number> decimal places**  `key(alt-h)
-		key(f)
-		key(m)
-		key(tab)
-		key(up:12)
+ - **show console**  `key(ctrl-shift-j)`
+
+ - **show elements**  `key(ctrl-shift-c)`
+
+ - **shows settings**  `key(f1)`
+
+ - **next panel**  `key(ctrl-rbrack)`
+
+ - **previous panel**  `key(ctrl-brack)`
+
+ - **show command [menu]**  `key(ctrl-shift-p)`
+
+ - **mark for deletion**  `key(x)
+		sleep(0.2)
 		key(down)
-		key(alt-d)
-		insert(number)
-		key(enter)
 		
-		# data menu`
+		# downloads`
 
- - **sort**  `key(alt-a)
-		key(s)
-		key(s)
-		
-		# view menu`
-
- - **freeze top row**  `key(alt-w)
-		key(f)
-		key(r)`
-
- - **[toggle] freeze panes**  `key(alt-w)
-		key(f)
-		key(f)`
-
- - **zoom <number> [percent]**  `key(alt-w)
-		sleep(0.1)
-		key(q)
-		sleep(0.1)
-		key(c)
-		sleep(0.1)
-		insert(number)
-		key(enter)
-		
-		# chart shortcuts`
-
- - **select (object|chart|graph)**  `key(alt-w)
-		key(k)
-		sleep(1)
-		key(tab)
-		sleep(0.1)
-		key(tab)
-		sleep(0.1)
-		key(tab)
-		key(down:2)`
-
- - **close navigation [pane]**  `key(alt-w)
-		key(k)
-		sleep(0.08)
-		key(ctrl-space)
-		sleep(0.08)
-		key(c)`
-
- - **select only (object|chart|graph)**  `key(alt-w)
-		key(k)
-		sleep(1)
-		key(tab)
-		sleep(0.1)
-		key(tab)
-		sleep(0.1)
-		key(tab)
-		key(down:2)
-		key(enter)
-		sleep(0.5)
-		key(alt-w)
-		key(k)
-		sleep(0.5)
-		key(ctrl-space)
-		key(c)
-		`
-
- - **select [chart] item**  `key(alt)
-		sleep(0.08)
-		key(j)
-		key(a)
-		key(e)
-		key(alt-down)`
-
- - **format selected (element|item)**  `key(menu)
-		key(up)
-		key(enter)`
-
- - **add [chart] (element|item)**  `key(alt)
-		sleep(0.2)
-		key(j c a)`
-
- - **add horizontal axis title**  `key(alt)
-		sleep(0.2)
-		key(j c a a h)`
-
- - **add vertical axis title**  `key(alt)
-		sleep(0.2)
-		key(j c a a v)`
-
- - **add [chart] title**  `key(alt)
-		sleep(0.2)
-		key(j c a c a)`
-
- - **format [chart] title**  `key(alt)
-		sleep(0.2)
-		key(j a e alt-down down)
-		sleep(0.2)
-		key(enter)
+ - **save download [as]**  `key(ctrl-j tab:2 enter)
 		
 		`
 
- - **exit (pane|panel)**  `key(ctrl-space)
-		key(c)
-		
-		##formulas`
-
- - **(formula|equation) concatenate**  `insert("concat(")`
-
- - **(formula|equation) (max|maximum)**  `insert("max(")`
-
- - **(formula|equation) minimum**  `insert("min(")`
-
- - **(formula|equation) sum**  `insert("sum(")`
-
- - **(formula|equation) average**  `insert("average(")`
-
- - **(formula|equation) some product**  `insert("sumproduct(")`
-
- - **(formula|equation) if**  `insert("if(")`
-
- - **(formula|equation) text**  `insert("text(")`
-
- - **(formula|equation) text join**  `insert("textjoin(")`
-
- - **(formula|equation) character**  `insert("char(")`
-
- - **(formula|equation) square root**  `insert("sqrt(")`
-
- - **(formula|equation) normal distribution**  `insert("norm.dist(")`
-
- - **(formula|equation) count if**  `insert("countif(")`
-
- - **average <user.letter>**  `insert("=average({letter}:{letter})")
-		key(enter)`
-
- - **minimum <user.letter>**  `insert("=min({letter}:{letter})")
-		key(enter)`
-
- - **maximum <user.letter>**  `insert("=max({letter}:{letter})")
-		key(enter)
-		
-		`
-
- - **[(formula|equation)] line break**  `insert("char(10)")`
-
- - **column <user.letter>**  `insert("{letter}:{letter}")`
 
 
+#  cheatsheet
 
-#  global
 
-
- - **hello hello**  `speech.disable()`
-
- - **[hello] come [on] in**  `speech.disable()`
-
- - **hello what's up**  `speech.disable()`
-
- - **computer [go to] sleep**  `speech.disable()`
-
- - **computer stop listening**  `speech.disable()`
-
- - **computer close your ears**  `speech.disable()`
-
- - **volume up**  `key(volup)`
-
- - **volume down**  `key(voldown)`
-
- - **volume mute**  `key(mute)`
-
- - **launch explorer**  `key(super-e)`
-
- - **screen snip**  `key(super-shift-s)`
-
- - **toggle Bluetooth**  `key(super-a)
-		sleep(1)
-		key(right)
-		sleep(0.5)
-		key(tab enter)
-		sleep(0.7)
-		key(space esc)
-		
-		
-		# websites and system paths`
-
- - **open up <user.text>**  `insert(text)
-		sleep(0.05)
-		key(enter)`
-
- - **open up <user.letter>**  `key(letter)
-		sleep(0.05)
-		key(enter)`
-
- - **open up <number>**  `insert("{number}")
-		sleep(0.15)
-		key(enter)
-		# common words`
-
- - **(my|bee jay) name**  `insert("Barry Kronenfeld")`
-
- - **my first name**  `insert("Barry")
-		`
-
- - **(my|bee jay) gmail**  `insert("barrykronenfeld@gmail.com")`
-
- - **(my|bee jay) (email|mail)**  `insert("bjkronenfeld@eiu.edu")`
-
- - **dotcom**  `insert(".com")`
-
- - **daddy to you**  `insert(".edu")
-		`
-
- - **inside inches**  `user.insert_between('"', '"')`
-
- - **inside feet**  `user.insert_between("'", "'")
-		`
-
- - **(numb|number) phrase <user.formatters> <user.text> <number>**  `insert(user.formatted_text(text, formatters))
-		insert(" ")
-		insert(number)
-		`
-
- - **(numb|number) phrase <user.text> <number>**  `insert(text)
-		insert(" ")
-		insert("{number}")`
-
- - **(numb|number) phrase <number> <user.text>**  `insert("{number}")
-		insert(" ")
-		insert(text)`
-
- - **(numb|number) phrase <number> <user.text> <number>**  `insert(number_1)
-		insert(" ")
-		insert(text)
-		insert(" ")
-		insert(number_2)`
-
- - **(numb|number) phrase <user.text> <number> <user.text>**  `insert(text_1)
-		insert(" ")
-		insert("{number}")
-		insert(" ")
-		insert(text_2)`
-
- - **(numb|number) phrase <number> <user.text> <number> <user.text>**  `insert(number_1)
-		insert(" ")
-		insert(text_1)
-		insert(" ")
-		insert(number_2)
-		insert(" ")
-		insert(text_2)`
-
- - **(numb|number) phrase <user.text> <number> <user.text> <number>**  `insert(text_1)
-		insert(" ")
-		insert(number_1)
-		insert(" ")
-		insert(text_2)
-		insert(" ")
-		insert(number_2)
-		`
-
- - **enter object**  `key(f2)
-		
-		`
-
- - **undo**  `key(ctrl-z)`
-
- - **redo**  `key(ctrl-y)`
-
- - **focus taskbar**  `key(super-b)`
-
- - **punch <number>**  `edit.right()
-		repeat(number_1 - 1)
-		insert(' ')`
-
- - **right parent**  `insert(")")`
-
- - **[left] parent**  `insert("(")`
-
- - **(inside (parent|parents)|parentheses)**  `user.insert_between('(',')')`
-
- - **inside (angle|angles)**  `user.insert_between('<','>')`
-
- - **alt**  `key('alt')`
-
- - **launch**  `key(super)
-		sleep(1.0)`
+ - **print cheatsheet**  `user.cheatsheet()`
 
  - **update cheat sheet**  `user.cheatsheet()
 		sleep(1.5)
@@ -11718,113 +11874,3 @@
 		sleep(0.3)
 		insert("localhost:8080/cheatsheet.html")
 		key("enter")`
-
- - **release keys**  `key(shift:up)
-		key(ctrl:up)
-		key(alt:up)
-		key(super:up)`
-
- - **escape out**  `key(esc)
-		key(esc)
-		key(esc)
-		key(esc)
-		key(esc)`
-
- - **save**  `key(ctrl-s)`
-
- - **search**  `key(ctrl-f)
-		
-		`
-
- - **tab jiggle**  `key(tab)
-		sleep(0.05)
-		key(shift-tab)`
-
- - **ef six jiggle**  `key(f6)
-		sleep(0.05)
-		key(shift-f6)`
-
- - **right jiggle**  `key(right)
-		sleep(0.05)
-		key(left)`
-
- - **left jiggle**  `key(left)
-		sleep(0.5)
-		key(right)`
-
- - **down jiggle**  `key(down)
-		sleep(0.05)
-		key(up)`
-
- - **up jiggle**  `key(up)
-		sleep(0.05)
-		key(down)`
-
- - **(switch|touch) (application|applications)**  `key(alt-tab)`
-
- - **switch (other|second) application**  `key(alt:down)
-		key(tab:3)
-		key(alt:up)`
-
- - **switch third application**  `key(alt:down)
-		key(tab:4)
-		key(alt:up)`
-
- - **delete line**  `edit.line_start()
-		edit.line_start()
-		edit.line_start()
-		edit.line_start()
-		edit.extend_line_end()
-		key(backspace:2)`
-
- - **(delete|flick) way right**  `edit.extend_line_end()
-		sleep(0.1)
-		key(delete)`
-
- - **{user.search_engine} hunt**  `user.search_with_search_engine(search_engine, "")
-		sleep(0.5)
-		
-		`
-
- - **stop**  `user.mouse_scroll_stop()
-		user.stop_repeating()`
-
- - **shutdown computer**  `key(super)
-		sleep(0.2)
-		key(up)
-		sleep(0.2)
-		key(right)
-		key(enter)
-		sleep(0.2)
-		key(down:2)
-		sleep(0.2)
-		key(enter)`
-
- - **restart computer**  `key(super)
-		sleep(0.2)
-		key(up)
-		sleep(0.2)
-		key(right)
-		key(enter)
-		sleep(0.2)
-		key(down:3)
-		sleep(0.2)
-		key(enter)
-		
-		
-		# key presses
-		# works in conjunction with the words to replace`
-
- - **press A**  `key(a)`
-
- - **press B**  `key(b)`
-
- - **press C**  `key(c)`
-
- - **press D**  `key(d)`
-
- - **press E**  `key(e)`
-
- - **press F**  `key(f)`
-
- - **press G**  `key(g)`

@@ -591,13 +591,13 @@ view text width:
 	key(enter)	
 # center on screen by toggling between webview and print view
 # strangely this doesn't work when we put the two key sequences together
-view web [page] [layout]:
+[view] web [page] layout:
 	key(alt)
 	key(w)
 	sleep(0.25)
 	key(l)
 	key(1)
-view print:
+[view] print layout:
 	key(alt-w)
 	sleep(0.15)
 	key(p)

@@ -5,11 +5,15 @@ mod.list("variable_list", desc="saved variable name abbreviations")
 mod.list("person_list", desc="saved person names")
 mod.list("module_list", desc="saved module names")
 mod.list("function_list", desc="saved function names")
+mod.list("keyword_list", desc="saved keyword names")
+mod.list("app_list", desc="saved app names")
 
 ctx = Context()
 variable_list = {}
 module_list = {}
 function_list = {}
+keyword_list = {}
+app_list = {}
 
 @mod.action_class
 class Actions:
@@ -69,6 +73,33 @@ class Actions:
         ctx.lists["user.function_list"] = function_list
         storage.set("function_list", function_list)
 
+    def save_keyword(spoken: str, text: str):
+        "save a new keyword name to user.function_list"
+        keyword_list = storage.get("keyword_list", {})
+        keyword_list[spoken] = text
+        ctx.lists["user.keyword_list"] = keyword_list
+        storage.set("keyword_list", keyword_list)
+
+    def remove_keyword(spoken: str):
+        "removed a keyword from user.keyword_list"
+        keyword_list = storage.get("keyword_list", {})        
+        del keyword_list[spoken]
+        ctx.lists["user.keyword_list"] = keyword_list
+        storage.set("keyword_list", keyword_list)
+
+    def save_app(spoken: str, text: str):
+        "save a new app name to user.function_list"
+        app_list = storage.get("app_list", {})
+        app_list[spoken] = text
+        ctx.lists["user.app_list"] = app_list
+        storage.set("app_list", app_list)
+
+    def remove_app(spoken: str):
+        "removed a app from user.app_list"
+        app_list = storage.get("app_list", {})        
+        del app_list[spoken]
+        ctx.lists["user.app_list"] = app_list
+        storage.set("app_list", app_list)
 
 
 def on_ready():
@@ -84,6 +115,12 @@ def on_ready():
     # global function_list
     function_list = storage.get("function_list", {})
     ctx.lists["user.function_list"] = function_list
+    # global keyword_list
+    keyword_list = storage.get("keyword_list", {})
+    ctx.lists["user.keyword_list"] = keyword_list
+    # global app_list
+    app_list = storage.get("app_list", {})
+    ctx.lists["user.app_list"] = app_list
 
 
 

@@ -19,25 +19,14 @@ focus content: key(ctrl-f6)
 immersive reader: key(f9)
 caret browsing: key(f7)
 
-[toggle] full screen:
-	key(f11)
-[toggle] read aloud:
-	key(ctrl-shift-u)
-[toggle] immersive reader:
-	key(f9)
-address bar:
-	key(alt-d)
+[toggle] full screen: key(f11)
+[toggle] read aloud: key(ctrl-shift-u)
+[toggle] immersive reader: key(f9)
+address bar: key(alt-d)
 move tab to window:
-	key(alt-d)
-	key(ctrl-a)
-	key(ctrl-c)
-	key(ctrl-w)
-	key(ctrl-n)
+	key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)
 	sleep(0.1)
-	key(alt-d) 
-	key(ctrl-a)
-	key(ctrl-v)
-	key(enter)
+	key(alt-d ctrl-a ctrl-v enter)
 clear cache:
 	key(ctrl-shift-del)
 	sleep(2)
@@ -45,6 +34,15 @@ clear cache:
 	key(enter)
 	sleep(0.3)
 	user.tab_close_wrapper()
+	
+# for use in devtools
+show console: key(ctrl-shift-j)
+show elements: key(ctrl-shift-c)
+shows settings: key(f1)
+next panel: key(ctrl-rbrack)
+previous panel: key(ctrl-brack)
+show command [menu]: key(ctrl-shift-p)
+
 # for use in gmail (to delete emails)
 mark for deletion:
 	key(x)
@@ -52,5 +50,7 @@ mark for deletion:
 	key(down)
 
 # downloads
-save download [as]:
-	key(ctrl-j tab:2 enter)
+save download [as]: key(ctrl-j tab:2 enter)
+show [in] folder: key(menu down:2)
+	
+	

@@ -104,8 +104,8 @@ large icons: key(ctrl-shift-1)
 medium icons: key(ctrl-shift-2)
 small icons: key(ctrl-shift-3)
 list view: key(ctrl-shift-4)
-detailed view: key(ctrl-shift-5)
-distraction free [view]: key(ctrl-shift-6)
+detailed view: key(ctrl-shift-6)
+distraction free [view]: key(ctrl-shift-5)
 # very specific idiosyncratic commands
 process desire to learn downloads:
 	user.process_desire_to_learn_downloads()

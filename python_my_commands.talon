@@ -1,6 +1,8 @@
 tag: user.my_python
 
 -
+line comment: insert("# ")
+comment <user.text>: insert("# {text}")
 loop on:
 	user.insert_between('for ',' in :')
 check if:
@@ -194,6 +196,10 @@ module {user.module_list}:
 module {user.module_list} dot:
 	insert(module_list)
 	insert(".")
+
+# KEYWORDS
+[python] keyword {user.keyword_list}:
+	insert(keyword_list)
 
 # FUNCTIONS
 function {user.function_list}: user.insert_between("{function_list}(",")")

@@ -1,25 +1,43 @@
 # variable list
 (create|save) variable <user.text>:
 	user.save_variable(text, edit.selected_text())
-remove variable <user.variable_list>:
-	user.remove_variable(text)
+remove variable {user.variable_list}:
+	user.remove_variable(variable_list)
 
 # module list
 (create|save) module <user.text>:
 	user.save_module(text, edit.selected_text())
-remove module <user.text>:
-	user.remove_module(text)
+remove module {user.module_list}:
+	user.remove_module(module_list)
 
 # function list
 (create|save) function <user.text>:
 	user.save_function(text, edit.selected_text())
-remove function <user.text>:
-	user.remove_function(text)
+remove function {user.function_list}:
+	user.remove_function(function_list)
+
+# keyword list
+(create|save) keyword <user.text>:
+	user.save_keyword(text, edit.selected_text())
+remove keyword {user.keyword_list}:
+	user.remove_keyword(keyword_list)
+
+# app list
+(create|save) app <user.text>:
+	user.save_app(text, edit.selected_text())
+remove app {user.app_list}:
+	user.remove_app(app_list)
+launch app {user.app_list}: 
+	key(super)
+	sleep(1.0)
+	insert("{app_list}")
+	sleep(1.0)
+	key(enter)
 
 # person list
 (create|save) person <user.text>:
 	user.save_person(text, edit.selected_text())
-remove person <user.text>:
+remove person {user.person_list}:
 	user.remove_person(text)
 person name {user.person_list}:
 	insert(person_list)

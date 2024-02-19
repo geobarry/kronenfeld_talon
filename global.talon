@@ -25,6 +25,9 @@ toggle Bluetooth:
 	key(tab enter)
 	sleep(0.7)
 	key(space esc)	
+
+# special command to focus on an explorer windows since windows has so many
+focus explorer: user.focus_explorer()
 		
 # cross application common shortcuts
 save: key(ctrl-s)	
@@ -45,24 +48,21 @@ open up <number>:
 	sleep(0.15)
 	key(enter)
 # common words
-(my|bee jay) name:
-	insert("Barry Kronenfeld")
-my first name:
-	insert("Barry")
+(my|bee jay) name: insert("Barry Kronenfeld")
+my first name: insert("Barry")
 	
-(my|bee jay) gmail:
-	insert("barrykronenfeld@gmail.com")
-(my|bee jay) (email|mail):
-	insert("bjkronenfeld@eiu.edu")
-dotcom:
-	insert(".com")
-daddy to you:
-	insert(".edu")
+(my|bee jay) gmail: insert("barrykronenfeld@gmail.com")
+(my|bee jay) (email|mail): insert("bjkronenfeld@eiu.edu")
+dotcom: insert(".com")
+daddy to you: insert(".edu")
+dot gove: insert(".gov")
+dot python: insert(".py")
 
-inside inches:
-	user.insert_between('"', '"')
-inside feet:
-	user.insert_between("'", "'")
+inside inches: user.insert_between('"', '"')
+inside feet: user.insert_between("'", "'")
+
+double brief {user.abbreviation} {user.abbreviation}: "{abbreviation} {abbreviation_2}"
+double under brief {user.abbreviation} {user.abbreviation}: "{abbreviation}_{abbreviation_2}"
 
 (numb|number) phrase <user.formatters> <user.text> <number>:
 	insert(user.formatted_text(text, formatters))
@@ -133,44 +133,7 @@ alt:
 launch:
 	key(super)
 	sleep(1.0)
-update cheat sheet:
-	user.cheatsheet()
-	sleep(1.5)
-	key(super)
-	sleep(0.2)
-	insert("Anaconda")
-	sleep(0.25)
-	key(enter)
-	sleep(2.5)
-	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
-	key(enter)	
-	insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
-	key(enter)
-	sleep(1.5)
-	user.add_links_to_cheatsheet()
-	sleep(0.5)
-	app.window_close()
-show cheat sheet:
-	key(super)
-	sleep(0.2)
-	insert("Anaconda")
-	sleep(0.25)
-	key(enter)
-	sleep(2.5)
-	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
-	key("enter")
-	sleep(0.5)
-	insert("python -m http.server 8080")
-	sleep(0.5)
-	key("enter")
-	key(super)
-	sleep(0.2)
-	insert("Edge")
-	sleep(0.5)
-	key("enter")
-	sleep(0.3)
-	insert("localhost:8080/cheatsheet.html")
-	key("enter")
+
 release keys:
 	key(shift:up)
 	key(ctrl:up)
@@ -261,19 +224,3 @@ restart computer:
 	key(enter)
 
 	
-# key presses
-# works in conjunction with the words to replace
-press A:
-	key(a)
-press B:
-	key(b)
-press C:
-	key(c)
-press D:
-	key(d)
-press E:
-	key(e)
-press F:
-	key(f)
-press G:
-	key(g)

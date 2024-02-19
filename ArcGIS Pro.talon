@@ -292,4 +292,4 @@ export layout:
 	sleep(0.5)
 	key(down:3)
 # map frame menu shortcuts
-set map location: key(esc:5 alt j f s p)
+[set] map position: key(esc:5 alt j f s p)

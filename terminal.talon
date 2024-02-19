@@ -1,7 +1,6 @@
 app.exe: cmd.exe
-app.exe: WindowsTerminal.exe
 app.exe: conhost.exe
-
+app.exe: windowsterminal.exe
 - 
 show cheat sheet:
 	insert("cd %appdata%/Talon/user/cheat sheet")

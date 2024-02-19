@@ -81,6 +81,11 @@ class Actions:
         """Terminate repetition"""
         gui_repeater.hide()
         repeater_object.disable()
+    def hard_stop_repeating():
+        """Terminate Immediately"""
+        gui_repeater.hide()
+        repeater_object.ms = reaction_time + 1
+        repeater_object.disable()
     def repeat_faster():
         """Reduce repeat interval"""
         repeater_object.ms = max(repeater_object.ms-speed_change,minimum_repeat_interval)
