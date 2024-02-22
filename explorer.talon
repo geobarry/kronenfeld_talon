@@ -28,6 +28,7 @@ go to <user.text>:
 	insert(text)
 
 # sorting
+extract: user.slow_key_press("menu t 2",1.5)
 sort:
 	# get into the menu
 	key(alt)
