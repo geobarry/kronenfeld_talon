@@ -12,7 +12,7 @@ update cheat sheet:
 	key(enter)	
 	insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
 	key(enter)
-	sleep(1.5)
+	sleep(2.5)
 	user.add_links_to_cheatsheet()
 	sleep(0.5)
 	app.window_close()

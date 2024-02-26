@@ -3,7 +3,7 @@
 >
 > command word  user.letter   
 
-> **air** *a*
+> **arm** *a*
 >
 > **blue** *b*
 >
@@ -13,7 +13,7 @@
 >
 > **easy** *e*
 >
-> **fit** *f*
+> **fire** *f*
 >
 > **gust** *g*
 >
@@ -7541,7 +7541,7 @@
 
  - **reverse**  `user.reverse()`
 
- - **<number> <user.bearing>**  `user.move_cardinal(number, user.bearing)`
+ - **<number> [degrees] <user.bearing>**  `user.move_cardinal(number, user.bearing)`
 
  - **<user.ordinals> <user.bearing>**  `user.move_cardinal(ordinals,user.bearing)`
 
@@ -7549,15 +7549,13 @@
 
  - **jump <number>**  `user.fly_out(number,10)`
 
- - **fly <number>**  `user.fly_out(number,1000)`
+ - **(fly|five) <number>**  `user.fly_out(number,1000)`
 
  - **walk <number>**  `user.fly_out(number,3000)`
 
  - **crawl <number>**  `user.fly_out(number,8000)`
 
  - **backup <number>**  `user.fly_back(number)`
-
- - **<user.number_string>**  `user.five_fly_out(number_string)`
 
 
 
@@ -7577,7 +7575,7 @@
 
  - **(eagle|head go|we go) reverse**  `user.reverse()`
 
- - **(eagle|head go|we go) <number> <user.bearing>**  `user.move_cardinal(number, user.bearing)`
+ - **(eagle|head go|we go) <number> [degrees] <user.bearing>**  `user.move_cardinal(number, user.bearing)`
 
  - **(eagle|head go|we go) <user.ordinals> <user.bearing>**  `user.move_cardinal(ordinals,user.bearing)`
 
@@ -9187,755 +9185,19 @@
 
 
 
-#  Word
+#  accessibility
 
 
- - **toggle ribbon**  `key(ctrl-f1)
+ - **access {user.dynamic_children}**  `user.focus_element_by_name(dynamic_children)`
+
+ - **copy accessible**  `user.copy_accessible_elements_to_clipboard()
 		`
 
- - **sub <user.letter>**  `insert(" ")
-		edit.left()
-		key(alt-h)
-		key(5)
-		insert("{user.letter}")
-		key(alt-h)
-		key(5)
-		edit.right()
-		`
+ - **click {user.dynamic_children}**  `user.click_element_by_name(dynamic_children)`
 
- - **sub <number>**  `insert(" ")
-		edit.left()
-		key(alt-h)
-		key(5)
-		insert("{number}")
-		key(alt-h)
-		key(5)
-		edit.right()
-		`
+ - **move [to] {user.dynamic_children}**  `user.move_to_element(dynamic_children)`
 
- - **apply style**  `key(alt-h)
-		key(z)
-		key(1)
-		key(y)
-		key(1)
-		`
-
- - **new style**  `key(alt-h)
-		key(f)
-		key(y)
-		sleep(0.05)
-		# trick: if we press right enough times we will always end up in the same place
-		key(right:10)
-		# tab to the ad style button
-		key(tab:3)
-		key(enter)
-		`
-
- - **apply heading <number>**  `key(alt-h)
-		key(z)
-		key(1)
-		key(y)
-		key(1)
-		sleep(0.05)
-		insert("Heading ")
-		insert("{number}")
-		key(enter)
-		key(esc)
-		repeat(4)
-		`
-
- - **apply normal**  `key(alt-h)
-		key(z)
-		key(1)
-		key(y)
-		key(1)
-		sleep(0.05)
-		insert("normal")
-		key(enter)
-		key(esc)
-		repeat(4)
-		`
-
- - **apply code**  `key(alt-h)
-		key(z)
-		key(1)
-		key(y)
-		key(1)
-		sleep(0.05)
-		insert("Code")
-		key(enter)
-		key(esc)
-		repeat(4)
-		`
-
- - **apply code in place**  `key(alt-h)
-		key(z)
-		key(1)
-		key(y)
-		key(1)
-		sleep(0.05)
-		insert("Inline Code")
-		key(enter)
-		key(esc)
-		repeat(4)
-		`
-
- - **style match selection**  `key(alt-h)
-		sleep(0.05)
-		key(f)
-		key(y)
-		sleep(0.05)
-		# trick: if we press right enough times we will always end up in the same place
-		key(right:2)
-		sleep(0.05)
-		key(alt-down)
-		sleep(0.05)
-		key(enter)
-		sleep(0.05)
-		key(alt-h)
-		key(f)
-		key(y)
-		`
-
- - **figure <number> here**  `insert("<figure ")
-		insert("{number}")
-		insert(" approximately here>")
-		`
-
- - **table <number> here**  `insert("<table ")
-		insert("{number}")
-		insert(" approximately here>")
-		`
-
- - **apply bullets**  `key(alt-h)
-		key(u)
-		key(right)`
-
- - **apply (numbering|numbers)**  `key(alt-h)
-		key(n)
-		key(right)`
-
- - **restart (numbering|numbers)**  `key(esc)
-		key(esc)
-		key(esc)
-		key(esc)
-		key(esc)
-		key(alt-h)
-		key(n)
-		key(v)
-		key(alt-v)
-		sleep(0.05)
-		key(1)
-		key(enter)
-		`
-
- - **save as**  `key(alt-f)
-		sleep(0.05)
-		key(a)
-		`
-
- - **close panel**  `key(f6 ctrl-space c)`
-
- - **exit panel**  `key(ctrl-space c)`
-
- - **menu view**  `key(alt-w)`
-
- - **menu file**  `key(alt-f)`
-
- - **menu home**  `key(alt-h)`
-
- - **menu insert**  `key(alt-n)`
-
- - **menu draw**  `key(alt-j)
-		key(i)`
-
- - **menu design**  `key(alt-g)`
-
- - **menu layout**  `key(alt-p)`
-
- - **menu references**  `key(alt-s)`
-
- - **menu review**  `key(alt-r)`
-
- - **menu table design**  `key(alt)
-		sleep(0.05)
-		key(j)
-		key(t)`
-
- - **menu table layout**  `key(alt)
-		sleep(0.05)
-		key(j)
-		key(l)`
-
- - **menu picture format**  `key(alt)
-		sleep(0.05)
-		key(j)
-		sleep(0.05)
-		key(p)`
-
- - **menu equation**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(e)
-		
-		
-		#file ribbon shortcuts`
-
- - **export to PDF**  `key(alt-f)
-		key(e)
-		key(a)
-		
-		#home menu ribbon shortcuts`
-
- - **font**  `key(alt-h)
-		sleep(0.05)
-		key(f)
-		key(f)`
-
- - **font size**  `key(alt-h)
-		key(f)
-		key(s)`
-
- - **font size <number>**  `key(alt-h)
-		sleep(0.05)
-		key(f)
-		key(s)
-		sleep(0.05)
-		insert(number)
-		sleep(0.05)
-		key(enter)`
-
- - **font color**  `key(alt-h)
-		sleep(0.05)
-		key(f)
-		key(c)`
-
- - **paragraph formatting**  `key(alt-h)
-		sleep(0.05)
-		key(p)
-		key(g)`
-
- - **remove (paragraph|line) spacing**  `key(alt-h)
-		sleep(0.05)
-		key(p)
-		key(g)
-		key(alt-f)
-		insert("0")
-		key(enter)`
-
- - **apply bold**  `key(alt-h)
-		key(1)`
-
- - **apply (italic|italics)**  `key(alt-h)
-		key(2)`
-
- - **apply underline**  `key(alt-h)
-		key(3)`
-
- - **apply strike through**  `key(alt-h)
-		key(4)`
-
- - **apply subscript**  `key(alt-h)
-		key(f)
-		key(n)
-		key(alt-b)
-		key(enter)`
-
- - **apply superscript**  `key(alt-h)
-		key(f)
-		key(n)
-		key(alt-p)
-		key(enter)`
-
- - **(demote|list indent)**  `key(alt)
-		sleep(0.2)
-		key(h a i)`
-
- - **(promote|list dedent)**  `key(alt)
-		sleep(0.2)
-		key(h a o)`
-
- - **align left**  `key(alt-h)
-		key(a)
-		key(l)`
-
- - **align center**  `key(alt-h)
-		key(a)
-		key(c)`
-
- - **align right**  `key(alt-h)
-		key(a)
-		key(r)`
-
- - **justify top**  `key(alt-h)
-		
-		
-		
-		# insert menu shortcuts`
-
- - **insert table**  `key(alt-n)
-		key(t)`
-
- - **insert comment**  `key(alt-n)
-		key(l)
-		
-		
-		#edit ribbon shortcuts`
-
- - **paste without formatting**  `key(alt-e)
-		sleep(0.05)
-		key(s)
-		sleep(0.15)
-		key(a)
-		sleep(.75)
-		key(u)
-		sleep(0.15)
-		key(enter)
-		
-		# layout menu shortcuts`
-
- - **insert page break**  `key(alt)
-		sleep(0.2)
-		key(p b p)`
-
- - **insert column break**  `key(alt)
-		sleep(0.2)
-		key(p b c)
-		
-		#view ribbon shortcuts`
-
- - **zoom fit [(width|with)]**  `key(alt-w)
-		sleep(0.1)
-		key(q)
-		sleep(0.1)
-		key(p)
-		sleep(0.1)
-		key(enter)`
-
- - **zoom [fit] text**  `key(alt-w)
-		sleep(0.1)
-		key(q)
-		sleep(0.05)
-		key(t)
-		key(enter)`
-
- - **zoom [fit] page**  `key(alt-w)
-		sleep(0.1)
-		key(q)
-		sleep(0.05)
-		key(w)
-		key(enter)`
-
- - **zoom <number> [percent]**  `key(alt-w)
-		sleep(0.1)
-		key(q)
-		sleep(0.1)
-		key(e)
-		sleep(0.1)
-		insert("{number}")
-		insert("%")
-		key(enter)
-		
-		# menu review`
-
- - **delete all comments**  `key(alt)
-		sleep(0.2)
-		key(r d o)`
-
- - **accept all changes [and stop tracking]**  `key(alt)
-		sleep(0.2)
-		key(r a 2 s)
-		# menu table design`
-
- - **table border none**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(n)`
-
- - **table border top**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(p)`
-
- - **table border bottom**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(b)`
-
- - **table border left**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(l)`
-
- - **table border right**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(r)`
-
- - **table border all**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(t)
-		key(b)
-		key(a)
-		
-		#menu table layout`
-
- - **insert row [above]**  `key(alt)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(a)`
-
- - **insert [row] below**  `key(alt)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(b)
-		key(e)`
-
- - **insert column [left]**  `key(alt)
-		sleep(0.2)
-		key(j l l)`
-
- - **delete row**  `key(alt)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(d)
-		key(r)`
-
- - **delete column**  `key(alt)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(d)
-		key(c)`
-
- - **column (with|width)**  `key(alt)
-		sleep(0.2)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(w)`
-
- - **delete table**  `key(alt)
-		key(j)
-		sleep(0.2)
-		key(l)
-		key(d)
-		key(t)`
-
- - **(align|justify) top left**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(t)
-		key(l)`
-
- - **(align|justify) top center**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(t)
-		key(c)`
-
- - **(align|justify) top right**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(t)
-		key(r)`
-
- - **(align|justify) center left**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(c)
-		key(l)`
-
- - **(align center middle|justify center [middle])**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(c)
-		key(c)`
-
- - **(align|justify) center right**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(c)
-		key(r)`
-
- - **(align|justify) bottom left**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(b)
-		key(l)`
-
- - **(align|justify) bottom center**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(b)
-		key(c)`
-
- - **(align|justify) bottom right**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(l)
-		key(b)
-		key(r)
-		
-		# picture format menu`
-
- - **toggle [lock] picture aspect [ratio]**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(p)
-		key(s)
-		key(z)
-		sleep(0.1)
-		key(a)
-		key(enter)`
-
- - **picture height**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(p)
-		key(h)`
-
- - **picture height <number>**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(p)
-		key(h)
-		sleep(0.1)
-		insert(number)
-		key(enter)
-		key(esc)`
-
- - **picture color options**  `key(alt)
-		sleep(0.2)
-		key(j p i c)
-		
-		# equation menu`
-
- - **insert equation**  `key(alt)
-		sleep(0.2)
-		key(n)
-		key(e)
-		key(i)`
-
- - **(equation|insert) script**  `key(alt)
-		sleep(0.2)
-		key(j)
-		sleep(0.2)
-		key(e)
-		key(s)`
-
- - **(equation|insert) fraction**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(e)
-		key(f)`
-
- - **(equation|insert) accent**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(e)
-		key(a)`
-
- - **equation symbol**  `key(alt)
-		sleep(0.2)
-		key(j)
-		key(e)
-		key(q)
-		
-		# common operations`
-
- - **copy style**  `key(ctrl-shift-c)`
-
- - **paste style**  `key(ctrl-shift-v)`
-
- - **underline [that]**  `key(ctrl-u)
-		`
-
- - **view text width**  `key(alt-w)
-		sleep(0.15)
-		key(q)
-		key(alt-t)
-		key(enter)
-		# center on screen by toggling between webview and print view
-		# strangely this doesn't work when we put the two key sequences together`
-
- - **[view] web [page] layout**  `key(alt)
-		key(w)
-		sleep(0.25)
-		key(l)
-		key(1)`
-
- - **[view] print layout**  `key(alt-w)
-		sleep(0.15)
-		key(p)
-		`
-
- - **view page width**  `key(alt-w)
-		sleep(0.15)
-		key(q)
-		key(alt-p)
-		key(enter)`
-
- - **view whole page**  `key(alt-w)
-		sleep(0.15)
-		key(q)
-		key(alt-w)
-		key(enter)`
-
- - **view percent**  `key(alt-w)
-		sleep(0.15)
-		key(q)
-		key(alt-e)
-		key(enter)
-		`
-
- - **export styles**  `key(alt-h)
-		key(f)
-		key(y)
-		sleep(0.05)
-		# trick: if we press right enough times we will always end up in the same place
-		key(right)
-		repeat(7)
-		key(tab)
-		repeat(4)
-		key(enter)
-		#we now should be in the manage styles dialog
-		#press import/export
-		key(alt-x)
-		#close down the template file that comes up by default
-		key(alt-e)
-		#open up the dialogue to get admin different file
-		sleep(0.05)
-		key(alt-e)
-		#tab to get to the file type selector
-		key(tab)
-		#select Microsoft Word files
-		key(alt-down)
-		key(up)
-		repeat(10)
-		key(down)
-		key(enter)
-		`
-
- - **finish export styles**  `#we have now chosen a file to export to enter back into the export dialog
-		#tab our way to the list of styles
-		key(tab)
-		repeat(2)
-		#select all of the styles - let's hope there is not more than this many
-		key(shift-down)
-		repeat(999)
-		#press copy button
-		key(alt-c)
-		#yes to all warning messages
-		key(alt-a)
-		# Press tab five times to get the close button
-		key(tab)
-		repeat(4)
-		#let's do this!
-		key(enter)
-		#finally close the styles pane
-		key(alt-h)
-		key(f)
-		key(y)
-		
-		#special symbols`
-
- - **insert symbol**  `key(alt-n)
-		key(u)
-		key(m)
-		sleep(0.2)
-		key(alt-f)
-		insert("symbol")
-		key(enter)
-		key(tab)`
-
- - **insert dot symbol**  `user.unicode_word("2022","Times New Roman")`
-
- - **insert (times|multiply|multiplication) symbol**  `user.unicode_word("00d7","Times New Roman")`
-
- - **insert checkmark**  `user.unicode_word("2713","Times New Roman")`
-
- - **insert ex mark**  `user.unicode_word("2715","Times New Roman")`
-
- - **insert alpha**  `user.unicode_word("03b1","Times New Roman")`
-
- - **insert beta**  `user.unicode_word("03b2","Times New Roman")`
-
- - **insert gamma**  `user.unicode_word("03b3","Times New Roman")`
-
- - **insert delta**  `user.unicode_word("03b4","Times New Roman")`
-
- - **insert theta**  `user.unicode_word("03b8","Times New Roman")`
-
- - **insert lambda**  `user.unicode_word("03bb","Times New Roman")`
-
- - **insert mu**  `user.unicode_word("03bc","Times New Roman")`
-
- - **insert sigma**  `user.unicode_word("03c3","Times New Roman")`
-
- - **insert double arrow**  `user.unicode_word("00ab","Symbol")`
-
- - **insert left arrow**  `user.unicode_word("00ac","Symbol")`
-
- - **insert up arrow**  `user.unicode_word("00ad","Symbol")`
-
- - **insert right arrow**  `user.unicode_word("00ae","Symbol")`
-
- - **insert down arrow**  `user.unicode_word("00af","Symbol")`
-
- - **insert cursive el**  `user.unicode_word("2113","Times New Roman")`
-
- - **insert circled <user.letter>**  `user.circle_letter_word(letter)`
-
- - **insert cursive look**  `user.unicode_word("2113","times new roman")`
-
- - **(insert|add|create) hyperlink**  `key(alt-n)
-		key(i)
-		key(i)`
-
- - **remove hyperlink**  `key(alt-n)
-		key(i)
-		key(i)
-		key(alt-r)`
-
- - **copy hyperlink**  `key(alt-n)
-		key(i)
-		key(i)
-		sleep(0.1)
-		key(ctrl-c)
-		key(esc:3)`
-
- - **(apply|paste) hyperlink**  `key(alt-n)
-		key(i)
-		key(i)
-		sleep(0.1)
-		key(ctrl-v)
-		sleep(0.1)
-		key(enter)
-		
-		`
+ - **copy element information**  `user.copy_focused_element_to_clipboard()`
 
 
 
@@ -9963,6 +9225,80 @@
 		key(right)
 		key(right)
 		key(right)`
+
+
+
+#  edge
+
+
+ - **focus favorites**  `key(alt-shift-b)`
+
+ - **focus toolbar**  `key(alt-shift-t)`
+
+ - **settings**  `key(alt-e)`
+
+ - **open downloads**  `key(ctrl-j)`
+
+ - **duplicate tab**  `key(ctrl-shift-k)`
+
+ - **refresh**  `key(ctrl-f5)`
+
+ - **(open|reopen) last [closed]**  `key(ctrl-shift-t)`
+
+ - **toggle fit**  `key(ctrl-backslash)`
+
+ - **rotate**  `key(ctrl-rbrack)`
+
+ - **clear browsing data**  `key(ctrl-shift-del)`
+
+ - **focus content**  `key(ctrl-f6)`
+
+ - **immersive reader**  `key(f9)`
+
+ - **caret browsing**  `key(f7)`
+
+ - **[toggle] full screen**  `key(f11)`
+
+ - **[toggle] read aloud**  `key(ctrl-shift-u)`
+
+ - **[toggle] immersive reader**  `key(f9)`
+
+ - **address bar**  `key(alt-d)`
+
+ - **move tab to window**  `key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)
+		sleep(0.1)
+		key(alt-d ctrl-a ctrl-v enter)`
+
+ - **clear cache**  `key(ctrl-shift-del)
+		sleep(2)
+		key(tab:11)
+		key(enter)
+		sleep(0.3)
+		user.tab_close_wrapper()
+		
+		# for use in devtools`
+
+ - **show console**  `key(ctrl-shift-j)`
+
+ - **show elements**  `key(ctrl-shift-c)`
+
+ - **shows settings**  `key(f1)`
+
+ - **next panel**  `key(ctrl-rbrack)`
+
+ - **previous panel**  `key(ctrl-brack)`
+
+ - **show command [menu]**  `key(ctrl-shift-p)`
+
+ - **mark for deletion**  `key(x)
+		sleep(0.2)
+		key(down)
+		
+		# downloads`
+
+ - **save download [as]**  `key(ctrl-j tab:2 enter)`
+
+ - **show [in] folder**  `user.slow_key_press("menu down:2 enter")`
 
 
 
@@ -10051,6 +9387,8 @@
  - **go to <user.text>**  `insert(text)
 		
 		# sorting`
+
+ - **extract**  `user.slow_key_press("menu t 2",1.5)`
 
  - **sort**  `# get into the menu
 		key(alt)
@@ -10191,7 +9529,9 @@
 		sleep(0.7)
 		key(space esc)
 		
-		# cross application common shortcuts`
+		# special command to focus on an explorer windows since windows has so many`
+
+ - **focus explorer**  `user.focus_explorer()`
 
  - **save**  `key(ctrl-s)`
 
@@ -10214,8 +9554,7 @@
 
  - **(my|bee jay) name**  `insert("Barry Kronenfeld")`
 
- - **my first name**  `insert("Barry")
-		`
+ - **my first name**  `insert("Barry")`
 
  - **(my|bee jay) gmail**  `insert("barrykronenfeld@gmail.com")`
 
@@ -10223,17 +9562,19 @@
 
  - **dotcom**  `insert(".com")`
 
- - **daddy to you**  `insert(".edu")
-		`
+ - **daddy to you**  `insert(".edu")`
+
+ - **dot gove**  `insert(".gov")`
+
+ - **dot python**  `insert(".py")`
 
  - **inside inches**  `user.insert_between('"', '"')`
 
- - **inside feet**  `user.insert_between("'", "'")
-		`
+ - **inside feet**  `user.insert_between("'", "'")`
 
  - **double brief {user.abbreviation} {user.abbreviation}**  `"{abbreviation} {abbreviation_2}"`
 
- - **double under brief {user.abbreviation} excel{user.abbreviation}**  `"{abbreviation}_{abbreviation_2}"`
+ - **double under brief {user.abbreviation} {user.abbreviation}**  `"{abbreviation}_{abbreviation_2}"`
 
  - **(numb|number) phrase <user.formatters> <user.text> <number>**  `insert(user.formatted_text(text, formatters))
 		insert(" ")
@@ -10302,45 +9643,8 @@
  - **alt**  `key('alt')`
 
  - **launch**  `key(super)
-		sleep(1.0)`
-
- - **update cheat sheet**  `user.cheatsheet()
-		sleep(1.5)
-		key(super)
-		sleep(0.2)
-		insert("Anaconda")
-		sleep(0.25)
-		key(enter)
-		sleep(2.5)
-		insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
-		key(enter)
-		insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
-		key(enter)
-		sleep(1.5)
-		user.add_links_to_cheatsheet()
-		sleep(0.5)
-		app.window_close()`
-
- - **show cheat sheet**  `key(super)
-		sleep(0.2)
-		insert("Anaconda")
-		sleep(0.25)
-		key(enter)
-		sleep(2.5)
-		insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
-		key("enter")
-		sleep(0.5)
-		insert("python -m http.server 8080")
-		sleep(0.5)
-		key("enter")
-		key(super)
-		sleep(0.2)
-		insert("Edge")
-		sleep(0.5)
-		key("enter")
-		sleep(0.3)
-		insert("localhost:8080/cheatsheet.html")
-		key("enter")`
+		sleep(1.0)
+		`
 
  - **release keys**  `key(shift:up)
 		key(ctrl:up)
@@ -10430,23 +9734,7 @@
 		sleep(0.2)
 		key(enter)
 		
-		
-		# key presses
-		# works in conjunction with the words to replace`
-
- - **press A**  `key(a)`
-
- - **press B**  `key(b)`
-
- - **press C**  `key(c)`
-
- - **press D**  `key(d)`
-
- - **press E**  `key(e)`
-
- - **press F**  `key(f)`
-
- - **press G**  `key(g)`
+		`
 
 
 
@@ -10665,7 +9953,7 @@
  - **end comment style**  `insert("</a>")
 		`
 
- - **insert comment cell [below]**  `key(b m enter)
+ - **(give feedback|insert comment cell) [below]**  `key(b m enter)
 		insert("<a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'>")
 		sleep(0.3)
 		key(enter:2)
@@ -10673,7 +9961,7 @@
 		sleep(0.2)
 		key(up)`
 
- - **insert good comment**  `key(b m enter)
+ - **(give good feedback|insert good comment)**  `key(b m enter)
 		insert("<a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'>")
 		sleep(0.3)
 		key(enter:2)
@@ -10833,7 +10121,37 @@
 
  - **report message**  `user.insert_between('console.log("','")')`
 
- - **report variable**  `user.insert_between('console.log(',')')`
+ - **report variable**  `user.insert_between('console.log(',')')
+		
+		# MENUS`
+
+ - **file menu**  `key(alt-f)`
+
+ - **edit menu**  `key(alt-e)`
+
+ - **search menu**  `key(alt-s)`
+
+ - **view menu**  `key(alt-v)`
+
+ - **encoding menu**  `key(alt-n)`
+
+ - **language menu**  `key(alt-l)`
+
+ - **settings menu**  `key(alt-t)`
+
+ - **tools menu**  `key(alt-o)`
+
+ - **macro menu**  `key(alt-m)`
+
+ - **run menu**  `key(alt-r)`
+
+ - **plugins menu**  `key(alt-p)`
+
+ - **window menu**  `key(alt-w)`
+
+ - **question menu**  `key(alt-shift-/)`
+
+ - **file menu save as**  `user.slow_key_press("alt-f down:7 space:5 enter",0.15)`
 
 
 
@@ -10843,6 +10161,8 @@
  - **examine selected text**  `user.examine_selected_text_type()`
 
  - **test <user.ordinals>**  `print(ordinals)`
+
+ - **test focus explorer**  `user.focus_explorer()`
 
 
 
@@ -10882,6 +10202,9 @@
  - **next slide**  `speech.enable()
 		key(s)`
 
+ - **stop recording**  `speech.enable()
+		key(s)`
+
  - **next (point|item|bullet|animation|line|line of code)**  `speech.enable()
 		key(space)
 		speech.disable()
@@ -10893,11 +10216,15 @@
 #  power screen recording
 
 
- - **select area**  `user.click_spot("select area")`
+ - **select area**  `key(super-shift-a)`
 
  - **start recording**  `user.click_spot("record")
 		speech.disable()
 		#	key(super-shift-r)`
+
+ - **(next slide$|stop recording)**  `speech.enable()
+		key(super-shift-q)
+		user.deactivate_power_screen_recording()`
 
 
 
@@ -10906,7 +10233,12 @@
 
  - **next slide**  `speech.enable()
 		key(super-shift-q)
+		user.deactivate_power_screen_recording()`
+
+ - **stop recording**  `speech.enable()
+		key(super-shift-q)
 		user.deactivate_power_screen_recording()
+		
 		
 		`
 
@@ -10914,6 +10246,10 @@
 
 #  python my commands
 
+
+ - **line comment**  `insert("# ")`
+
+ - **comment <user.text>**  `insert("# {text}")`
 
  - **loop on**  `user.insert_between('for ',' in :')`
 
@@ -11117,6 +10453,10 @@
  - **module {user.module_list} dot**  `insert(module_list)
 		insert(".")
 		
+		# KEYWORDS`
+
+ - **[python] keyword {user.keyword_list}**  `insert(keyword_list)
+		
 		# FUNCTIONS`
 
  - **function {user.function_list}**  `user.insert_between("{function_list}(",")")`
@@ -11210,9 +10550,12 @@
 
  - **stop [repeating]**  `user.stop_repeating()`
 
+ - **hard stop**  `user.hard_stop_repeating()`
+
  - **faster**  `user.repeat_faster()`
 
- - **slower**  `user.repeat_slower()`
+ - **slower**  `user.repeat_slower()
+		`
 
 
 
@@ -11439,25 +10782,43 @@
 
  - **(create|save) variable <user.text>**  `user.save_variable(text, edit.selected_text())`
 
- - **remove variable <user.variable_list>**  `user.remove_variable(text)
+ - **remove variable {user.variable_list}**  `user.remove_variable(variable_list)
 		
 		# module list`
 
  - **(create|save) module <user.text>**  `user.save_module(text, edit.selected_text())`
 
- - **remove module <user.text>**  `user.remove_module(text)
+ - **remove module {user.module_list}**  `user.remove_module(module_list)
 		
 		# function list`
 
  - **(create|save) function <user.text>**  `user.save_function(text, edit.selected_text())`
 
- - **remove function <user.text>**  `user.remove_function(text)
+ - **remove function {user.function_list}**  `user.remove_function(function_list)
+		
+		# keyword list`
+
+ - **(create|save) keyword <user.text>**  `user.save_keyword(text, edit.selected_text())`
+
+ - **remove keyword {user.keyword_list}**  `user.remove_keyword(keyword_list)
+		
+		# app list`
+
+ - **(create|save) app <user.text>**  `user.save_app(text, edit.selected_text())`
+
+ - **remove app {user.app_list}**  `user.remove_app(app_list)`
+
+ - **launch app {user.app_list}**  `key(super)
+		sleep(1.0)
+		insert("{app_list}")
+		sleep(1.0)
+		key(enter)
 		
 		# person list`
 
  - **(create|save) person <user.text>**  `user.save_person(text, edit.selected_text())`
 
- - **remove person <user.text>**  `user.remove_person(text)`
+ - **remove person {user.person_list}**  `user.remove_person(text)`
 
  - **person name {user.person_list}**  `insert(person_list)
 		insert(" ")`
@@ -11499,6 +10860,290 @@
 		# for example: mouse 10 up`
 
  - **mouse <number> {user.mouse_cardinal}**  `user.mouse_cardinal_move_1d(mouse_cardinal_1, number_1)`
+
+
+
+#  direct clicking
+
+
+ - **<user.rango_target>**  `user.rango_command_with_target("directClickElement", rango_target)`
+
+
+
+#  rango
+
+
+ - **click <user.rango_target>**  `user.rango_command_with_target("clickElement", rango_target)
+		
+		# Focus`
+
+ - **focus <user.rango_target>**  `user.rango_command_with_target("focusElement", rango_target)
+		`
+
+ - **go input**  `user.rango_command_without_target("focusFirstInput")
+		
+		# Focus and Enter`
+
+ - **flick <user.rango_target>**  `user.rango_command_with_target("focusElement", rango_target)
+		key(enter)
+		
+		# Focus tab`
+
+ - **(go tab | slot) <user.rango_tab_marker>**  `user.rango_command_with_target("activateTab", rango_tab_marker)`
+
+ - **tab marker refresh**  `user.rango_command_without_target("refreshTabMarkers")`
+
+ - **blank <user.rango_target>**  `user.rango_command_with_target("openInNewTab", rango_target)`
+
+ - **stash <user.rango_target>**  `user.rango_command_with_target("openInBackgroundTab", rango_target)
+		
+		# Navigation`
+
+ - **go root**  `user.rango_command_without_target("navigateToPageRoot")`
+
+ - **page next**  `user.rango_command_without_target("navigateToNextPage")`
+
+ - **page last**  `user.rango_command_without_target("navigateToPreviousPage")`
+
+ - **tab split**  `user.rango_command_without_target("moveCurrentTabToNewWindow")`
+
+ - **tab back**  `user.rango_command_without_target("focusPreviousTab")`
+
+ - **visit {user.website}**  `user.rango_command_without_target("focusOrCreateTabByUrl", website)`
+
+ - **tab hunt <user.text>**  `user.rango_command_without_target("focusTabByText", text)`
+
+ - **tab ahead**  `user.rango_command_without_target("cycleTabsByText", 1)`
+
+ - **tab behind**  `user.rango_command_without_target("cycleTabsByText", -1)`
+
+ - **tab close other**  `user.rango_command_without_target("closeOtherTabsInWindow")`
+
+ - **tab close left**  `user.rango_command_without_target("closeTabsToTheLeftInWindow")`
+
+ - **tab close right**  `user.rango_command_without_target("closeTabsToTheRightInWindow")`
+
+ - **tab close first [<number_small>]**  `user.rango_command_without_target("closeTabsLeftEndInWindow", number_small or 1)`
+
+ - **tab close final [<number_small>]**  `user.rango_command_without_target("closeTabsRightEndInWindow", number_small or 1)`
+
+ - **tab close previous [<number_small>]**  `user.rango_command_without_target("closePreviousTabsInWindow", number_small or 1)`
+
+ - **tab close next [<number_small>]**  `user.rango_command_without_target("closeNextTabsInWindow", number_small or 1)
+		
+		# Clone tab`
+
+ - **tab clone**  `user.rango_command_without_target("cloneCurrentTab")`
+
+ - **hover <user.rango_target>**  `user.rango_command_with_target("hoverElement", rango_target)`
+
+ - **dismiss**  `user.rango_command_without_target("unhoverAll")`
+
+ - **show <user.rango_target>**  `user.rango_command_with_target("showLink", rango_target)
+		
+		# Scroll`
+
+ - **upper**  `user.rango_command_without_target("scrollUpPage")`
+
+ - **upper <number>**  `user.rango_command_without_target("scrollUpPage", number)`
+
+ - **upper all**  `user.rango_command_without_target("scrollUpPage", 9999)`
+
+ - **tiny up**  `user.rango_command_without_target("scrollUpPage", 0.2)`
+
+ - **downer**  `user.rango_command_without_target("scrollDownPage")`
+
+ - **downer <number>**  `user.rango_command_without_target("scrollDownPage", number)`
+
+ - **downer all**  `user.rango_command_without_target("scrollDownPage", 9999)`
+
+ - **tiny down**  `user.rango_command_without_target("scrollDownPage", 0.2)`
+
+ - **scroll left**  `user.rango_command_without_target("scrollLeftPage")`
+
+ - **scroll left all**  `user.rango_command_without_target("scrollLeftPage", 9999)`
+
+ - **tiny left**  `user.rango_command_without_target("scrollLeftPage", 0.2)`
+
+ - **scroll right**  `user.rango_command_without_target("scrollRightPage")`
+
+ - **scroll right all**  `user.rango_command_without_target("scrollRightPage", 9999)`
+
+ - **tiny right**  `user.rango_command_without_target("scrollRightPage", 0.2)`
+
+ - **upper left**  `user.rango_command_without_target("scrollUpLeftAside")`
+
+ - **upper left all**  `user.rango_command_without_target("scrollUpLeftAside", 9999)`
+
+ - **downer left**  `user.rango_command_without_target("scrollDownLeftAside")`
+
+ - **downer left all**  `user.rango_command_without_target("scrollDownLeftAside", 9999)`
+
+ - **upper right**  `user.rango_command_without_target("scrollUpRightAside")`
+
+ - **upper right all**  `user.rango_command_without_target("scrollUpRightAside", 9999)`
+
+ - **downer right**  `user.rango_command_without_target("scrollDownRightAside")`
+
+ - **downer right all**  `user.rango_command_without_target("scrollDownRightAside", 9999)`
+
+ - **upper <user.rango_target>**  `user.rango_command_with_target("scrollUpAtElement", rango_target)`
+
+ - **tiny up <user.rango_target>**  `user.rango_command_with_target("scrollUpAtElement", rango_target, 0.2)
+		`
+
+ - **downer <user.rango_target>**  `user.rango_command_with_target("scrollDownAtElement", rango_target)`
+
+ - **tiny down <user.rango_target>**  `user.rango_command_with_target("scrollDownAtElement", rango_target, 0.2)
+		`
+
+ - **scroll left <user.rango_target>**  `user.rango_command_with_target("scrollLeftAtElement", rango_target)`
+
+ - **tiny left <user.rango_target>**  `user.rango_command_with_target("scrollLeftAtElement", rango_target, 0.1)
+		`
+
+ - **scroll right <user.rango_target>**  `user.rango_command_with_target("scrollRightAtElement", rango_target)`
+
+ - **tiny right <user.rango_target>**  `user.rango_command_with_target("scrollRightAtElement", rango_target, 0.1)
+		
+		# Repeat previous scroll`
+
+ - **up again**  `user.rango_command_without_target("scrollUpAtElement")`
+
+ - **down again**  `user.rango_command_without_target("scrollDownAtElement")`
+
+ - **left again**  `user.rango_command_without_target("scrollLeftAtElement")`
+
+ - **right again**  `user.rango_command_without_target("scrollRightAtElement")`
+
+ - **crown <user.rango_target>**  `user.rango_command_with_target("scrollElementToTop", rango_target)`
+
+ - **bottom <user.rango_target>**  `user.rango_command_with_target("scrollElementToBottom", rango_target)`
+
+ - **center <user.rango_target>**  `user.rango_command_with_target("scrollElementToCenter", rango_target)
+		
+		# Custom scroll positions`
+
+ - **scroll save <user.word>**  `user.rango_command_without_target("storeScrollPosition", word)`
+
+ - **scroll to <user.word>**  `user.rango_command_without_target("scrollToPosition", word)
+		
+		# Copy target information`
+
+ - **copy [link] <user.rango_target>**  `user.rango_command_with_target("copyLink", rango_target)`
+
+ - **copy mark <user.rango_target>**  `user.rango_command_with_target("copyMarkdownLink", rango_target)`
+
+ - **copy text <user.rango_target>**  `user.rango_command_with_target("copyElementTextContent", rango_target)
+		
+		# Paste`
+
+ - **paste to <user.rango_target>**  `user.rango_insert_text_to_input(clip.text(), rango_target, 0)
+		
+		# Insert text to field`
+
+ - **insert <user.text> to <user.rango_target>**  `user.rango_insert_text_to_input(text, rango_target, 0)`
+
+ - **enter <user.text> to <user.rango_target>**  `user.rango_insert_text_to_input(text, rango_target, 1)
+		
+		# Cursor position`
+
+ - **pre <user.rango_target>**  `user.rango_command_with_target("setSelectionBefore", rango_target)`
+
+ - **post <user.rango_target>**  `user.rango_command_with_target("setSelectionAfter", rango_target)
+		
+		# Clear field`
+
+ - **change <user.rango_target>**  `user.rango_clear_input(rango_target)
+		
+		# Copy current url information`
+
+ - **copy page {user.rango_page_location_property}**  `user.rango_command_without_target("copyLocationProperty", rango_page_location_property)`
+
+ - **copy mark address**  `user.rango_command_without_target("copyCurrentTabMarkdownUrl")
+		
+		# Modify hints appearance`
+
+ - **hint bigger**  `user.rango_command_without_target("increaseHintSize")`
+
+ - **hint smaller**  `user.rango_command_without_target("decreaseHintSize")`
+
+ - **hint exclude singles**  `user.rango_command_without_target("excludeSingleLetterHints")`
+
+ - **hint include singles**  `user.rango_command_without_target("includeSingleLetterHints")`
+
+ - **hint extra**  `user.rango_command_without_target("displayExtraHints")`
+
+ - **hint more**  `user.rango_command_without_target("displayExcludedHints")`
+
+ - **hint less**  `user.rango_command_without_target("displayLessHints")`
+
+ - **include <user.rango_target>**  `user.rango_command_with_target("includeExtraSelectors", rango_target)`
+
+ - **exclude <user.rango_target>**  `user.rango_command_with_target("excludeExtraSelectors", rango_target)`
+
+ - **exclude all**  `user.rango_command_without_target("excludeAllHints")`
+
+ - **some more**  `user.rango_command_without_target("includeOrExcludeMoreSelectors")`
+
+ - **some less**  `user.rango_command_without_target("includeOrExcludeLessSelectors")`
+
+ - **custom hints save**  `user.rango_command_without_target("confirmSelectorsCustomization")`
+
+ - **custom hints reset**  `user.rango_command_without_target("resetCustomSelectors")`
+
+ - **hints refresh**  `user.rango_command_without_target("refreshHints")`
+
+ - **hints (toggle | switch)**  `user.rango_command_without_target("toggleHints")`
+
+ - **hints on [{user.rango_hints_toggle_levels}]**  `user.rango_command_without_target("enableHints", rango_hints_toggle_levels or "global")`
+
+ - **hints off [{user.rango_hints_toggle_levels}]**  `user.rango_command_without_target("disableHints", rango_hints_toggle_levels or "global")`
+
+ - **hints reset {user.rango_hints_toggle_levels}**  `user.rango_command_without_target("resetToggleLevel", rango_hints_toggle_levels)`
+
+ - **toggle show**  `user.rango_command_without_target("displayTogglesStatus")
+		
+		# Toggle tab markers`
+
+ - **markers (toggle | switch)**  `user.rango_command_without_target("toggleTabMarkers")`
+
+ - **keyboard (toggle | switch)**  `user.rango_command_without_target("toggleKeyboardClicking")`
+
+ - **address in title on**  `user.rango_command_without_target("enableUrlInTitle")`
+
+ - **address in title off**  `user.rango_command_without_target("disableUrlInTitle")`
+
+ - **rango settings**  `user.rango_command_without_target("openSettingsPage")`
+
+ - **rango open {user.rango_page}**  `user.rango_command_without_target("openPageInNewTab", rango_page)`
+
+ - **mark <user.rango_target> as <user.word>**  `user.rango_command_with_target("saveReference", rango_target, word)`
+
+ - **mark show**  `user.rango_command_without_target("showReferences")`
+
+ - **mark clear <user.word>**  `user.rango_command_without_target("removeReference", word)`
+
+ - **click mark <user.word>**  `user.rango_run_action_on_reference("clickElement", word)`
+
+ - **focus mark <user.word>**  `user.rango_run_action_on_reference("focusElement", word)`
+
+ - **hover mark <user.word>**  `user.rango_run_action_on_reference("hoverElement", word)`
+
+ - **rango explicit**  `user.rango_force_explicit_clicking()`
+
+ - **rango direct**  `user.rango_force_direct_clicking()`
+
+
+
+#  talon helpers
+
+
+ - **click rango mark <user.word>**  `"user.rango_run_action_on_reference(\"clickElement\", \"{word}\")"`
+
+ - **focus rango mark <user.word>**  `"user.rango_run_action_on_reference(\"focusElement\", \"{word}\")"`
+
+ - **hover rango mark <user.word>**  `"user.rango_run_action_on_reference(\"hoverElement\", \"{word}\")"`
 
 
 
@@ -11758,75 +11403,742 @@
 
 
 
-#  edge
+#  Word
 
 
- - **focus favorites**  `key(alt-shift-b)`
+ - **toggle ribbon**  `key(ctrl-f1)
+		`
 
- - **focus toolbar**  `key(alt-shift-t)`
+ - **sub <user.letter>**  `insert(" ")
+		edit.left()
+		key(alt-h)
+		key(5)
+		insert("{user.letter}")
+		key(alt-h)
+		key(5)
+		edit.right()
+		`
 
- - **settings**  `key(alt-e)`
+ - **sub <number>**  `insert(" ")
+		edit.left()
+		key(alt-h)
+		key(5)
+		insert("{number}")
+		key(alt-h)
+		key(5)
+		edit.right()
+		`
 
- - **open downloads**  `key(ctrl-j)`
+ - **apply style**  `key(alt-h)
+		key(z)
+		key(1)
+		key(y)
+		key(1)
+		`
 
- - **duplicate tab**  `key(ctrl-shift-k)`
-
- - **refresh**  `key(ctrl-f5)`
-
- - **(open|reopen) last [closed]**  `key(ctrl-shift-t)`
-
- - **toggle fit**  `key(ctrl-backslash)`
-
- - **rotate**  `key(ctrl-rbrack)`
-
- - **clear browsing data**  `key(ctrl-shift-del)`
-
- - **focus content**  `key(ctrl-f6)`
-
- - **immersive reader**  `key(f9)`
-
- - **caret browsing**  `key(f7)`
-
- - **[toggle] full screen**  `key(f11)`
-
- - **[toggle] read aloud**  `key(ctrl-shift-u)`
-
- - **[toggle] immersive reader**  `key(f9)`
-
- - **address bar**  `key(alt-d)`
-
- - **move tab to window**  `key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)
-		sleep(0.1)
-		key(alt-d ctrl-a ctrl-v enter)`
-
- - **clear cache**  `key(ctrl-shift-del)
-		sleep(2)
-		key(tab:11)
+ - **new style**  `key(alt-h)
+		key(f)
+		key(y)
+		sleep(0.05)
+		# trick: if we press right enough times we will always end up in the same place
+		key(right:10)
+		# tab to the ad style button
+		key(tab:3)
 		key(enter)
-		sleep(0.3)
-		user.tab_close_wrapper()
-		
-		# for use in devtools`
+		`
 
- - **show console**  `key(ctrl-shift-j)`
+ - **apply heading <number>**  `key(alt-h)
+		key(z)
+		key(1)
+		key(y)
+		key(1)
+		sleep(0.05)
+		insert("Heading ")
+		insert("{number}")
+		key(enter)
+		key(esc)
+		repeat(4)
+		`
 
- - **show elements**  `key(ctrl-shift-c)`
+ - **apply normal**  `key(alt-h)
+		key(z)
+		key(1)
+		key(y)
+		key(1)
+		sleep(0.05)
+		insert("normal")
+		key(enter)
+		key(esc)
+		repeat(4)
+		`
 
- - **shows settings**  `key(f1)`
+ - **apply code**  `key(alt-h)
+		key(z)
+		key(1)
+		key(y)
+		key(1)
+		sleep(0.05)
+		insert("Code")
+		key(enter)
+		key(esc)
+		repeat(4)
+		`
 
- - **next panel**  `key(ctrl-rbrack)`
+ - **apply code in place**  `key(alt-h)
+		key(z)
+		key(1)
+		key(y)
+		key(1)
+		sleep(0.05)
+		insert("Inline Code")
+		key(enter)
+		key(esc)
+		repeat(4)
+		`
 
- - **previous panel**  `key(ctrl-brack)`
+ - **style match selection**  `key(alt-h)
+		sleep(0.05)
+		key(f)
+		key(y)
+		sleep(0.05)
+		# trick: if we press right enough times we will always end up in the same place
+		key(right:2)
+		sleep(0.05)
+		key(alt-down)
+		sleep(0.05)
+		key(enter)
+		sleep(0.05)
+		key(alt-h)
+		key(f)
+		key(y)
+		`
 
- - **show command [menu]**  `key(ctrl-shift-p)`
+ - **figure <number> here**  `insert("<figure ")
+		insert("{number}")
+		insert(" approximately here>")
+		`
 
- - **mark for deletion**  `key(x)
+ - **table <number> here**  `insert("<table ")
+		insert("{number}")
+		insert(" approximately here>")
+		`
+
+ - **apply bullets**  `key(alt-h)
+		key(u)
+		key(right)`
+
+ - **apply (numbering|numbers)**  `key(alt-h)
+		key(n)
+		key(right)`
+
+ - **restart (numbering|numbers)**  `key(esc)
+		key(esc)
+		key(esc)
+		key(esc)
+		key(esc)
+		key(alt-h)
+		key(n)
+		key(v)
+		key(alt-v)
+		sleep(0.05)
+		key(1)
+		key(enter)
+		`
+
+ - **save as**  `key(alt-f)
+		sleep(0.05)
+		key(a)
+		`
+
+ - **close panel**  `key(f6 ctrl-space c)`
+
+ - **exit panel**  `key(ctrl-space c)`
+
+ - **menu view**  `key(alt-w)`
+
+ - **menu file**  `key(alt-f)`
+
+ - **menu home**  `key(alt-h)`
+
+ - **menu insert**  `key(alt-n)`
+
+ - **menu draw**  `key(alt-j)
+		key(i)`
+
+ - **menu design**  `key(alt-g)`
+
+ - **menu layout**  `key(alt-p)`
+
+ - **menu references**  `key(alt-s)`
+
+ - **menu review**  `key(alt-r)`
+
+ - **menu table design**  `key(alt)
+		sleep(0.05)
+		key(j)
+		key(t)`
+
+ - **menu table layout**  `key(alt)
+		sleep(0.05)
+		key(j)
+		key(l)`
+
+ - **menu picture format**  `key(alt)
+		sleep(0.05)
+		key(j)
+		sleep(0.05)
+		key(p)`
+
+ - **menu equation**  `key(alt)
 		sleep(0.2)
-		key(down)
+		key(j)
+		key(e)
 		
-		# downloads`
+		
+		#file ribbon shortcuts`
 
- - **save download [as]**  `key(ctrl-j tab:2 enter)
+ - **export to PDF**  `key(alt-f)
+		key(e)
+		key(a)
+		
+		#home menu ribbon shortcuts`
+
+ - **font**  `key(alt-h)
+		sleep(0.05)
+		key(f)
+		key(f)`
+
+ - **font size**  `key(alt-h)
+		key(f)
+		key(s)`
+
+ - **font size <number>**  `key(alt-h)
+		sleep(0.05)
+		key(f)
+		key(s)
+		sleep(0.05)
+		insert(number)
+		sleep(0.05)
+		key(enter)`
+
+ - **font color**  `key(alt-h)
+		sleep(0.05)
+		key(f)
+		key(c)`
+
+ - **paragraph formatting**  `key(alt-h)
+		sleep(0.05)
+		key(p)
+		key(g)`
+
+ - **remove (paragraph|line) spacing**  `key(alt-h)
+		sleep(0.05)
+		key(p)
+		key(g)
+		key(alt-f)
+		insert("0")
+		key(enter)`
+
+ - **apply bold**  `key(alt-h)
+		key(1)`
+
+ - **apply (italic|italics)**  `key(alt-h)
+		key(2)`
+
+ - **apply underline**  `key(alt-h)
+		key(3)`
+
+ - **apply strike through**  `key(alt-h)
+		key(4)`
+
+ - **apply subscript**  `key(alt-h f n alt-b enter)`
+
+ - **apply superscript**  `key(alt-h f n alt-p enter)`
+
+ - **(demote|list indent)**  `key(alt-h a i)`
+
+ - **(promote|list dedent)**  `key(alt-h a o)`
+
+ - **align left**  `key(alt-h a l)`
+
+ - **align center**  `key(alt-h a c)`
+
+ - **align right**  `key(alt-h a r)`
+
+ - **justify top**  `key(alt-h)`
+
+ - **insert table**  `key(alt-n)
+		key(t)`
+
+ - **insert comment**  `key(alt-n)
+		key(l)
+		
+		
+		#edit ribbon shortcuts`
+
+ - **paste without formatting**  `key(alt-e)
+		sleep(0.05)
+		key(s)
+		sleep(0.15)
+		key(a)
+		sleep(.75)
+		key(u)
+		sleep(0.15)
+		key(enter)
+		
+		# layout menu shortcuts`
+
+ - **insert page break**  `key(alt)
+		sleep(0.2)
+		key(p b p)`
+
+ - **insert column break**  `key(alt)
+		sleep(0.2)
+		key(p b c)
+		
+		#view ribbon shortcuts`
+
+ - **zoom fit [(width|with)]**  `key(alt-w)
+		sleep(0.1)
+		key(q)
+		sleep(0.1)
+		key(p)
+		sleep(0.1)
+		key(enter)`
+
+ - **zoom [fit] text**  `key(alt-w)
+		sleep(0.1)
+		key(q)
+		sleep(0.05)
+		key(t)
+		key(enter)`
+
+ - **zoom [fit] page**  `key(alt-w)
+		sleep(0.1)
+		key(q)
+		sleep(0.05)
+		key(w)
+		key(enter)`
+
+ - **zoom <number> [percent]**  `key(alt-w)
+		sleep(0.1)
+		key(q)
+		sleep(0.1)
+		key(e)
+		sleep(0.1)
+		insert("{number}")
+		insert("%")
+		key(enter)
+		
+		# menu review`
+
+ - **delete all comments**  `key(alt)
+		sleep(0.2)
+		key(r d o)`
+
+ - **accept all changes [and stop tracking]**  `key(alt)
+		sleep(0.2)
+		key(r a 2 s)
+		# menu table design`
+
+ - **table border none**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(n)`
+
+ - **table border top**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(p)`
+
+ - **table border bottom**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(b)`
+
+ - **table border left**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(l)`
+
+ - **table border right**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(r)`
+
+ - **table border all**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(t)
+		key(b)
+		key(a)
+		
+		#menu table layout`
+
+ - **insert row [above]**  `key(alt)
+		key(j)
+		sleep(0.2)
+		key(l)
+		key(a)`
+
+ - **insert [row] below**  `key(alt)
+		key(j)
+		sleep(0.2)
+		key(l)
+		key(b)
+		key(e)`
+
+ - **insert column [left]**  `key(alt)
+		sleep(0.2)
+		key(j l l)`
+
+ - **delete row**  `key(alt)
+		key(j)
+		sleep(0.2)
+		key(l)
+		key(d)
+		key(r)`
+
+ - **delete column**  `key(alt)
+		key(j)
+		sleep(0.2)
+		key(l)
+		key(d)
+		key(c)`
+
+ - **column (with|width)**  `key(alt)
+		sleep(0.2)
+		key(j)
+		sleep(0.2)
+		key(l)
+		key(w)`
+
+ - **delete table**  `key(alt)
+		sleep(0.2)
+		key(j l d t)`
+
+ - **(align|justify) top left**  `key(alt)
+		sleep(0.2)
+		key(j l t l)`
+
+ - **(align|justify) top center**  `key(alt)
+		sleep(0.2)
+		key(j l t c)`
+
+ - **(align|justify) top right**  `key(alt)
+		sleep(0.2)
+		key(j l t r)`
+
+ - **(align|justify) center left**  `key(alt)
+		sleep(0.2)
+		key(j l c l)`
+
+ - **(align center middle|justify center [middle])**  `key(alt)
+		sleep(0.2)
+		key(j l c:2)`
+
+ - **(align|justify) center right**  `key(alt)
+		sleep(0.2)
+		key(j l c r)`
+
+ - **(align|justify) bottom left**  `key(alt)
+		sleep(0.2)
+		key(j l b l)`
+
+ - **(align|justify) bottom center**  `key(alt)
+		sleep(0.2)
+		key(j l b c)`
+
+ - **(align|justify) bottom right**  `key(alt)
+		sleep(0.2)
+		key(j l b r)`
+
+ - **select cell**  `user.slow_key_press('alt j l k l',0.2,"one_delay_only")`
+
+ - **select row**  `user.slow_key_press('alt j l k r',0.2,"one_delay_only")`
+
+ - **select column**  `user.slow_key_press('alt j l k c',0.2,"one_delay_only")`
+
+ - **select table**  `user.slow_key_press('alt j l k t',0.2,"one_delay_only")`
+
+ - **toggle [lock] picture aspect [ratio]**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(p)
+		key(s)
+		key(z)
+		sleep(0.1)
+		key(a)
+		key(enter)`
+
+ - **picture height**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(p)
+		key(h)`
+
+ - **picture height <number>**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(p)
+		key(h)
+		sleep(0.1)
+		insert(number)
+		key(enter)
+		key(esc)`
+
+ - **picture color options**  `key(alt)
+		sleep(0.2)
+		key(j p i c)
+		
+		# equation menu`
+
+ - **insert equation**  `key(alt)
+		sleep(0.2)
+		key(n)
+		key(e)
+		key(i)`
+
+ - **(equation|insert) script**  `key(alt)
+		sleep(0.2)
+		key(j)
+		sleep(0.2)
+		key(e)
+		key(s)`
+
+ - **equation subscript**  `key(alt)
+		sleep(0.2)
+		key(j)
+		sleep(0.2)
+		key(e s)
+		sleep(0.2)
+		key(left:50 right enter)
+		sleep(0.2)
+		key(left:2)`
+
+ - **equation superscript**  `key(alt)
+		sleep(0.2)
+		key(j)
+		sleep(0.2)
+		key(e s)
+		sleep(0.2)
+		key(left:50 enter)
+		sleep(0.2)
+		key(left:2)
+		`
+
+ - **(equation|insert) fraction**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(e)
+		key(f)`
+
+ - **(equation|insert) accent**  `key(alt)
+		sleep(0.2)
+		key(j)
+		key(e)
+		key(a)`
+
+ - **equation symbol**  `key(alt)
+		sleep(0.2)
+		key(j e q)`
+
+ - **equation arrow left**  `key(alt)
+		sleep(0.2)
+		key(j e q down:2 right:8 enter)`
+
+ - **equation arrow up**  `key(alt)
+		sleep(0.2)
+		key(j e q down:2 right:9 enter)`
+
+ - **equation arrow right**  `key(alt)
+		sleep(0.2)
+		key(j e q down:2 right:10 enter)`
+
+ - **equation arrow down**  `key(alt)
+		sleep(0.2)
+		key(j e q down:2 right:11 enter)
+		
+		# common operations`
+
+ - **copy style**  `key(ctrl-shift-c)`
+
+ - **paste style**  `key(ctrl-shift-v)`
+
+ - **underline [that]**  `key(ctrl-u)
+		`
+
+ - **view text width**  `key(alt-w)
+		sleep(0.15)
+		key(q)
+		key(alt-t)
+		key(enter)
+		# center on screen by toggling between webview and print view
+		# strangely this doesn't work when we put the two key sequences together`
+
+ - **[view] web [page] layout**  `key(alt)
+		key(w)
+		sleep(0.25)
+		key(l)
+		key(1)`
+
+ - **[view] print layout**  `key(alt-w)
+		sleep(0.15)
+		key(p)
+		`
+
+ - **view page width**  `key(alt-w)
+		sleep(0.15)
+		key(q)
+		key(alt-p)
+		key(enter)`
+
+ - **view whole page**  `key(alt-w)
+		sleep(0.15)
+		key(q)
+		key(alt-w)
+		key(enter)`
+
+ - **view percent**  `key(alt-w)
+		sleep(0.15)
+		key(q)
+		key(alt-e)
+		key(enter)
+		`
+
+ - **export styles**  `key(alt-h)
+		key(f)
+		key(y)
+		sleep(0.05)
+		# trick: if we press right enough times we will always end up in the same place
+		key(right)
+		repeat(7)
+		key(tab)
+		repeat(4)
+		key(enter)
+		#we now should be in the manage styles dialog
+		#press import/export
+		key(alt-x)
+		#close down the template file that comes up by default
+		key(alt-e)
+		#open up the dialogue to get admin different file
+		sleep(0.05)
+		key(alt-e)
+		#tab to get to the file type selector
+		key(tab)
+		#select Microsoft Word files
+		key(alt-down)
+		key(up)
+		repeat(10)
+		key(down)
+		key(enter)
+		`
+
+ - **finish export styles**  `#we have now chosen a file to export to enter back into the export dialog
+		#tab our way to the list of styles
+		key(tab)
+		repeat(2)
+		#select all of the styles - let's hope there is not more than this many
+		key(shift-down)
+		repeat(999)
+		#press copy button
+		key(alt-c)
+		#yes to all warning messages
+		key(alt-a)
+		# Press tab five times to get the close button
+		key(tab)
+		repeat(4)
+		#let's do this!
+		key(enter)
+		#finally close the styles pane
+		key(alt-h)
+		key(f)
+		key(y)
+		
+		#special symbols`
+
+ - **insert symbol**  `key(alt-n)
+		key(u)
+		key(m)
+		sleep(0.2)
+		key(alt-f)
+		insert("symbol")
+		key(enter)
+		key(tab)`
+
+ - **insert dot symbol**  `user.unicode_word("2022","Times New Roman")`
+
+ - **insert (times|multiply|multiplication) symbol**  `user.unicode_word("00d7","Times New Roman")`
+
+ - **insert checkmark**  `user.unicode_word("2713","Times New Roman")`
+
+ - **insert ex mark**  `user.unicode_word("2715","Times New Roman")`
+
+ - **insert alpha**  `user.unicode_word("03b1","Times New Roman")`
+
+ - **insert beta**  `user.unicode_word("03b2","Times New Roman")`
+
+ - **insert gamma**  `user.unicode_word("03b3","Times New Roman")`
+
+ - **insert delta**  `user.unicode_word("03b4","Times New Roman")`
+
+ - **insert theta**  `user.unicode_word("03b8","Times New Roman")`
+
+ - **insert lambda**  `user.unicode_word("03bb","Times New Roman")`
+
+ - **insert mu**  `user.unicode_word("03bc","Times New Roman")`
+
+ - **insert sigma**  `user.unicode_word("03c3","Times New Roman")`
+
+ - **insert double arrow**  `user.unicode_word("00ab","Symbol")`
+
+ - **insert left arrow**  `user.unicode_word("00ac","Symbol")`
+
+ - **insert up arrow**  `user.unicode_word("00ad","Symbol")`
+
+ - **insert right arrow**  `user.unicode_word("00ae","Symbol")`
+
+ - **insert down arrow**  `user.unicode_word("00af","Symbol")`
+
+ - **insert cursive el**  `user.unicode_word("2113","Times New Roman")`
+
+ - **insert circled <user.letter>**  `user.circle_letter_word(letter)`
+
+ - **insert cursive look**  `user.unicode_word("2113","times new roman")`
+
+ - **(insert|add|create) hyperlink**  `key(alt-n)
+		key(i)
+		key(i)`
+
+ - **remove hyperlink**  `key(alt-n)
+		key(i)
+		key(i)
+		key(alt-r)`
+
+ - **copy hyperlink**  `key(alt-n)
+		key(i)
+		key(i)
+		sleep(0.1)
+		key(ctrl-c)
+		key(esc:3)`
+
+ - **(apply|paste) hyperlink**  `key(alt-n)
+		key(i)
+		key(i)
+		sleep(0.1)
+		key(ctrl-v)
+		sleep(0.1)
+		key(enter)
 		
 		`
 
@@ -11849,7 +12161,7 @@
 		key(enter)
 		insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
 		key(enter)
-		sleep(1.5)
+		sleep(2.5)
 		user.add_links_to_cheatsheet()
 		sleep(0.5)
 		app.window_close()`

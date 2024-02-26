@@ -7,20 +7,25 @@ num_recent_pops = 0
 
 @mod.action_class
 class Actions:
-    def slow_key_press(key_seq: str, wait_time: float=0.1):
+    def slow_key_press(key_seq: str, wait_time: float=0.1, flag: str=""):
         """Press a sequence of keys separated by spaces slowly"""
         key_strings = key_seq.split(" ")
+        def press_key(key):
+            actions.key(key)
+            if wait_time > 0:
+                actions.sleep(wait_time)
         for key in key_strings:
             if ":" in key:
-                pos = key.find(":")
-                n = int(key[pos+1:])
-                key = key[:pos]
-                for id in range(n):
-                    actions.key(key)
-                    actions.sleep(wait_time)
+                parts = key.split(":")
+                if parts[1].isnumeric():                    
+                    for id in range(parts[1]):
+                        press_key(parts[0])
+                else:
+                    press_key(key)
             else:
-                actions.key(key)
-                actions.sleep(wait_time)
+                press_key(key)
+            if flag == "one_delay_only":
+                wait_time = 0
     def compress_video_file():
         """Compresses the video file that is currently selected in windows file explorer"""
         actions.key("f2")
@@ -30,7 +35,7 @@ class Actions:
         new_file = new_file.replace(" ","_")
         mod_file_name = f"{new_file}_full"
         print(mod_file_name)
-        #actions.sleep(0.2)
+        actions.sleep(0.2)
         actions.insert(mod_file_name)
         actions.sleep(0.2)
         actions.key("enter")

@@ -5,6 +5,10 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>cheatsheet</title>
+  <link rel="stylesheet" href="cheatsheet.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -19,23 +23,24 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <link rel="stylesheet" href="cheatsheet.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  
+
 </head>
 <body>
+<div id="links"><a HREF="#user.letter">user.letter</a> | <a HREF="#user.number_key">user.number_key</a> | <a HREF="#user.modifier_key">user.modifier_key</a> | <a HREF="#user.special_key">user.special_key</a> | <a HREF="#user.symbol_key">user.symbol_key</a> | <a HREF="#user.arrow_key">user.arrow_key</a> | <a HREF="#user.punctuation">user.punctuation</a> | <a HREF="#user.function_key">user.function_key</a> | <a HREF="#formatters">formatters</a> | <a HREF="#visual-studio">visual-studio</a> | <a HREF="#password">password</a> | <a HREF="#amethyst">amethyst</a> | <a HREF="#anaconda">anaconda</a> | <a HREF="#apple-notes">apple-notes</a> | <a HREF="#mac-arc-mac">mac-arc-mac</a> | <a HREF="#chrome">chrome</a> | <a HREF="#discord">discord</a> | <a HREF="#dunst">dunst</a> | <a HREF="#eclipse">eclipse</a> | <a HREF="#mac-emacs">mac-emacs</a> | <a HREF="#finder">finder</a> | <a HREF="#firefox">firefox</a> | <a HREF="#gdb-active">gdb-active</a> | <a HREF="#git">git</a> | <a HREF="#github-web">github-web</a> | <a HREF="#gitlab">gitlab</a> | <a HREF="#i3wm">i3wm</a> | <a HREF="#jetbrains">jetbrains</a> | <a HREF="#linux-keepassx-linux">linux-keepassx-linux</a> | <a HREF="#kubectl">kubectl</a> | <a HREF="#orion">orion</a> | <a HREF="#outlook-web">outlook-web</a> | <a HREF="#win-outlook-win">win-outlook-win</a> | <a HREF="#protonmail">protonmail</a> | <a HREF="#mac-rstudio-mac">mac-rstudio-mac</a> | <a HREF="#linux-signal-linux">linux-signal-linux</a> | <a HREF="#mac-slack-mac">mac-slack-mac</a> | <a HREF="#win-slack-win">win-slack-win</a> | <a HREF="#talon-repl">talon-repl</a> | <a HREF="#linux-taskwarrior-linux">linux-taskwarrior-linux</a> | <a HREF="#teams">teams</a> | <a HREF="#mac-teams-mac">mac-teams-mac</a> | <a HREF="#termite">termite</a> | <a HREF="#terraform">terraform</a> | <a HREF="#thunderbird">thunderbird</a> | <a HREF="#tmux">tmux</a> | <a HREF="#linux-tmux-linux">linux-tmux-linux</a> | <a HREF="#twitter">twitter</a> | <a HREF="#visual-studio-1">visual-studio-1</a> | <a HREF="#vivaldi">vivaldi</a> | <a HREF="#vscode">vscode</a> | <a HREF="#win-windbg">win-windbg</a> | <a HREF="#wsl">wsl</a> | <a HREF="#abbreviate">abbreviate</a> | <a HREF="#edit">edit</a> | <a HREF="#file-extension">file-extension</a> | <a HREF="#help">help</a> | <a HREF="#homophones">homophones</a> | <a HREF="#keys">keys</a> | <a HREF="#dictation-mode">dictation-mode</a> | <a HREF="#dragon-mode">dragon-mode</a> | <a HREF="#language-modes">language-modes</a> | <a HREF="#modes">modes</a> | <a HREF="#sleep-mode">sleep-mode</a> | <a HREF="#to-sleep-mode">to-sleep-mode</a> | <a HREF="#mouse-grid">mouse-grid</a> | <a HREF="#numbers">numbers</a> | <a HREF="#screens">screens</a> | <a HREF="#snippets">snippets</a> | <a HREF="#text">text</a> | <a HREF="#edit-vocabulary">edit-vocabulary</a> | <a HREF="#websites-and-search-engines">websites-and-search-engines</a> | <a HREF="#win-tabs">win-tabs</a> | <a HREF="#batch">batch</a> | <a HREF="#c">c</a> | <a HREF="#css">css</a> | <a HREF="#java">java</a> | <a HREF="#javascript">javascript</a> | <a HREF="#lua">lua</a> | <a HREF="#stylua">stylua</a> | <a HREF="#markdown">markdown</a> | <a HREF="#php">php</a> | <a HREF="#proto">proto</a> | <a HREF="#python">python</a> | <a HREF="#r">r</a> | <a HREF="#ruby">ruby</a> | <a HREF="#rust">rust</a> | <a HREF="#scala">scala</a> | <a HREF="#sql">sql</a> | <a HREF="#comment-block">comment-block</a> | <a HREF="#data-bool">data-bool</a> | <a HREF="#functions">functions</a> | <a HREF="#imperative">imperative</a> | <a HREF="#keywords">keywords</a> | <a HREF="#libraries">libraries</a> | <a HREF="#object-oriented">object-oriented</a> | <a HREF="#operators-array">operators-array</a> | <a HREF="#talon">talon</a> | <a HREF="#terraform-1">terraform-1</a> | <a HREF="#typescript">typescript</a> | <a HREF="#vimscript">vimscript</a> | <a HREF="#cancel">cancel</a> | <a HREF="#command-history">command-history</a> | <a HREF="#datetimeinsert">datetimeinsert</a> | <a HREF="#desktops">desktops</a> | <a HREF="#draft-editor">draft-editor</a> | <a HREF="#dropdown">dropdown</a> | <a HREF="#mac-macro">mac-macro</a> | <a HREF="#media">media</a> | <a HREF="#microphone-selection">microphone-selection</a> | <a HREF="#mouse">mouse</a> | <a HREF="#repeater">repeater</a> | <a HREF="#screenshot">screenshot</a> | <a HREF="#symbols">symbols</a> | <a HREF="#win-draft-global">win-draft-global</a> | <a HREF="#talon-helpers">talon-helpers</a> | <a HREF="#text-navigation">text-navigation</a> | <a HREF="#browser">browser</a> | <a HREF="#chapters">chapters</a> | <a HREF="#debugger">debugger</a> | <a HREF="#emoji">emoji</a> | <a HREF="#file-manager">file-manager</a> | <a HREF="#find-and-replace">find-and-replace</a> | <a HREF="#line-commands">line-commands</a> | <a HREF="#messaging">messaging</a> | <a HREF="#multiple-cursors">multiple-cursors</a> | <a HREF="#pages">pages</a> | <a HREF="#splits">splits</a> | <a HREF="#terminal">terminal</a> | <a HREF="#unix-utilities">unix-utilities</a> | <a HREF="#eagle">eagle</a> | <a HREF="#arcgis-pro-add-data">arcgis-pro-add-data</a> | <a HREF="#excel">excel</a> | <a HREF="#gimp">gimp</a> | <a HREF="#powerpoint">powerpoint</a> | <a HREF="#accessibility">accessibility</a> | <a HREF="#dragon">dragon</a> | <a HREF="#edge">edge</a> | <a HREF="#excel-powerpoint-shared">excel-powerpoint-shared</a> | <a HREF="#explorer">explorer</a> | <a HREF="#fast-spots">fast-spots</a> | <a HREF="#git-1">git-1</a> | <a HREF="#global">global</a> | <a HREF="#inkscape">inkscape</a> | <a HREF="#jupyter-notebook">jupyter-notebook</a> | <a HREF="#matplotlib">matplotlib</a> | <a HREF="#notepad">notepad</a> | <a HREF="#play-area">play-area</a> | <a HREF="#power-recording">power-recording</a> | <a HREF="#python-my-commands">python-my-commands</a> | <a HREF="#quantum-gis">quantum-gis</a> | <a HREF="#rstudio">rstudio</a> | <a HREF="#slow-repeater">slow-repeater</a> | <a HREF="#spyder">spyder</a> | <a HREF="#tags">tags</a> | <a HREF="#teams-1">teams-1</a> | <a HREF="#terminal-1">terminal-1</a> | <a HREF="#test-area">test-area</a> | <a HREF="#variable-storage">variable-storage</a> | <a HREF="#zoom">zoom</a> | <a HREF="#mouse-guide">mouse-guide</a> | <a HREF="#direct-clicking">direct-clicking</a> | <a HREF="#rango">rango</a> | <a HREF="#talon-helpers-1">talon-helpers-1</a> | <a HREF="#screen-spots">screen-spots</a> | <a HREF="#win-window-tweak">win-window-tweak</a> | <a HREF="#command-wizard">command-wizard</a> | <a HREF="#win-windows-file-explorer">win-windows-file-explorer</a> | <a HREF="#word">word</a> | <a HREF="#cheatsheet">cheatsheet</a></div>
+<div id="commands-container">
+<div id="commands">
 <h1 id="user.letter">user.letter</h1>
 <blockquote>
 <p>command word user.letter</p>
 </blockquote>
 <blockquote>
-<p><strong>air</strong> <em>a</em></p>
+<p><strong>arm</strong> <em>a</em></p>
 <p><strong>blue</strong> <em>b</em></p>
 <p><strong>cap</strong> <em>c</em></p>
 <p><strong>drum</strong> <em>d</em></p>
 <p><strong>easy</strong> <em>e</em></p>
-<p><strong>fit</strong> <em>f</em></p>
+<p><strong>fire</strong> <em>f</em></p>
 <p><strong>gust</strong> <em>g</em></p>
 <p><strong>harp</strong> <em>h</em></p>
 <p><strong>ink</strong> <em>i</em></p>
@@ -5944,7 +5949,7 @@ url</strong>
 <li><p><strong>&lt;user.bearing&gt;</strong>
 <code>user.set_cardinal(user.bearing)</code></p></li>
 <li><p><strong>reverse</strong> <code>user.reverse()</code></p></li>
-<li><p><strong>&lt;number&gt; &lt;user.bearing&gt;</strong>
+<li><p><strong>&lt;number&gt; [degrees] &lt;user.bearing&gt;</strong>
 <code>user.move_cardinal(number, user.bearing)</code></p></li>
 <li><p><strong>&lt;user.ordinals&gt; &lt;user.bearing&gt;</strong>
 <code>user.move_cardinal(ordinals,user.bearing)</code></p></li>
@@ -5952,7 +5957,7 @@ url</strong>
 <code>user.move_cardinal(0.3,user.bearing)</code></p></li>
 <li><p><strong>jump &lt;number&gt;</strong>
 <code>user.fly_out(number,10)</code></p></li>
-<li><p><strong>fly &lt;number&gt;</strong>
+<li><p><strong>(fly|five) &lt;number&gt;</strong>
 <code>user.fly_out(number,1000)</code></p></li>
 <li><p><strong>walk &lt;number&gt;</strong>
 <code>user.fly_out(number,3000)</code></p></li>
@@ -5960,8 +5965,6 @@ url</strong>
 <code>user.fly_out(number,8000)</code></p></li>
 <li><p><strong>backup &lt;number&gt;</strong>
 <code>user.fly_back(number)</code></p></li>
-<li><p><strong>&lt;user.number_string&gt;</strong>
-<code>user.five_fly_out(number_string)</code></p></li>
 </ul>
 <h1 id="eagle-open">eagle open</h1>
 <ul>
@@ -5976,7 +5979,7 @@ url</strong>
 <code>user.set_cardinal(user.bearing)</code></p></li>
 <li><p><strong>(eagle|head go|we go) reverse</strong>
 <code>user.reverse()</code></p></li>
-<li><p><strong>(eagle|head go|we go) &lt;number&gt;
+<li><p><strong>(eagle|head go|we go) &lt;number&gt; [degrees]
 &lt;user.bearing&gt;</strong>
 <code>user.move_cardinal(number, user.bearing)</code></p></li>
 <li><p><strong>(eagle|head go|we go) &lt;user.ordinals&gt;
@@ -6714,276 +6717,75 @@ key(up:2) key(enter) key(alt-c) key(shift-tab:2)</p>
 <li><p><strong>close [designer] panel</strong>
 <code>key(f6)         key(ctrl-space)         key(c)</code></p></li>
 </ul>
-<h1 id="word">Word</h1>
+<h1 id="accessibility">accessibility</h1>
 <ul>
-<li><p><strong>toggle ribbon</strong> <code>key(ctrl-f1)</code></p></li>
-<li><p><strong>sub &lt;user.letter&gt;</strong>
-<code>insert(" ")         edit.left()         key(alt-h)         key(5)         insert("{user.letter}")         key(alt-h)         key(5)         edit.right()</code></p></li>
-<li><p><strong>sub &lt;number&gt;</strong>
-<code>insert(" ")         edit.left()         key(alt-h)         key(5)         insert("{number}")         key(alt-h)         key(5)         edit.right()</code></p></li>
-<li><p><strong>apply style</strong>
-<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)</code></p></li>
-<li><p><strong>new style</strong>
-<code>key(alt-h)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right:10)         # tab to the ad style button         key(tab:3)         key(enter)</code></p></li>
-<li><p><strong>apply heading &lt;number&gt;</strong>
-<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Heading ")         insert("{number}")         key(enter)         key(esc)         repeat(4)</code></p></li>
-<li><p><strong>apply normal</strong>
-<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("normal")         key(enter)         key(esc)         repeat(4)</code></p></li>
-<li><p><strong>apply code</strong>
-<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Code")         key(enter)         key(esc)         repeat(4)</code></p></li>
-<li><p><strong>apply code in place</strong>
-<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Inline Code")         key(enter)         key(esc)         repeat(4)</code></p></li>
-<li><p><strong>style match selection</strong>
-<code>key(alt-h)         sleep(0.05)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right:2)         sleep(0.05)         key(alt-down)         sleep(0.05)         key(enter)         sleep(0.05)         key(alt-h)         key(f)         key(y)</code></p></li>
-<li><p><strong>figure &lt;number&gt; here</strong>
-<code>insert("&lt;figure ")         insert("{number}")         insert(" approximately here&gt;")</code></p></li>
-<li><p><strong>table &lt;number&gt; here</strong>
-<code>insert("&lt;table ")         insert("{number}")         insert(" approximately here&gt;")</code></p></li>
-<li><p><strong>apply bullets</strong>
-<code>key(alt-h)         key(u)         key(right)</code></p></li>
-<li><p><strong>apply (numbering|numbers)</strong>
-<code>key(alt-h)         key(n)         key(right)</code></p></li>
-<li><p><strong>restart (numbering|numbers)</strong>
-<code>key(esc)         key(esc)         key(esc)         key(esc)         key(esc)         key(alt-h)         key(n)         key(v)         key(alt-v)         sleep(0.05)         key(1)         key(enter)</code></p></li>
-<li><p><strong>save as</strong>
-<code>key(alt-f)         sleep(0.05)         key(a)</code></p></li>
-<li><p><strong>close panel</strong>
-<code>key(f6 ctrl-space c)</code></p></li>
-<li><p><strong>exit panel</strong>
-<code>key(ctrl-space c)</code></p></li>
-<li><p><strong>menu view</strong> <code>key(alt-w)</code></p></li>
-<li><p><strong>menu file</strong> <code>key(alt-f)</code></p></li>
-<li><p><strong>menu home</strong> <code>key(alt-h)</code></p></li>
-<li><p><strong>menu insert</strong> <code>key(alt-n)</code></p></li>
-<li><p><strong>menu draw</strong>
-<code>key(alt-j)         key(i)</code></p></li>
-<li><p><strong>menu design</strong> <code>key(alt-g)</code></p></li>
-<li><p><strong>menu layout</strong> <code>key(alt-p)</code></p></li>
-<li><p><strong>menu references</strong> <code>key(alt-s)</code></p></li>
-<li><p><strong>menu review</strong> <code>key(alt-r)</code></p></li>
-<li><p><strong>menu table design</strong>
-<code>key(alt)         sleep(0.05)         key(j)         key(t)</code></p></li>
-<li><p><strong>menu table layout</strong>
-<code>key(alt)         sleep(0.05)         key(j)         key(l)</code></p></li>
-<li><p><strong>menu picture format</strong>
-<code>key(alt)         sleep(0.05)         key(j)         sleep(0.05)         key(p)</code></p></li>
-<li><p><strong>menu equation</strong> `key(alt) sleep(0.2) key(j)
-key(e)</p>
-<pre><code> #file ribbon shortcuts`</code></pre></li>
-<li><p><strong>export to PDF</strong> `key(alt-f) key(e) key(a)</p>
-<pre><code> #home menu ribbon shortcuts`</code></pre></li>
-<li><p><strong>font</strong>
-<code>key(alt-h)         sleep(0.05)         key(f)         key(f)</code></p></li>
-<li><p><strong>font size</strong>
-<code>key(alt-h)         key(f)         key(s)</code></p></li>
-<li><p><strong>font size &lt;number&gt;</strong>
-<code>key(alt-h)         sleep(0.05)         key(f)         key(s)         sleep(0.05)         insert(number)         sleep(0.05)         key(enter)</code></p></li>
-<li><p><strong>font color</strong>
-<code>key(alt-h)         sleep(0.05)         key(f)         key(c)</code></p></li>
-<li><p><strong>paragraph formatting</strong>
-<code>key(alt-h)         sleep(0.05)         key(p)         key(g)</code></p></li>
-<li><p><strong>remove (paragraph|line) spacing</strong>
-<code>key(alt-h)         sleep(0.05)         key(p)         key(g)         key(alt-f)         insert("0")         key(enter)</code></p></li>
-<li><p><strong>apply bold</strong>
-<code>key(alt-h)         key(1)</code></p></li>
-<li><p><strong>apply (italic|italics)</strong>
-<code>key(alt-h)         key(2)</code></p></li>
-<li><p><strong>apply underline</strong>
-<code>key(alt-h)         key(3)</code></p></li>
-<li><p><strong>apply strike through</strong>
-<code>key(alt-h)         key(4)</code></p></li>
-<li><p><strong>apply subscript</strong>
-<code>key(alt-h)         key(f)         key(n)         key(alt-b)         key(enter)</code></p></li>
-<li><p><strong>apply superscript</strong>
-<code>key(alt-h)         key(f)         key(n)         key(alt-p)         key(enter)</code></p></li>
-<li><p><strong>(demote|list indent)</strong>
-<code>key(alt)         sleep(0.2)         key(h a i)</code></p></li>
-<li><p><strong>(promote|list dedent)</strong>
-<code>key(alt)         sleep(0.2)         key(h a o)</code></p></li>
-<li><p><strong>align left</strong>
-<code>key(alt-h)         key(a)         key(l)</code></p></li>
-<li><p><strong>align center</strong>
-<code>key(alt-h)         key(a)         key(c)</code></p></li>
-<li><p><strong>align right</strong>
-<code>key(alt-h)         key(a)         key(r)</code></p></li>
-<li><p><strong>justify top</strong> `key(alt-h)</p>
-<pre><code> # insert menu shortcuts`</code></pre></li>
-<li><p><strong>insert table</strong>
-<code>key(alt-n)         key(t)</code></p></li>
-<li><p><strong>insert comment</strong> `key(alt-n) key(l)</p>
-<pre><code> #edit ribbon shortcuts`</code></pre></li>
-<li><p><strong>paste without formatting</strong> `key(alt-e) sleep(0.05)
-key(s) sleep(0.15) key(a) sleep(.75) key(u) sleep(0.15) key(enter)</p>
-<pre><code> # layout menu shortcuts`</code></pre></li>
-<li><p><strong>insert page break</strong>
-<code>key(alt)         sleep(0.2)         key(p b p)</code></p></li>
-<li><p><strong>insert column break</strong> `key(alt) sleep(0.2) key(p b
-c)</p>
-<pre><code> #view ribbon shortcuts`</code></pre></li>
-<li><p><strong>zoom fit [(width|with)]</strong>
-<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.1)         key(p)         sleep(0.1)         key(enter)</code></p></li>
-<li><p><strong>zoom [fit] text</strong>
-<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.05)         key(t)         key(enter)</code></p></li>
-<li><p><strong>zoom [fit] page</strong>
-<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.05)         key(w)         key(enter)</code></p></li>
-<li><p><strong>zoom &lt;number&gt; [percent]</strong> `key(alt-w)
-sleep(0.1) key(q) sleep(0.1) key(e) sleep(0.1) insert(“{number}”)
-insert(“%”) key(enter)</p>
-<pre><code> # menu review`</code></pre></li>
-<li><p><strong>delete all comments</strong>
-<code>key(alt)         sleep(0.2)         key(r d o)</code></p></li>
-<li><p><strong>accept all changes [and stop tracking]</strong>
-<code>key(alt)         sleep(0.2)         key(r a 2 s)         # menu table design</code></p></li>
-<li><p><strong>table border none</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(n)</code></p></li>
-<li><p><strong>table border top</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(p)</code></p></li>
-<li><p><strong>table border bottom</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(b)</code></p></li>
-<li><p><strong>table border left</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(l)</code></p></li>
-<li><p><strong>table border right</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(r)</code></p></li>
-<li><p><strong>table border all</strong> `key(alt) sleep(0.2) key(j)
-key(t) key(b) key(a)</p>
-<pre><code> #menu table layout`</code></pre></li>
-<li><p><strong>insert row [above]</strong>
-<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(a)</code></p></li>
-<li><p><strong>insert [row] below</strong>
-<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(b)         key(e)</code></p></li>
-<li><p><strong>insert column [left]</strong>
-<code>key(alt)         sleep(0.2)         key(j l l)</code></p></li>
-<li><p><strong>delete row</strong>
-<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(d)         key(r)</code></p></li>
-<li><p><strong>delete column</strong>
-<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(d)         key(c)</code></p></li>
-<li><p><strong>column (with|width)</strong>
-<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(l)         key(w)</code></p></li>
-<li><p><strong>delete table</strong>
-<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(d)         key(t)</code></p></li>
-<li><p><strong>(align|justify) top left</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(t)         key(l)</code></p></li>
-<li><p><strong>(align|justify) top center</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(t)         key(c)</code></p></li>
-<li><p><strong>(align|justify) top right</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(t)         key(r)</code></p></li>
-<li><p><strong>(align|justify) center left</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(c)         key(l)</code></p></li>
-<li><p><strong>(align center middle|justify center [middle])</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(c)         key(c)</code></p></li>
-<li><p><strong>(align|justify) center right</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(c)         key(r)</code></p></li>
-<li><p><strong>(align|justify) bottom left</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(b)         key(l)</code></p></li>
-<li><p><strong>(align|justify) bottom center</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(l)         key(b)         key(c)</code></p></li>
-<li><p><strong>(align|justify) bottom right</strong> `key(alt)
-sleep(0.2) key(j) key(l) key(b) key(r)</p>
-<pre><code> # picture format menu`</code></pre></li>
-<li><p><strong>toggle [lock] picture aspect [ratio]</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(s)         key(z)         sleep(0.1)         key(a)         key(enter)</code></p></li>
-<li><p><strong>picture height</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(h)</code></p></li>
-<li><p><strong>picture height &lt;number&gt;</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(h)         sleep(0.1)         insert(number)         key(enter)         key(esc)</code></p></li>
-<li><p><strong>picture color options</strong> `key(alt) sleep(0.2) key(j
-p i c)</p>
-<pre><code> # equation menu`</code></pre></li>
-<li><p><strong>insert equation</strong>
-<code>key(alt)         sleep(0.2)         key(n)         key(e)         key(i)</code></p></li>
-<li><p><strong>(equation|insert) script</strong>
-<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(e)         key(s)</code></p></li>
-<li><p><strong>(equation|insert) fraction</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(e)         key(f)</code></p></li>
-<li><p><strong>(equation|insert) accent</strong>
-<code>key(alt)         sleep(0.2)         key(j)         key(e)         key(a)</code></p></li>
-<li><p><strong>equation symbol</strong> `key(alt) sleep(0.2) key(j)
-key(e) key(q)</p>
-<pre><code> # common operations`</code></pre></li>
-<li><p><strong>copy style</strong>
-<code>key(ctrl-shift-c)</code></p></li>
-<li><p><strong>paste style</strong>
-<code>key(ctrl-shift-v)</code></p></li>
-<li><p><strong>underline [that]</strong>
-<code>key(ctrl-u)</code></p></li>
-<li><p><strong>view text width</strong>
-<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-t)         key(enter)         # center on screen by toggling between webview and print view         # strangely this doesn't work when we put the two key sequences together</code></p></li>
-<li><p><strong>[view] web [page] layout</strong>
-<code>key(alt)         key(w)         sleep(0.25)         key(l)         key(1)</code></p></li>
-<li><p><strong>[view] print layout</strong>
-<code>key(alt-w)         sleep(0.15)         key(p)</code></p></li>
-<li><p><strong>view page width</strong>
-<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-p)         key(enter)</code></p></li>
-<li><p><strong>view whole page</strong>
-<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-w)         key(enter)</code></p></li>
-<li><p><strong>view percent</strong>
-<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-e)         key(enter)</code></p></li>
-<li><p><strong>export styles</strong>
-<code>key(alt-h)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right)         repeat(7)         key(tab)         repeat(4)         key(enter)         #we now should be in the manage styles dialog         #press import/export         key(alt-x)         #close down the template file that comes up by default         key(alt-e)         #open up the dialogue to get admin different file         sleep(0.05)         key(alt-e)         #tab to get to the file type selector         key(tab)         #select Microsoft Word files         key(alt-down)         key(up)         repeat(10)         key(down)         key(enter)</code></p></li>
-<li><p><strong>finish export styles</strong> `#we have now chosen a file
-to export to enter back into the export dialog #tab our way to the list
-of styles key(tab) repeat(2) #select all of the styles - let’s hope
-there is not more than this many key(shift-down) repeat(999) #press copy
-button key(alt-c) #yes to all warning messages key(alt-a) # Press tab
-five times to get the close button key(tab) repeat(4) #let’s do this!
-key(enter) #finally close the styles pane key(alt-h) key(f) key(y)</p>
-<pre><code> #special symbols`</code></pre></li>
-<li><p><strong>insert symbol</strong>
-<code>key(alt-n)         key(u)         key(m)         sleep(0.2)         key(alt-f)         insert("symbol")         key(enter)         key(tab)</code></p></li>
-<li><p><strong>insert dot symbol</strong>
-<code>user.unicode_word("2022","Times New Roman")</code></p></li>
-<li><p><strong>insert (times|multiply|multiplication) symbol</strong>
-<code>user.unicode_word("00d7","Times New Roman")</code></p></li>
-<li><p><strong>insert checkmark</strong>
-<code>user.unicode_word("2713","Times New Roman")</code></p></li>
-<li><p><strong>insert ex mark</strong>
-<code>user.unicode_word("2715","Times New Roman")</code></p></li>
-<li><p><strong>insert alpha</strong>
-<code>user.unicode_word("03b1","Times New Roman")</code></p></li>
-<li><p><strong>insert beta</strong>
-<code>user.unicode_word("03b2","Times New Roman")</code></p></li>
-<li><p><strong>insert gamma</strong>
-<code>user.unicode_word("03b3","Times New Roman")</code></p></li>
-<li><p><strong>insert delta</strong>
-<code>user.unicode_word("03b4","Times New Roman")</code></p></li>
-<li><p><strong>insert theta</strong>
-<code>user.unicode_word("03b8","Times New Roman")</code></p></li>
-<li><p><strong>insert lambda</strong>
-<code>user.unicode_word("03bb","Times New Roman")</code></p></li>
-<li><p><strong>insert mu</strong>
-<code>user.unicode_word("03bc","Times New Roman")</code></p></li>
-<li><p><strong>insert sigma</strong>
-<code>user.unicode_word("03c3","Times New Roman")</code></p></li>
-<li><p><strong>insert double arrow</strong>
-<code>user.unicode_word("00ab","Symbol")</code></p></li>
-<li><p><strong>insert left arrow</strong>
-<code>user.unicode_word("00ac","Symbol")</code></p></li>
-<li><p><strong>insert up arrow</strong>
-<code>user.unicode_word("00ad","Symbol")</code></p></li>
-<li><p><strong>insert right arrow</strong>
-<code>user.unicode_word("00ae","Symbol")</code></p></li>
-<li><p><strong>insert down arrow</strong>
-<code>user.unicode_word("00af","Symbol")</code></p></li>
-<li><p><strong>insert cursive el</strong>
-<code>user.unicode_word("2113","Times New Roman")</code></p></li>
-<li><p><strong>insert circled &lt;user.letter&gt;</strong>
-<code>user.circle_letter_word(letter)</code></p></li>
-<li><p><strong>insert cursive look</strong>
-<code>user.unicode_word("2113","times new roman")</code></p></li>
-<li><p><strong>(insert|add|create) hyperlink</strong>
-<code>key(alt-n)         key(i)         key(i)</code></p></li>
-<li><p><strong>remove hyperlink</strong>
-<code>key(alt-n)         key(i)         key(i)         key(alt-r)</code></p></li>
-<li><p><strong>copy hyperlink</strong>
-<code>key(alt-n)         key(i)         key(i)         sleep(0.1)         key(ctrl-c)         key(esc:3)</code></p></li>
-<li><p><strong>(apply|paste) hyperlink</strong> `key(alt-n) key(i)
-key(i) sleep(0.1) key(ctrl-v) sleep(0.1) key(enter)</p>
-<pre><code> `</code></pre></li>
+<li><p><strong>access {user.dynamic_children}</strong>
+<code>user.focus_element_by_name(dynamic_children)</code></p></li>
+<li><p><strong>copy accessible</strong>
+<code>user.copy_accessible_elements_to_clipboard()</code></p></li>
+<li><p><strong>click {user.dynamic_children}</strong>
+<code>user.click_element_by_name(dynamic_children)</code></p></li>
+<li><p><strong>move [to] {user.dynamic_children}</strong>
+<code>user.move_to_element(dynamic_children)</code></p></li>
+<li><p><strong>copy element information</strong>
+<code>user.copy_focused_element_to_clipboard()</code></p></li>
 </ul>
 <h1 id="dragon">dragon</h1>
 <ul>
 <li><strong>slow down</strong>
 <code>sleep(0.25)         key(alt-t)         key(up)         key(enter)         sleep(0.5)         key(ctrl:down)         key(pagedown)         key(ctrl:up)         sleep(0.25)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)         key(right)</code></li>
+</ul>
+<h1 id="edge">edge</h1>
+<ul>
+<li><p><strong>focus favorites</strong>
+<code>key(alt-shift-b)</code></p></li>
+<li><p><strong>focus toolbar</strong>
+<code>key(alt-shift-t)</code></p></li>
+<li><p><strong>settings</strong> <code>key(alt-e)</code></p></li>
+<li><p><strong>open downloads</strong> <code>key(ctrl-j)</code></p></li>
+<li><p><strong>duplicate tab</strong>
+<code>key(ctrl-shift-k)</code></p></li>
+<li><p><strong>refresh</strong> <code>key(ctrl-f5)</code></p></li>
+<li><p><strong>(open|reopen) last [closed]</strong>
+<code>key(ctrl-shift-t)</code></p></li>
+<li><p><strong>toggle fit</strong>
+<code>key(ctrl-backslash)</code></p></li>
+<li><p><strong>rotate</strong> <code>key(ctrl-rbrack)</code></p></li>
+<li><p><strong>clear browsing data</strong>
+<code>key(ctrl-shift-del)</code></p></li>
+<li><p><strong>focus content</strong> <code>key(ctrl-f6)</code></p></li>
+<li><p><strong>immersive reader</strong> <code>key(f9)</code></p></li>
+<li><p><strong>caret browsing</strong> <code>key(f7)</code></p></li>
+<li><p><strong>[toggle] full screen</strong>
+<code>key(f11)</code></p></li>
+<li><p><strong>[toggle] read aloud</strong>
+<code>key(ctrl-shift-u)</code></p></li>
+<li><p><strong>[toggle] immersive reader</strong>
+<code>key(f9)</code></p></li>
+<li><p><strong>address bar</strong> <code>key(alt-d)</code></p></li>
+<li><p><strong>move tab to window</strong>
+<code>key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)         sleep(0.1)         key(alt-d ctrl-a ctrl-v enter)</code></p></li>
+<li><p><strong>clear cache</strong> `key(ctrl-shift-del) sleep(2)
+key(tab:11) key(enter) sleep(0.3) user.tab_close_wrapper()</p>
+<pre><code> # for use in devtools`</code></pre></li>
+<li><p><strong>show console</strong>
+<code>key(ctrl-shift-j)</code></p></li>
+<li><p><strong>show elements</strong>
+<code>key(ctrl-shift-c)</code></p></li>
+<li><p><strong>shows settings</strong> <code>key(f1)</code></p></li>
+<li><p><strong>next panel</strong>
+<code>key(ctrl-rbrack)</code></p></li>
+<li><p><strong>previous panel</strong>
+<code>key(ctrl-brack)</code></p></li>
+<li><p><strong>show command [menu]</strong>
+<code>key(ctrl-shift-p)</code></p></li>
+<li><p><strong>mark for deletion</strong> `key(x) sleep(0.2)
+key(down)</p>
+<pre><code> # downloads`</code></pre></li>
+<li><p><strong>save download [as]</strong>
+<code>key(ctrl-j tab:2 enter)</code></p></li>
+<li><p><strong>show [in] folder</strong>
+<code>user.slow_key_press("menu down:2 enter")</code></p></li>
 </ul>
 <h1 id="excel-powerpoint-shared">excel powerpoint shared</h1>
 <ul>
@@ -7047,6 +6849,8 @@ key(escape)</p>
  `</code></pre></li>
 <li><p><strong>go to &lt;user.text&gt;</strong> `insert(text)</p>
 <pre><code> # sorting`</code></pre></li>
+<li><p><strong>extract</strong>
+<code>user.slow_key_press("menu t 2",1.5)</code></p></li>
 <li><p><strong>sort</strong>
 <code># get into the menu         key(alt)         # a sort menu is third from the right         key(right:20)         key(left:2)         key(enter)</code></p></li>
 <li><p><strong>sort by name</strong>
@@ -7111,7 +6915,9 @@ key(escape)</p>
 <code>key(super-shift-s)</code></p></li>
 <li><p><strong>toggle Bluetooth</strong> `key(super-a) sleep(1)
 key(right) sleep(0.5) key(tab enter) sleep(0.7) key(space esc)</p>
-<pre><code> # cross application common shortcuts`</code></pre></li>
+<pre><code> # special command to focus on an explorer windows since windows has so many`</code></pre></li>
+<li><p><strong>focus explorer</strong>
+<code>user.focus_explorer()</code></p></li>
 <li><p><strong>save</strong> <code>key(ctrl-s)</code></p></li>
 <li><p><strong>search</strong> <code>key(ctrl-f)</code></p></li>
 <li><p><strong>context menu</strong> <code>key(menu)</code></p></li>
@@ -7132,6 +6938,8 @@ key(right) sleep(0.5) key(tab enter) sleep(0.7) key(space esc)</p>
 <li><p><strong>dotcom</strong> <code>insert(".com")</code></p></li>
 <li><p><strong>daddy to you</strong>
 <code>insert(".edu")</code></p></li>
+<li><p><strong>dot gove</strong> <code>insert(".gov")</code></p></li>
+<li><p><strong>dot python</strong> <code>insert(".py")</code></p></li>
 <li><p><strong>inside inches</strong>
 <code>user.insert_between('"', '"')</code></p></li>
 <li><p><strong>inside feet</strong>
@@ -7140,7 +6948,7 @@ key(right) sleep(0.5) key(tab enter) sleep(0.7) key(space esc)</p>
 {user.abbreviation}</strong>
 <code>"{abbreviation} {abbreviation_2}"</code></p></li>
 <li><p><strong>double under brief {user.abbreviation}
-excel{user.abbreviation}</strong>
+{user.abbreviation}</strong>
 <code>"{abbreviation}_{abbreviation_2}"</code></p></li>
 <li><p><strong>(numb|number) phrase &lt;user.formatters&gt;
 &lt;user.text&gt; &lt;number&gt;</strong>
@@ -7179,10 +6987,6 @@ excel{user.abbreviation}</strong>
 <li><p><strong>alt</strong> <code>key('alt')</code></p></li>
 <li><p><strong>launch</strong>
 <code>key(super)         sleep(1.0)</code></p></li>
-<li><p><strong>update cheat sheet</strong>
-<code>user.cheatsheet()         sleep(1.5)         key(super)         sleep(0.2)         insert("Anaconda")         sleep(0.25)         key(enter)         sleep(2.5)         insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")         key(enter)         insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")         key(enter)         sleep(1.5)         user.add_links_to_cheatsheet()         sleep(0.5)         app.window_close()</code></p></li>
-<li><p><strong>show cheat sheet</strong>
-<code>key(super)         sleep(0.2)         insert("Anaconda")         sleep(0.25)         key(enter)         sleep(2.5)         insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")         key("enter")         sleep(0.5)         insert("python -m http.server 8080")         sleep(0.5)         key("enter")         key(super)         sleep(0.2)         insert("Edge")         sleep(0.5)         key("enter")         sleep(0.3)         insert("localhost:8080/cheatsheet.html")         key("enter")</code></p></li>
 <li><p><strong>release keys</strong>
 <code>key(shift:up)         key(ctrl:up)         key(alt:up)         key(super:up)</code></p></li>
 <li><p><strong>escape out</strong> `key(esc) key(esc) key(esc) key(esc)
@@ -7220,15 +7024,7 @@ key(esc)</p>
 <li><p><strong>restart computer</strong> `key(super) sleep(0.2) key(up)
 sleep(0.2) key(right) key(enter) sleep(0.2) key(down:3) sleep(0.2)
 key(enter)</p>
-<pre><code> # key presses
- # works in conjunction with the words to replace`</code></pre></li>
-<li><p><strong>press A</strong> <code>key(a)</code></p></li>
-<li><p><strong>press B</strong> <code>key(b)</code></p></li>
-<li><p><strong>press C</strong> <code>key(c)</code></p></li>
-<li><p><strong>press D</strong> <code>key(d)</code></p></li>
-<li><p><strong>press E</strong> <code>key(e)</code></p></li>
-<li><p><strong>press F</strong> <code>key(f)</code></p></li>
-<li><p><strong>press G</strong> <code>key(g)</code></p></li>
+<pre><code> `</code></pre></li>
 </ul>
 <h1 id="global-sleep">global sleep</h1>
 <ul>
@@ -7383,10 +7179,10 @@ ears)</strong> <code>speech.enable()</code></li>
 <code>insert("&lt;a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'&gt;")</code></p></li>
 <li><p><strong>end comment style</strong>
 <code>insert("&lt;/a&gt;")</code></p></li>
-<li><p><strong>insert comment cell [below]</strong>
+<li><p><strong>(give feedback|insert comment cell) [below]</strong>
 <code>key(b m enter)         insert("&lt;a style='color:#b27;font-style:italic;font-family:Cursive,Brush Script MT;padding: 0.2em'&gt;")         sleep(0.3)         key(enter:2)         insert("&lt;/a&gt;")         sleep(0.2)         key(up)</code></p></li>
-<li><p><strong>insert good comment</strong> `key(b m enter)
-insert(“&lt;a
+<li><p><strong>(give good feedback|insert good comment)</strong> `key(b
+m enter) insert(“&lt;a
 style=‘color:#b27;font-style:italic;font-family:Cursive,Brush Script
 MT;padding: 0.2em’&gt;”) sleep(0.3) key(enter:2) insert(“&lt;/a&gt;”)
 sleep(0.2) key(up) insert(“good”) sleep(0.2) key(shift-enter)</p>
@@ -7471,7 +7267,24 @@ key(shift-tab:2)</p>
 <li><p><strong>report message</strong>
 <code>user.insert_between('console.log("','")')</code></p></li>
 <li><p><strong>report variable</strong>
-<code>user.insert_between('console.log(',')')</code></p></li>
+`user.insert_between(‘console.log(’,‘)’)</p>
+<pre><code> # MENUS`</code></pre></li>
+<li><p><strong>file menu</strong> <code>key(alt-f)</code></p></li>
+<li><p><strong>edit menu</strong> <code>key(alt-e)</code></p></li>
+<li><p><strong>search menu</strong> <code>key(alt-s)</code></p></li>
+<li><p><strong>view menu</strong> <code>key(alt-v)</code></p></li>
+<li><p><strong>encoding menu</strong> <code>key(alt-n)</code></p></li>
+<li><p><strong>language menu</strong> <code>key(alt-l)</code></p></li>
+<li><p><strong>settings menu</strong> <code>key(alt-t)</code></p></li>
+<li><p><strong>tools menu</strong> <code>key(alt-o)</code></p></li>
+<li><p><strong>macro menu</strong> <code>key(alt-m)</code></p></li>
+<li><p><strong>run menu</strong> <code>key(alt-r)</code></p></li>
+<li><p><strong>plugins menu</strong> <code>key(alt-p)</code></p></li>
+<li><p><strong>window menu</strong> <code>key(alt-w)</code></p></li>
+<li><p><strong>question menu</strong>
+<code>key(alt-shift-/)</code></p></li>
+<li><p><strong>file menu save as</strong>
+<code>user.slow_key_press("alt-f down:7 space:5 enter",0.15)</code></p></li>
 </ul>
 <h1 id="play-area">play area</h1>
 <ul>
@@ -7479,6 +7292,8 @@ key(shift-tab:2)</p>
 <code>user.examine_selected_text_type()</code></p></li>
 <li><p><strong>test &lt;user.ordinals&gt;</strong>
 <code>print(ordinals)</code></p></li>
+<li><p><strong>test focus explorer</strong>
+<code>user.focus_explorer()</code></p></li>
 </ul>
 <h1 id="power-recording">power recording</h1>
 <ul>
@@ -7503,6 +7318,8 @@ key(shift-tab:2)</p>
 <ul>
 <li><p><strong>next slide</strong>
 <code>speech.enable()         key(s)</code></p></li>
+<li><p><strong>stop recording</strong>
+<code>speech.enable()         key(s)</code></p></li>
 <li><p><strong>next (point|item|bullet|animation|line|line of
 code)</strong> `speech.enable() key(space) speech.disable()</p>
 <pre><code> `</code></pre></li>
@@ -7510,19 +7327,26 @@ code)</strong> `speech.enable() key(space) speech.disable()</p>
 <h1 id="power-screen-recording">power screen recording</h1>
 <ul>
 <li><p><strong>select area</strong>
-<code>user.click_spot("select area")</code></p></li>
+<code>key(super-shift-a)</code></p></li>
 <li><p><strong>start recording</strong>
 <code>user.click_spot("record")         speech.disable()         #   key(super-shift-r)</code></p></li>
+<li><p><strong>(next slide$|stop recording)</strong>
+<code>speech.enable()         key(super-shift-q)         user.deactivate_power_screen_recording()</code></p></li>
 </ul>
 <h1 id="power-screen-recording-sleep-mode">power screen recording sleep
 mode</h1>
 <ul>
-<li><p><strong>next slide</strong> `speech.enable() key(super-shift-q)
-user.deactivate_power_screen_recording()</p>
+<li><p><strong>next slide</strong>
+<code>speech.enable()         key(super-shift-q)         user.deactivate_power_screen_recording()</code></p></li>
+<li><p><strong>stop recording</strong> `speech.enable()
+key(super-shift-q) user.deactivate_power_screen_recording()</p>
 <pre><code> `</code></pre></li>
 </ul>
 <h1 id="python-my-commands">python my commands</h1>
 <ul>
+<li><p><strong>line comment</strong> <code>insert("# ")</code></p></li>
+<li><p><strong>comment &lt;user.text&gt;</strong>
+<code>insert("# {text}")</code></p></li>
 <li><p><strong>loop on</strong>
 <code>user.insert_between('for ',' in :')</code></p></li>
 <li><p><strong>check if</strong>
@@ -7658,6 +7482,9 @@ user.deactivate_power_screen_recording()</p>
 <code>insert(module_list)</code></p></li>
 <li><p><strong>module {user.module_list} dot</strong>
 `insert(module_list) insert(“.”)</p>
+<pre><code> # KEYWORDS`</code></pre></li>
+<li><p><strong><a href="#python">python</a> keyword
+{user.keyword_list}</strong> `insert(keyword_list)</p>
 <pre><code> # FUNCTIONS`</code></pre></li>
 <li><p><strong>function {user.function_list}</strong>
 <code>user.insert_between("{function_list}(",")")</code></p></li>
@@ -7727,6 +7554,8 @@ repeat</strong> `user.start_repeating(“{key}”,number*100)</p>
 <ul>
 <li><p><strong>stop [repeating]</strong>
 <code>user.stop_repeating()</code></p></li>
+<li><p><strong>hard stop</strong>
+<code>user.hard_stop_repeating()</code></p></li>
 <li><p><strong>faster</strong>
 <code>user.repeat_faster()</code></p></li>
 <li><p><strong>slower</strong>
@@ -7859,22 +7688,34 @@ notebook”) key(enter)</p>
 <ul>
 <li><p><strong>(create|save) variable &lt;user.text&gt;</strong>
 <code>user.save_variable(text, edit.selected_text())</code></p></li>
-<li><p><strong>remove variable &lt;user.variable_list&gt;</strong>
-`user.remove_variable(text)</p>
+<li><p><strong>remove variable {user.variable_list}</strong>
+`user.remove_variable(variable_list)</p>
 <pre><code> # module list`</code></pre></li>
 <li><p><strong>(create|save) module &lt;user.text&gt;</strong>
 <code>user.save_module(text, edit.selected_text())</code></p></li>
-<li><p><strong>remove module &lt;user.text&gt;</strong>
-`user.remove_module(text)</p>
+<li><p><strong>remove module {user.module_list}</strong>
+`user.remove_module(module_list)</p>
 <pre><code> # function list`</code></pre></li>
 <li><p><strong>(create|save) function &lt;user.text&gt;</strong>
 <code>user.save_function(text, edit.selected_text())</code></p></li>
-<li><p><strong>remove function &lt;user.text&gt;</strong>
-`user.remove_function(text)</p>
+<li><p><strong>remove function {user.function_list}</strong>
+`user.remove_function(function_list)</p>
+<pre><code> # keyword list`</code></pre></li>
+<li><p><strong>(create|save) keyword &lt;user.text&gt;</strong>
+<code>user.save_keyword(text, edit.selected_text())</code></p></li>
+<li><p><strong>remove keyword {user.keyword_list}</strong>
+`user.remove_keyword(keyword_list)</p>
+<pre><code> # app list`</code></pre></li>
+<li><p><strong>(create|save) app &lt;user.text&gt;</strong>
+<code>user.save_app(text, edit.selected_text())</code></p></li>
+<li><p><strong>remove app {user.app_list}</strong>
+<code>user.remove_app(app_list)</code></p></li>
+<li><p><strong>launch app {user.app_list}</strong> `key(super)
+sleep(1.0) insert(“{app_list}”) sleep(1.0) key(enter)</p>
 <pre><code> # person list`</code></pre></li>
 <li><p><strong>(create|save) person &lt;user.text&gt;</strong>
 <code>user.save_person(text, edit.selected_text())</code></p></li>
-<li><p><strong>remove person &lt;user.text&gt;</strong>
+<li><p><strong>remove person {user.person_list}</strong>
 <code>user.remove_person(text)</code></p></li>
 <li><p><strong>person name {user.person_list}</strong>
 <code>insert(person_list)         insert(" ")</code></p></li>
@@ -7907,6 +7748,271 @@ notebook”) key(enter)</p>
 <code>user.mouse_cardinal_move_2d(mouse_cardinal_1, number_1, mouse_cardinal_2, number_2)         # for example: mouse 10 up</code></p></li>
 <li><p><strong>mouse &lt;number&gt; {user.mouse_cardinal}</strong>
 <code>user.mouse_cardinal_move_1d(mouse_cardinal_1, number_1)</code></p></li>
+</ul>
+<h1 id="direct-clicking">direct clicking</h1>
+<ul>
+<li><strong>&lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("directClickElement", rango_target)</code></li>
+</ul>
+<h1 id="rango">rango</h1>
+<ul>
+<li><p><strong>click &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“clickElement”, rango_target)</p>
+<pre><code> # Focus`</code></pre></li>
+<li><p><strong>focus &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("focusElement", rango_target)</code></p></li>
+<li><p><strong>go input</strong>
+`user.rango_command_without_target(“focusFirstInput”)</p>
+<pre><code> # Focus and Enter`</code></pre></li>
+<li><p><strong>flick &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“focusElement”, rango_target)
+key(enter)</p>
+<pre><code> # Focus tab`</code></pre></li>
+<li><p><strong>(go tab | slot) &lt;user.rango_tab_marker&gt;</strong>
+<code>user.rango_command_with_target("activateTab", rango_tab_marker)</code></p></li>
+<li><p><strong>tab marker refresh</strong>
+<code>user.rango_command_without_target("refreshTabMarkers")</code></p></li>
+<li><p><strong>blank &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("openInNewTab", rango_target)</code></p></li>
+<li><p><strong>stash &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“openInBackgroundTab”, rango_target)</p>
+<pre><code> # Navigation`</code></pre></li>
+<li><p><strong>go root</strong>
+<code>user.rango_command_without_target("navigateToPageRoot")</code></p></li>
+<li><p><strong>page next</strong>
+<code>user.rango_command_without_target("navigateToNextPage")</code></p></li>
+<li><p><strong>page last</strong>
+<code>user.rango_command_without_target("navigateToPreviousPage")</code></p></li>
+<li><p><strong>tab split</strong>
+<code>user.rango_command_without_target("moveCurrentTabToNewWindow")</code></p></li>
+<li><p><strong>tab back</strong>
+<code>user.rango_command_without_target("focusPreviousTab")</code></p></li>
+<li><p><strong>visit {user.website}</strong>
+<code>user.rango_command_without_target("focusOrCreateTabByUrl", website)</code></p></li>
+<li><p><strong>tab hunt &lt;user.text&gt;</strong>
+<code>user.rango_command_without_target("focusTabByText", text)</code></p></li>
+<li><p><strong>tab ahead</strong>
+<code>user.rango_command_without_target("cycleTabsByText", 1)</code></p></li>
+<li><p><strong>tab behind</strong>
+<code>user.rango_command_without_target("cycleTabsByText", -1)</code></p></li>
+<li><p><strong>tab close other</strong>
+<code>user.rango_command_without_target("closeOtherTabsInWindow")</code></p></li>
+<li><p><strong>tab close left</strong>
+<code>user.rango_command_without_target("closeTabsToTheLeftInWindow")</code></p></li>
+<li><p><strong>tab close right</strong>
+<code>user.rango_command_without_target("closeTabsToTheRightInWindow")</code></p></li>
+<li><p><strong>tab close first [&lt;number_small&gt;]</strong>
+<code>user.rango_command_without_target("closeTabsLeftEndInWindow", number_small or 1)</code></p></li>
+<li><p><strong>tab close final [&lt;number_small&gt;]</strong>
+<code>user.rango_command_without_target("closeTabsRightEndInWindow", number_small or 1)</code></p></li>
+<li><p><strong>tab close previous [&lt;number_small&gt;]</strong>
+<code>user.rango_command_without_target("closePreviousTabsInWindow", number_small or 1)</code></p></li>
+<li><p><strong>tab close next [&lt;number_small&gt;]</strong>
+`user.rango_command_without_target(“closeNextTabsInWindow”, number_small
+or 1)</p>
+<pre><code> # Clone tab`</code></pre></li>
+<li><p><strong>tab clone</strong>
+<code>user.rango_command_without_target("cloneCurrentTab")</code></p></li>
+<li><p><strong>hover &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("hoverElement", rango_target)</code></p></li>
+<li><p><strong>dismiss</strong>
+<code>user.rango_command_without_target("unhoverAll")</code></p></li>
+<li><p><strong>show &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“showLink”, rango_target)</p>
+<pre><code> # Scroll`</code></pre></li>
+<li><p><strong>upper</strong>
+<code>user.rango_command_without_target("scrollUpPage")</code></p></li>
+<li><p><strong>upper &lt;number&gt;</strong>
+<code>user.rango_command_without_target("scrollUpPage", number)</code></p></li>
+<li><p><strong>upper all</strong>
+<code>user.rango_command_without_target("scrollUpPage", 9999)</code></p></li>
+<li><p><strong>tiny up</strong>
+<code>user.rango_command_without_target("scrollUpPage", 0.2)</code></p></li>
+<li><p><strong>downer</strong>
+<code>user.rango_command_without_target("scrollDownPage")</code></p></li>
+<li><p><strong>downer &lt;number&gt;</strong>
+<code>user.rango_command_without_target("scrollDownPage", number)</code></p></li>
+<li><p><strong>downer all</strong>
+<code>user.rango_command_without_target("scrollDownPage", 9999)</code></p></li>
+<li><p><strong>tiny down</strong>
+<code>user.rango_command_without_target("scrollDownPage", 0.2)</code></p></li>
+<li><p><strong>scroll left</strong>
+<code>user.rango_command_without_target("scrollLeftPage")</code></p></li>
+<li><p><strong>scroll left all</strong>
+<code>user.rango_command_without_target("scrollLeftPage", 9999)</code></p></li>
+<li><p><strong>tiny left</strong>
+<code>user.rango_command_without_target("scrollLeftPage", 0.2)</code></p></li>
+<li><p><strong>scroll right</strong>
+<code>user.rango_command_without_target("scrollRightPage")</code></p></li>
+<li><p><strong>scroll right all</strong>
+<code>user.rango_command_without_target("scrollRightPage", 9999)</code></p></li>
+<li><p><strong>tiny right</strong>
+<code>user.rango_command_without_target("scrollRightPage", 0.2)</code></p></li>
+<li><p><strong>upper left</strong>
+<code>user.rango_command_without_target("scrollUpLeftAside")</code></p></li>
+<li><p><strong>upper left all</strong>
+<code>user.rango_command_without_target("scrollUpLeftAside", 9999)</code></p></li>
+<li><p><strong>downer left</strong>
+<code>user.rango_command_without_target("scrollDownLeftAside")</code></p></li>
+<li><p><strong>downer left all</strong>
+<code>user.rango_command_without_target("scrollDownLeftAside", 9999)</code></p></li>
+<li><p><strong>upper right</strong>
+<code>user.rango_command_without_target("scrollUpRightAside")</code></p></li>
+<li><p><strong>upper right all</strong>
+<code>user.rango_command_without_target("scrollUpRightAside", 9999)</code></p></li>
+<li><p><strong>downer right</strong>
+<code>user.rango_command_without_target("scrollDownRightAside")</code></p></li>
+<li><p><strong>downer right all</strong>
+<code>user.rango_command_without_target("scrollDownRightAside", 9999)</code></p></li>
+<li><p><strong>upper &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollUpAtElement", rango_target)</code></p></li>
+<li><p><strong>tiny up &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollUpAtElement", rango_target, 0.2)</code></p></li>
+<li><p><strong>downer &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollDownAtElement", rango_target)</code></p></li>
+<li><p><strong>tiny down &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollDownAtElement", rango_target, 0.2)</code></p></li>
+<li><p><strong>scroll left &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollLeftAtElement", rango_target)</code></p></li>
+<li><p><strong>tiny left &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollLeftAtElement", rango_target, 0.1)</code></p></li>
+<li><p><strong>scroll right &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollRightAtElement", rango_target)</code></p></li>
+<li><p><strong>tiny right &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“scrollRightAtElement”, rango_target,
+0.1)</p>
+<pre><code> # Repeat previous scroll`</code></pre></li>
+<li><p><strong>up again</strong>
+<code>user.rango_command_without_target("scrollUpAtElement")</code></p></li>
+<li><p><strong>down again</strong>
+<code>user.rango_command_without_target("scrollDownAtElement")</code></p></li>
+<li><p><strong>left again</strong>
+<code>user.rango_command_without_target("scrollLeftAtElement")</code></p></li>
+<li><p><strong>right again</strong>
+<code>user.rango_command_without_target("scrollRightAtElement")</code></p></li>
+<li><p><strong>crown &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollElementToTop", rango_target)</code></p></li>
+<li><p><strong>bottom &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("scrollElementToBottom", rango_target)</code></p></li>
+<li><p><strong>center &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“scrollElementToCenter”,
+rango_target)</p>
+<pre><code> # Custom scroll positions`</code></pre></li>
+<li><p><strong>scroll save &lt;user.word&gt;</strong>
+<code>user.rango_command_without_target("storeScrollPosition", word)</code></p></li>
+<li><p><strong>scroll to &lt;user.word&gt;</strong>
+`user.rango_command_without_target(“scrollToPosition”, word)</p>
+<pre><code> # Copy target information`</code></pre></li>
+<li><p><strong>copy [link] &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("copyLink", rango_target)</code></p></li>
+<li><p><strong>copy mark &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("copyMarkdownLink", rango_target)</code></p></li>
+<li><p><strong>copy text &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“copyElementTextContent”,
+rango_target)</p>
+<pre><code> # Paste`</code></pre></li>
+<li><p><strong>paste to &lt;user.rango_target&gt;</strong>
+`user.rango_insert_text_to_input(clip.text(), rango_target, 0)</p>
+<pre><code> # Insert text to field`</code></pre></li>
+<li><p><strong>insert &lt;user.text&gt; to
+&lt;user.rango_target&gt;</strong>
+<code>user.rango_insert_text_to_input(text, rango_target, 0)</code></p></li>
+<li><p><strong>enter &lt;user.text&gt; to
+&lt;user.rango_target&gt;</strong>
+`user.rango_insert_text_to_input(text, rango_target, 1)</p>
+<pre><code> # Cursor position`</code></pre></li>
+<li><p><strong>pre &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("setSelectionBefore", rango_target)</code></p></li>
+<li><p><strong>post &lt;user.rango_target&gt;</strong>
+`user.rango_command_with_target(“setSelectionAfter”, rango_target)</p>
+<pre><code> # Clear field`</code></pre></li>
+<li><p><strong>change &lt;user.rango_target&gt;</strong>
+`user.rango_clear_input(rango_target)</p>
+<pre><code> # Copy current url information`</code></pre></li>
+<li><p><strong>copy page {user.rango_page_location_property}</strong>
+<code>user.rango_command_without_target("copyLocationProperty", rango_page_location_property)</code></p></li>
+<li><p><strong>copy mark address</strong>
+`user.rango_command_without_target(“copyCurrentTabMarkdownUrl”)</p>
+<pre><code> # Modify hints appearance`</code></pre></li>
+<li><p><strong>hint bigger</strong>
+<code>user.rango_command_without_target("increaseHintSize")</code></p></li>
+<li><p><strong>hint smaller</strong>
+<code>user.rango_command_without_target("decreaseHintSize")</code></p></li>
+<li><p><strong>hint exclude singles</strong>
+<code>user.rango_command_without_target("excludeSingleLetterHints")</code></p></li>
+<li><p><strong>hint include singles</strong>
+<code>user.rango_command_without_target("includeSingleLetterHints")</code></p></li>
+<li><p><strong>hint extra</strong>
+<code>user.rango_command_without_target("displayExtraHints")</code></p></li>
+<li><p><strong>hint more</strong>
+<code>user.rango_command_without_target("displayExcludedHints")</code></p></li>
+<li><p><strong>hint less</strong>
+<code>user.rango_command_without_target("displayLessHints")</code></p></li>
+<li><p><strong>include &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("includeExtraSelectors", rango_target)</code></p></li>
+<li><p><strong>exclude &lt;user.rango_target&gt;</strong>
+<code>user.rango_command_with_target("excludeExtraSelectors", rango_target)</code></p></li>
+<li><p><strong>exclude all</strong>
+<code>user.rango_command_without_target("excludeAllHints")</code></p></li>
+<li><p><strong>some more</strong>
+<code>user.rango_command_without_target("includeOrExcludeMoreSelectors")</code></p></li>
+<li><p><strong>some less</strong>
+<code>user.rango_command_without_target("includeOrExcludeLessSelectors")</code></p></li>
+<li><p><strong>custom hints save</strong>
+<code>user.rango_command_without_target("confirmSelectorsCustomization")</code></p></li>
+<li><p><strong>custom hints reset</strong>
+<code>user.rango_command_without_target("resetCustomSelectors")</code></p></li>
+<li><p><strong>hints refresh</strong>
+<code>user.rango_command_without_target("refreshHints")</code></p></li>
+<li><p><strong>hints (toggle | switch)</strong>
+<code>user.rango_command_without_target("toggleHints")</code></p></li>
+<li><p><strong>hints on [{user.rango_hints_toggle_levels}]</strong>
+<code>user.rango_command_without_target("enableHints", rango_hints_toggle_levels or "global")</code></p></li>
+<li><p><strong>hints off [{user.rango_hints_toggle_levels}]</strong>
+<code>user.rango_command_without_target("disableHints", rango_hints_toggle_levels or "global")</code></p></li>
+<li><p><strong>hints reset {user.rango_hints_toggle_levels}</strong>
+<code>user.rango_command_without_target("resetToggleLevel", rango_hints_toggle_levels)</code></p></li>
+<li><p><strong>toggle show</strong>
+`user.rango_command_without_target(“displayTogglesStatus”)</p>
+<pre><code> # Toggle tab markers`</code></pre></li>
+<li><p><strong>markers (toggle | switch)</strong>
+<code>user.rango_command_without_target("toggleTabMarkers")</code></p></li>
+<li><p><strong>keyboard (toggle | switch)</strong>
+<code>user.rango_command_without_target("toggleKeyboardClicking")</code></p></li>
+<li><p><strong>address in title on</strong>
+<code>user.rango_command_without_target("enableUrlInTitle")</code></p></li>
+<li><p><strong>address in title off</strong>
+<code>user.rango_command_without_target("disableUrlInTitle")</code></p></li>
+<li><p><strong>rango settings</strong>
+<code>user.rango_command_without_target("openSettingsPage")</code></p></li>
+<li><p><strong>rango open {user.rango_page}</strong>
+<code>user.rango_command_without_target("openPageInNewTab", rango_page)</code></p></li>
+<li><p><strong>mark &lt;user.rango_target&gt; as
+&lt;user.word&gt;</strong>
+<code>user.rango_command_with_target("saveReference", rango_target, word)</code></p></li>
+<li><p><strong>mark show</strong>
+<code>user.rango_command_without_target("showReferences")</code></p></li>
+<li><p><strong>mark clear &lt;user.word&gt;</strong>
+<code>user.rango_command_without_target("removeReference", word)</code></p></li>
+<li><p><strong>click mark &lt;user.word&gt;</strong>
+<code>user.rango_run_action_on_reference("clickElement", word)</code></p></li>
+<li><p><strong>focus mark &lt;user.word&gt;</strong>
+<code>user.rango_run_action_on_reference("focusElement", word)</code></p></li>
+<li><p><strong>hover mark &lt;user.word&gt;</strong>
+<code>user.rango_run_action_on_reference("hoverElement", word)</code></p></li>
+<li><p><strong>rango explicit</strong>
+<code>user.rango_force_explicit_clicking()</code></p></li>
+<li><p><strong>rango direct</strong>
+<code>user.rango_force_direct_clicking()</code></p></li>
+</ul>
+<h1 id="talon-helpers-1">talon helpers</h1>
+<ul>
+<li><p><strong>click rango mark &lt;user.word&gt;</strong>
+<code>"user.rango_run_action_on_reference(\"clickElement\", \"{word}\")"</code></p></li>
+<li><p><strong>focus rango mark &lt;user.word&gt;</strong>
+<code>"user.rango_run_action_on_reference(\"focusElement\", \"{word}\")"</code></p></li>
+<li><p><strong>hover rango mark &lt;user.word&gt;</strong>
+<code>"user.rango_run_action_on_reference(\"hoverElement\", \"{word}\")"</code></p></li>
 </ul>
 <h1 id="screen-spots">screen-spots</h1>
 <ul>
@@ -8085,54 +8191,286 @@ key(super-right) sleep(1.5) key(alt-d) sleep(1.5) key(ctrl-v)
 key(enter)</p>
 <pre><code> `</code></pre></li>
 </ul>
-<h1 id="edge">edge</h1>
+<h1 id="word">Word</h1>
 <ul>
-<li><p><strong>focus favorites</strong>
-<code>key(alt-shift-b)</code></p></li>
-<li><p><strong>focus toolbar</strong>
-<code>key(alt-shift-t)</code></p></li>
-<li><p><strong>settings</strong> <code>key(alt-e)</code></p></li>
-<li><p><strong>open downloads</strong> <code>key(ctrl-j)</code></p></li>
-<li><p><strong>duplicate tab</strong>
-<code>key(ctrl-shift-k)</code></p></li>
-<li><p><strong>refresh</strong> <code>key(ctrl-f5)</code></p></li>
-<li><p><strong>(open|reopen) last [closed]</strong>
-<code>key(ctrl-shift-t)</code></p></li>
-<li><p><strong>toggle fit</strong>
-<code>key(ctrl-backslash)</code></p></li>
-<li><p><strong>rotate</strong> <code>key(ctrl-rbrack)</code></p></li>
-<li><p><strong>clear browsing data</strong>
-<code>key(ctrl-shift-del)</code></p></li>
-<li><p><strong>focus content</strong> <code>key(ctrl-f6)</code></p></li>
-<li><p><strong>immersive reader</strong> <code>key(f9)</code></p></li>
-<li><p><strong>caret browsing</strong> <code>key(f7)</code></p></li>
-<li><p><strong>[toggle] full screen</strong>
-<code>key(f11)</code></p></li>
-<li><p><strong>[toggle] read aloud</strong>
-<code>key(ctrl-shift-u)</code></p></li>
-<li><p><strong>[toggle] immersive reader</strong>
-<code>key(f9)</code></p></li>
-<li><p><strong>address bar</strong> <code>key(alt-d)</code></p></li>
-<li><p><strong>move tab to window</strong>
-<code>key(alt-d ctrl-a ctrl-c ctrl-w ctrl-n)         sleep(0.1)         key(alt-d ctrl-a ctrl-v enter)</code></p></li>
-<li><p><strong>clear cache</strong> `key(ctrl-shift-del) sleep(2)
-key(tab:11) key(enter) sleep(0.3) user.tab_close_wrapper()</p>
-<pre><code> # for use in devtools`</code></pre></li>
-<li><p><strong>show console</strong>
-<code>key(ctrl-shift-j)</code></p></li>
-<li><p><strong>show elements</strong>
+<li><p><strong>toggle ribbon</strong> <code>key(ctrl-f1)</code></p></li>
+<li><p><strong>sub &lt;user.letter&gt;</strong>
+<code>insert(" ")         edit.left()         key(alt-h)         key(5)         insert("{user.letter}")         key(alt-h)         key(5)         edit.right()</code></p></li>
+<li><p><strong>sub &lt;number&gt;</strong>
+<code>insert(" ")         edit.left()         key(alt-h)         key(5)         insert("{number}")         key(alt-h)         key(5)         edit.right()</code></p></li>
+<li><p><strong>apply style</strong>
+<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)</code></p></li>
+<li><p><strong>new style</strong>
+<code>key(alt-h)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right:10)         # tab to the ad style button         key(tab:3)         key(enter)</code></p></li>
+<li><p><strong>apply heading &lt;number&gt;</strong>
+<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Heading ")         insert("{number}")         key(enter)         key(esc)         repeat(4)</code></p></li>
+<li><p><strong>apply normal</strong>
+<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("normal")         key(enter)         key(esc)         repeat(4)</code></p></li>
+<li><p><strong>apply code</strong>
+<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Code")         key(enter)         key(esc)         repeat(4)</code></p></li>
+<li><p><strong>apply code in place</strong>
+<code>key(alt-h)         key(z)         key(1)         key(y)         key(1)         sleep(0.05)         insert("Inline Code")         key(enter)         key(esc)         repeat(4)</code></p></li>
+<li><p><strong>style match selection</strong>
+<code>key(alt-h)         sleep(0.05)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right:2)         sleep(0.05)         key(alt-down)         sleep(0.05)         key(enter)         sleep(0.05)         key(alt-h)         key(f)         key(y)</code></p></li>
+<li><p><strong>figure &lt;number&gt; here</strong>
+<code>insert("&lt;figure ")         insert("{number}")         insert(" approximately here&gt;")</code></p></li>
+<li><p><strong>table &lt;number&gt; here</strong>
+<code>insert("&lt;table ")         insert("{number}")         insert(" approximately here&gt;")</code></p></li>
+<li><p><strong>apply bullets</strong>
+<code>key(alt-h)         key(u)         key(right)</code></p></li>
+<li><p><strong>apply (numbering|numbers)</strong>
+<code>key(alt-h)         key(n)         key(right)</code></p></li>
+<li><p><strong>restart (numbering|numbers)</strong>
+<code>key(esc)         key(esc)         key(esc)         key(esc)         key(esc)         key(alt-h)         key(n)         key(v)         key(alt-v)         sleep(0.05)         key(1)         key(enter)</code></p></li>
+<li><p><strong>save as</strong>
+<code>key(alt-f)         sleep(0.05)         key(a)</code></p></li>
+<li><p><strong>close panel</strong>
+<code>key(f6 ctrl-space c)</code></p></li>
+<li><p><strong>exit panel</strong>
+<code>key(ctrl-space c)</code></p></li>
+<li><p><strong>menu view</strong> <code>key(alt-w)</code></p></li>
+<li><p><strong>menu file</strong> <code>key(alt-f)</code></p></li>
+<li><p><strong>menu home</strong> <code>key(alt-h)</code></p></li>
+<li><p><strong>menu insert</strong> <code>key(alt-n)</code></p></li>
+<li><p><strong>menu draw</strong>
+<code>key(alt-j)         key(i)</code></p></li>
+<li><p><strong>menu design</strong> <code>key(alt-g)</code></p></li>
+<li><p><strong>menu layout</strong> <code>key(alt-p)</code></p></li>
+<li><p><strong>menu references</strong> <code>key(alt-s)</code></p></li>
+<li><p><strong>menu review</strong> <code>key(alt-r)</code></p></li>
+<li><p><strong>menu table design</strong>
+<code>key(alt)         sleep(0.05)         key(j)         key(t)</code></p></li>
+<li><p><strong>menu table layout</strong>
+<code>key(alt)         sleep(0.05)         key(j)         key(l)</code></p></li>
+<li><p><strong>menu picture format</strong>
+<code>key(alt)         sleep(0.05)         key(j)         sleep(0.05)         key(p)</code></p></li>
+<li><p><strong>menu equation</strong> `key(alt) sleep(0.2) key(j)
+key(e)</p>
+<pre><code> #file ribbon shortcuts`</code></pre></li>
+<li><p><strong>export to PDF</strong> `key(alt-f) key(e) key(a)</p>
+<pre><code> #home menu ribbon shortcuts`</code></pre></li>
+<li><p><strong>font</strong>
+<code>key(alt-h)         sleep(0.05)         key(f)         key(f)</code></p></li>
+<li><p><strong>font size</strong>
+<code>key(alt-h)         key(f)         key(s)</code></p></li>
+<li><p><strong>font size &lt;number&gt;</strong>
+<code>key(alt-h)         sleep(0.05)         key(f)         key(s)         sleep(0.05)         insert(number)         sleep(0.05)         key(enter)</code></p></li>
+<li><p><strong>font color</strong>
+<code>key(alt-h)         sleep(0.05)         key(f)         key(c)</code></p></li>
+<li><p><strong>paragraph formatting</strong>
+<code>key(alt-h)         sleep(0.05)         key(p)         key(g)</code></p></li>
+<li><p><strong>remove (paragraph|line) spacing</strong>
+<code>key(alt-h)         sleep(0.05)         key(p)         key(g)         key(alt-f)         insert("0")         key(enter)</code></p></li>
+<li><p><strong>apply bold</strong>
+<code>key(alt-h)         key(1)</code></p></li>
+<li><p><strong>apply (italic|italics)</strong>
+<code>key(alt-h)         key(2)</code></p></li>
+<li><p><strong>apply underline</strong>
+<code>key(alt-h)         key(3)</code></p></li>
+<li><p><strong>apply strike through</strong>
+<code>key(alt-h)         key(4)</code></p></li>
+<li><p><strong>apply subscript</strong>
+<code>key(alt-h f n alt-b enter)</code></p></li>
+<li><p><strong>apply superscript</strong>
+<code>key(alt-h f n alt-p enter)</code></p></li>
+<li><p><strong>(demote|list indent)</strong>
+<code>key(alt-h a i)</code></p></li>
+<li><p><strong>(promote|list dedent)</strong>
+<code>key(alt-h a o)</code></p></li>
+<li><p><strong>align left</strong> <code>key(alt-h a l)</code></p></li>
+<li><p><strong>align center</strong>
+<code>key(alt-h a c)</code></p></li>
+<li><p><strong>align right</strong> <code>key(alt-h a r)</code></p></li>
+<li><p><strong>justify top</strong> <code>key(alt-h)</code></p></li>
+<li><p><strong>insert table</strong>
+<code>key(alt-n)         key(t)</code></p></li>
+<li><p><strong>insert comment</strong> `key(alt-n) key(l)</p>
+<pre><code> #edit ribbon shortcuts`</code></pre></li>
+<li><p><strong>paste without formatting</strong> `key(alt-e) sleep(0.05)
+key(s) sleep(0.15) key(a) sleep(.75) key(u) sleep(0.15) key(enter)</p>
+<pre><code> # layout menu shortcuts`</code></pre></li>
+<li><p><strong>insert page break</strong>
+<code>key(alt)         sleep(0.2)         key(p b p)</code></p></li>
+<li><p><strong>insert column break</strong> `key(alt) sleep(0.2) key(p b
+c)</p>
+<pre><code> #view ribbon shortcuts`</code></pre></li>
+<li><p><strong>zoom fit [(width|with)]</strong>
+<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.1)         key(p)         sleep(0.1)         key(enter)</code></p></li>
+<li><p><strong>zoom [fit] text</strong>
+<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.05)         key(t)         key(enter)</code></p></li>
+<li><p><strong>zoom [fit] page</strong>
+<code>key(alt-w)         sleep(0.1)         key(q)         sleep(0.05)         key(w)         key(enter)</code></p></li>
+<li><p><strong>zoom &lt;number&gt; [percent]</strong> `key(alt-w)
+sleep(0.1) key(q) sleep(0.1) key(e) sleep(0.1) insert(“{number}”)
+insert(“%”) key(enter)</p>
+<pre><code> # menu review`</code></pre></li>
+<li><p><strong>delete all comments</strong>
+<code>key(alt)         sleep(0.2)         key(r d o)</code></p></li>
+<li><p><strong>accept all changes [and stop tracking]</strong>
+<code>key(alt)         sleep(0.2)         key(r a 2 s)         # menu table design</code></p></li>
+<li><p><strong>table border none</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(n)</code></p></li>
+<li><p><strong>table border top</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(p)</code></p></li>
+<li><p><strong>table border bottom</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(b)</code></p></li>
+<li><p><strong>table border left</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(l)</code></p></li>
+<li><p><strong>table border right</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(t)         key(b)         key(r)</code></p></li>
+<li><p><strong>table border all</strong> `key(alt) sleep(0.2) key(j)
+key(t) key(b) key(a)</p>
+<pre><code> #menu table layout`</code></pre></li>
+<li><p><strong>insert row [above]</strong>
+<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(a)</code></p></li>
+<li><p><strong>insert [row] below</strong>
+<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(b)         key(e)</code></p></li>
+<li><p><strong>insert column [left]</strong>
+<code>key(alt)         sleep(0.2)         key(j l l)</code></p></li>
+<li><p><strong>delete row</strong>
+<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(d)         key(r)</code></p></li>
+<li><p><strong>delete column</strong>
+<code>key(alt)         key(j)         sleep(0.2)         key(l)         key(d)         key(c)</code></p></li>
+<li><p><strong>column (with|width)</strong>
+<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(l)         key(w)</code></p></li>
+<li><p><strong>delete table</strong>
+<code>key(alt)         sleep(0.2)         key(j l d t)</code></p></li>
+<li><p><strong>(align|justify) top left</strong>
+<code>key(alt)         sleep(0.2)         key(j l t l)</code></p></li>
+<li><p><strong>(align|justify) top center</strong>
+<code>key(alt)         sleep(0.2)         key(j l t c)</code></p></li>
+<li><p><strong>(align|justify) top right</strong>
+<code>key(alt)         sleep(0.2)         key(j l t r)</code></p></li>
+<li><p><strong>(align|justify) center left</strong>
+<code>key(alt)         sleep(0.2)         key(j l c l)</code></p></li>
+<li><p><strong>(align center middle|justify center [middle])</strong>
+<code>key(alt)         sleep(0.2)         key(j l c:2)</code></p></li>
+<li><p><strong>(align|justify) center right</strong>
+<code>key(alt)         sleep(0.2)         key(j l c r)</code></p></li>
+<li><p><strong>(align|justify) bottom left</strong>
+<code>key(alt)         sleep(0.2)         key(j l b l)</code></p></li>
+<li><p><strong>(align|justify) bottom center</strong>
+<code>key(alt)         sleep(0.2)         key(j l b c)</code></p></li>
+<li><p><strong>(align|justify) bottom right</strong>
+<code>key(alt)         sleep(0.2)         key(j l b r)</code></p></li>
+<li><p><strong>select cell</strong>
+<code>user.slow_key_press('alt j l k l',0.2,"one_delay_only")</code></p></li>
+<li><p><strong>select row</strong>
+<code>user.slow_key_press('alt j l k r',0.2,"one_delay_only")</code></p></li>
+<li><p><strong>select column</strong>
+<code>user.slow_key_press('alt j l k c',0.2,"one_delay_only")</code></p></li>
+<li><p><strong>select table</strong>
+<code>user.slow_key_press('alt j l k t',0.2,"one_delay_only")</code></p></li>
+<li><p><strong>toggle [lock] picture aspect [ratio]</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(s)         key(z)         sleep(0.1)         key(a)         key(enter)</code></p></li>
+<li><p><strong>picture height</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(h)</code></p></li>
+<li><p><strong>picture height &lt;number&gt;</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(p)         key(h)         sleep(0.1)         insert(number)         key(enter)         key(esc)</code></p></li>
+<li><p><strong>picture color options</strong> `key(alt) sleep(0.2) key(j
+p i c)</p>
+<pre><code> # equation menu`</code></pre></li>
+<li><p><strong>insert equation</strong>
+<code>key(alt)         sleep(0.2)         key(n)         key(e)         key(i)</code></p></li>
+<li><p><strong>(equation|insert) script</strong>
+<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(e)         key(s)</code></p></li>
+<li><p><strong>equation subscript</strong>
+<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(e s)         sleep(0.2)         key(left:50 right enter)         sleep(0.2)         key(left:2)</code></p></li>
+<li><p><strong>equation superscript</strong>
+<code>key(alt)         sleep(0.2)         key(j)         sleep(0.2)         key(e s)         sleep(0.2)         key(left:50 enter)         sleep(0.2)         key(left:2)</code></p></li>
+<li><p><strong>(equation|insert) fraction</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(e)         key(f)</code></p></li>
+<li><p><strong>(equation|insert) accent</strong>
+<code>key(alt)         sleep(0.2)         key(j)         key(e)         key(a)</code></p></li>
+<li><p><strong>equation symbol</strong>
+<code>key(alt)         sleep(0.2)         key(j e q)</code></p></li>
+<li><p><strong>equation arrow left</strong>
+<code>key(alt)         sleep(0.2)         key(j e q down:2 right:8 enter)</code></p></li>
+<li><p><strong>equation arrow up</strong>
+<code>key(alt)         sleep(0.2)         key(j e q down:2 right:9 enter)</code></p></li>
+<li><p><strong>equation arrow right</strong>
+<code>key(alt)         sleep(0.2)         key(j e q down:2 right:10 enter)</code></p></li>
+<li><p><strong>equation arrow down</strong> `key(alt) sleep(0.2) key(j e
+q down:2 right:11 enter)</p>
+<pre><code> # common operations`</code></pre></li>
+<li><p><strong>copy style</strong>
 <code>key(ctrl-shift-c)</code></p></li>
-<li><p><strong>shows settings</strong> <code>key(f1)</code></p></li>
-<li><p><strong>next panel</strong>
-<code>key(ctrl-rbrack)</code></p></li>
-<li><p><strong>previous panel</strong>
-<code>key(ctrl-brack)</code></p></li>
-<li><p><strong>show command [menu]</strong>
-<code>key(ctrl-shift-p)</code></p></li>
-<li><p><strong>mark for deletion</strong> `key(x) sleep(0.2)
-key(down)</p>
-<pre><code> # downloads`</code></pre></li>
-<li><p><strong>save download [as]</strong> `key(ctrl-j tab:2 enter)</p>
+<li><p><strong>paste style</strong>
+<code>key(ctrl-shift-v)</code></p></li>
+<li><p><strong>underline [that]</strong>
+<code>key(ctrl-u)</code></p></li>
+<li><p><strong>view text width</strong>
+<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-t)         key(enter)         # center on screen by toggling between webview and print view         # strangely this doesn't work when we put the two key sequences together</code></p></li>
+<li><p><strong>[view] web [page] layout</strong>
+<code>key(alt)         key(w)         sleep(0.25)         key(l)         key(1)</code></p></li>
+<li><p><strong>[view] print layout</strong>
+<code>key(alt-w)         sleep(0.15)         key(p)</code></p></li>
+<li><p><strong>view page width</strong>
+<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-p)         key(enter)</code></p></li>
+<li><p><strong>view whole page</strong>
+<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-w)         key(enter)</code></p></li>
+<li><p><strong>view percent</strong>
+<code>key(alt-w)         sleep(0.15)         key(q)         key(alt-e)         key(enter)</code></p></li>
+<li><p><strong>export styles</strong>
+<code>key(alt-h)         key(f)         key(y)         sleep(0.05)         # trick: if we press right enough times we will always end up in the same place         key(right)         repeat(7)         key(tab)         repeat(4)         key(enter)         #we now should be in the manage styles dialog         #press import/export         key(alt-x)         #close down the template file that comes up by default         key(alt-e)         #open up the dialogue to get admin different file         sleep(0.05)         key(alt-e)         #tab to get to the file type selector         key(tab)         #select Microsoft Word files         key(alt-down)         key(up)         repeat(10)         key(down)         key(enter)</code></p></li>
+<li><p><strong>finish export styles</strong> `#we have now chosen a file
+to export to enter back into the export dialog #tab our way to the list
+of styles key(tab) repeat(2) #select all of the styles - let’s hope
+there is not more than this many key(shift-down) repeat(999) #press copy
+button key(alt-c) #yes to all warning messages key(alt-a) # Press tab
+five times to get the close button key(tab) repeat(4) #let’s do this!
+key(enter) #finally close the styles pane key(alt-h) key(f) key(y)</p>
+<pre><code> #special symbols`</code></pre></li>
+<li><p><strong>insert symbol</strong>
+<code>key(alt-n)         key(u)         key(m)         sleep(0.2)         key(alt-f)         insert("symbol")         key(enter)         key(tab)</code></p></li>
+<li><p><strong>insert dot symbol</strong>
+<code>user.unicode_word("2022","Times New Roman")</code></p></li>
+<li><p><strong>insert (times|multiply|multiplication) symbol</strong>
+<code>user.unicode_word("00d7","Times New Roman")</code></p></li>
+<li><p><strong>insert checkmark</strong>
+<code>user.unicode_word("2713","Times New Roman")</code></p></li>
+<li><p><strong>insert ex mark</strong>
+<code>user.unicode_word("2715","Times New Roman")</code></p></li>
+<li><p><strong>insert alpha</strong>
+<code>user.unicode_word("03b1","Times New Roman")</code></p></li>
+<li><p><strong>insert beta</strong>
+<code>user.unicode_word("03b2","Times New Roman")</code></p></li>
+<li><p><strong>insert gamma</strong>
+<code>user.unicode_word("03b3","Times New Roman")</code></p></li>
+<li><p><strong>insert delta</strong>
+<code>user.unicode_word("03b4","Times New Roman")</code></p></li>
+<li><p><strong>insert theta</strong>
+<code>user.unicode_word("03b8","Times New Roman")</code></p></li>
+<li><p><strong>insert lambda</strong>
+<code>user.unicode_word("03bb","Times New Roman")</code></p></li>
+<li><p><strong>insert mu</strong>
+<code>user.unicode_word("03bc","Times New Roman")</code></p></li>
+<li><p><strong>insert sigma</strong>
+<code>user.unicode_word("03c3","Times New Roman")</code></p></li>
+<li><p><strong>insert double arrow</strong>
+<code>user.unicode_word("00ab","Symbol")</code></p></li>
+<li><p><strong>insert left arrow</strong>
+<code>user.unicode_word("00ac","Symbol")</code></p></li>
+<li><p><strong>insert up arrow</strong>
+<code>user.unicode_word("00ad","Symbol")</code></p></li>
+<li><p><strong>insert right arrow</strong>
+<code>user.unicode_word("00ae","Symbol")</code></p></li>
+<li><p><strong>insert down arrow</strong>
+<code>user.unicode_word("00af","Symbol")</code></p></li>
+<li><p><strong>insert cursive el</strong>
+<code>user.unicode_word("2113","Times New Roman")</code></p></li>
+<li><p><strong>insert circled &lt;user.letter&gt;</strong>
+<code>user.circle_letter_word(letter)</code></p></li>
+<li><p><strong>insert cursive look</strong>
+<code>user.unicode_word("2113","times new roman")</code></p></li>
+<li><p><strong>(insert|add|create) hyperlink</strong>
+<code>key(alt-n)         key(i)         key(i)</code></p></li>
+<li><p><strong>remove hyperlink</strong>
+<code>key(alt-n)         key(i)         key(i)         key(alt-r)</code></p></li>
+<li><p><strong>copy hyperlink</strong>
+<code>key(alt-n)         key(i)         key(i)         sleep(0.1)         key(ctrl-c)         key(esc:3)</code></p></li>
+<li><p><strong>(apply|paste) hyperlink</strong> `key(alt-n) key(i)
+key(i) sleep(0.1) key(ctrl-v) sleep(0.1) key(enter)</p>
 <pre><code> `</code></pre></li>
 </ul>
 <h1 id="cheatsheet">cheatsheet</h1>
@@ -8140,9 +8478,12 @@ key(down)</p>
 <li><p><strong>print cheatsheet</strong>
 <code>user.cheatsheet()</code></p></li>
 <li><p><strong>update cheat sheet</strong>
-<code>user.cheatsheet()         sleep(1.5)         key(super)         sleep(0.2)         insert("Anaconda")         sleep(0.25)         key(enter)         sleep(2.5)         insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")         key(enter)         insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")         key(enter)         sleep(1.5)         user.add_links_to_cheatsheet()         sleep(0.5)         app.window_close()</code></p></li>
+<code>user.cheatsheet()         sleep(1.5)         key(super)         sleep(0.2)         insert("Anaconda")         sleep(0.25)         key(enter)         sleep(2.5)         insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")         key(enter)         insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")         key(enter)         sleep(2.5)         user.add_links_to_cheatsheet()         sleep(0.5)         app.window_close()</code></p></li>
 <li><p><strong>show cheat sheet</strong>
 <code>key(super)         sleep(0.2)         insert("Anaconda")         sleep(0.25)         key(enter)         sleep(2.5)         insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")         key("enter")         sleep(0.5)         insert("python -m http.server 8080")         sleep(0.5)         key("enter")         key(super)         sleep(0.2)         insert("Edge")         sleep(0.5)         key("enter")         sleep(0.3)         insert("localhost:8080/cheatsheet.html")         key("enter")</code></p></li>
 </ul>
+
+</div>
+</div>
 </body>
 </html>

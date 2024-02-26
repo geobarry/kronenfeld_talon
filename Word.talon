@@ -245,40 +245,14 @@ apply underline:
 apply strike through:
 	key(alt-h)
 	key(4)
-apply subscript:
-	key(alt-h)
-	key(f)
-	key(n)
-	key(alt-b)
-	key(enter)
-apply superscript:
-	key(alt-h)
-	key(f)
-	key(n)
-	key(alt-p)
-	key(enter)
-(demote|list indent):
-	key(alt)
-	sleep(0.2)
-	key(h a i)
-(promote|list dedent):
-	key(alt)
-	sleep(0.2)
-	key(h a o)
-align left:
-	key(alt-h)
-	key(a)
-	key(l)
-align center:
-	key(alt-h)
-	key(a)
-	key(c)
-align right:
-	key(alt-h)
-	key(a)
-	key(r)
-justify top:
-	key(alt-h)
+apply subscript: key(alt-h f n alt-b enter)
+apply superscript: key(alt-h f n alt-p enter)
+(demote|list indent): key(alt-h a i)
+(promote|list dedent): key(alt-h a o)
+align left: key(alt-h a l)
+align center: key(alt-h a c)
+align right: key(alt-h a r)
+justify top: key(alt-h)
 	
 
 	
@@ -441,74 +415,49 @@ column (with|width):
 	key(w)
 delete table:
 	key(alt)
-	key(j)
 	sleep(0.2)
-	key(l)
-	key(d)
-	key(t)
+	key(j l d t)
 (align|justify) top left:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(t)
-	key(l)
+	key(j l t l)
 (align|justify) top center:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(t)
-	key(c)
+	key(j l t c)
 (align|justify) top right:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(t)
-	key(r)
+	key(j l t r)
 (align|justify) center left:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(c)
-	key(l)
+	key(j l c l)
 (align center middle|justify center [middle]):
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(c)
-	key(c)
+	key(j l c:2)
 (align|justify) center right:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(c)
-	key(r)
+	key(j l c r)
 (align|justify) bottom left:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(b)
-	key(l)
+	key(j l b l)
 (align|justify) bottom center:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(b)
-	key(c)
+	key(j l b c)
 (align|justify) bottom right:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(l)
-	key(b)
-	key(r)
+	key(j l b r)
+select cell: user.slow_key_press('alt j l k l',0.2,"one_delay_only")
+select row: user.slow_key_press('alt j l k r',0.2,"one_delay_only")
+select column: user.slow_key_press('alt j l k c',0.2,"one_delay_only")
+select table: user.slow_key_press('alt j l k t',0.2,"one_delay_only")
+
 
 # picture format menu
 toggle [lock] picture aspect [ratio]:
@@ -556,6 +505,27 @@ insert equation:
 	sleep(0.2)
 	key(e)
 	key(s)
+equation subscript:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	sleep(0.2)
+	key(e s)
+	sleep(0.2)
+	key(left:50 right enter)
+	sleep(0.2)
+	key(left:2)
+equation superscript:
+	key(alt)
+	sleep(0.2)
+	key(j)
+	sleep(0.2)
+	key(e s)
+	sleep(0.2)
+	key(left:50 enter)
+	sleep(0.2)
+	key(left:2)
+
 (equation|insert) fraction:
 	key(alt)
 	sleep(0.2)
@@ -571,9 +541,23 @@ insert equation:
 equation symbol:
 	key(alt)
 	sleep(0.2)
-	key(j)
-	key(e)
-	key(q)
+	key(j e q)
+equation arrow left:
+	key(alt)
+	sleep(0.2)
+	key(j e q down:2 right:8 enter)
+equation arrow up:
+	key(alt)
+	sleep(0.2)
+	key(j e q down:2 right:9 enter)
+equation arrow right:
+	key(alt)
+	sleep(0.2)
+	key(j e q down:2 right:10 enter)
+equation arrow down:
+	key(alt)
+	sleep(0.2)
+	key(j e q down:2 right:11 enter)
 	
 # common operations	
 copy style:

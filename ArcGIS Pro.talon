@@ -77,20 +77,22 @@ project context menu: key(ctrl-shift-n)
 # When folder is selected in catalog pane
 new folder: key(ctrl-shift-f)
 new [geo] database: key(ctrl-shift-d)
+refresh: key(f5)
+
 
 # Contents Pane
-expand: key(plus)
-collapse: key(minus)
+expand: key(right)
+collapse: key(left)
 expand level: key(ctrl-plus)
 collapse level: key(ctrl-minus)
 expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
 toggle layer: key(space)
 layer properties: key(menu p)
-definition query: key(menu p pageup:3 down:7 tab)
+definition query: user.slow_key_press("menu p pageup:3 down:7 tab")
 toggle (label|labels|labeling): key(menu b)
 (label|labels|labeling) properties: key(menu o)
-remove layer: key(menu r)
+remove layer: user.slow_key_press("menu r")
 export features: key(alt t v e f)
 export table: key(alt t v e t)
 
@@ -250,7 +252,10 @@ clear selection: key(esc:5 alt m c x)
 new layout: key(alt n n l)
 new custom layout: key(alt n n l c tab:4)
 insert map: key(alt n m g)
-	
+
+# analysis menu shortcuts
+new jupyter notebook: user.slow_key_press("alt-a p f down right:3 enter",1.0)
+
 # edit short cuts
 save edits:
 	key(esc:5)

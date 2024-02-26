@@ -26,6 +26,8 @@ toggle Bluetooth:
 	sleep(0.7)
 	key(space esc)	
 
+# FOCUS
+refocus: user.slow_key_press("alt:down tab left alt:up",0.1)
 # special command to focus on an explorer windows since windows has so many
 focus explorer: user.focus_explorer()
 		
@@ -47,7 +49,8 @@ open up <number>:
 	insert("{number}")
 	sleep(0.15)
 	key(enter)
-# common words
+
+# COMMON WORDS
 (my|bee jay) name: insert("Barry Kronenfeld")
 my first name: insert("Barry")
 	
@@ -57,12 +60,15 @@ dotcom: insert(".com")
 daddy to you: insert(".edu")
 dot gove: insert(".gov")
 dot python: insert(".py")
+dot iron python notebook: insert(".ipynb")
 
 inside inches: user.insert_between('"', '"')
 inside feet: user.insert_between("'", "'")
 
 double brief {user.abbreviation} {user.abbreviation}: "{abbreviation} {abbreviation_2}"
 double under brief {user.abbreviation} {user.abbreviation}: "{abbreviation}_{abbreviation_2}"
+
+number <number>: insert("{number}")
 
 (numb|number) phrase <user.formatters> <user.text> <number>:
 	insert(user.formatted_text(text, formatters))
