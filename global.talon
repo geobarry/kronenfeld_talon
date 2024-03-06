@@ -112,16 +112,11 @@ number <number>: insert("{number}")
 	insert(" ")
 	insert(number_2)
 	
-enter object:
-	key(f2)
+modify text: key(f2)
 
-
-undo:
-	key(ctrl-z)
-redo$:
-	key(ctrl-y)
-focus taskbar:
-	key(super-b)
+undo$: key(ctrl-z)
+redo$: key(ctrl-y)
+focus taskbar: key(super-b)
 punch <number>:
 	edit.right()
 	repeat(number_1 - 1)
@@ -140,18 +135,15 @@ launch:
 	key(super)
 	sleep(1.0)
 
-release keys:
+hold down shift: key(shift:down)
+hold down control: key(ctrl:down)
+hold down (alt|alternate): key(alt:down)
+release keys: key(shift:up ctrl:up alt:up super:up)
+escape out: key(esc:5)
+shift click: 
+	key(shift:down)
+	mouse_click(0)
 	key(shift:up)
-	key(ctrl:up)
-	key(alt:up)
-	key(super:up)
-escape out:
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-	key(esc)
-
 
 tab jiggle:
 	key(tab)
@@ -201,6 +193,28 @@ delete line:
 {user.search_engine} hunt:
 	user.search_with_search_engine(search_engine, "")
 	sleep(0.5)
+
+show shift:
+	key(super)
+	sleep(0.2)
+	insert("Anaconda")
+	sleep(0.25)
+	key(enter)
+	sleep(2.5)
+	insert("cd C:\CaGIS Board Dropbox\cantaloupe bob\website\calendar")
+	key("enter")
+	sleep(0.5)
+	insert("python -m http.server 8080")
+	sleep(0.5)
+	key("enter")
+	key(super)
+	sleep(0.2)
+	insert("Edge")
+	sleep(0.5)
+	key("enter")
+	sleep(0.3)
+	insert("localhost:8080/calendar.html")
+	key("enter")
 
 
 stop: 

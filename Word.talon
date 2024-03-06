@@ -24,12 +24,12 @@ sub <number>:
 	key(5)
 	edit.right()
 	
-apply style:
-	key(alt-h)
-	key(z)
-	key(1)
-	key(y)
-	key(1)
+apply style: key(alt-h z 1 y 1)
+apply style <user.word>:
+	user.slow_key_press("alt-h z 1 y 1")
+	insert(word)
+	sleep(0.1)
+	key(enter esc)
 
 new style:
 	key(alt-h)
@@ -276,7 +276,7 @@ paste without formatting:
 	key(u)
 	sleep(0.15)
 	key(enter)
-
+paste special: key(alt-h v s)
 # layout menu shortcuts
 insert page break:
 	key(alt)
@@ -685,6 +685,9 @@ insert down arrow: user.unicode_word("00af","Symbol")
 insert cursive el: user.unicode_word("2113","Times New Roman")
 insert circled <user.letter>: user.circle_letter_word(letter)
 insert cursive look: user.unicode_word("2113","times new roman")
+
+equation <user.letter>: user.letter_word(letter,"1D44E","Cambria Math")
+equation (sky|shift|ship) <user.letter>: user.letter_word(letter,"1D434","Cambria Math")
 
 # hyperlinks
 (insert|add|create) hyperlink:

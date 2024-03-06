@@ -12,7 +12,7 @@ class Actions:
         appdata_path = os.getenv('APPDATA')
         file_path = os.path.join(
             appdata_path, "talon", "user",
-            "kronenfeld_talon", "CHEAT SHEET", "cheatsheet.html")
+            "kronenfeld", "CHEAT SHEET", "cheatsheet.html")
         print("...opening file")
         # Perform operations on the file
         with open(file_path) as f:
@@ -20,25 +20,27 @@ class Actions:
         print("...reading headings")
         headings=[]
         for line in lines:
-            if 'id="' in line:
+            if 'h1 id="' in line:
                 headings.append(line)
         print(f"{len(headings)} headings found.")
         topics=[]
         html_links=[]
         for head in headings:
-            topicpieces=head.split('"')
-            if len(topicpieces)>1:
-                topic=topicpieces[1]
+            # patterns:
+            # <h1 id="user.letter">user.letter</h1><div class="context">
+            # </div><h1 id="c-user-community-lang-c">c :: user / community / lang / c</h1><div class="context">
+            head_pieces=head.split('"')
+            if len(head_pieces)>1:
+                head_link=head_pieces[1]
                 keepthis=True
                 #filter out repetitive titles
-                if topic[-4:] == 'open':
+                if head_link[-4:] == 'open':
                     keepthis=False
-                if len(topics) > 0:
-                    if topic.split('-')[0] == topics[-1].split('-')[0]:
-                        keepthis=False
                 if keepthis:
-                    topics.append(topic)
-                    html_links.append('<a HREF="#{}">{}</a>'.format(topic,topic))
+                    short_topic = head_link
+                    if len(short_topic) > 0:
+                        topics.append(short_topic)
+                        html_links.append(f'<button HREF="#{head_link}">{short_topic} </button>')
 
         topiclist=topics[0]
         link_html=html_links[0]
@@ -52,14 +54,26 @@ class Actions:
 
         # Add div for link and begin div for commands
         search_text = '<body>'
-        replace_text = f'<body>\n<div id="links">{link_html}</div>\n<div id="commands">'
-        print(replace_text)
+        replace_text = f'<body>\n<div class="link_container"><div class="links">{link_html}</div></div>\n<div class="command_container"><div class="commands">'
         data = data.replace(search_text, replace_text)
         
         # Finish div for commands
         search_text = '</body>'
-        replace_text = f'\n</div></body>'
+        replace_text = f'\n</div></div></div></body>'
         data = data.replace(search_text, replace_text)
+
+        # Create div for all contexts
+        search_text = '<h1'
+        replace_text = '</div><h1'
+        data = data.replace(search_text, replace_text)
+        data = data.replace(replace_text,'<h1',1)
+
+        search_text = '/h2>'
+        replace_text = '/h2><div class="context">'
+        data = data.replace(search_text, replace_text)
+
+
+
 
         # Write the modified content back to the file
         with open(file_path, 'w') as file:

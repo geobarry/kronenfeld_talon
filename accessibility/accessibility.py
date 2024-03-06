@@ -73,6 +73,32 @@ def get_every_child(element: ax.Element):
             yield child
             yield from get_every_child(child)
 
+def all_element_information(el):
+    msg = f'\n\n{el.name}: ' 
+    for p,v in vars(el).items():
+        msg += f'\n{type(v)}'
+
+    return msg
+
+
+def element_information(el: ax.Element):
+        msg = 'element information'
+        msg += f"\nname: {el.name}"
+        msg += f"\npid: {el.pid}"
+        msg += f"\naccess_key: {el.access_key}"
+        msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
+        msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
+        msg += f"\nis_enabled: {el.is_enabled}"
+        msg += f"\nautomation_id: {el.automation_id}"
+        msg += f"\nclass_name: {el.class_name}"
+        msg += f"\nhelp_text: {el.help_text}"
+        try:
+            msg += f"\nloc: {el.clickable_point}"
+        except:
+            pass  
+        return msg
+        
+
 ctx = Context()
 
 mod.list("dynamic_children", desc="List of children of the active window")
@@ -114,9 +140,12 @@ class Actions:
         for element in elements:
             if element.name == name or \
             str(element.name).lower() == name.lower():
-                loc = element.clickable_point
-                mouse_obj = mouse_mover(loc,ctrl.mouse_click)
-                break
+                try:
+                    loc = element.clickable_point
+                    mouse_obj = mouse_mover(loc,ctrl.mouse_click)
+                    break
+                except:
+                    pass
         else:
             print("Element not found")
 
@@ -132,6 +161,16 @@ class Actions:
                 break
         else:
             print("Element not found")
+         
+
+    def test_copy_all():
+        """Attempts to retrieve all properties from all elements"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        msg = ""
+        for el in elements[:3]:
+            msg += all_element_information(el)
+        clip.set_text(msg)
 
     def copy_accessible_elements_to_clipboard():
         """Copies focusable elements to the clipboard"""
@@ -149,18 +188,47 @@ class Actions:
     def copy_focused_element_to_clipboard():
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
-        
-        msg = 'element information'
-        msg += f"\nname: {el.name}"
-        msg += f"\npid: {el.pid}"
-        msg += f"\naccess_key: {el.access_key}"
-        msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
-        msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
-        msg += f"\nis_enabled: {el.is_enabled}"
-        msg += f"\nautomation_id: {el.automation_id}"
-        msg += f"\nclass_name: {el.class_name}"
-        msg += f"\nhelp_text: {el.help_text}"
+        msg = element_information(el)
         clip.set_text(msg)
+        
+    def copy_enabled_element_to_clipboard():
+        """Searches for the first enabled element and copies is information to the clipboard"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        msg = "ENABLED ELEMENT(S)\n"
+        for element in elements:
+            if element.is_enabled:
+                msg += element_information(element) +"\n"
+        clip.set_text(msg)
+        
+    def copy_clickable_element_to_clipboard():
+        """Searches for the first enabled element and copies is information to the clipboard"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        msg = "ENABLED ELEMENT(S)\n"
+        for element in elements:
+            try:
+                x = element.clickable_point
+                msg += element_information(element) +"\n"
+            except:
+                pass 
+        clip.set_text(msg)
+        
+    def copy_keyboard_element_to_clipboard():
+        """Searches for elements that have keyboard focus and are clickable
+        and copies information to clipboard"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        msg = "ENABLED ELEMENT(S)\n"
+        for element in elements:
+            if element.has_keyboard_focus:
+                try:
+                    x = element.clickable_point
+                    msg += element_information(element) +"\n"
+                except:
+                    pass 
+        clip.set_text(msg)
+
         
         
         

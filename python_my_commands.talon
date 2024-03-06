@@ -51,71 +51,28 @@ select scope: code.extend_scope_out()
 sub: user.insert_between("[","]")
 
 # VARIABLES
-variable {user.variable_list}:
-	insert(variable_list)
-{user.variable_list} comma {user.variable_list}:
-	insert(variable_list_1)
-	insert(",")
-	insert(variable_list_2)
-{user.variable_list} equals:
-	insert(variable_list)
-	insert(" = ")
+variable {user.variable_list}: insert(variable_list)
+{user.variable_list} comma {user.variable_list}: insert("{variable_list_1},{variable_list_2}")
+{user.variable_list} equals: insert("{variable_list} = ")
+{user.variable_list} plus equals: insert("{variable_list} += ")
+for {user.variable_list} in: insert("for {variable_list} in ")
+for {user.variable_list} in {user.variable_list}: insert("for {user.variable_list_1} in {user.variable_list_2}:")
+if {user.variable_list}: insert("if {variable_list}")
+if not {user.variable_list}: insert("if not {variable_list}")
+if length {user.variable_list}: insert("if len({variable_list})")
+length {user.variable_list}: insert("len({variable_list})")
+range {user.variable_list}: insert("range({variable_list})")
+range length {user.variable_list}: insert("range(len({variable_list}))")
+range <number>: insert("range({number})")
+{user.variable_list} sub: user.insert_between("{variable_list}[","]")
+{user.variable_list} sub {user.variable_list}: insert("{variable_list_1}[{variable_list_2}]")
+{user.variable_list} sub <number>: insert("{variable_list}[{number}]")
+return {user.variable_list}: insert("return {variable_list}")
+{user.variable_list} dot append: user.insert_between("{variable_list}.append(",")")
+{user.variable_list} dot: insert("{variable_list}.")
+unzip {user.variable_list}: insert("zip(*{user.variable_list})")
+self dot {user.variable_list}: insert("self.{variable_list}")
 	
-for {user.variable_list} in:
-	insert("for ")
-	insert(variable_list)
-	insert(" in ")
-for {user.variable_list} in {user.variable_list}:
-	insert("for ")
-	insert(user.variable_list_1)
-	insert(" in ")
-	insert(user.variable_list_2)
-	insert(":")
-
-for {user.variable_list} in range:
-	insert("for ")
-	insert(variable_list)
-	user.insert_between(" in range(","):")
-
-for {user.variable_list} in range length:
-	insert("for ")
-	insert(variable_list)
-	user.insert_between(" in range(length(",")):")
-
-for {user.variable_list} in range length {user.variable_list}:
-	insert("for ")
-	insert(variable_list_1)
-	insert(" in range(len(")
-	insert(variable_list_2)
-	insert(")):")
-	key(enter)
-
-range length {user.variable_list}:
-	insert("range(len(")
-	insert(variable_list)
-	insert("))")
-	
-if {user.variable_list}:
-	insert("if ")
-	insert(variable_list)
-
-if length {user.variable_list}:
-	insert("if len(")
-	insert(variable_list)
-	insert(")")
-
-range {user.variable_list}:
-	insert("range(")
-	insert(variable_list)
-	insert(")")
-self dot {user.variable_list}:
-	insert("self.{variable_list}")
-	
-range <number>:
-	insert("range(")
-	insert(number)
-	insert(")")
-
 string:
 	user.insert_between('"','"')
 raw string:
@@ -141,43 +98,7 @@ empty dictionary:
 empty tuple:
 	insert("()")
 
-# VARIABLES
-{user.variable_list} sub:
-	insert(variable_list)
-	user.insert_between("[","]")
-{user.variable_list} sub {user.variable_list}:
-	insert(variable_list_1)
-	insert("[")
-	insert(variable_list_2)
-	insert("]")
-{user.variable_list} sub <number>:
-	insert(variable_list)
-	insert("[")
-	insert(number)
-	insert("]")
 
-length {user.variable_list}:
-	insert("len(")
-	insert(variable_list)
-	insert(")")
-return {user.variable_list}:
-	insert("return ")
-	insert(variable_list)
-{user.variable_list} dot append:
-	insert(variable_list)
-	user.insert_between(".append(",")")
-{user.variable_list} dot:
-	insert(variable_list)
-	insert(".")
-debug print {user.variable_list}:
-	insert("print('{user.variable_list}: ")
-	sleep(0.1)
-	key({)
-	key(})
-	insert("'.format({user.variable_list})")
-unzip {user.variable_list}:
-	insert("zip(*{user.variable_list})")
-	
 # modules
 import {user.module_list}:
 	insert("import ")

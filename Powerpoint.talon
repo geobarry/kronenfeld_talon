@@ -94,10 +94,7 @@ font size <number>:
 	key(enter)
 
 	
-font color:
-	key(alt)
-	sleep(0.4)
-	key(h f c)
+font color: key(alt-h f c)
 font color white:
 	key(alt)
 	sleep(0.2)
@@ -246,28 +243,23 @@ outline style:
 	key(alt)
 	sleep(0.3)
 	key(h s o)
-bring to front:
-	key(alt)
-	sleep(0.3)
-	key(h g)
-	key(r)
-send to back:
-	key(alt)
-	sleep(0.3)
-	key(h g)
-	key(k)
+bring to front: key(alt-h g r)
+send to back: key(alt-h g k)
+align (objects|edges) left: key(alt-h g a l)
+align (objects|edges) right: key(alt-h g a r)
+align (objects|edges) top: key(alt-h g a t)
+align (objects|edges) bottom: key(alt-h g a b)
+align (objects|edges) middle: key(alt-h g a m)
+align (objects|edges) center: key(alt-h g a c)
+distribute horizontal: key(alt-h g a h)
+distribute vertical: key(alt-h g a v)
 rotate right:
 	key(alt-h)
 	sleep(0.05)
 	key(g)
 	key(o)
 	key(r)
-rotate left: 
-	key(alt-h)
-	sleep(0.05)
-	key(g)
-	key(o)
-	key(l)
+rotate ninety [degrees] left: key(alt-h g o l)
 flip vertical:
 	key(alt-h)
 	sleep(0.05)
@@ -617,7 +609,8 @@ delete table:
 	key(j)
 	key(l)
 	key(w)
-
+table width: user.slow_key_press("alt j l t w")
+table height: user.slow_key_press("alt j l t h")
 	
 # picture format menu
 picture width:
@@ -693,7 +686,7 @@ crop [picture]:
 	key(p)
 	key(i)
 	key(s)
-
+picture border black: user.slow_key_press("alt j p s o enter")
 
 graphics width:
 	key(alt)

@@ -18,7 +18,7 @@ class Actions:
             if ":" in key:
                 parts = key.split(":")
                 if parts[1].isnumeric():                    
-                    for id in range(parts[1]):
+                    for id in range(int(parts[1])):
                         press_key(parts[0])
                 else:
                     press_key(key)

@@ -9,6 +9,10 @@ tab previous: key(ctrl-shift-f6)
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
 focus contents: key(alt-v c t)
+focus contents top item:
+	user.click_element_by_name("search")
+	sleep(1.5)
+	key(tab:3 pageup:7 down up)
 
 do test:
 	print("Is this working?")
@@ -89,7 +93,7 @@ expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
 toggle layer: key(space)
 layer properties: key(menu p)
-definition query: user.slow_key_press("menu p pageup:3 down:7 tab")
+definition query: user.slow_key_press("enter pageup:3 down:7 tab")
 toggle (label|labels|labeling): key(menu b)
 (label|labels|labeling) properties: key(menu o)
 remove layer: user.slow_key_press("menu r")
@@ -203,7 +207,7 @@ menu share:
 	key(alt)
 	sleep(0.2)
 	key(s)
-menu layout:
+menu (layout|lay out):
 	key(esc:5)
 	key(alt)
 	sleep(0.2)
@@ -219,6 +223,7 @@ menu lay out:
 	key(alt)
 	sleep(0.2)
 	key(j l)
+menu feature layer: user.slow_key_press("esc:5 alt j a",0.5)
 menu animation:
 	key(esc:5)
 	key(alt)

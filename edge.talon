@@ -49,8 +49,9 @@ mark for deletion:
 	sleep(0.2)
 	key(down)
 
-# downloads
-save download [as]: key(ctrl-j tab:2 enter)
+# downloads - assumes that downloads are showing
+save download [as]: user.slow_key_press("ctrl-j tab:2 enter",1.0)
 show [in] folder: user.slow_key_press("menu down:2 enter")
+
 	
 	

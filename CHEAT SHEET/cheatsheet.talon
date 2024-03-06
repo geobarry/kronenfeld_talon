@@ -1,6 +1,7 @@
 print cheatsheet: user.cheatsheet()
 update cheat sheet:
-	user.cheatsheet()
+	# replace with "mac" or "linux" if needed
+	user.cheatsheet("win")
 	sleep(1.5)
 	key(super)
 	sleep(0.2)
@@ -8,7 +9,7 @@ update cheat sheet:
 	sleep(0.25)
 	key(enter)
 	sleep(2.5)
-	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
+	insert("cd %appdata%/Talon/user/kronenfeld/cheat sheet")
 	key(enter)	
 	insert("pandoc -s cheatsheet.md -c cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html")
 	key(enter)
@@ -23,7 +24,7 @@ show cheat sheet:
 	sleep(0.25)
 	key(enter)
 	sleep(2.5)
-	insert("cd %appdata%/Talon/user/kronenfeld_talon/cheat sheet")
+	insert("cd %appdata%/Talon/user/kronenfeld/cheat sheet")
 	key("enter")
 	sleep(0.5)
 	insert("python -m http.server 8080")

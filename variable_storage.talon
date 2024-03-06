@@ -1,32 +1,21 @@
-# variable list
-(create|save) variable <user.text>:
-	user.save_variable(text, edit.selected_text())
-remove variable {user.variable_list}:
-	user.remove_variable(variable_list)
+#use this to save a list from storage into a CSV:
+# 	user.write_list("lists\\keywords.csv","keyword_list")
 
-# module list
-(create|save) module <user.text>:
-	user.save_module(text, edit.selected_text())
-remove module {user.module_list}:
-	user.remove_module(module_list)
+create person <user.text>:
+	user.save_to_list("lists\\persons .csv",text,edit.selected_text())
+create variable <user.text>:
+	user.save_to_list("lists\\variables.csv",text,edit.selected_text())
+create module <user.text>:
+	user.save_to_list("lists\\modules.csv",text,edit.selected_text())
+create app <user.text>:
+	user.save_to_list("lists\\apps.csv",text,edit.selected_text())
+create function <user.text>:
+	user.save_to_list("lists\\functions.csv",text,edit.selected_text())
+create keyword <user.text>:
+	user.save_to_list("lists\\keywords.csv",text,edit.selected_text())
 
-# function list
-(create|save) function <user.text>:
-	user.save_function(text, edit.selected_text())
-remove function {user.function_list}:
-	user.remove_function(function_list)
 
-# keyword list
-(create|save) keyword <user.text>:
-	user.save_keyword(text, edit.selected_text())
-remove keyword {user.keyword_list}:
-	user.remove_keyword(keyword_list)
 
-# app list
-(create|save) app <user.text>:
-	user.save_app(text, edit.selected_text())
-remove app {user.app_list}:
-	user.remove_app(app_list)
 launch app {user.app_list}: 
 	key(super)
 	sleep(1.0)
@@ -35,10 +24,6 @@ launch app {user.app_list}:
 	key(enter)
 
 # person list
-(create|save) person <user.text>:
-	user.save_person(text, edit.selected_text())
-remove person {user.person_list}:
-	user.remove_person(text)
 person name {user.person_list}:
 	insert(person_list)
 	insert(" ")

@@ -4,7 +4,7 @@ import sys, os
 
 def list_to_markdown_table(file, list_name):
 
-    file.write(f"# {list_name} \n\n")
+    file.write(f"# {list_name} \n## --\n")
     command_list = registry.lists[list_name][0].items()
     file.write(f">\n")
     file.write(f"> command word  {list_name}   \n\n")
@@ -58,7 +58,7 @@ def write_context_commands(file, commands):
             continue
         file.write("\n - **" + rule + "**  `" + implementation + "`\n")
 
-def pretty_print_context_name(file, name):
+def pretty_context_name(file, name, os_name):
     ## The logic here is intended to only print from talon files that have actual voice commands.  
         splits = name.split(".")
         index = -1
@@ -71,24 +71,41 @@ def pretty_print_context_name(file, name):
             os = "win"
         if "linux" in name:
             os = "linux"
+        
+        if os == os_name or os == "":
+        
+            if "talon" in splits[index]:
+                index = -2
+                short_name = splits[index].replace("_", " ")
+                
+            else:
+                short_name = splits[index].replace("_", " ")
 
-        if "talon" in splits[index]:
-            index = -2
-            short_name = splits[index].replace("_", " ")
+            if "mac" == short_name or "win" == short_name or "linux" == short_name:
+                index = index - 1
+                short_name = splits[index].replace("_", " ")
+
+            path = " / ".join(splits[:index])
+            return os,short_name,path
+            
         else:
-            short_name = splits[index].replace("_", " ")
+            return "","",""
 
-        if "mac" == short_name or "win" == short_name or "linux" == short_name:
-            index = index - 1
-            short_name = splits[index].replace("_", " ")
 
-        file.write("\n\n\n" + "# " + os + " " + short_name + "\n\n")
-
+def pretty_print_context_name(file, name, os_name):
+    ## The logic here is intended to only print from talon files that have actual voice commands.  
+        os, short_name, path = pretty_context_name(file, name, os_name)
+        if short_name != "":
+            file.write(f"\n\n\n# {os} {short_name} \n## {path}\n\n")
+            return short_name, path
+        else:
+            return "",""
+            
 mod = Module()
 
 @mod.action_class
 class user_actions:
-        def cheatsheet():
+        def cheatsheet(os_name: str = "win"):
             """Print out a sheet of talon commands"""
             #open file
 
@@ -111,11 +128,17 @@ class user_actions:
 
             #print out all the commands in all of the contexts
 
-            list_of_contexts = registry.contexts.items()
-            for key, value in list_of_contexts:
+            list_of_contexts = list(registry.contexts.items()) 
+            print("***********************")
+            print(type(list_of_contexts))
+            print(list_of_contexts[7])
+            print(list_of_contexts[7][0])
+            print(pretty_context_name(file,list_of_contexts[7][0],os_name))
+            for key, value in sorted(list_of_contexts, key=lambda x:pretty_context_name(file,x[0],os_name)[1]):
                 
                 commands= value.commands #Get all the commands from a context
                 if len(commands) > 0:
-                    pretty_print_context_name(file, key)
-                    write_context_commands(file,commands)
+                    short_name, path = pretty_print_context_name(file, key, os_name)
+                    if short_name != "":
+                        write_context_commands(file,commands)
             file.close()

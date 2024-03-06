@@ -223,15 +223,16 @@ exit (pane|panel):
 (formula|equation) normal distribution: insert("norm.dist(")
 (formula|equation) count if: insert("countif(")
 
+
 average <user.letter>:
 	insert("=average({letter}:{letter})")
-	key(enter)
+#	key(enter)
 minimum <user.letter>:
 	insert("=min({letter}:{letter})")
-	key(enter)
+#	key(enter)
 maximum <user.letter>:
 	insert("=max({letter}:{letter})")
-	key(enter)
+#	key(enter)
 
 
 [(formula|equation)] line break: insert("char(10)")
