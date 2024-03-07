@@ -194,7 +194,7 @@ menu view:
 	key(v)
 menu edit:
 	key(esc:5)
-	key(alt-	
+	key(alt)
 	sleep(0.2)
 	key(e)
 menu imagery:

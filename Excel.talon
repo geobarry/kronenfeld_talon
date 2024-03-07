@@ -40,6 +40,7 @@ go to cell <user.letter> <number>:
 	key(alt-f3)
 	insert("{user.letter}{number}")
 	key(enter)
+go to {user.person_list}: user.go_excel_row_by_person(person_list,0.2)
 	
 
 # [ribbon|menu] headings

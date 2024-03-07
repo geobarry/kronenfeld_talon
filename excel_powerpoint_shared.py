@@ -57,6 +57,35 @@ class Actions:
         actions.key("alt-i")
         actions.key("tab")
         actions.key("enter")
+    def go_excel_row_by_person(name: str, sleep_time: float = 0.2):
+        """moves to the cell in the same row where the given person's name can be found"""
+        # get column of current cell
+        actions.key("alt-f3")
+        actions.sleep(sleep_time)
+        cur_cell = actions.edit.selected_text()
+        col = "".join(x for x in cur_cell if not x.isdigit())
+        actions.key("enter")
+
+        # use built-in search function to get row of cell with given name
+        actions.key("ctrl-f")
+        actions.sleep(sleep_time)
+        actions.insert(name)
+        actions.sleep(sleep_time)
+        actions.key("enter")
+        actions.sleep(sleep_time)
+        actions.key("esc")
+        actions.key("alt-f3")
+        actions.sleep(sleep_time)
+        cur_cell = actions.edit.selected_text()
+        row = "".join(x for x in cur_cell if x.isdigit())
+        
+        # navigate to row with name, current column
+        actions.key("alt-f3")
+        actions.sleep(sleep_time)
+        actions.insert(col + row)
+        actions.sleep(sleep_time)
+        actions.key("enter")
+        
     def circle_number_excel_power(number: int):
         """insert a number inside a circle"""
         hex_code = "0080"

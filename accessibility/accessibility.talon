@@ -5,6 +5,9 @@ copy accessible:
 	
 ^click {user.dynamic_children}$:
 	user.click_element_by_name(dynamic_children)
+^click word <user.word>$:
+	user.click_element_by_name(word)
+	
 ^move [to] {user.dynamic_children}$:
 	user.move_to_element(dynamic_children)
 ^copy focused element information$:
@@ -17,3 +20,5 @@ copy accessible:
 	user.copy_keyboard_element_to_clipboard()
 ^copy all element information$:
 	user.test_copy_all()
+^copy near element information$:
+	user.copy_near_elements_to_clipboard()

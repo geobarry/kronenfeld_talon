@@ -66,11 +66,14 @@ class mouse_mover:
 
 mod = Module()
 
-def get_every_child(element: ax.Element):
-    if element:
-        for child in element.children:
+def get_every_child(el: ax.Element):
+    if el:
+        for child in el.children:
+            # filter to see if this is faster
             #if child.is_keyboard_focusable:
-            yield child
+            if str(el.name) != "" or str(el.help_text) != "":
+                yield child
+
             yield from get_every_child(child)
 
 def all_element_information(el):
@@ -109,14 +112,18 @@ def dynamic_children(_) -> dict[str,str]:
     elements = list(get_every_child(root))
     out = {}
     for el in elements:
-        # add full name to dictionary
-        out[str(el.name)] = str(el.name)
-        # add single word command to dictionary
-        singles = re.split('[^a-zA-Z]',str(el.name))
-        out[singles[0]] = str(el.name)
-        # add double word command to dictionary
-        if len(singles) > 1:
-            out[" ".join(singles[:2])] = str(el.name)
+        alias = str(el.name)
+        if alias == "":
+            alias = str(el.help_text)
+        if alias != "":
+            # add full name to dictionary
+            out[str(el.name)] = str(el.name)
+            # add single word command to dictionary
+            singles = re.split('[^a-zA-Z]',str(el.name))
+            out[singles[0]] = str(el.name)
+            # add double word command to dictionary
+            if len(singles) > 1:
+                out[" ".join(singles[:2])] = str(el.name)
     return out
 
 @mod.action_class
@@ -137,9 +144,9 @@ class Actions:
         """Moves mouse to and clicks on element"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
-        for element in elements:
-            if element.name == name or \
-            str(element.name).lower() == name.lower():
+        for el in elements:
+            if str(el.name).lower() == name.lower() or \
+                str(el.help_text).lower() == name.lower():
                 try:
                     loc = element.clickable_point
                     mouse_obj = mouse_mover(loc,ctrl.mouse_click)
@@ -171,6 +178,33 @@ class Actions:
         for el in elements[:3]:
             msg += all_element_information(el)
         clip.set_text(msg)
+
+    def copy_near_elements_to_clipboard(max_dist: int=500):
+        """Copieselements with valid clickable point within given number of pixels"""
+        pos = ctrl.mouse_pos()
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        id = 0
+        n = 0
+        msg = ""        
+        for el in elements:
+            id += 1
+            
+            try:
+                loc = el.clickable_point
+                d = abs(loc.x-pos[0]) + abs(loc.y-pos[1])
+                
+                print(f"pos: {pos} ({type(pos)})")
+                print(f"loc: {loc} ({type(loc)})")
+                if d < max_dist:
+                    msg += element_information(el)
+                    n += 1
+            except:
+                pass
+        msg += f"\n\n {n} elements found"
+        clip.set_text(msg)
+
+        
 
     def copy_accessible_elements_to_clipboard():
         """Copies focusable elements to the clipboard"""

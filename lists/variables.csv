@@ -338,3 +338,10 @@ ymax,why maximum
 ymin,I minimum
 ymin,why minimum
 z_label,zoo label
+max_dist,max distance
+alias
+lat_str,latitude
+lat_lbl,latitude label
+lat,latitude
+cur_cell,current cell
+sleep_time,sleep time
