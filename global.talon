@@ -68,7 +68,8 @@ inside feet: user.insert_between("'", "'")
 double brief {user.abbreviation} {user.abbreviation}: "{abbreviation} {abbreviation_2}"
 double under brief {user.abbreviation} {user.abbreviation}: "{abbreviation}_{abbreviation_2}"
 
-number <number>: insert("{number}")
+(numb|number|numeral) <number>: insert("{number}")
+letter <user.letter>: insert("{letter}")
 
 (numb|number) phrase <user.formatters> <user.text> <number>:
 	insert(user.formatted_text(text, formatters))

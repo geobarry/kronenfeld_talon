@@ -123,10 +123,10 @@ fulcrum
 ha,horizontal alignment
 highD,high distance
 highT,high time
-hz_dist,horizontal distance
-i,ee
+hz_dist,horizontal distanceI
+i,I
 i,eye
-id
+id, eye dee
 image_path,image path
 intervalD,interval distance
 interval_finish,interval finish
@@ -170,7 +170,6 @@ month_labels,month labels
 months
 move_dist,move the distance
 move_dist,move distance
-move_next,a
 move_time,move time
 move_times,move times
 msg,message
@@ -345,3 +344,29 @@ lat_lbl,latitude label
 lat,latitude
 cur_cell,current cell
 sleep_time,sleep time
+key_seq,key sequence
+key_seq,sequential keys
+key_seq,sequence
+list_name,list name
+found
+regex
+match
+sel,selection
+max_adj,max adjustment
+num_char,numb characters
+forward
+backward
+raster
+desc,describe
+ext,extent
+meanCellWidth,mean
+meanCellHeight,mean cell height
+left_match_pos,left match position
+match_text,match text
+right_match_pos,right match position
+match_pos,match position
+arrow,direction
+down_key,down key
+clickable_points,clickable points
+loc_marks,location marks
+mark

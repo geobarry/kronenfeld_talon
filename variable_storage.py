@@ -1,4 +1,4 @@
-from talon import Context, Module, app, storage
+from talon import Context, Module, app, storage, actions
 import csv
 import os
 from pathlib import Path
@@ -18,6 +18,7 @@ mod.list("module_list", desc="saved module names")
 mod.list("function_list", desc="saved function names")
 mod.list("keyword_list", desc="saved keyword names")
 mod.list("app_list", desc="saved app names")
+mod.list("named_list", desc="user list that can be edited")
 
 ctx = Context()
 variable_list = {}
@@ -37,6 +38,14 @@ class Actions:
         """save a new variable to user.variable_list"""
         D = {spoken:text}
         append_to_csv(rel_file_path,D)
+    def customize_named_list(list_name: str):
+        """edit a user's named list with the default editing application"""
+        rel_file_path = f"lists\\{list_name}.csv"
+        path = BASE_DIR / rel_file_path
+        actions.user.edit_text_file(path)
+        actions.sleep(0.5)
+        actions.edit.file_end()
+        
 #        variable_list = storage.get("variable_list", {})
 #        variable_list[spoken] = text
 #        ctx.lists["user.variable_list"] = variable_list

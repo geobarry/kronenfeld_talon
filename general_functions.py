@@ -15,6 +15,7 @@ class Actions:
             if wait_time > 0:
                 actions.sleep(wait_time)
         for key in key_strings:
+            print(key)
             if ":" in key:
                 parts = key.split(":")
                 if parts[1].isnumeric():                    
@@ -26,6 +27,11 @@ class Actions:
                 press_key(key)
             if flag == "one_delay_only":
                 wait_time = 0
+    def office_keys(key_seq: str):
+        """Convenience function for accessing office menus"""
+        # Delay second keypress only
+        actions.user.slow_key_press(key_seq, wait_time = 0.2, flag = "one_delay_only")
+        
     def compress_video_file():
         """Compresses the video file that is currently selected in windows file explorer"""
         actions.key("f2")

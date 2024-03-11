@@ -43,7 +43,7 @@ select block:
 
 	
 # commands for talon files
-key:
+press key:
 	user.insert_between('key(',')')
 sleep:
 	user.insert_between('sleep(',')')

@@ -53,5 +53,8 @@ mark for deletion:
 save download [as]: user.slow_key_press("ctrl-j tab:2 enter",1.0)
 show [in] folder: user.slow_key_press("menu down:2 enter")
 
-	
+# for explicit clicking with rango or vimium	
+go <user.letter>$: user.slow_key_press("{letter}",0.02)
+go <user.letter> <user.letter>$: user.slow_key_press("{letter} {letter_2}",0.02)
+show links: key(ctrl-f6 f)
 	

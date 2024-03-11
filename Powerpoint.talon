@@ -4,6 +4,17 @@ os: windows
 and app.exe: POWERPNT.EXE
 -
 tag(): user.excel_powerpoint_shared
+
+# experimental accessibility
+
+toggle notes: user.focus_element_by_name("notes")
+focus workspace: user.click_element_by_name("home")
+mark for selection: user.mark_focused_location()
+select marked: 
+	key(esc)
+	user.click_all_marks("shift")
+
+
 #main menu headings
 menu file: key(alt-f)
 menu home: key(alt-h)
@@ -558,12 +569,7 @@ exit panel:
 	key(c)
 
 #table layout menu
-insert row above:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(l)
-	key(v)
+insert row above: user.office_keys("alt j l v")
 insert row below:
 	key(alt)
 	sleep(0.05)
@@ -825,17 +831,9 @@ copy style:
 	key(ctrl-shift-c)
 paste style:
 	key(ctrl-shift-v)
-paste special:
-	key(alt)
-	sleep(0.2)
-	key(h v s tab)
-paste without formatting:
-	key(alt-e)
-	sleep(0.05)
-	key(s)
-	key(tab)
-	key(down:2)
-	key(enter)
+paste special: user.office_keys("alt h v s tab")
+paste without formatting: user.office_keys("alt-e s tab down:2 enter")
+paste original formatting: user.office_keys("alt-h v k")
 
 #special symbols
 insert greek [letter]:

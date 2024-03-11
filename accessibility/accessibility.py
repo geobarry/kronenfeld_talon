@@ -1,10 +1,12 @@
-from talon import Module, ui, Context, clip, ctrl, cron
+from talon import Module, ui, Context, clip, ctrl, cron, actions
 from talon.windows import ax as ax
 from talon.types import Point2d as Point2d
 import inspect
 import math
 import re
 
+# list for tracking a set of clickable points
+loc_marks = []
 
 class mouse_mover:
     """Moves mouse using cron intervals until destination is reached"""
@@ -84,21 +86,20 @@ def all_element_information(el):
     return msg
 
 
-def element_information(el: ax.Element):
-        msg = 'element information'
-        msg += f"\nname: {el.name}"
-        msg += f"\npid: {el.pid}"
-        msg += f"\naccess_key: {el.access_key}"
-        msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
-        msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
-        msg += f"\nis_enabled: {el.is_enabled}"
-        msg += f"\nautomation_id: {el.automation_id}"
-        msg += f"\nclass_name: {el.class_name}"
-        msg += f"\nhelp_text: {el.help_text}"
-        try:
-            msg += f"\nloc: {el.clickable_point}"
-        except:
-            pass  
+def element_information(el: ax.Element, verbose = False):
+        msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        if verbose:
+            msg += f"\npid: {el.pid}"
+            msg += f"\naccess_key: {el.access_key}"
+            msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
+            msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
+            msg += f"\nis_enabled: {el.is_enabled}"
+            msg += f"\nautomation_id: {el.automation_id}"
+            
+            try:
+                msg += f"\nloc: {el.clickable_point}"
+            except:
+                pass  
         return msg
         
 
@@ -132,23 +133,69 @@ class Actions:
         """Focuses on an element by name"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
+        
         for element in elements:
+#            print(element.name)
             if element.name == name or \
-            str(element.name).lower() == name:
+            str(element.name).lower() == name or \
+            name.lower() in str(element.name).lower():
                 element.invoke_pattern.invoke()
                 break
         else:
             print("Element not found")
+
+    def click_focused(down_key: str=""):
+        """ clicks on the currently focused element with the down key pressed"""
+        if down_key != "":
+            actions.key(f"{down_key}:down")
+        el = ui.focused_element()
+        try:
+            loc = el.clickable_point
+            mouse_obj = mouse_mover(loc,ctrl.mouse_click)
+        except:
+            pass
+        if down_key != "":
+            actions.key(f"{down_key}:up")
+
+    def mark_focused_location():
+        """records the clickable point of the currently focused item"""
+        global loc_marks
+        el = ui.focused_element()
+        try:
+            loc_marks.append(el.clickable_point)
+        except:
+            pass
+        print(f"{len(loc_marks)} locations marked!")
+        
+    def click_all_marks(down_key: str=""):
+        """clicks on recorded marks and then empties list"""
+        global loc_marks
+        i = 0
+        for mark in loc_marks:
+            if down_key != "":
+                actions.key(f"{down_key}:down")
+            try:
+                ctrl.mouse_move(mark.x,mark.y)
+                ctrl.mouse_click()
+            except:
+                pass
+            if down_key != "":
+                actions.key(f"{down_key}:up")
+            i += 1
+        # reset location marks list
+        loc_marks = []
+
 
     def click_element_by_name(name: str):
         """Moves mouse to and clicks on element"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
-            if str(el.name).lower() == name.lower() or \
-                str(el.help_text).lower() == name.lower():
+            if el.name == name or \
+                str(el.name).lower() == name or \
+                name.lower() in str(el.name).lower():
                 try:
-                    loc = element.clickable_point
+                    loc = el.clickable_point
                     mouse_obj = mouse_mover(loc,ctrl.mouse_click)
                     break
                 except:
@@ -222,7 +269,7 @@ class Actions:
     def copy_focused_element_to_clipboard():
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
-        msg = element_information(el)
+        msg = element_information(el, verbose = True)
         clip.set_text(msg)
         
     def copy_enabled_element_to_clipboard():

@@ -14,7 +14,7 @@ create function <user.text>:
 create keyword <user.text>:
 	user.save_to_list("lists\\keywords.csv",text,edit.selected_text())
 
-
+customize {user.named_list}: user.customize_named_list(named_list)
 
 launch app {user.app_list}: 
 	key(super)

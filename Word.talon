@@ -24,78 +24,47 @@ sub <number>:
 	key(5)
 	edit.right()
 	
-apply style: key(alt-h z 1 y 1)
-apply style <user.word>:
+apply style$: key(alt-h z 1 y 1)
+apply style <user.word>$:
 	user.slow_key_press("alt-h z 1 y 1")
 	insert(word)
 	sleep(0.1)
 	key(enter esc)
 
 new style:
-	key(alt-h)
-	key(f)
-	key(y)
+	key(alt-h f y)
 	sleep(0.05)
 	# trick: if we press right enough times we will always end up in the same place
-    key(right:10)
-	# tab to the ad style button
-	key(tab:3)
-	key(enter)
+    key(right:10 tab:3 enter)
 	
 apply heading <number>:
-	key(alt-h)
-	key(z)
-	key(1)
-	key(y)
-	key(1)
+	key(alt-h z l y l)
 	sleep(0.05)
-	insert("Heading ")
-	insert("{number}")
-	key(enter)
-	key(esc)
-	repeat(4)
+	insert("Heading {number}")
+	key(enter esc:5)
 
 apply normal:
-	key(alt-h)
-	key(z)
-	key(1)
-	key(y)
-	key(1)
+	key(alt-h z l y l)
 	sleep(0.05)
 	insert("normal")
-	key(enter)
-	key(esc)
-	repeat(4)
+	key(enter esc:5)
 	
 apply code:
-	key(alt-h)
-	key(z)
-	key(1)
-	key(y)
-	key(1)
+	key(alt-h z l y l)
 	sleep(0.05)
 	insert("Code")
-	key(enter)
-	key(esc)
-	repeat(4)
-	
+	key(enter esc:5)
+
 apply code in place:
-	key(alt-h)
-	key(z)
-	key(1)
-	key(y)
-	key(1)
+	key(alt-h z l y l)
 	sleep(0.05)
 	insert("Inline Code")
-	key(enter)
-	key(esc)
-	repeat(4)
+	key(enter esc:5)
 	
 style match selection:
 	key(alt-h)
 	sleep(0.05)
-	key(f)
-	key(y)
+	key(f y)
 	sleep(0.05)
 	# trick: if we press right enough times we will always end up in the same place
 	key(right:2)
@@ -104,20 +73,16 @@ style match selection:
 	sleep(0.05)
 	key(enter)
 	sleep(0.05)
-	key(alt-h)
-	key(f)
-	key(y)
+	key(alt-h f y)
 
-figure <number> here:
-	insert("<figure ")
-	insert("{number}")
-	insert(" approximately here>")
+figure <number> here: insert("<figure {number} approximately here>")
+table <number> here: insert("<table {number} approximately here>")
 
-table <number> here:
-	insert("<table ")
-	insert("{number}")
-	insert(" approximately here>")
-	
+modify auto format: 
+	key(alt-f 0 0 down:3 enter down:2 alt-a)
+	sleep(0.1)
+	key(shift-tab:8)
+
 apply bullets:
 	key(alt-h)
 	key(u)

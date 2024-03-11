@@ -1,6 +1,1 @@
-wake from the dead:
-	speech.enable()
-	user.talon_mode()
-	insert("Brains...")
-	speech.disable()
-	
+get <user.ordinals> paycheck: print(ordinals)

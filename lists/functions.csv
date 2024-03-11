@@ -40,3 +40,4 @@ zip
 actions.sleep,sleep
 actions.insert,insert
 actions.key,key
+actions.edit.selected_text,selected text
