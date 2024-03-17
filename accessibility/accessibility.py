@@ -95,11 +95,56 @@ def element_information(el: ax.Element, verbose = False):
             msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
             msg += f"\nis_enabled: {el.is_enabled}"
             msg += f"\nautomation_id: {el.automation_id}"
-            
+            msg += f"\nchildren: {len(el.children)}"
+            msg += f"\nis_control_element: {el.is_control_element}"
+            msg += f"\nis_content_element: {el.is_content_element}"
+            msg += f"\nitem_type: {el.item_type}"
+            msg += f"\nitem_status: {el.item_status}"
+            msg += f"\npatterns: {el.patterns}"
+            msg += f"\ndescribed_by: {el.described_by}"
+            msg += f"\nflows_to: {el.flows_to}"
+            msg += f"\nprovider_description: {el.provider_description}"
+            try:
+                msg += f"\ncustomnavigation_pattern: {el.customnavigation_pattern}"
+            except:
+                pass
+            try:
+                msg += f"\nwindow_pattern: {el.window_pattern}"
+            except:
+                pass
+            try:
+                msg += f"\nitemcontainer_pattern: {el.itemcontainer_pattern}"
+            except:
+                pass
+            try:
+                msg += f"\nselection_pattern: {el.selection_pattern}"
+            except:
+                pass
+            try:
+                msg += f"\nselection_pattern2: {el.selection_pattern2}"
+            except:
+                pass                
+            try:
+                msg += f"\ngetting toggle pattern state:"
+                toggle_pattern = el.toggle_pattern
+                msg += f"\ntoggle_pattern.state: {toggle_pattern.state}"
+            except:
+                pass
+            try:
+                msg += f"\nitemcontainer_pattern: {el.itemcontainer_pattern}"
+            except:
+                pass
+            try:
+                msg += f"\nrect: {el.rect}"
+            except:
+                pass
             try:
                 msg += f"\nloc: {el.clickable_point}"
             except:
                 pass  
+#            msg += "\n\nCHILDREN:"
+#            for child in el.children:
+#                msg += element_information(child,True)
         return msg
         
 

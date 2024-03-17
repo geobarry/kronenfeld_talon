@@ -1,7 +1,7 @@
-from talon import Context,Module,actions
+from talon import Context,Module,actions,ui
 mod = Module()
 mod.tag("excel_powerpoint_shared", desc="keyboard sequences that work in both excel and powerpoint")
-
+mod.list("power_go_to_target", "places we can go in powerpoint with the f6 button")
 @mod.action_class
 class Actions:
     def unicode_word(unicode_code: str, font_name: str="Symbol"):
@@ -57,7 +57,7 @@ class Actions:
         actions.key("alt-i")
         actions.key("tab")
         actions.key("enter")
-    def go_excel_row_by_person(name: str, sleep_time: float = 0.2):
+    def go_excel_row_by_person(name: str, sleep_time: float = 0.1):
         """moves to the cell in the same row where the given person's name can be found"""
         # get column of current cell
         actions.key("alt-f3")
@@ -67,6 +67,7 @@ class Actions:
         actions.key("enter")
 
         # use built-in search function to get row of cell with given name
+        # NOTE: Need to set search parameters to search values not formulas
         actions.key("ctrl-f")
         actions.sleep(sleep_time)
         actions.insert(name)
@@ -85,6 +86,48 @@ class Actions:
         actions.insert(col + row)
         actions.sleep(sleep_time)
         actions.key("enter")
+
+    def power_go_to(trg: str):
+        """Presses F6 until the target (contents,slide,notes,menu) is reached"""
+        def focused_element_type():
+            
+            el = ui.focused_element()
+            print(el.name)
+            if "Ribbon" in el.class_name:
+                return "menu"
+            elif "Slide Notes" in el.name:
+                return "notes"
+            elif el.name[:5] == "Slide":
+                name_parts = el.name.split(" ")
+                if len(name_parts) == 1:
+                    return "contents"
+                elif name_parts[1].isnumeric():
+                    return "slide"
+                else:
+                    return "contents"
+            elif el.name == "Play All" or el.name == "Animation Pane" \
+                or el.name == "Move Up" or el.name == "Move Down":
+                return "animation"            
+            else:
+                return ""
+        print("FUNCTION: power_go_to")
+        # prevent infinite cycling
+        limit = 6
+        i = 0
+        # cycle until target is reached or else we have reached our limit
+        start_type = focused_element_type()
+        while focused_element_type() != trg and i < limit:
+            i += 1
+            actions.key("f6")
+            
+        # if target has not been reached, try to go back to where we came from
+        if focused_element_type() != trg:
+            i = 0
+            while focused_element_type() != start_type and i < limit:
+                i += 1
+                actions.key("f6")
+            
+            
         
     def circle_number_excel_power(number: int):
         """insert a number inside a circle"""

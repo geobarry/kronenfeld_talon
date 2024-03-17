@@ -63,6 +63,25 @@ address bar:
 
 compress video [file]:
 	user.compress_video_file()
+open file locator:
+	# grab path to current folder
+	key(alt-d)
+	sleep(0.5)
+	edit.copy()
+	# launch file locator
+	key(super)
+	sleep(1.0)
+	insert("filelocator")
+	sleep(1.0)
+	key(enter)
+	sleep(1.5)
+	# remove default file name and enter the folder path
+	key(del)
+	key(tab:2)
+	sleep(1)
+	edit.paste()
+	sleep(1)
+	key(shift-tab)
 
 open jupyter [notebook]:
 	# grab path to current folder

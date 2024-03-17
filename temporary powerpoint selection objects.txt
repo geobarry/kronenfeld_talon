@@ -1,0 +1,24 @@
+name: Title TextBox 	class_name:  	help_text: 
+name: Content Placeholder 	class_name:  	help_text: 
+name: Picture 5 	class_name:  	help_text: 
+name: Raster Data Structure 	class_name:  	help_text: 
+name: Rounded Rectangle 4 	class_name:  	help_text: 
+name: Picture 4 	class_name:  	help_text: 
+name: Grouped Object 	class_name:  	help_text: 
+name: Right Arrow 10 	class_name:  	help_text: 
+name: TextBox 	class_name:  	help_text: 
+name: Footer 	class_name:  	help_text: 
+name: Slide Number 	class_name:  	help_text: 
+name: Line 10 	class_name:  	help_text: 
+name: Oval 9 	class_name:  	help_text: 
+name: Audio 22 	class_name:  	help_text: 
+name: Rectangle: Rounded Corners 7 	class_name:  	help_text: 
+name: Straight Arrow Connector 9 	class_name:  	help_text: 
+name: Connector: Elbow 11 	class_name:  	help_text: 
+name: Rectangle 5 	class_name:  	help_text: 
+name: Isosceles Triangle 6 	class_name:  	help_text: 
+name: "Not Allowed" Symbol 8 	class_name:  	help_text: 
+name: Arc 9 	class_name:  	help_text: 
+name: Left Brace 10 	class_name:  	help_text: 
+name: Right Brace 11 	class_name:  	help_text: 
+name: Graphic 15 	class_name:  	help_text: 

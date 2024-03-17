@@ -370,3 +370,8 @@ down_key,down key
 clickable_points,clickable points
 loc_marks,location marks
 mark
+child
+name_parts,name parts
+cur_type,current type
+start_type,start type
+phone_list,phone list

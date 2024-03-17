@@ -107,5 +107,9 @@ class Actions:
             print("got exactly two pops")
             actions.speech.enable()
             actions.key("ctrl-shift-m")
-        
+    
+    def insert_nth_word(text: str, n: int = 0, sep: str = " "):
+        """Inserts the nth word in the given string, as defined by the separator"""
+#        actions.insert(text.split(sep)[n])
+        return text.split(sep)[n]
 ctx = Context()

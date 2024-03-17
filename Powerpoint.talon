@@ -13,7 +13,7 @@ mark for selection: user.mark_focused_location()
 select marked: 
 	key(esc)
 	user.click_all_marks("shift")
-
+go to {user.power_go_to_target}: user.power_go_to(power_go_to_target)
 
 #main menu headings
 menu file: key(alt-f)
@@ -164,10 +164,10 @@ apply numbers [with] parentheses:
 	key(alt)
 	sleep(0.3)
 	key(h n left:12 right:2 enter)
-start [(numbers|numbering)] at <number>:
+(start|restart) [(numbers|numbering)] at <number>:
 	key(alt)
 	sleep(0.3)
-	key(n n t)
+	key(h n n t)
 	insert("{number}")
 	key(enter)
 	
@@ -495,32 +495,24 @@ shape no outline:
 	sleep(0.05)
 	key(o)
 	key(n)  
-shape width:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(w)
+shape width: user.office_keys("alt j d w")
 shape width <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(w)
-	insert(number)
-	key(enter)
-	key(esc)
+	user.office_keys("alt j d w")
+	insert("{number}")
+	key(enter esc)
 shape width <number> point <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(w)
-	insert(number_1)
-	insert(".")
-	insert(number_2)
-	key(enter)
-	key(esc)
+	user.office_keys("alt j d w")
+	insert("{number_1}.{number_2}")
+	key(enter esc)
+picture width: user.office_keys("alt j p w")
+picture width <number>:
+	user.office_keys("alt j p w")
+	insert("{number}")
+	key(enter esc)
+picture width <number> point <number>:
+	user.office_keys("alt j p w")
+	insert("{number_1}.{number_2}")
+	key(enter esc)
 shape height:
 	key(alt)
 	sleep(0.08)
@@ -619,31 +611,7 @@ table width: user.slow_key_press("alt j l t w")
 table height: user.slow_key_press("alt j l t h")
 	
 # picture format menu
-picture width:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(p)
-	key(w)
-picture width <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(p)
-	key(w)
-	insert(number)
-	key(enter)
-	key(esc)
-picture width <number> point <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(p)
-	key(w)
-	insert(number_1)
-	insert(".")
-	insert(number_2)
-	key(enter)
+
 picture height:
 	key(alt)
 	sleep(0.08)
