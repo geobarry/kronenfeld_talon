@@ -19,23 +19,26 @@ go <user.system_path>:
 	insert(system_path)
 	sleep(0.2)
 	key(enter)
-#	sleep(1.5)
-#	key(escape)
+	# get rid of annoying dropdown suggestions that don't disappear on their own
+	sleep(0.5)
+	key(alt-d)
+	sleep(0.5)
+	key(esc)
+	sleep(0.5)
+	# returned to file area
+	user.file_explorer_tab_to_files()
 
-#	user.file_manager_open_directory(system_path)
+tab to files: user.file_explorer_tab_to_files()
+
+copy full path: user.file_explorer_copy_full_path()
+copy folder: user.file_explorer_copy_folder()
 
 go to <user.text>:
 	insert(text)
 
 # sorting
 extract: user.slow_key_press("menu t 2",1.5)
-sort:
-	# get into the menu
-	key(alt)
-	# a sort menu is third from the right
-	key(right:20)
-	key(left:2)
-	key(enter)
+sort: user.click_element_by_name("Sort")
 sort by name:
 	# get into the menu
 	key(alt)
@@ -120,6 +123,9 @@ zip selected:
 	sleep(0.5)
 	key(z)
 
+replace with underscores: user.replace_with_underscores()
+
+# alternate views
 large icons: key(ctrl-shift-1)
 medium icons: key(ctrl-shift-2)
 small icons: key(ctrl-shift-3)

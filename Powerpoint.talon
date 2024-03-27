@@ -14,6 +14,12 @@ select marked:
 	key(esc)
 	user.click_all_marks("shift")
 go to {user.power_go_to_target}: user.power_go_to(power_go_to_target)
+select [<user.ordinals>] {user.power_selection_target}: user.power_tab_to(power_selection_target,ordinals or 1)
+select inside [<user.ordinals>] {user.power_selection_target}:
+	user.power_tab_to(power_selection_target,ordinals or 1)
+	sleep(0.2)
+	key("f2")
+
 
 #main menu headings
 menu file: key(alt-f)
@@ -68,6 +74,8 @@ menu [video] playback:
 	key(alt)
 	sleep(0.1)
 	key(j n)
+
+menu object: user.power_object_menu()
 
 #file menu
 save as:
@@ -135,6 +143,7 @@ apply underline:
 	key(alt)
 	sleep(0.2)
 	key(h 53)
+apply strike through: key(alt-h 4)
 apply subscript: key(alt-h f n b enter)
 apply superscript: key(alt-h f n p enter)
 apply bullets:
@@ -170,7 +179,7 @@ apply numbers [with] parentheses:
 	key(h n n t)
 	insert("{number}")
 	key(enter)
-	
+apply last highlight: user.slow_key_press("alt h t c down:3 enter")	
 paragraph formatting:
 	key(alt)
 	sleep(0.3)
@@ -285,11 +294,8 @@ flip horizontal:
 	key(h)
 	
 #insert menu
-[insert] text box:
-	key(alt-n)
-	sleep(0.05)
-	key(x)
-	key(h)
+[insert] text box: 
+	user.slow_key_press("alt n x h esc alt j d w 5 shift-tab 1 enter esc f2")
 insert [hyper] link:
 	key(alt-n)
 	sleep(0.05)
@@ -398,50 +404,20 @@ exit animation panel:
 	key(c)
 	
 #slide show menu
-present slide show:
-	key(alt-s)
-	sleep(0.05)
-	key(b)
-present current slide:
-	key(alt-s)
-	sleep(0.05)
-	key(c)
+present slide show: key(alt s b)
+present current slide: key(alt s c)
 
 #view menu
-slide sorter:
-	key(alt-w)
-	key(i)
-outline view:
-	key(alt-w)
-	key(p)
-	key(o)
-normal view:
-	key(alt-w)
-	key(l)
-(master view|slide master):
-	key(alt-w)
-	key(m)
-rename [slide] layout:
-	key(alt-m)
-	key(r)
-close (master [view]|slide master):
-	key(alt-m)
-	key(c)
-	
-zoom fit:
-	key(alt-w)
-	key(q)
-	sleep(0.05)
-	key(i)
-	key(enter)
+slide sorter: key(alt w i)
+outline view: key(alt w p o)
+normal view: key(alt w l)
+(master view|slide master): key(alt w m)
+rename [slide] layout: key(alt m r)
+close (master [view]|slide master): key(alt m c)
+zoom fit: key(alt w q i enter)
 zoom <number> [percent]:
-	key(alt-w)
-	key(q)
-	sleep(0.05)
-	key(p)
-	sleep(0.05)
-	insert(number)
-	insert("%")
+	key(alt w q p)
+	insert("{number}%")
 	key(enter)
 
 #shape format menu
@@ -467,34 +443,19 @@ shape [fill] transparency:
 	key(m)
 	key(alt-t)
 shape [fill] transparency <number>:
-	key(alt)
+	key(alt j d s)
 	sleep(0.05)
-	key(j)
-	key(d)
-	key(s)
-	sleep(0.05)
-	key(f)	
-	key(m)
-	key(alt-t)
+	key(f m alt-t)
 	insert(number)
 	key(enter)
 shape outline:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(d)
-	key(s)
+	key(alt j d s)
 	sleep(0.05)
 	key(o)
 shape no outline:
-	key(alt)
+	key(alt j d s)
 	sleep(0.05)
-	key(j)
-	key(d)
-	key(s)
-	sleep(0.05)
-	key(o)
-	key(n)  
+	key(o n)
 shape width: user.office_keys("alt j d w")
 shape width <number>:
 	user.office_keys("alt j d w")
@@ -513,100 +474,29 @@ picture width <number> point <number>:
 	user.office_keys("alt j p w")
 	insert("{number_1}.{number_2}")
 	key(enter esc)
-shape height:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(h)
+shape height: key(alt j d h)
 shape height <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(h)
+	key(alt j d h)
 	insert(number)
-	key(enter)
-	key(esc)
+	key(enter esc)
 shape height <number> point <number>:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(h)
-	insert(number_1)
-	insert(".")
-	insert(number_2)
-	key(enter)
-	key(esc)
-shape position:
-	# first need to collapse all menus
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(d)
-	key(s)
-	key(z)
-apply [text] halo:
-	key(alt)
-	sleep(0.2)
-	key(j d t x g g c)
-
-close panel:
-	key(f6)
-	key(ctrl-space)
-	key(c)
-exit panel:
-	key(ctrl-space)
-	key(c)
+	key(alt j d h)
+	insert("{number_1}.{number_2}")
+	key(enter esc)
+shape position: user.office_keys("alt j d s z")
+apply [text] halo: user.office_keys("alt j d t x g g c")
+close panel: key(f6 ctrl-space c)
+exit panel: key(ctrl-space c)
 
 #table layout menu
-insert row above: user.office_keys("alt j l v")
-insert row below:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(e)
-insert column before:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(l)
-insert column after:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(i)
-delete row:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(d)
-	key(r)
-delete column:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(d)
-	key(c)
-delete table:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(l)
-	key(d)
-	key(t)
-(cell|column) width:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	key(l)
-	key(w)
+insert row [above]: user.office_keys("alt j l v")
+insert row below: user.office_keys("alt j l e")
+insert column [before]: user.office_keys("alt j l l")
+insert column after: user.office_keys("alt j l i")
+delete row: user.office_keys("alt j l d r")
+delete column: user.office_keys("alt j l d c")
+delete table: user.office_keys("alt j l d t")
+(cell|column) width: user.office_keys("alt j l w")
 table width: user.slow_key_press("alt j l t w")
 table height: user.slow_key_press("alt j l t h")
 	

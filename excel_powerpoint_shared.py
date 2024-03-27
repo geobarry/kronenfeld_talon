@@ -2,8 +2,28 @@ from talon import Context,Module,actions,ui
 mod = Module()
 mod.tag("excel_powerpoint_shared", desc="keyboard sequences that work in both excel and powerpoint")
 mod.list("power_go_to_target", "places we can go in powerpoint with the f6 button")
+mod.list("power_selection_target", "places we can go in powerpoint with the tab button")
+
 @mod.action_class
 class Actions:
+    def power_object_menu():
+        """opens the menu associated with the current object"""
+        actions.key("alt j")
+        elements = actions.user.element_list()
+        print(f"{len(elements)} elements found")
+        for el in elements:
+            if el.name == "Picture Tools":
+                actions.key("p")                
+                break
+            elif el.name == "Shape Format":
+                actions.key("d")
+                break
+            elif el.name == "Table Design":
+                actions.key("l")
+                break
+            elif el.name == "Graphics Tools":
+                actions.key("g")
+                break
     def unicode_word(unicode_code: str, font_name: str="Symbol"):
         """insert a unicode character into word"""
         def change_font(new_font):
@@ -38,25 +58,19 @@ class Actions:
         actions.key("backspace")
     def unicode_excel_power(unicode_code: str, font_name: str="Times New Roman"):
         """insert a unicode character into excel or powerpoint"""
-        actions.key("alt-n")
-        actions.key("u")
-        actions.key("alt-f")
+        actions.key("alt-n u alt-f")
         actions.insert(font_name)
         actions.sleep(0.1)
-        actions.key("enter")
-        actions.key("alt-m")
+        actions.key("enter alt-m")
         # For most fonts the unicode hex is at the top
         actions.key("up:2")
         # For symbol fonts it is one down
         if font_name.upper() in ["SYMBOL", "WINGDINGS", "WINGDINGS 2", "WINDINGS 3"]:
             actions.key("down")
-        actions.key("enter")
-        actions.key("alt-c")
+        actions.key("enter alt-c")
         actions.insert(unicode_code)
         actions.sleep(0.1)
-        actions.key("alt-i")
-        actions.key("tab")
-        actions.key("enter")
+        actions.key("alt-i tab enter")
     def go_excel_row_by_person(name: str, sleep_time: float = 0.1):
         """moves to the cell in the same row where the given person's name can be found"""
         # get column of current cell
@@ -86,6 +100,50 @@ class Actions:
         actions.insert(col + row)
         actions.sleep(sleep_time)
         actions.key("enter")
+
+    def power_tab_to(trg: str, occurrence: int = 1):
+        """Presses tab until the target is reached"""
+        print("FUNCTION: POWER TAB TO")
+        el = ui.focused_element()
+        print(f"1: {el.name}")
+        orig_el = el
+        instance_found = 0
+        # press tab once if we are not moving to another element, try esc
+        i=0
+        actions.key("tab")
+        last_el = el
+        actions.sleep(0.1)
+        el = ui.focused_element()
+        print(f"2: {el.name}")
+        while el.name == last_el.name and i < 5:
+            print("Pressing tab but not moving, trying escape...")
+            actions.key("ctrl-z esc tab")
+            actions.sleep(0.1)
+            last_el = el
+            el = ui.focused_element()
+            print(f"3: {el.name}")
+            i += 1
+        if trg.lower() in el.name.lower():
+            instance_found += 1
+        # look for target
+        i = 0
+        limit = 100        
+        while instance_found != occurrence and i < limit:
+            i += 1
+            actions.key("tab")
+            last_el = el
+            el = ui.focused_element()
+            print(f"4: {el.name}")
+            if trg.lower() in el.name.lower():
+                instance_found += 1
+        # If target not found try going back to the beginning
+        if not trg.lower() in el.name.lower():
+            while el != orig_el and i < limit:
+                i += 1
+                actions.key("tab")
+                el = ui.focused_element()
+                print(f"5: {el.name}")
+        
 
     def power_go_to(trg: str):
         """Presses F6 until the target (contents,slide,notes,menu) is reached"""

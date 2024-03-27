@@ -31,49 +31,34 @@ apply style <user.word>$:
 	sleep(0.1)
 	key(enter esc)
 
-new style:
-	key(alt-h f y)
-	sleep(0.05)
-	# trick: if we press right enough times we will always end up in the same place
-    key(right:10 tab:3 enter)
-	
+style dialog: user.slow_key_press("alt-h f y")
 apply heading <number>:
-	key(alt-h z l y l)
+	key(alt-h z 1 y 1)
 	sleep(0.05)
 	insert("Heading {number}")
 	key(enter esc:5)
 
 apply normal:
-	key(alt-h z l y l)
+	key(alt-h z 1 y 1)
 	sleep(0.05)
 	insert("normal")
+	sleep(0.1)
 	key(enter esc:5)
 	
 apply code:
-	key(alt-h z l y l)
+	key(alt-h z 1 y 1)
 	sleep(0.05)
 	insert("Code")
 	key(enter esc:5)
 
-apply code in place:
-	key(alt-h z l y l)
+apply inline code:
+	key(alt-h z 1 y 1)
 	sleep(0.05)
 	insert("Inline Code")
 	key(enter esc:5)
 	
 style match selection:
-	key(alt-h)
-	sleep(0.05)
-	key(f y)
-	sleep(0.05)
-	# trick: if we press right enough times we will always end up in the same place
-	key(right:2)
-	sleep(0.05)
-	key(alt-down)
-	sleep(0.05)
-	key(enter)
-	sleep(0.05)
-	key(alt-h f y)
+	user.slow_key_press("alt-h f y right alt-down enter alt-h f y",0.5)
 
 figure <number> here: insert("<figure {number} approximately here>")
 table <number> here: insert("<table {number} approximately here>")
@@ -569,6 +554,10 @@ view percent:
 	key(q)
 	key(alt-e)
 	key(enter)
+	
+modify style:
+	user.slow_key_press("alt-h f y right alt-down m",0.5)
+	#we now should be in the manage styles dialog
 	
 export styles:
 	key(alt-h)

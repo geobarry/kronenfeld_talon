@@ -85,6 +85,10 @@ paste values:
 	key(s)
 	key(v)
 	key(enter)
+paste external: key(alt-h v m)
+paste single line:
+	user.make_clipboard_one_line(", ")
+	key(ctrl-v)
 font color: 
 	key(alt-h)
 	key(f)

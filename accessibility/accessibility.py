@@ -68,7 +68,10 @@ class mouse_mover:
 
 mod = Module()
 
+
 def get_every_child(el: ax.Element):
+    # apparently keeping elements in memory is very expensive,
+    # would be better to find some way to do what you want with element properties
     if el:
         for child in el.children:
             # filter to see if this is faster
@@ -86,8 +89,34 @@ def all_element_information(el):
     return msg
 
 
+def element_match(el: ax.Element, prop_dict):
+    """Returns true if the element matches all of the properties in the property dictionary"""
+    for prop in prop_dict.keys():
+        if prop == "name":
+            if el.name != prop_dict[prop]:
+                return False
+        if prop == "class_name":
+            if el.class_name != prop_dict[prop]:
+                return False
+        if prop == "help_text":
+            if el.help_text != prop_dict[prop]:
+                return False
+        if prop == "clickable":
+            clickable = True
+            try:
+                loc = el.clickable_point
+            except:
+                clickable = False
+            if prop_dict[prop] != clickable:
+                return False
+    return True
+
 def element_information(el: ax.Element, verbose = False):
         msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        try:
+            msg += f"\tloc: {el.clickable_point.x},{el.clickable_point.y}"
+        except:
+            msg += f"\tloc: None"
         if verbose:
             msg += f"\npid: {el.pid}"
             msg += f"\naccess_key: {el.access_key}"
@@ -138,10 +167,7 @@ def element_information(el: ax.Element, verbose = False):
                 msg += f"\nrect: {el.rect}"
             except:
                 pass
-            try:
-                msg += f"\nloc: {el.clickable_point}"
-            except:
-                pass  
+
 #            msg += "\n\nCHILDREN:"
 #            for child in el.children:
 #                msg += element_information(child,True)
@@ -174,6 +200,20 @@ def dynamic_children(_) -> dict[str,str]:
 
 @mod.action_class
 class Actions:
+    def element_exists(prop_dict: dict):
+        """Returns true if an element where the given properties exists"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        for el in elements:
+            if element_match(el,prop_dict):            
+                return True
+        return False
+        
+    def element_list():
+        """returns_a_list_of_all_elements"""
+        root = ui.active_window().element
+        return list(get_every_child(root))
+        
     def focus_element_by_name(name: str):
         """Focuses on an element by name"""
         root = ui.active_window().element
@@ -231,14 +271,15 @@ class Actions:
         loc_marks = []
 
 
-    def click_element_by_name(name: str):
+    def click_element_by_name(name: str, exact_match: bool = False):
         """Moves mouse to and clicks on element"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
+            print(f"current: {el.name}    search: {name}")
             if el.name == name or \
                 str(el.name).lower() == name or \
-                name.lower() in str(el.name).lower():
+                (name.lower() in str(el.name).lower() and not exact_match):
                 try:
                     loc = el.clickable_point
                     mouse_obj = mouse_mover(loc,ctrl.mouse_click)
@@ -266,13 +307,54 @@ class Actions:
         """Attempts to retrieve all properties from all elements"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
+        elements.append(root)
         msg = ""
-        for el in elements[:3]:
-            msg += all_element_information(el)
+        for el in elements:
+            msg += element_information(el) + "\n"
         clip.set_text(msg)
 
+    def click_matching_element(prop_dict: dict):
+        """clicks on the element that matches property dictionary"""
+        # make sure that clickable property is set to true
+        prop_dict["clickable"] = True
+        # get list of elements
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        # search for match
+        for el in elements:
+            if element_match(el,prop_dict):
+                loc = el.clickable_point
+                mouse_obj = mouse_mover(loc,ctrl.mouse_click)
+                break
+
+    def key_to_matching_element(key: str, prop_dict: dict, limit: int=35, escape_key: str=None):
+        """press is given key until the first matching element is reached"""
+        i = 1
+        last_el = element_information(ui.focused_element(),verbose = True)
+        while (not element_match(ui.focused_element(),prop_dict)) and (i < limit):
+            actions.key(key)
+            if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
+                print("Attempting escape...")
+                actions.key(escape_key)
+            i += 1
+
+    def copy_elements_accessible_by_key(key: str, limit: int=35):
+        """Gets information on elements accessible by pressing the input key"""
+        msg = element_information(ui.focused_element(), verbose = False)
+        elements = [msg]
+        i = 1
+        actions.key(key)
+        cur_msg = element_information(ui.focused_element(), verbose = False)
+        while (not cur_msg in elements) and (i < limit):
+            elements.append(cur_msg)
+            actions.key(key)
+            cur_msg = element_information(ui.focused_element(), verbose = False)
+            i += 1
+        clip.set_text("\n".join(elements))
+                
+
     def copy_near_elements_to_clipboard(max_dist: int=500):
-        """Copieselements with valid clickable point within given number of pixels"""
+        """Copies elements with valid clickable point within given number of pixels"""
         pos = ctrl.mouse_pos()
         root = ui.active_window().element
         elements = list(get_every_child(root))
@@ -289,7 +371,7 @@ class Actions:
                 print(f"pos: {pos} ({type(pos)})")
                 print(f"loc: {loc} ({type(loc)})")
                 if d < max_dist:
-                    msg += element_information(el)
+                    msg += element_information(el) + "\n"
                     n += 1
             except:
                 pass

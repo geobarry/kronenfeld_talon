@@ -16,7 +16,9 @@ volume mute: key(mute)
 
 # windows keyboard shortcuts
 launch explorer: key(super-e)
-screen snip: key(super-shift-s)
+screen snip: 
+	sleep(5)
+	key(super-shift-s)
 toggle Bluetooth: 
 	key(super-a)
 	sleep(1)
@@ -35,6 +37,7 @@ focus explorer: user.focus_explorer()
 save: key(ctrl-s)	
 search: key(ctrl-f)
 context menu: key(menu)
+
 	
 # websites and system paths
 open up <user.text>:
@@ -69,7 +72,7 @@ double brief {user.abbreviation} {user.abbreviation}: "{abbreviation} {abbreviat
 double under brief {user.abbreviation} {user.abbreviation}: "{abbreviation}_{abbreviation_2}"
 
 (numb|number|numeral) <number>: insert("{number}")
-letter <user.letter>: insert("{letter}")
+# letter <user.letter>: insert("{letter}")
 
 (numb|number) phrase <user.formatters> <user.text> <number>:
 	insert(user.formatted_text(text, formatters))
@@ -195,14 +198,14 @@ delete line:
 	user.search_with_search_engine(search_engine, "")
 	sleep(0.5)
 
-show shift:
+show calendar:
 	key(super)
 	sleep(0.2)
 	insert("Anaconda")
 	sleep(0.25)
 	key(enter)
 	sleep(2.5)
-	insert("cd C:\CaGIS Board Dropbox\cantaloupe bob\website\calendar")
+	insert("cd C:\CaGIS Board Dropbox\cantaloupe bob\Barry\website\calendar")
 	key("enter")
 	sleep(0.5)
 	insert("python -m http.server 8080")

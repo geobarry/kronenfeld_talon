@@ -375,3 +375,24 @@ name_parts,name parts
 cur_type,current type
 start_type,start type
 phone_list,phone list
+park_net,park net
+nbr_dist,neighbor distance
+alt_dist,alternate distance
+nbr,neighbor
+orig_el,original element
+last_el,last element
+j,ja
+sep,separator
+nbrs,neighbors
+w,worklist
+cur_country,current country
+new_folder,new folder
+chars,characters
+prop_dict,property dictionary
+matches
+prop,property
+exact_match,exact match
+clickable
+object_menu,object menu
+obj_type,object type
+cur_msg,current message

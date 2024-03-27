@@ -1,24 +1,17 @@
-name: Title TextBox 	class_name:  	help_text: 
-name: Content Placeholder 	class_name:  	help_text: 
-name: Picture 5 	class_name:  	help_text: 
-name: Raster Data Structure 	class_name:  	help_text: 
-name: Rounded Rectangle 4 	class_name:  	help_text: 
-name: Picture 4 	class_name:  	help_text: 
-name: Grouped Object 	class_name:  	help_text: 
-name: Right Arrow 10 	class_name:  	help_text: 
-name: TextBox 	class_name:  	help_text: 
-name: Footer 	class_name:  	help_text: 
-name: Slide Number 	class_name:  	help_text: 
-name: Line 10 	class_name:  	help_text: 
-name: Oval 9 	class_name:  	help_text: 
-name: Audio 22 	class_name:  	help_text: 
-name: Rectangle: Rounded Corners 7 	class_name:  	help_text: 
-name: Straight Arrow Connector 9 	class_name:  	help_text: 
-name: Connector: Elbow 11 	class_name:  	help_text: 
-name: Rectangle 5 	class_name:  	help_text: 
-name: Isosceles Triangle 6 	class_name:  	help_text: 
-name: "Not Allowed" Symbol 8 	class_name:  	help_text: 
-name: Arc 9 	class_name:  	help_text: 
-name: Left Brace 10 	class_name:  	help_text: 
-name: Right Brace 11 	class_name:  	help_text: 
-name: Graphic 15 	class_name:  	help_text: 
+PICTURE PANEL
+
+TOP ROW OF ICONS
+Pressing tab enough times will get you to one of the following, then pressed left or right arrows until you get to the one that you want:
+name: Effects 	class_name: NetUIGalleryButton 	help_text: 	loc: 3050,407
+name: Fill & Line 	class_name: NetUIGalleryButton 	help_text: 	loc: 2944,407
+name: Picture 	class_name: NetUIGalleryButton 	help_text: 	loc: 3262,407
+name: Size & Properties 	class_name: NetUIGalleryButton 	help_text: 	loc: 3156,407
+
+COLLAPSIBLE HEADINGS
+Press enter to toggle; need to tab wants to check next element to determine toggle state
+Press tab to move from one to the next (up/down will work if collapsed, but on child elements may have different behavior)
+(Pressing tab from textbox will get you to the top icon row)
+name: Size 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,545
+name: Position 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,1617
+name: Text Box 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,1701
+

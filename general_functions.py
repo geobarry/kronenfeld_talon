@@ -1,5 +1,6 @@
-from talon import Context,Module,actions
+from talon import Context,Module,actions,clip
 import time
+import re
 mod = Module()
 
 time_last_pop = 0
@@ -31,6 +32,18 @@ class Actions:
         """Convenience function for accessing office menus"""
         # Delay second keypress only
         actions.user.slow_key_press(key_seq, wait_time = 0.2, flag = "one_delay_only")
+    def make_clipboard_one_line(sep: str = " "):
+        """removes line breaks and then pastes"""
+        
+        x = clip.text()
+        x = re.split(pattern="(\n|\r)+",string = x)
+        x = [y.strip() for y in x]
+        x = [y for y in x if y != '']
+        print(x)
+        x = sep.join(x)
+        print(x)
+        clip.set_text(x)        
+                
         
     def compress_video_file():
         """Compresses the video file that is currently selected in windows file explorer"""

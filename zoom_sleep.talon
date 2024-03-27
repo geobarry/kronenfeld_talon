@@ -1,4 +1,4 @@
-tag: zoom
+tag: user.zoom
 and mode: sleep
 # assumes zoom is unmuted
 -
