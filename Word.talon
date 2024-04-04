@@ -7,21 +7,17 @@ toggle ribbon:
 sub <user.letter>:
 	insert(" ")
 	edit.left()
-	key(alt-h)
-	key(5)
+	key(alt-h 5)
 	insert("{user.letter}")
-	key(alt-h)
-	key(5)
+	key(alt-h 5)
 	edit.right()
 	
 sub <number>:
 	insert(" ")
 	edit.left()
-	key(alt-h)
-	key(5)
+	key(alt-h 5)
 	insert("{number}")
-	key(alt-h)
-	key(5)
+	key(alt-h 5)
 	edit.right()
 	
 apply style$: key(alt-h z 1 y 1)
@@ -280,6 +276,9 @@ accept all changes [and stop tracking]:
 	key(alt)
 	sleep(0.2)
 	key(r a 2 s)
+next comment: key(alt r n)
+previous comment: key(alt r v)
+
 # menu table design
 table border none:
 	key(alt)

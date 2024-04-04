@@ -25,7 +25,8 @@ launch app {user.app_list}:
 
 # person list
 person name {user.person_list}: insert("{person_list} ")
-first person {user.person_list}: insert("{user.insert_nth_word(person_list,0,' ') "
+given name {user.person_list}: insert("{user.insert_nth_word(person_list,0,' ')} ")
+family name {user.person_list}: insert("{user.insert_nth_word(person_list,1,' ')} ")
 greet {user.person_list}: insert("Hi {user.insert_nth_word(person_list,0,' ')},\n\n")
 
 greet {user.person_list} and {user.person_list}:

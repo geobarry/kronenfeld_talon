@@ -8,9 +8,9 @@ class Actions:
     def D2L_add_new_file_from_computer():
         """Adds a file to a content section"""
         # name: New 	class_name: d2l-label-text
-        prop_dict = {"name":"New","class_name":"d2l-label-text"}
+        prop_dict = [("name","New"),("class_name","d2l-label-text")]
         actions.user.click_matching_element(prop_dict)
-        actions.sleep(1)
+        actions.sleep(2)
         actions.key("tab enter")
         actions.sleep(0.75)
         actions.key("tab shift-tab enter")

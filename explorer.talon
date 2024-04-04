@@ -23,8 +23,9 @@ go <user.system_path>:
 	sleep(0.5)
 	key(alt-d)
 	sleep(0.5)
-	key(esc)
+	key(esc tab:2)
 	sleep(0.5)
+	key(tab:5)
 	# returned to file area
 	user.file_explorer_tab_to_files()
 

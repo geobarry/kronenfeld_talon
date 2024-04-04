@@ -48,19 +48,31 @@ open up <user.letter>:
 	key(letter)
 	sleep(0.05)
 	key(enter)
-open up <number>:
-	insert("{number}")
+open up <user.real_number>:
+	insert("{real_number}")
 	sleep(0.15)
 	key(enter)
+open up {user.abbreviation}:
+	insert("{abbreviation}")
+	sleep(0.05)
+	key(enter)
+
+# NUMBERS
+real <user.real_number>:
+	insert("{real_number}")
+	
+
 
 # COMMON WORDS
-(my|bee jay) name: insert("Barry Kronenfeld")
+my [full] name: insert("Barry Kronenfeld")
 my first name: insert("Barry")
+my last name: insert("Kronenfeld")
 	
-(my|bee jay) gmail: insert("barrykronenfeld@gmail.com")
-(my|bee jay) (email|mail): insert("bjkronenfeld@eiu.edu")
+my gmail: insert("barrykronenfeld@gmail.com")
+my email: insert("bjkronenfeld@eiu.edu")
 dotcom: insert(".com")
 daddy to you: insert(".edu")
+dot education: insert(".edu")
 dot gove: insert(".gov")
 dot python: insert(".py")
 dot iron python notebook: insert(".ipynb")

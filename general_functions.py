@@ -6,6 +6,18 @@ mod = Module()
 time_last_pop = 0
 num_recent_pops = 0
 
+
+@mod.capture(rule="<number> point <number>|<number>")
+def real_number(m) -> float:
+    """a spoken float"""
+    print("CAPTURE: real_number")
+    print(type(m))
+    
+    if len(m) == 1:
+        return float(m[0])
+    else:
+        return float(m[0]) + float(m[2]/(10**len(str(m[2]))))
+
 @mod.action_class
 class Actions:
     def slow_key_press(key_seq: str, wait_time: float=0.1, flag: str=""):

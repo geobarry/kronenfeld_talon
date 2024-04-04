@@ -19,7 +19,7 @@ class Actions:
         actions.insert(x)
     def file_explorer_tab_to_files():
         """presses the tab key to get to the file list area"""
-        actions.user.key_to_matching_element("tab",{"class_name":"UIItem"},escape_key = "esc")
+        actions.user.key_to_matching_element("tab",[("class_name","UIItem")],limit = 35, escape_key = "esc")
     def file_explorer_copy_folder():
         """Copies the folder path to the clipboard"""
         actions.key("esc ctrl-l")

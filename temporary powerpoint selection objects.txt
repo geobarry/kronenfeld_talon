@@ -7,6 +7,8 @@ name: Fill & Line 	class_name: NetUIGalleryButton 	help_text: 	loc: 2944,407
 name: Picture 	class_name: NetUIGalleryButton 	help_text: 	loc: 3262,407
 name: Size & Properties 	class_name: NetUIGalleryButton 	help_text: 	loc: 3156,407
 
+
+
 COLLAPSIBLE HEADINGS
 Press enter to toggle; need to tab wants to check next element to determine toggle state
 Press tab to move from one to the next (up/down will work if collapsed, but on child elements may have different behavior)
@@ -15,3 +17,5 @@ name: Size 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,545
 name: Position 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,1617
 name: Text Box 	class_name: NetUIRibbonButton 	help_text: 	loc: 3267,1701
 
+POSITION ELEMENTS
+name: Horizontal position 	class_name: NetUITextbox 	help_text: 	loc: 3618,798

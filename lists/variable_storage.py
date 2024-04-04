@@ -40,7 +40,7 @@ class Actions:
         append_to_csv(rel_file_path,D)
     def customize_named_list(list_name: str):
         """edit a user's named list with the default editing application"""
-        rel_file_path = f"lists\\{list_name}.csv"
+        rel_file_path = f"{list_name}.csv"
         path = BASE_DIR / rel_file_path
         actions.user.edit_text_file(path)
         actions.sleep(0.5)
@@ -196,42 +196,42 @@ def append_to_csv(rel_file_path: str, rows: dict[str, str]):
 
 def on_ready():
     variable_list = get_list_from_csv(
-        "lists\\variables.csv",
+        "variables.csv",
         headers=("Variable", "Spoken Form")
     )
     ctx.lists["user.variable_list"] = variable_list
     # global person_list
     #person_list = storage.get("person_list", {})
     person_list = get_list_from_csv(
-        "lists\\persons.csv",
+        "persons.csv",
         headers=("Name", "Spoken Form")
     )
     ctx.lists["user.person_list"] = person_list
     # global module_list
     #module_list = storage.get("module_list", {})
     module_list = get_list_from_csv(
-        "lists\\modules.csv",
+        "modules.csv",
         headers=("Module Name", "Spoken Form")
     )
     ctx.lists["user.module_list"] = module_list
     # global function_list
 #    function_list = storage.get("function_list", {})
     function_list = get_list_from_csv(
-        "lists\\functions.csv",
+        "functions.csv",
         headers=("Function", "Spoken Form")
     )
     ctx.lists["user.function_list"] = function_list
     # global keyword_list
 #    keyword_list = storage.get("keyword_list", {})
     keyword_list = get_list_from_csv(
-        "lists\\keywords.csv",
+        "keywords.csv",
         headers=("Keyword", "Spoken Form")
     )
     ctx.lists["user.keyword_list"] = keyword_list
     # global app_list
 #    app_list = storage.get("app_list", {})
     app_list = get_list_from_csv(
-        "lists\\apps.csv",
+        "apps.csv",
         headers=("App Name", "Spoken Form")
     )
     ctx.lists["user.app_list"] = app_list

@@ -41,3 +41,8 @@ actions.sleep,sleep
 actions.insert,insert
 actions.key,key
 actions.edit.selected_text,selected text
+eval_cond,evaluate condition
+eval,evaluate
+all
+any
+float

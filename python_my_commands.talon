@@ -31,6 +31,9 @@ is equal [to]:
 
 # FUNCTIONS
 define function: user.insert_between("def ",":")
+search function: 
+	key(ctrl-f)
+	insert("def ")
 	
 # OPERATIONS
 (operation|algebra) (minus|subtract): insert(" - ")
@@ -80,7 +83,8 @@ return {user.variable_list}: insert("return {variable_list}")
 {user.variable_list} dot: insert("{variable_list}.")
 unzip {user.variable_list}: insert("zip(*{user.variable_list})")
 self dot {user.variable_list}: insert("self.{variable_list}")
-	
+
+print variable {user.variable_list}:  insert("print('{user.variable_list}: {{{user.variable_list}}}')")
 string:
 	user.insert_between('"','"')
 raw string:

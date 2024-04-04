@@ -68,6 +68,21 @@ class mouse_mover:
 
 mod = Module()
 
+mod.list("handle_position","position for grabbing ui elements")    
+
+
+def get_every_child_alias(el: ax.Element):
+    # apparently keeping elements in memory is very expensive,
+    # would be better to find some way to do what you want with element properties
+    if el:
+        for child in el.children:
+            # filter to see if this is faster
+            #if child.is_keyboard_focusable:
+            texts = [x for x in [el.name,el.help_text] if x != ""]
+            if len(texts) > 0:
+                yield " ".join(texts)
+            yield from get_every_child_alias(child)
+
 
 def get_every_child(el: ax.Element):
     # apparently keeping elements in memory is very expensive,
@@ -89,30 +104,45 @@ def all_element_information(el):
     return msg
 
 
-def element_match(el: ax.Element, prop_dict):
+def element_match(el: ax.Element, prop_list, conjunction="AND"):
     """Returns true if the element matches all of the properties in the property dictionary"""
-    for prop in prop_dict.keys():
+    # prop_list is either a list of form [(property, value),...]
+    # or a list of ["OR",list] or ["AND",list]
+    # Conditions in the top level list are connected with an AND conjunction
+    def eval_cond(prop,val):
+        if prop in ["AND","OR"]:
+            return element_match(el,val,prop)
         if prop == "name":
-            if el.name != prop_dict[prop]:
-                return False
+            return str(el.name).lower() == val.lower()
         if prop == "class_name":
-            if el.class_name != prop_dict[prop]:
-                return False
+            return str(el.class_name).lower() == val.lower()
         if prop == "help_text":
-            if el.help_text != prop_dict[prop]:
-                return False
+            return str(el.help_text).lower() == val.lower()
         if prop == "clickable":
             clickable = True
             try:
                 loc = el.clickable_point
             except:
                 clickable = False
-            if prop_dict[prop] != clickable:
-                return False
-    return True
+            finally:
+                return val == clickable
+        # if something is not properly specified, return true so that other conditions can be evaluated
+        print("ERROR in function element_match (accessibility.py)")
+        print("No matching property found (looking for property: {prop})")
+        print(prop_list)
+        return True
+    if prop_list[0] in ["AND","OR"]:
+        return element_match(el,prop_list[1],prop_list[0])
+    if conjunction == "AND":
+        return all([eval_cond(prop,val) for prop,val in prop_list])
+    if conjunction == "OR":
+        return any([eval_cond(prop,val) for prop,val in prop_list])
+    
+
 
 def element_information(el: ax.Element, verbose = False):
-        msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        msg = f"148 name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        print(msg)
         try:
             msg += f"\tloc: {el.clickable_point.x},{el.clickable_point.y}"
         except:
@@ -172,14 +202,8 @@ def element_information(el: ax.Element, verbose = False):
 #            for child in el.children:
 #                msg += element_information(child,True)
         return msg
-        
 
-ctx = Context()
-
-mod.list("dynamic_children", desc="List of children of the active window")
-
-@ctx.dynamic_list("user.dynamic_children")
-def dynamic_children(_) -> dict[str,str]:
+def dynamic_children_OLD(_) -> dict[str,str]:
     root = ui.active_window().element
     elements = list(get_every_child(root))
     out = {}
@@ -198,14 +222,37 @@ def dynamic_children(_) -> dict[str,str]:
                 out[" ".join(singles[:2])] = str(el.name)
     return out
 
+        
+
+ctx = Context()
+
+mod.list("dynamic_children", desc="List of children of the active window")
+
+@ctx.dynamic_list("user.dynamic_children")
+def dynamic_children(_) -> dict[str,str]:
+    root = ui.active_window().element
+    aliases = list(get_every_child_alias(root))
+    output = {}
+    for alias in aliases:
+        # add full name to dictionary
+        output[alias] = alias
+        # add single word command to dictionary
+        singles = re.split('[^a-zA-Z]',alias)
+        output[singles[0]] = alias
+        # add double word command to dictionary
+        if len(singles) > 1:
+            output[" ".join(singles[:2])] = alias
+    return output
+
 @mod.action_class
 class Actions:
-    def element_exists(prop_dict: dict):
+
+    def element_exists(prop_list: list):
         """Returns true if an element where the given properties exists"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
-            if element_match(el,prop_dict):            
+            if element_match(el,prop_list):            
                 return True
         return False
         
@@ -213,6 +260,38 @@ class Actions:
         """returns_a_list_of_all_elements"""
         root = ui.active_window().element
         return list(get_every_child(root))
+
+    def element_property_value(property_name: str, sleep_time: float=0.02):
+        """returns the value of the given property for the currently focused element"""
+        actions.sleep(sleep_time)
+        el = ui.focused_element()
+        if property_name == "name":
+            return el.name
+        if property_name == "class_name":
+            return el.class_name
+        if property_name == "el.help_text":
+            return el.help_text
+
+    def peek_next_property_value(property_name: str, key: str="tab", rev_key: str=""):
+        """returns the value of the property of the next element and then returns the previous element"""
+        reverse_keys = {
+            "tab": "shift-tab",
+            "right": "left",
+            "down": "up",
+            "f6": "shift-f6"
+        }
+        if rev_key == "":
+            rev_key = reverse_keys[key]
+        actions.key(key)
+        val = actions.user.element_property_value(property_name)
+        actions.key(rev_key)
+        return val
+        
+    def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name"):
+        """Toggles current element until the next elements value meets the target value"""
+        cur_val = actions.user.peek_next_property_value(property_name,advance_key)
+        if cur_val != trg:
+            actions.key(toggle_key)
         
     def focus_element_by_name(name: str):
         """Focuses on an element by name"""
@@ -220,7 +299,6 @@ class Actions:
         elements = list(get_every_child(root))
         
         for element in elements:
-#            print(element.name)
             if element.name == name or \
             str(element.name).lower() == name or \
             name.lower() in str(element.name).lower():
@@ -273,10 +351,10 @@ class Actions:
 
     def click_element_by_name(name: str, exact_match: bool = False):
         """Moves mouse to and clicks on element"""
+        print("accessibility.py click_element_by_name")
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
-            print(f"current: {el.name}    search: {name}")
             if el.name == name or \
                 str(el.name).lower() == name or \
                 (name.lower() in str(el.name).lower() and not exact_match):
@@ -288,6 +366,40 @@ class Actions:
                     pass
         else:
             print("Element not found")
+
+         
+
+    def click_matching_element(prop_list: list):
+        """clicks on the element that matches property dictionary"""
+        # make sure that clickable property is set to true
+        if not ("clickable",True) in prop_list:
+            prop_list.append(("clickable",True))
+        # get list of elements
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        # search for match
+        for el in elements:
+            if element_match(el,prop_list):
+                loc = el.clickable_point
+                mouse_obj = mouse_mover(loc,ctrl.mouse_click)
+                break
+
+    def key_to_matching_element(key: str, prop_list: list, limit: int=35, escape_key: str=None):
+        """press given key until the first matching element is reached"""
+        i = 1
+        last_el = element_information(ui.focused_element(),verbose = True)
+        el = ui.focused_element()
+        msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        while (not element_match(ui.focused_element(),prop_list)) and (i < limit):            
+            actions.key(key)
+            if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
+                actions.key(escape_key)
+            i += 1
+
+    def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=35, escape_key: str=None):
+        """press key until element with exact value for one property is reached"""
+        prop_list = [(prop,val)]
+        actions.user.key_to_matching_element(key,prop_list,limit,escape_key)
 
     def move_to_element(name: str):
         """Moves mouse to element"""
@@ -301,42 +413,31 @@ class Actions:
                 break
         else:
             print("Element not found")
-         
 
-    def test_copy_all():
-        """Attempts to retrieve all properties from all elements"""
-        root = ui.active_window().element
-        elements = list(get_every_child(root))
-        elements.append(root)
-        msg = ""
-        for el in elements:
-            msg += element_information(el) + "\n"
-        clip.set_text(msg)
+    def move_mouse_to_focused_element(pos: str="center"):
+        """moves mouse to left,right or center and top,bottom or center of currently focused element"""
+        el = ui.focused_element()
+        try:
+            rect = el.rect
+            print('rect: {rect} (type: {type(rect)})')
+            print(rect.x)
+            if "left" in pos:
+                x = rect.x
+            elif "right" in pos:
+                x = rect.x + rect.width
+            else:
+                x = rect.x + int(rect.width/2)
+            if "upper" in pos or "top" in pos:
+                y = rect.y
+            elif "lower" in pos or "bottom" in pos:
+                y = rect.y + rect.height
+            else:
+                y = rect.y + int(rect.height/2)
+            ctrl.mouse_move(x,y)
+        except:
+            pass
+        
 
-    def click_matching_element(prop_dict: dict):
-        """clicks on the element that matches property dictionary"""
-        # make sure that clickable property is set to true
-        prop_dict["clickable"] = True
-        # get list of elements
-        root = ui.active_window().element
-        elements = list(get_every_child(root))
-        # search for match
-        for el in elements:
-            if element_match(el,prop_dict):
-                loc = el.clickable_point
-                mouse_obj = mouse_mover(loc,ctrl.mouse_click)
-                break
-
-    def key_to_matching_element(key: str, prop_dict: dict, limit: int=35, escape_key: str=None):
-        """press is given key until the first matching element is reached"""
-        i = 1
-        last_el = element_information(ui.focused_element(),verbose = True)
-        while (not element_match(ui.focused_element(),prop_dict)) and (i < limit):
-            actions.key(key)
-            if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
-                print("Attempting escape...")
-                actions.key(escape_key)
-            i += 1
 
     def copy_elements_accessible_by_key(key: str, limit: int=35):
         """Gets information on elements accessible by pressing the input key"""
@@ -366,10 +467,7 @@ class Actions:
             
             try:
                 loc = el.clickable_point
-                d = abs(loc.x-pos[0]) + abs(loc.y-pos[1])
-                
-                print(f"pos: {pos} ({type(pos)})")
-                print(f"loc: {loc} ({type(loc)})")
+                d = abs(loc.x-pos[0]) + abs(loc.y-pos[1])                
                 if d < max_dist:
                     msg += element_information(el) + "\n"
                     n += 1
@@ -396,6 +494,7 @@ class Actions:
     def copy_focused_element_to_clipboard():
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
+        match = element_match(ui.focused_element(),[("class_name","TreeView")])
         msg = element_information(el, verbose = True)
         clip.set_text(msg)
         
@@ -437,6 +536,15 @@ class Actions:
                     pass 
         clip.set_text(msg)
 
+    def test_copy_all():
+        """Attempts to retrieve all properties from all elements"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        elements.append(root)
+        msg = ""
+        for el in elements:
+            msg += element_information(el) + "\n"
+        clip.set_text(msg)
         
         
         

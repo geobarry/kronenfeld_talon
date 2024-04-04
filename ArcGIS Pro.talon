@@ -8,11 +8,20 @@ tab next: key(ctrl-f6)
 tab previous: key(ctrl-shift-f6)
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
-focus contents: key(alt-v c t)
-focus contents top item:
-	user.click_element_by_name("search")
-	sleep(1.5)
-	key(tab:3 pageup:7 down up)
+ok button: 
+	user.tab_to_name("ok")
+	key(enter)
+edit button: user.tab_to_name("edit")
+apply button:
+	user.tab_to_name("apply")
+	key(enter)
+focus contents: 
+	key(alt-v c t)
+	user.arc_tab_to_layers()
+focus layer <user.text>:
+	key(alt-v c t)
+	user.arc_tab_to_layers()
+	user.arc_tab_to_layer(text)
 
 do test:
 	print("Is this working?")
@@ -35,6 +44,7 @@ list by data source:
 
 symbology menu: key(alt j a d s)
 symbology (pain|pane|panel): key(alt j a d s esc enter)
+primary symbology: user.arc_tab_to_primary_symbology()
 
 focus Geoprocessing:
 	key(alt-v c t)
@@ -126,10 +136,10 @@ pan west: user.pan_arcgis_pro_map('west',1)
 pan east: user.pan_arcgis_pro_map("east",1)
 pan north: user.pan_arcgis_pro_map('north',1)
 pan south: user.pan_arcgis_pro_map('south',1)
-pan tiny west: user.pan_arcgis_pro_map('west',0.1)
-pan tiny east: user.pan_arcgis_pro_map('east',0.1)
-pan tiny north: user.pan_arcgis_pro_map('north',0.1)
-pan tiny south: user.pan_arcgis_pro_map('south',0.1)
+pan tiny west: user.pan_arcgis_pro_map('west',0.2)
+pan tiny east: user.pan_arcgis_pro_map('east',0.2)
+pan tiny north: user.pan_arcgis_pro_map('north',0.2)
+pan tiny south: user.pan_arcgis_pro_map('south',0.2)
 pan west <number>: user.pan_arcgis_pro_map('west',number)
 pan east <number>: user.pan_arcgis_pro_map("east",number)
 pan north <number>: user.pan_arcgis_pro_map('north',number)
@@ -256,7 +266,7 @@ clear selection: key(esc:5 alt m c x)
 # new map command already mapped above
 new layout: key(alt n n l)
 new custom layout: key(alt n n l c tab:4)
-insert map: key(alt n m g)
+place map frame: key(alt n m g)
 
 # analysis menu shortcuts
 new jupyter notebook: user.slow_key_press("alt-a p f down right:3 enter",1.0)
@@ -302,4 +312,15 @@ export layout:
 	sleep(0.5)
 	key(down:3)
 # map frame menu shortcuts
-[set] map position: key(esc:5 alt j f s p)
+[set] map position: 
+	key(esc:5 alt j f s p)
+	user.key_to_elem_by_val("tab","TextBox","class_name")
+	key(ctrl-a)
+
+# Definition Query (and probably any other selection interface)
+add [or] clause: user.arc_add_new_clause("Or")
+add and clause: user.ark_add_new_clause("And")
+add clause <user.word>:
+	user.arc_add_new_clause("Or")
+	insert(word)
+	key(tab:2)

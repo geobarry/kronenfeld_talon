@@ -396,3 +396,18 @@ clickable
 object_menu,object menu
 obj_type,object type
 cur_msg,current message
+val,value
+conjunction
+prop_list,property list
+output
+icon_names,icon names
+rev_key,reverse key
+cur_val,current value
+parts
+word_list,words
+w,double you
+t,text
+hz_pos,horizontal position
+vt_pos,vertical position
+rect,rectangle
+crop_pos,crop position

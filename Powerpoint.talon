@@ -20,163 +20,96 @@ select inside [<user.ordinals>] {user.power_selection_target}:
 	sleep(0.2)
 	key("f2")
 
+go to slide <number>: user.power_go_to_slide(number)
 
 #main menu headings
 menu file: key(alt-f)
 menu home: key(alt-h)
 menu insert: key(alt-n)
-menu draw:
-	key(alt-j)
-	sleep(0.05)
-	key(i)
+menu draw: key(alt j i)
 menu design: key(alt-g)
 menu (transition|transitions): key(alt-k)
 menu (animation|animations): key(alt-a)
 menu slide show: key(alt-s)
-menu record:
-	key(alt)
-	sleep(0.05)
-	key(c)
-	key(1)
+menu record: key(alt c 1)
 menu review: key(alt-r)
 menu view: key(alt-w)
 menu help: key(alt-h)
-menu shape format:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(d)
-menu table design:
-	key(alt)
-	sleep(0.05)
-	key(j t)
-menu table layout:
-	key(alt)
-	sleep(0.05)
-	key(j l)
-menu picture format:
-	key(alt)
-	sleep(0.05)
-	key(j p)
-menu graphics format:
-	key(alt)
-	sleep(0.05)
-	key(j g)
-menu equation:
-	key(alt)
-	sleep(0.05)
-	key(j e)
-menu video format:
-	key(alt)
-	sleep(0.1)
-	key(j p)
-menu [video] playback:
-	key(alt)
-	sleep(0.1)
-	key(j n)
+menu shape format: key(alt j d)
+menu table design: key(alt j t)
+menu table layout: key(alt j l)
+menu picture format: key(alt j p)
+menu graphics format: key(alt j g)
+menu equation: key(alt j e)
+menu video format: key(alt j p)
+menu [video] playback: key(alt j n)
+menu slide master: key(alt m)
 
 menu object: user.power_object_menu()
 
 #file menu
-save as:
-	key(alt-f)
-	sleep(0.05)
-	key(a)
+save file as: 
+	key(alt f a)
 	sleep(0.5)
 	key(o)
 
 #home menu
-(insert|new) slide:
-	key(alt)
-	sleep(0.2)
-	key(h i)
-slide layout:
-	key(alt)
-	sleep(0.2)
-	key(h l)
-font:
-	key(alt)
-	sleep(0.3)
-	key(h f)
-	key(f)
-font size:
-	key(alt)
-	sleep(0.3)
-	key(h f s)
+(insert|new) slide: key(alt h i)
+slide layout: key(alt h l)
+font: key(alt h f:2)
+font size: key(alt h f s)
 font size <number>:
-	key(alt)
-	sleep(0.3)
-	key(h f s)
+	key(alt h f s)
 	sleep(0.05)
 	insert(number)
 	sleep(0.05)
 	key(enter)
-
-	
 font color: key(alt-h f c)
-font color white:
-	key(alt)
-	sleep(0.2)
-	key(h f c enter)
-font color red:
-	key(alt)
-	sleep(0.2)
-	key(h f c down:6 enter)
-font color black:
-	key(alt)
-	sleep(0.2)
-	key(h f c right enter)
-font color teal:
-	key(alt)
-	sleep(0.2)
-	key(h f c down:4 right:8 enter)
+font color white: key(alt h f c enter)
+font color standard: key(alt h f c home tab:2)
+font color red: key(alt h f c home tab:2 enter)
+font color black: key(alt h f c home right enter)
+font color teal: key(alt h f c down:4 right:8 enter)
+font color recent: key(alt h f c home tab:3)
+font color same as last: key(alt h f c home tab:3 enter)
 
-apply bold:
-	key(alt)
-	sleep(0.2)
-	key(h 1)
-apply (italic|italics):
-	key(alt)
-	sleep(0.2)
-	key(h 2)
-apply underline:
-	key(alt)
-	sleep(0.2)
-	key(h 53)
-apply strike through: key(alt-h 4)
+apply bold: key(alt h 1)
+apply (italic|italics): key(alt h 2)
+apply underline: key(alt h 3)
+apply strike through: key(alt-h 4) 
 apply subscript: key(alt-h f n b enter)
 apply superscript: key(alt-h f n p enter)
-apply bullets:
-	key(alt)
-	sleep(0.3)
-	key(h u)
-apply bullets none:
-	key(alt)
-	sleep(0.3)
-	key(h u left:12 enter)
-apply (default bullets|bullets default):
-	key(alt)
-	sleep(0.3)
-	key(h u left:12 right enter)
-apply numbers:
-	key(alt)
-	sleep(0.3)
-	key(h n)
-apply numbers [with] dots:
-	key(alt)
-	sleep(0.3)
-	key(h n)
-	key(left:12)
-	key(right)
+apply bullets:key(alt h u)
+apply bullets none: key(alt h u home enter)
+apply bullets [filled] round:
+	key(alt h u home)
+	user.key_to_elem_by_val("right","Filled Round Bullets")
 	key(enter)
-apply numbers [with] parentheses:
-	key(alt)
-	sleep(0.3)
-	key(h n left:12 right:2 enter)
+apply (default bullets|bullets default): key(alt h u home right enter)
+apply numbers: key(alt h n)
+apply numbers [with] dots:
+	key(alt h n home)
+	user.key_to_elem_by_val("right", "1. 2. 3.")
+	key(enter)
+apply numbers [with] (parentheses|parents):
+	key(alt h n home)
+	user.key_to_elem_by_val("right", "1) 2) 3)")
+	key(enter)
+apply letters [lowercase] [with] (parentheses|parents):
+	key(alt h n home)
+	user.key_to_elem_by_val("right", "a) b) c)")
+	key(enter)
+apply letters [lowercase] [with] dots:
+	key(alt h n home)
+	user.key_to_elem_by_val("right", "a. b. c.")
+	key(enter)
+apply letters (uppercase|capital) [with] dots:
+	key(alt h n home)
+	user.key_to_elem_by_val("right", "A. B. C.")
+	key(enter)
+		
 (start|restart) [(numbers|numbering)] at <number>:
-	key(alt)
-	sleep(0.3)
-	key(h n n t)
+	key(alt h n:2 t)
 	insert("{number}")
 	key(enter)
 apply last highlight: user.slow_key_press("alt h t c down:3 enter")	
@@ -273,13 +206,12 @@ align (objects|edges) middle: key(alt-h g a m)
 align (objects|edges) center: key(alt-h g a c)
 distribute horizontal: key(alt-h g a h)
 distribute vertical: key(alt-h g a v)
-rotate right:
-	key(alt-h)
-	sleep(0.05)
-	key(g)
-	key(o)
-	key(r)
-rotate ninety [degrees] left: key(alt-h g o l)
+rotate clockwise: key(alt h g o r)
+rotate counterclockwise: key(alt-h g o l)
+rotate right: key(alt-right)
+rotate tiny right: key(ctrl-alt-right)
+rotate left: key(alt-left)
+rotate tiny left: key(ctrl-alt-left)
 flip vertical:
 	key(alt-h)
 	sleep(0.05)
@@ -294,7 +226,7 @@ flip horizontal:
 	key(h)
 	
 #insert menu
-[insert] text box: 
+[(place|insert)] text box: 
 	user.slow_key_press("alt n x h esc alt j d w 5 shift-tab 1 enter esc f2")
 insert [hyper] link:
 	key(alt-n)
@@ -421,9 +353,57 @@ zoom <number> [percent]:
 	key(enter)
 
 #shape format menu
-[shape] format panel:
-	key(menu)
-	key(o)
+[shape] format panel: key(menu o)
+position:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Position")
+	user.toggle_for_next_value("Horizontal position","enter")
+	key(tab)
+position top:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Position")
+	user.toggle_for_next_value("Horizontal position","enter")
+	key(tab:3)
+position top <user.real_number>:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Position")
+	user.toggle_for_next_value("Horizontal position","enter")
+	key(tab:3)
+	insert("{real_number}")
+	key(enter ctrl-space c)
+position left:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Position")
+	user.toggle_for_next_value("Horizontal position","enter")
+	key(tab)
+position left <user.real_number>:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Position")
+	user.toggle_for_next_value("Horizontal position","enter")
+	key(tab)
+	insert("{real_number}")
+	key(enter ctrl-space c)
+toggle aspect ratio:
+	key(menu o)
+	user.power_tab_format_panel_top_row()
+	user.key_to_elem_by_val("right","Size & Properties")
+	user.key_to_elem_by_val("tab","Size")
+	user.toggle_for_next_value("Height","enter")
+	key(a)
+	# sleep a little to make sure user can see the toggled state
+	sleep(0.7)
+	key(enter ctrl-space c)
+
 shape fill:
 	key(alt)
 	sleep(0.05)
@@ -457,31 +437,19 @@ shape no outline:
 	sleep(0.05)
 	key(o n)
 shape width: user.office_keys("alt j d w")
-shape width <number>:
+shape width <user.real_number>:
 	user.office_keys("alt j d w")
-	insert("{number}")
-	key(enter esc)
-shape width <number> point <number>:
-	user.office_keys("alt j d w")
-	insert("{number_1}.{number_2}")
+	insert("{real_number}")
 	key(enter esc)
 picture width: user.office_keys("alt j p w")
-picture width <number>:
+picture width <user.real_number>:
 	user.office_keys("alt j p w")
-	insert("{number}")
-	key(enter esc)
-picture width <number> point <number>:
-	user.office_keys("alt j p w")
-	insert("{number_1}.{number_2}")
+	insert("{real_number}")
 	key(enter esc)
 shape height: key(alt j d h)
-shape height <number>:
+shape height <user.real_number>:
 	key(alt j d h)
-	insert(number)
-	key(enter esc)
-shape height <number> point <number>:
-	key(alt j d h)
-	insert("{number_1}.{number_2}")
+	insert(real_number)
 	key(enter esc)
 shape position: user.office_keys("alt j d s z")
 apply [text] halo: user.office_keys("alt j d t x g g c")
@@ -536,13 +504,8 @@ picture position:
 	key(p)
 	key(s)
 	key(z)
-crop [picture]:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(p)
-	key(v)
-	key(c)
+crop [picture]: power_crop_picture("upper left")
+crop {user.handle_position}: user.power_crop_picture(handle_position)
 [picture] transparent color:
 	key(alt)
 	sleep(0.08)
@@ -613,54 +576,13 @@ graphics position:
 
 
 #equation menu
-insert fraction:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	key(f)
-insert script:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	key(s)
-insert radical:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	key(r)
-insert large operator:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	key(g)
-equation insert symbol:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	key(q)
-insert accent:
-	key(alt)
-	sleep(0.05)
-	key(j)
-	key(e)
-	sleep(0.05)
-	key(a)
-[insert] accent bar:
-	key(alt)
-	sleep(0.1)
-	key(j)
-	key(e)
-	sleep(0.05)
-	key(a)
-	key(left:99)
-	key(right:9)
-	key(enter)
-	key(left)
+equation fraction: key(alt j e f)
+equation script: key(alt j e s)
+equation radical: key(alt j e r)
+equation large operator: key(alt j e g)
+equation symbol: key(alt j e q) 
+equation accent: key(alt j e a)
+[equation] accent bar: key(alt j e a left:99 right:9 enter left)
 
 # playback menu
 update timing:
