@@ -411,3 +411,22 @@ hz_pos,horizontal position
 vt_pos,vertical position
 rect,rectangle
 crop_pos,crop position
+prop_val,property value
+trg_val,target value
+x_offset,ex offset
+y_offset,I offset
+splitter
+full_msg,full message
+rep,representation
+a_k_d_comp_rep,near components
+bf,buffer
+len_A,length a
+lastD,last distance
+ei,effective interval
+bf_pct,buffer percent
+trg_area,target area
+aspect_ratio,aspect ratio
+fig_w,figure width
+fig_h,figure height
+scale_factor,scale factor
+lbl,label

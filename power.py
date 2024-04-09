@@ -23,23 +23,25 @@ class Actions:
         """Initiates a crop action"""
         actions.key("alt j p v c")
         actions.sleep(0.5)
-        actions.user.move_mouse_to_focused_element(pos)
+        def do_crop(bearing,x_offset,y_offset):
+            actions.user.move_mouse_to_focused_element(pos,x_offset,y_offset)
+            actions.user.eagle_set_bearing(bearing)
         if pos == "upper left":
-            actions.user.eagle_set_bearing(135)
+            do_crop(135,5,5)
         elif pos == "lower left":
-            actions.user.eagle_set_bearing(45)
+            do_crop(45,5,-5)
         elif pos == "upper right":
-            actions.user.eagle_set_bearing(225)
+            do_crop(225,-5,5)
         elif pos == "lower right":
-            actions.user.eagle_set_bearing(315)
+            do_crop(315,-5,-5)
         elif pos == "left":
-            actions.user.eagle_set_bearing(90)
+            do_crop(90,5,0)
         elif pos == "right":
-            actions.user.eagle_set_bearing(270)
+            do_crop(270,-5,0)
         elif pos == "top":
-            actions.user.eagle_set_bearing(180)
+            do_crop(180,0,5)
         elif pos == "bottom":
-            actions.user.eagle_set_bearing(0)
+            do_crop(0,0,-5)
             
     def power_go_to_slide(n: int):
         """Quickly navigate to a slide by number"""

@@ -8,8 +8,12 @@ tab next: key(ctrl-f6)
 tab previous: key(ctrl-shift-f6)
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
-ok button: 
-	user.tab_to_name("ok")
+{user.arc_panel} (panel|pane|tab):
+	key(alt-v c t ctrl:down tab)
+	user.key_to_elem_by_val("down",arc_panel)
+	key(ctrl:up)
+{user.arc_button} button: 
+	user.tab_to_name(arc_button)
 	key(enter)
 edit button: user.tab_to_name("edit")
 apply button:
@@ -43,8 +47,18 @@ list by data source:
     user.mouse_helper_position_restore()
 
 symbology menu: key(alt j a d s)
-symbology (pain|pane|panel): key(alt j a d s esc enter)
+#symbology (pain|pane|panel): key(alt j a d s esc enter)
 primary symbology: user.arc_tab_to_primary_symbology()
+symbol:
+	user.arc_tab_to_primary_symbology()
+	key(tab)
+
+split down:
+	user.key_to_elem_by_val("tab","Grid splitter")
+	key(down)
+split up:
+	user.key_to_elem_by_val("tab","Grid splitter")
+	key(up)
 
 focus Geoprocessing:
 	key(alt-v c t)
@@ -102,13 +116,17 @@ collapse level: key(ctrl-minus)
 expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
 toggle layer: key(space)
-layer properties: key(menu p)
 definition query: user.slow_key_press("enter pageup:3 down:7 tab")
 toggle (label|labels|labeling): key(menu b)
 (label|labels|labeling) properties: key(menu o)
 remove layer: user.slow_key_press("menu r")
 export features: key(alt t v e f)
 export table: key(alt t v e t)
+layer properties: 
+	key(menu)
+	user.key_to_elem_by_val("up","Properties")
+	key(enter)
+
 
 # Table View
 [open] attribute table: key(ctrl-t)
@@ -127,6 +145,10 @@ go last row: key(ctrl-down)
 go to row: key(ctrl-g)
 [custom] sort: key(ctrl-shift-s)
 toggle aliases: key(ctrl-shift-n)
+copy table:
+	# copies contents of table for pasting into Microsoft excel
+	key(ctrl-shift-a ctrl-u ctrl-shift-c)
+	
 
 # Catalogue Pane
 add to current map: key(menu a)
@@ -285,7 +307,22 @@ activate map:
 	sleep(0.2)
 	key(y a)
 close activation: key(esc:5 alt j l c)
-	
+
+place straight text: 
+	# make sure focuses on map layout
+	key(esc:5)
+	key(alt)
+	sleep(0.05)
+	key(m)
+	sleep(0.05)
+	key(esc:2)
+	# navigate menu to place a straight text
+	key(alt n i g)
+	user.key_to_elem_by_val("tab","Straight Text")
+place arrow:
+	key(esc:5 alt m esc:2 alt n i g)
+	user.key_to_elem_by_val("tab","Arrow")	
+font size: key(alt j f f s)
 # table menu shortcuts
 add field:
 	key(esc:5)
@@ -312,14 +349,15 @@ export layout:
 	sleep(0.5)
 	key(down:3)
 # map frame menu shortcuts
-[set] map position: 
+[set] (text|map|legend|scale bar|north arrow|arrow|line|shape) position: 
 	key(esc:5 alt j f s p)
 	user.key_to_elem_by_val("tab","TextBox","class_name")
 	key(ctrl-a)
-
+flip vertical: key(alt j f r v)
+flip horizontal: key(alt j f r v)
 # Definition Query (and probably any other selection interface)
 add [or] clause: user.arc_add_new_clause("Or")
-add and clause: user.ark_add_new_clause("And")
+add and clause: user.arc_add_new_clause("And")
 add clause <user.word>:
 	user.arc_add_new_clause("Or")
 	insert(word)
