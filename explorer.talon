@@ -39,34 +39,17 @@ go to <user.text>:
 
 # sorting
 extract: user.slow_key_press("menu t 2",1.5)
-sort: user.click_element_by_name("Sort")
-sort by name:
-	# get into the menu
-	key(alt)
-	# sort menu is third from the right
-	key(right:20)
-	key(left:2)
+sort [by name]: 
+	user.key_to_elem_by_val("tab","UIColumnHeader","class_name")
+	user.key_to_elem_by_val("right","Name")
 	key(enter)
-	# default is by name
-	sleep(0.05)
+sort by date [modified]: 
+	user.key_to_elem_by_val("tab","UIColumnHeader","class_name")
+	user.key_to_elem_by_val("right","Date modified")
 	key(enter)
-sort by date:
-	# get into the menu
-	key(alt)
-	# sort menu is third from the right
-	key(right:20)
-	key(left:2)
-	key(enter)
-	# go down one to sort by date
-	sleep(0.05)
-	key(down)
-	sleep(0.05)
-	key(enter)
-address bar:
-	key(alt-d)
+address bar: key(alt-d)
 
-compress video [file]:
-	user.compress_video_file()
+compress video [file]: user.compress_video_file()
 open file locator:
 	# grab path to current folder
 	key(alt-d)

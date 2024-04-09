@@ -2,6 +2,9 @@ from talon import Context,Module,actions,clip
 
 mod = Module()
 
+mod.list("arc_panel","panels that can be accessed with standard keyboard shortcut")
+mod.list("arc_button","buttons that can be accessed with standard keyboard shortcuts in ArcGIS Pro")
+
 @mod.action_class
 class Actions:
     def pan_arcgis_pro_map(direction: str, duration: float):

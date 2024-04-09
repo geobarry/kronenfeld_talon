@@ -106,18 +106,25 @@ def all_element_information(el):
 
 def element_match(el: ax.Element, prop_list, conjunction="AND"):
     """Returns true if the element matches all of the properties in the property dictionary"""
-    # prop_list is either a list of form [(property, value),...]
+    # prop_list is either a list of form [(property, trg_val),...]
+    #     where trg_val is either a string (for an exact match)
+    #     or a regex expression
     # or a list of ["OR",list] or ["AND",list]
     # Conditions in the top level list are connected with an AND conjunction
-    def eval_cond(prop,val):
+    def eval_cond(prop,trg_val):
+        def value_match(prop_val,trg_val):
+            if type(trg_val) == re.Pattern:
+                return re.match(trg_val,prop_val) != None
+            else:
+                return prop_val.lower() == trg_val.lower()
         if prop in ["AND","OR"]:
-            return element_match(el,val,prop)
+            return element_match(el,trg_val,prop)
         if prop == "name":
-            return str(el.name).lower() == val.lower()
+            return value_match(el.name,trg_val)
         if prop == "class_name":
-            return str(el.class_name).lower() == val.lower()
+            return value_match(el.class_name,trg_val)
         if prop == "help_text":
-            return str(el.help_text).lower() == val.lower()
+            return value_match(el.help_text,trg_val)
         if prop == "clickable":
             clickable = True
             try:
@@ -125,7 +132,7 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
             except:
                 clickable = False
             finally:
-                return val == clickable
+                return trg_val == clickable
         # if something is not properly specified, return true so that other conditions can be evaluated
         print("ERROR in function element_match (accessibility.py)")
         print("No matching property found (looking for property: {prop})")
@@ -203,7 +210,29 @@ def element_information(el: ax.Element, verbose = False):
 #                msg += element_information(child,True)
         return msg
 
-def dynamic_children_OLD(_) -> dict[str,str]:
+def dynamic_children_experiment(_) -> dict[str,str]:
+    root = ui.active_window().element
+    aliases = list(get_every_child_alias(root))
+    output = {}
+    for alias in aliases:
+        # add full name to dictionary
+        output[alias] = alias
+        # add single word command to dictionary
+        singles = re.split('[^a-zA-Z]',alias)
+        output[singles[0]] = alias
+        # add double word command to dictionary
+        if len(singles) > 1:
+            output[" ".join(singles[:2])] = alias
+    return output
+
+        
+
+ctx = Context()
+
+mod.list("dynamic_children", desc="List of children of the active window")
+
+@ctx.dynamic_list("user.dynamic_children")
+def dynamic_children(_) -> dict[str,str]:
     root = ui.active_window().element
     elements = list(get_every_child(root))
     out = {}
@@ -222,27 +251,6 @@ def dynamic_children_OLD(_) -> dict[str,str]:
                 out[" ".join(singles[:2])] = str(el.name)
     return out
 
-        
-
-ctx = Context()
-
-mod.list("dynamic_children", desc="List of children of the active window")
-
-@ctx.dynamic_list("user.dynamic_children")
-def dynamic_children(_) -> dict[str,str]:
-    root = ui.active_window().element
-    aliases = list(get_every_child_alias(root))
-    output = {}
-    for alias in aliases:
-        # add full name to dictionary
-        output[alias] = alias
-        # add single word command to dictionary
-        singles = re.split('[^a-zA-Z]',alias)
-        output[singles[0]] = alias
-        # add double word command to dictionary
-        if len(singles) > 1:
-            output[" ".join(singles[:2])] = alias
-    return output
 
 @mod.action_class
 class Actions:
@@ -351,10 +359,10 @@ class Actions:
 
     def click_element_by_name(name: str, exact_match: bool = False):
         """Moves mouse to and clicks on element"""
-        print("accessibility.py click_element_by_name")
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
+            print(el.name)
             if el.name == name or \
                 str(el.name).lower() == name or \
                 (name.lower() in str(el.name).lower() and not exact_match):
@@ -363,9 +371,15 @@ class Actions:
                     mouse_obj = mouse_mover(loc,ctrl.mouse_click)
                     break
                 except:
-                    pass
-        else:
-            print("Element not found")
+                    # if element doesn't have a clickable point, 
+                    # see if it has a rectangle
+                    try:
+                        rect = el.rect
+                        x = rect.x + int(rect.width/2)
+                        print('x: {x}')
+                    except:
+                        pass
+
 
          
 
@@ -414,7 +428,7 @@ class Actions:
         else:
             print("Element not found")
 
-    def move_mouse_to_focused_element(pos: str="center"):
+    def move_mouse_to_focused_element(pos: str="center", x_offset: int=0, y_offset: int=0):
         """moves mouse to left,right or center and top,bottom or center of currently focused element"""
         el = ui.focused_element()
         try:
@@ -433,6 +447,8 @@ class Actions:
                 y = rect.y + rect.height
             else:
                 y = rect.y + int(rect.height/2)
+            x += x_offset
+            y += y_offset
             ctrl.mouse_move(x,y)
         except:
             pass
@@ -440,16 +456,19 @@ class Actions:
 
 
     def copy_elements_accessible_by_key(key: str, limit: int=35):
-        """Gets information on elements accessible by pressing the input key"""
-        msg = element_information(ui.focused_element(), verbose = False)
-        elements = [msg]
+        """Gets information on elements accessible by pressing the input key"""        
+        elements = []
+        full_elements = []
         i = 1
         actions.key(key)
         cur_msg = element_information(ui.focused_element(), verbose = False)
-        while (not cur_msg in elements) and (i < limit):
+        full_msg = element_information(ui.focused_element(), verbose = True)
+        while (not full_msg in full_elements) and (i < limit):
             elements.append(cur_msg)
+            full_elements.append(full_msg)
             actions.key(key)
             cur_msg = element_information(ui.focused_element(), verbose = False)
+            full_msg = element_information(ui.focused_element(), verbose = True)    
             i += 1
         clip.set_text("\n".join(elements))
                 

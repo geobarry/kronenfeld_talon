@@ -46,3 +46,8 @@ eval,evaluate
 all
 any
 float
+re.match,regex match
+re.pattern,regex pattern
+hasattr,has attribute
+do_crop,do crop
+plt.plot,plot

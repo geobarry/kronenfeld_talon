@@ -4,28 +4,17 @@ os: windows
 and app.exe: inkscape.exe
 -
 # tools
-select:
-	key(s)
-edit [nodes]:
-	key(n)
-rectangle:
-	key(r)
-(ellipse|ellipses):
-	key(e)
-box:
-	key(x)
-spiral:
-	key(i)
-Bezier [curve]:
-	key(b)
-freehand:
-	key(p)
-calligraphy:
-	key(c)
-text:
-	key(t)
-gradients:
-	key(g)
+select: key(s)
+edit [nodes]: key(n)
+rectangle: 	key(r)
+(ellipse|ellipses): 	key(e)
+box: 	key(x)
+spiral: 	key(i)
+Bezier [curve]: 	key(b)
+freehand: 	key(p)
+calligraphy: 	key(c)
+text: 	key(t)
+gradients: 	key(g)
 
 # menus
 file menu:
@@ -61,25 +50,31 @@ help menu:
 	
 
 #common shortcuts
-zoom in:
-	key(+)
-zoom out:
-	key(-)
-pan left:
-	key(ctrl-right)
-pan right:
-	key(ctrl-left)
-pan up:
-	key(ctrl-down)
-pan down:
-	key(ctrl-up)
-select tool:
-	key(s)
-nudge right:
-	key(alt-right)
-nudge left:	
-	key(alt-left)
-nudge up:
-	key(alt-up)
-nudge down:
-	key(alt-down)
+zoom in: key(+)
+zoom out: 	key(-)
+zoom to selection: key(3)
+zoom to drawing: key(4)
+zoom to page: key(5)
+zoom to [page] width: key(6)
+center page in view: key(ctrl-4)
+previous zoom: key(`)
+pan left: 	key(ctrl-right)
+pan right: 	key(ctrl-left)
+pan up: 	key(ctrl-down)
+pan down: 	key(ctrl-up)
+select tool: 	key(s)
+move tiny right: 	key(alt-right)
+move tiny left:	 	key(alt-left)
+move tiny up: 	key(alt-up)
+move tiny down: 	key(alt-down)
+
+# layer position 
+raise layer: key(shift-ctrl-pageup)
+lower layer: key(shift-ctrl-pagedown)
+layer to top: key(shift-ctrl-home)
+layer to bottom: key(shift-ctrl-end)
+
+# dialogues
+fill and stroke: key(shift-ctrl-f)
+paste style: key(shift-ctrl-v)
+copy: key(ctrl-c)
