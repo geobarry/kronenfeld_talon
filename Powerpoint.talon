@@ -9,10 +9,11 @@ tag(): user.excel_powerpoint_shared
 
 toggle notes: user.focus_element_by_name("notes")
 focus workspace: user.click_element_by_name("home")
-mark for selection: user.mark_focused_location()
-select marked: 
-	key(esc)
-	user.click_all_marks("shift")
+mark for selection: 
+	# make sure selected item is also focused item
+#	key(tab shift-tab)
+	user.mark_focused_element()
+select marked: user.select_marked()
 go to {user.power_go_to_target}: user.power_go_to(power_go_to_target)
 select [<user.ordinals>] {user.power_selection_target}: user.power_tab_to(power_selection_target,ordinals or 1)
 select inside [<user.ordinals>] {user.power_selection_target}:
@@ -441,20 +442,39 @@ shape width <user.real_number>:
 	user.office_keys("alt j d w")
 	insert("{real_number}")
 	key(enter esc)
-picture width: user.office_keys("alt j p w")
-picture width <user.real_number>:
-	user.office_keys("alt j p w")
-	insert("{real_number}")
-	key(enter esc)
 shape height: key(alt j d h)
 shape height <user.real_number>:
 	key(alt j d h)
-	insert(real_number)
+	insert("{real_number}")
 	key(enter esc)
+(picture|video) width: user.office_keys("alt j p w")
+(picture|video) width <user.real_number>:
+	user.office_keys("alt j p w")
+	insert("{real_number}")
+	key(enter esc)
+(picture|video) height: user.office_keys("alt j p h")
+(picture|video) height <user.real_number>:
+	user.office_keys("alt j p h")
+	insert("{real_number}")
+	key(enter esc)
+graphics width: user.office_keys("alt j g w")
+graphics width <user.real_number>:
+	user.office_keys("alt j g w")
+	insert("{real_number}")
+	key(enter esc)
+graphics height: user.office_keys("alt j g h")
+graphics height <user.real_number>:
+	user.office_keys("alt j g h")
+	insert("{real_number}")
+	key(enter esc)
+
+
 shape position: user.office_keys("alt j d s z")
 apply [text] halo: user.office_keys("alt j d t x g g c")
 close panel: key(f6 ctrl-space c)
 exit panel: key(ctrl-space c)
+
+
 
 #table layout menu
 insert row [above]: user.office_keys("alt j l v")
@@ -469,47 +489,13 @@ table width: user.slow_key_press("alt j l t w")
 table height: user.slow_key_press("alt j l t h")
 	
 # picture format menu
-
-picture height:
-	key(alt)
-	sleep(0.08)
-	key(j)
-	key(p)
-	key(h)
-picture height <number>:
-	key(alt j p h)
-	insert(number)
-	key(enter esc)
-picture height <number> point <number>:
-	key(alt j p h)
-	insert("{number_1}.{number_2}")
-	key(enter esc)
 picture position: key(alt j p s z)
+graphics position: key(alt j g s z)
+
 crop picture: user.power_crop_picture("upper left")
 crop {user.handle_position}: user.power_crop_picture(handle_position)
 [picture] transparent color: key(alt j p i s)
 picture border black: user.slow_key_press("alt j p s o enter")
-
-graphics width: key(alt j g w)
-graphics width <number>:
-	key(alt j g w)
-	insert(number)
-	key(enter esc)
-graphics width <number> point <number>:
-	key(alt j g w)
-	insert("{number_1}.{number_2}")
-	key(enter esc)
-graphics height: key(alt j g h)
-graphics height <number>:
-	key(alt j g h)
-	insert(number)
-	key(enter esc)
-graphics height <number> point <number>:
-	key(alt j g h)
-	insert("{number_1}.{number_2}")
-	key(enter esc)
-graphics position:
-	key(alt j g s z)
 
 #equation menu
 equation fraction: key(alt j e f)

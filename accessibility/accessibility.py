@@ -6,7 +6,7 @@ import math
 import re
 
 # list for tracking a set of clickable points
-loc_marks = []
+marked_elements = []
 
 class mouse_mover:
     """Moves mouse using cron intervals until destination is reached"""
@@ -328,33 +328,35 @@ class Actions:
         if down_key != "":
             actions.key(f"{down_key}:up")
 
-    def mark_focused_location():
+
+    def mark_focused_element():
         """records the clickable point of the currently focused item"""
-        global loc_marks
+        global marked_elements
+        el = ui.focused_element()
+        print(f"Marking for selection: {element_information(el)}")
+        marked_elements.append(el)
+        
+    def select_marked():
+        """clicks on recorded marks and then empties list"""
+        global marked_elements
+        # clear any selection
         el = ui.focused_element()
         try:
-            loc_marks.append(el.clickable_point)
-        except:
-            pass
-        print(f"{len(loc_marks)} locations marked!")
-        
-    def click_all_marks(down_key: str=""):
-        """clicks on recorded marks and then empties list"""
-        global loc_marks
-        i = 0
-        for mark in loc_marks:
-            if down_key != "":
-                actions.key(f"{down_key}:down")
+            print(f"Removing from selection: {element_information(el)}")
+            pattern = el.selectionitem_pattern
+            pattern.remove_from_selection()
+        except Exception as error:
+            print(f"Error removing from selection in select_marked: {error}")        
+        # select all marked elements
+        for el in marked_elements:
             try:
-                ctrl.mouse_move(mark.x,mark.y)
-                ctrl.mouse_click()
-            except:
-                pass
-            if down_key != "":
-                actions.key(f"{down_key}:up")
-            i += 1
-        # reset location marks list
-        loc_marks = []
+                print(f"Adding to selection: {element_information(el)}")
+                pattern = el.selectionitem_pattern
+                pattern.add_to_selection()
+            except Exception as error:
+                print(f"Error adding to selection in select_marked: {error}")        
+        # reset list of marked elements
+        marked_elements = []
 
 
     def click_element_by_name(name: str, exact_match: bool = False):
@@ -526,6 +528,21 @@ class Actions:
             if element.is_enabled:
                 msg += element_information(element) +"\n"
         clip.set_text(msg)
+
+    def copy_selected_elements_to_clipboard():
+        """Copies selected element information to the clipboard"""
+        root = ui.active_window().element
+        elements = list(get_every_child(root))
+        msg = "SELECTED ELEMENT(S)\n"
+        for el in elements:
+            try:
+                pattern = el.selectionitem_pattern                
+                if pattern.is_selected:
+                    msg += element_information(element) +"\n"
+            except:
+                pass
+        clip.set_text(msg)
+        
         
     def copy_clickable_element_to_clipboard():
         """Searches for the first enabled element and copies is information to the clipboard"""
