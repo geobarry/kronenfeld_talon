@@ -38,7 +38,7 @@ go to <user.text>:
 	insert(text)
 
 # sorting
-extract: user.slow_key_press("menu t 2",1.5)
+extract: user.slow_key_press("menu t 2",2.5)
 sort [by name]: 
 	user.key_to_elem_by_val("tab","UIColumnHeader","class_name")
 	user.key_to_elem_by_val("right","Name")
@@ -88,6 +88,7 @@ open jupyter [notebook]:
 	edit.paste()
 	sleep(0.5)
 	key(enter)
+	sleep(0.5)
 	insert("jupyter notebook")
 	key(enter)
 	

@@ -107,19 +107,22 @@ def all_element_information(el):
 def element_match(el: ax.Element, prop_list, conjunction="AND"):
     """Returns true if the element matches all of the properties in the property dictionary"""
     # prop_list is either a list of form [(property, trg_val),...]
-    #     where trg_val is either a string (for an exact match)
+    #     where trg_val is either a string (for case-insensitive match at start of string)
     #     or a regex expression
     # or a list of ["OR",list] or ["AND",list]
+    # or just a string, in which case property will be "name"
     # Conditions in the top level list are connected with an AND conjunction
     def eval_cond(prop,trg_val):
         def value_match(prop_val,trg_val):
+            # if trg_val is a string, convert to a regex pattern
+            if type(trg_val) == str:
+                trg_val = re.compile(trg_val,re.IGNORECASE)
+            # check if property value matches regex pattern
             if type(trg_val) == re.Pattern:
                 return re.match(trg_val,prop_val) != None
-            else:
-                return prop_val.lower() == trg_val.lower()
         if prop in ["AND","OR"]:
             return element_match(el,trg_val,prop)
-        if prop == "name":
+        if prop.lower() == "name":
             return value_match(el.name,trg_val)
         if prop == "class_name":
             return value_match(el.class_name,trg_val)
@@ -135,11 +138,16 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
                 return trg_val == clickable
         # if something is not properly specified, return true so that other conditions can be evaluated
         print("ERROR in function element_match (accessibility.py)")
-        print("No matching property found (looking for property: {prop})")
+        print(f"No matching property found (looking for property: {prop})")
         print(prop_list)
         return True
-    if prop_list[0] in ["AND","OR"]:
+    # handle case that property list is a simple string
+    if type(prop_list) == str:
+        prop_list = [("name",prop_list)]
+    # handle case that property list is of the form [conjunction,list]
+    if prop_list[0] in ["AND","OR","and","or","And","Or"]:
         return element_match(el,prop_list[1],prop_list[0])
+    # handle the case that property list is a list of (property, value) tuples
     if conjunction == "AND":
         return all([eval_cond(prop,val) for prop,val in prop_list])
     if conjunction == "OR":
@@ -148,7 +156,7 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
 
 
 def element_information(el: ax.Element, verbose = False):
-        msg = f"148 name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
         print(msg)
         try:
             msg += f"\tloc: {el.clickable_point.x},{el.clickable_point.y}"
@@ -160,7 +168,10 @@ def element_information(el: ax.Element, verbose = False):
             msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
             msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
             msg += f"\nis_enabled: {el.is_enabled}"
-            msg += f"\nautomation_id: {el.automation_id}"
+            try:
+                msg += f"\nautomation_id: {el.automation_id}"
+            except:
+                pass
             msg += f"\nchildren: {len(el.children)}"
             msg += f"\nis_control_element: {el.is_control_element}"
             msg += f"\nis_content_element: {el.is_content_element}"
@@ -179,9 +190,10 @@ def element_information(el: ax.Element, verbose = False):
             except:
                 pass
             try:
-                msg += f"\nitemcontainer_pattern: {el.itemcontainer_pattern}"
-            except:
-                pass
+                x = el.itemcontainer_pattern
+                msg += f"\nitemcontainer_pattern: {x}"
+            except Exception as error:
+                msg += f"\nitemcontainer_pattern: {error}"
             try:
                 msg += f"\nselection_pattern: {el.selection_pattern}"
             except:
@@ -196,34 +208,23 @@ def element_information(el: ax.Element, verbose = False):
                 msg += f"\ntoggle_pattern.state: {toggle_pattern.state}"
             except:
                 pass
-            try:
-                msg += f"\nitemcontainer_pattern: {el.itemcontainer_pattern}"
-            except:
-                pass
+                
             try:
                 msg += f"\nrect: {el.rect}"
             except:
                 pass
 
-#            msg += "\n\nCHILDREN:"
-#            for child in el.children:
-#                msg += element_information(child,True)
+            msg += "\n\nCHILDREN:\n"
+            for child in el.children:
+                msg += element_information(child,False) + "\n" 
+            
+            msg += "\n\nGRANDCHILDREN:\n"
+            for child in el.children:
+                for grandchild in child.children:
+                    msg += f"({child.name}) {element_information(grandchild,False)} \n" 
+            
         return msg
 
-def dynamic_children_experiment(_) -> dict[str,str]:
-    root = ui.active_window().element
-    aliases = list(get_every_child_alias(root))
-    output = {}
-    for alias in aliases:
-        # add full name to dictionary
-        output[alias] = alias
-        # add single word command to dictionary
-        singles = re.split('[^a-zA-Z]',alias)
-        output[singles[0]] = alias
-        # add double word command to dictionary
-        if len(singles) > 1:
-            output[" ".join(singles[:2])] = alias
-    return output
 
         
 
@@ -315,6 +316,8 @@ class Actions:
         else:
             print("Element not found")
 
+    
+
     def click_focused(down_key: str=""):
         """ clicks on the currently focused element with the down key pressed"""
         if down_key != "":
@@ -395,6 +398,7 @@ class Actions:
         elements = list(get_every_child(root))
         # search for match
         for el in elements:
+            print(el.name)
             if element_match(el,prop_list):
                 loc = el.clickable_point
                 mouse_obj = mouse_mover(loc,ctrl.mouse_click)

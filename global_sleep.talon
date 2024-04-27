@@ -1,4 +1,4 @@
 mode: sleep
 -
-computer (wake|start listening|wake up|open your ears):
-	speech.enable()
+computer (wake|wake up): speech.enable()
+computer mute: key(mute)

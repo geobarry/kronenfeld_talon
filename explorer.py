@@ -1,4 +1,5 @@
 from talon import Context,Module,actions,clip
+import subprocess
 import re
 mod = Module()
 
@@ -7,6 +8,12 @@ num_recent_pops = 0
 
 @mod.action_class
 class Actions:
+    def explorer_open_path_in_terminal():
+        "Open path in terminal"
+        actions.user.file_explorer_copy_folder()
+        process = subprocess.Popen(["cmd.exe"], cwd=clip.text())
+        process.returncode = 0
+
     def replace_with_underscores():
         """Replaces any odd characters in currently selected file name with underscore"""
         actions.key("f2 ctrl-a")
