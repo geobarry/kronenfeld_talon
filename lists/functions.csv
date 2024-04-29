@@ -51,3 +51,6 @@ re.pattern,regex pattern
 hasattr,has attribute
 do_crop,do crop
 plt.plot,plot
+draw_rect,draw rectangle
+el_prop_val,element property value
+user.key_to_elem_by_val,key to element by value

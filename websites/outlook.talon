@@ -1,6 +1,15 @@
-browser.url: https://outlook.office.com/mail/
+browser.url: /outlook/
 -
 test browser page recognition: key(ctrl-l)
 go to messages: user.outlook_go_to_messages()
-
-	
+go to unread message: user.outlook_go_to_unread()
+go to inbox: user.outlook_go_to_inbox()
+go to search: user.outlook_go_to_search()
+go to attachment: user.outlook_go_to_attachment()
+reply: user.outlook_click_button("Reply")
+reply all: user.outlook_click_button("Reply all")
+forward: user.outlook_click_button("Forward")
+discard: user.outlook_click_button("Discard")
+attach: user.outlook_click_button("Attach file")
+send message: user.outlook_click_button("Send")
+more send options: user.outlook_click_button("More send options")

@@ -1,9 +1,8 @@
 app: Microsoft Word
 
 -
-toggle ribbon:
-	key(ctrl-f1)
-  
+toggle ribbon: key(ctrl-f1)
+enable editing: user.word_enable_editing()
 sub <user.letter>:
 	insert(" ")
 	edit.left()
@@ -93,6 +92,7 @@ save as:
 
 close panel: key(f6 ctrl-space c)
 exit panel:	key(ctrl-space c)
+go to main text: user.word_go_to_main_text()
 	
 menu view:
 	key(alt-w)
@@ -268,16 +268,19 @@ zoom <number> [percent]:
 	key(enter)
 	
 # menu review
-delete all comments:
-	key(alt)
-	sleep(0.2)
-	key(r d o)
-accept all changes [and stop tracking]:
-	key(alt)
-	sleep(0.2)
-	key(r a 2 s)
+track changes: key(alt r z t g f)
+new comment: key(alt r c 2)
+delete all comments: key(alt r d o)
+accept all changes [and stop tracking]: key(alt r a 2 s)
 next comment: key(alt r n)
 previous comment: key(alt r v)
+display no markup: user.word_display_markup("No Markup")
+display all markup: user.word_display_markup("All Markup")
+hide comments: 
+	user.word_go_to_comments()
+	key(ctrl-space c)
+show comments: key(alt r p 1 l)
+go to comments: user.word_go_to_comments()
 
 # menu table design
 table border none:

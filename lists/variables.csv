@@ -436,3 +436,11 @@ container
 pattern
 grandchild
 container
+action
+el_highlights,element highlights
+delay
+ms,milliseconds
+prop_name,property name
+main_prop,main properties
+other_prop,other properties
+as_text,as text

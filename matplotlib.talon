@@ -52,11 +52,11 @@ axis off: insert("ax.axis('off')")
 axis equaln: insert("ax.axis('equal')")
 set axis title: user.insert_between("ax.set_title('","', y = -0.3)")
 
-{user.variable_list} [dot] plot:
+{user.variable_list} dot plot:
 	user.insert_between("{user.variable_list}.plot(",")")
-{user.variable_list} [dot] text:
+{user.variable_list} dot text:
 	user.insert_between("{user.variable_list}.text(",")")
-[plot] axis equal:
+plot axis equal:
 	insert("plt.axis('equal')")
-[plot] save figure:
+plot save figure:
 	user.insert_between("plt.savefig(",")")

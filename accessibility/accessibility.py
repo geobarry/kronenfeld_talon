@@ -1,6 +1,7 @@
-from talon import Module, ui, Context, clip, ctrl, cron, actions
+from talon import Module, ui, Context, clip, ctrl, cron, actions, canvas, screen, ui
 from talon.windows import ax as ax
 from talon.types import Point2d as Point2d
+from talon.skia import  Paint
 import inspect
 import math
 import re
@@ -8,9 +9,44 @@ import re
 # list for tracking a set of clickable points
 marked_elements = []
 
+class element_highlights:
+    def __init__(self):        
+        self.canvas = canvas.Canvas.from_screen(ui.main_screen())
+        self.canvas.register('draw', self.draw_canvas) 
+        self.canvas.freeze() # uncomment this line for debugging
+        self.rectangles = []
+
+    def add_element(self,rect):
+        self.rectangles.append(rect)
+        print(f"There are now {len(self.rectangles)} elements in highlight list")
+        self.canvas.move(0,0) # this forces canvas redraw
+
+    def clear_elements(self):
+        self.rectangles = []
+        self.canvas.move(0,0) # this forces canvas redraw
+
+    def draw_canvas(self, canvas):
+        paint = canvas.paint
+        paint.antialias = True
+        paint.color = 'f3f'
+        paint.style = paint.Style.STROKE
+        paint.stroke_width = 7
+        paint.dither = True
+        print(f"attempting to draw {len(self.rectangles)} elements")
+        for rect in self.rectangles:
+            canvas.draw_round_rect(rect,25,25,paint)
+
+        
+    def disable(self):
+        self.canvas.close()
+        self.canvas = None
+
+el_highlights = element_highlights()
+
+
 class mouse_mover:
     """Moves mouse using cron intervals until destination is reached"""
-    def __init__(self, dest: Point2d, callback = None):        
+    def __init__(self, dest: Point2d, ms = None, callback = None):        
         self.callback = callback
         self.dest = dest
         self.orig = ctrl.mouse_pos()
@@ -18,7 +54,10 @@ class mouse_mover:
         dx = self.dest.x - self.orig[0]
         dy = self.dest.y - self.orig[1]
         totD = ((dx ** 2) + (dy ** 2)) ** 0.5
-        totT = self.get_move_time(totD)
+        if ms:
+            totT = ms
+        else:
+            totT = self.get_move_time(totD)
         print(f"totD: {totD}  |  totT: {totT}")
         self.num_intervals = max(1,math.ceil(totT / 30))
         self.interval_x = dx / self.num_intervals
@@ -54,7 +93,7 @@ class mouse_mover:
     def move_next(self):
         """Moves mouse by one interval until destination reached"""
         # handle last move
-        if self.completed == self.num_intervals - 1:
+        if self.completed >= self.num_intervals - 1:
             ctrl.mouse_move(self.dest.x,self.dest.y)
             cron.cancel(self.job)
             if self.callback != None:
@@ -65,6 +104,7 @@ class mouse_mover:
             x = round(self.orig[0] + self.interval_x * self.completed)
             y = round(self.orig[1] + self.interval_y * self.completed)
             ctrl.mouse_move(x,y)
+
 
 mod = Module()
 
@@ -152,81 +192,138 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
         return all([eval_cond(prop,val) for prop,val in prop_list])
     if conjunction == "OR":
         return any([eval_cond(prop,val) for prop,val in prop_list])
-    
 
+def matching_elements(prop_list):
+    """Returns a list of all UI elements that match the property list"""
+    r = []
+    # get list of elements
+    root = ui.active_window().element
+    elements = list(get_every_child(root))
+    # search for match
+    for el in elements:
+        if element_match(el,prop_list):
+            r.append(el)
+    print(f"{len(r)} matching elements found")
+    return r  
+
+def select_element(el):
+    # attempts to select input element
+    if el:
+        try:
+            el.selectionitem_pattern.select()
+        except Exception as error:
+            print(f"Unable to select UI element with SelectionItemPattern")
+            print(error)
+            try:
+                el.legacyiaccessible_pattern.select(0)
+                print(f"Selected with legacy")
+            except Exception as error:
+                print(f"Unable to select UI element with LegacyIAccessiblePattern")        
+                print(error)
+
+def el_prop_val(el: ax.Element, prop_name, as_text = False):
+    """Returns the property value or None if the property value cannot be retrieved"""
+    try:
+        if prop_name.lower() == "name":
+            return el.name
+        elif prop_name.lower() == "class_name":
+            return el.class_name
+        elif prop_name.lower() == "help_text":
+            return el.help_text
+        elif prop_name.lower() == "clickable_.":
+            if as_text:
+                loc = el.clickable_point
+                return f"x: {loc.x}   y: {loc.y}"
+            else:
+                return el.clickable_point
+        elif prop_name.lower() == "pid":
+            return el.pid
+        elif prop_name.lower() == "access_key":
+            return el.access_key
+        elif prop_name.lower() == "has_keyboard_focus":
+            return el.has_keyboard_focus
+        elif prop_name.lower() == "is_keyboard_focusable":
+            return el.is_keyboard_focusable
+        elif prop_name == "is_enabled":
+            return el.is_enabled
+        elif prop_name.lower() == "automation_id":
+            return el.automation_id
+        elif prop_name.lower() == "children":
+            if as_text:
+                return str(len(el.children))
+            else:
+                return el.children
+        elif prop_name.lower() == "is_control_element":
+            return el.is_control_element
+        elif prop_name.lower() == "is_content_element":
+            return el.is_content_element
+        elif prop_name.lower() == "item_type":
+            return el.item_type
+        elif prop_name.lower() == "item_status":
+            return el.item_status
+        elif prop_name.lower() == "patterns":
+            return el.patterns
+        elif prop_name.lower() == "described_by":
+            return el.is_described_by
+        elif prop_name.lower() == "flows_to":
+            return el.flows_to
+        elif prop_name.lower() == "provider_description":
+            return el.provider_description
+        elif prop_name.lower() == "customnavigation_pattern":
+            return el.customnavigation_pattern
+        elif prop_name.lower() == "window_pattern":
+            return el.window_pattern
+        elif prop_name.lower() == "itemcontainer_pattern":
+            return el.itemcontainer_pattern
+        elif prop_name.lower() == "selection_pattern":
+            return el.selection_pattern
+        elif prop_name.lower() == "selection_pattern2":
+            return el.selection_pattern2
+        elif prop_name.lower() == "toggle_pattern":
+            return el.toggle_pattern
+        elif prop_name.lower() == "rect":
+            return el.rect
+    except:
+        if as_text:
+            return ''
+        else:
+            return  None
 
 def element_information(el: ax.Element, verbose = False):
-        msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
-        print(msg)
-        try:
-            msg += f"\tloc: {el.clickable_point.x},{el.clickable_point.y}"
-        except:
-            msg += f"\tloc: None"
-        if verbose:
-            msg += f"\npid: {el.pid}"
-            msg += f"\naccess_key: {el.access_key}"
-            msg += f"\nhas_keyboard_focus: {el.has_keyboard_focus}"
-            msg += f"\nis_keyboard_focusable: {el.is_keyboard_focusable}"
-            msg += f"\nis_enabled: {el.is_enabled}"
-            try:
-                msg += f"\nautomation_id: {el.automation_id}"
-            except:
-                pass
-            msg += f"\nchildren: {len(el.children)}"
-            msg += f"\nis_control_element: {el.is_control_element}"
-            msg += f"\nis_content_element: {el.is_content_element}"
-            msg += f"\nitem_type: {el.item_type}"
-            msg += f"\nitem_status: {el.item_status}"
-            msg += f"\npatterns: {el.patterns}"
-            msg += f"\ndescribed_by: {el.described_by}"
-            msg += f"\nflows_to: {el.flows_to}"
-            msg += f"\nprovider_description: {el.provider_description}"
-            try:
-                msg += f"\ncustomnavigation_pattern: {el.customnavigation_pattern}"
-            except:
-                pass
-            try:
-                msg += f"\nwindow_pattern: {el.window_pattern}"
-            except:
-                pass
-            try:
-                x = el.itemcontainer_pattern
-                msg += f"\nitemcontainer_pattern: {x}"
-            except Exception as error:
-                msg += f"\nitemcontainer_pattern: {error}"
-            try:
-                msg += f"\nselection_pattern: {el.selection_pattern}"
-            except:
-                pass
-            try:
-                msg += f"\nselection_pattern2: {el.selection_pattern2}"
-            except:
-                pass                
-            try:
-                msg += f"\ngetting toggle pattern state:"
-                toggle_pattern = el.toggle_pattern
-                msg += f"\ntoggle_pattern.state: {toggle_pattern.state}"
-            except:
-                pass
-                
-            try:
-                msg += f"\nrect: {el.rect}"
-            except:
-                pass
-
-            msg += "\n\nCHILDREN:\n"
-            for child in el.children:
-                msg += element_information(child,False) + "\n" 
-            
-            msg += "\n\nGRANDCHILDREN:\n"
-            for child in el.children:
-                for grandchild in child.children:
-                    msg += f"({child.name}) {element_information(grandchild,False)} \n" 
-            
-        return msg
-
-
+    msg = ""
+    # Get main properties
+    main_prop = ["name","class_name","help_text"]
+    for prop in main_prop:
+        if el_prop_val(el,prop):
+            msg += f"{prop}: {el_prop_val(el,prop)} \t"
+    msg += "\n"
+    if verbose:
+        # Get other properties
+        other_prop = [
+                        "clickable_point","pid","access_key","has_keyboard_focus",
+                        "is_keyboard_focusable","is_enabled","automation_id",
+                        "children","is_control_element","is_content_element",
+                        "item_type","item_status","patterns","described_by",
+                        "flows_to","provider_description","customnavigation_pattern",
+                        "window_pattern","itemcontainer_pattern","selection_pattern",
+                        "selection_pattern2","toggle_pattern","rect"
+                    ]
+        for prop in other_prop:
+            msg += f"{prop}: {el_prop_val(el,prop,True)}\n"
+        # Get children and grandchildren
+        msg += "\n\nCHILDREN:\n"
+        for child in el.children:
+            msg += element_information(child,False) + "\n" 
         
+        msg += "\n\nGRANDCHILDREN:\n"
+        for child in el.children:
+            for grandchild in child.children:
+                msg += f"({child.name}) {element_information(grandchild,False)} \n" 
+        
+    return msg
+
+
+    
 
 ctx = Context()
 
@@ -264,6 +361,19 @@ class Actions:
             if element_match(el,prop_list):            
                 return True
         return False
+
+    def highlight_elements(elements: list):
+        """Adds all ui elements in the list to the list of elements to be highlighted"""
+        for el in elements:
+            try:
+                rect = el.rect
+                el_highlights.add_element(rect)
+            except:
+                pass
+
+    def clear_highlights():
+        """Removes all ui elements from the highlight list"""
+        el_highlights.clear_elements()
         
     def element_list():
         """returns_a_list_of_all_elements"""
@@ -301,35 +411,46 @@ class Actions:
         cur_val = actions.user.peek_next_property_value(property_name,advance_key)
         if cur_val != trg:
             actions.key(toggle_key)
-        
-    def focus_element_by_name(name: str):
-        """Focuses on an element by name"""
-        root = ui.active_window().element
-        elements = list(get_every_child(root))
-        
-        for element in elements:
-            if element.name == name or \
-            str(element.name).lower() == name or \
-            name.lower() in str(element.name).lower():
-                element.invoke_pattern.invoke()
-                break
-        else:
-            print("Element not found")
 
-    
+    def click_element(el: ax.Element, down_key: str='', ms: float = None):
+        """clicks on the given element, with the given optional key pressed"""
+        print("Attempting to run function click_element")
+        if down_key != "":
+            actions.key(f"{down_key}:down")
+
+        try:
+            loc = el.clickable_point
+            mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
+        except:
+            # if element doesn't have a clickable point, 
+            # see if it has a rectangle
+            try:
+                rect = el.rect
+                x = rect.x + int(rect.width/2)
+                y = rect.y + int(rect.height/2)
+                loc = Point2d(x,y)
+                mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
+            except Exception as error:
+                print("Sorry element is not clickable!")
+                print(error)
+                pass
+        if down_key != "":
+            actions.key(f"{down_key}:up")
+
 
     def click_focused(down_key: str=""):
         """ clicks on the currently focused element with the down key pressed"""
-        if down_key != "":
-            actions.key(f"{down_key}:down")
-        el = ui.focused_element()
-        try:
-            loc = el.clickable_point
-            mouse_obj = mouse_mover(loc,ctrl.mouse_click)
-        except:
-            pass
-        if down_key != "":
-            actions.key(f"{down_key}:up")
+        actions.user.click_element(ui.focused_element(),down_key)
+#        if down_key != "":
+#            actions.key(f"{down_key}:down")
+#        el = ui.focused_element()
+#        try:
+#            loc = el.clickable_point
+#            mouse_obj = mouse_mover(loc,callback = ctrl.mouse_click)
+#        except:
+#            pass
+#        if down_key != "":
+#            actions.key(f"{down_key}:up")
 
 
     def mark_focused_element():
@@ -367,7 +488,6 @@ class Actions:
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
-            print(el.name)
             if el.name == name or \
                 str(el.name).lower() == name or \
                 (name.lower() in str(el.name).lower() and not exact_match):
@@ -385,26 +505,84 @@ class Actions:
                     except:
                         pass
 
+    def highlight_elements_by_name(name: str):
+        """Highlights all the elements matching the given name"""
+        elements = matching_elements(name)
+        actions.user.highlight_elements(elements)
+    
+    def highlight_focused():
+        """Highlights the focused element"""
+        el = ui.focused_element()
+        try:
+            rect = el.rect
+            print(rect)
+            el_highlights.add_element(rect)
+        except:
+            print('no rectangle found')
+        
+       
+       
+    def select_element_by_name(name: str):
+        """Selects the first UI with a matching element name. Input is interpreted as a regex pattern string"""
+        # get list of elements
+        elements = matching_elements(name)
+        if len(elements)  >= 1:
+            select_element(elements[0])
+            
+    def select_matching_element(prop_list: list):
+        """Attempts to select the first UI element that matches the property list"""
+        # get list of elements
+        elements = matching_elements(prop_list)
+        if len(elements)  >= 1:
+            select_element(elements[0])
 
-         
+    def invoke_matching_element(prop_list: list):
+        """Attempts to invoke the UI element that matches the property list"""
+        # get list of elements
+        elements = matching_elements(prop_list)
+        if len(elements) == 1:
+            el = elements[0]
+            el.invoke_pattern.invoke()
+                
+    def toggle_matching_element(prop_list: list):
+        """Attempts to invoke the UI element that matches the property list"""
+        elements = matching_elements(prop_list)
+        if len(elements) == 1:
+            el = elements[0]
+            el.invoke_pattern.invoke()
+        
 
-    def click_matching_element(prop_list: list):
+    def click_matching_element(prop_list: list, ms: int = None):
         """clicks on the element that matches property dictionary"""
-        # make sure that clickable property is set to true
-        if not ("clickable",True) in prop_list:
-            prop_list.append(("clickable",True))
         # get list of elements
         root = ui.active_window().element
         elements = list(get_every_child(root))
         # search for match
         for el in elements:
-            print(el.name)
             if element_match(el,prop_list):
-                loc = el.clickable_point
-                mouse_obj = mouse_mover(loc,ctrl.mouse_click)
-                break
+                try:
+                    loc = el.clickable_point
+                    mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
+                    break
+                except:
+                    # if element doesn't have a clickable point, 
+                    # see if it has a rectangle
+                    try:
+                        rect = el.rect
+                        x = rect.x + int(rect.width/2)
+                        y = rect.y + int(rect.height/2)
+                        loc = Point2d(x,y)
+                        mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
+                        break
+                    except:
+                        pass
 
-    def key_to_matching_element(key: str, prop_list: list, limit: int=35, escape_key: str=None):
+
+
+
+    
+
+    def key_to_matching_element(key: str, prop_list: list, limit: int=35, escape_key: str=None, delay: float = 0.05):
         """press given key until the first matching element is reached"""
         i = 1
         last_el = element_information(ui.focused_element(),verbose = True)
@@ -412,14 +590,16 @@ class Actions:
         msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
         while (not element_match(ui.focused_element(),prop_list)) and (i < limit):            
             actions.key(key)
+            if delay > 0:
+                actions.sleep(delay)
             if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
                 actions.key(escape_key)
             i += 1
 
-    def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=35, escape_key: str=None):
+    def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=35, escape_key: str=None, delay: float = 0.05):
         """press key until element with exact value for one property is reached"""
         prop_list = [(prop,val)]
-        actions.user.key_to_matching_element(key,prop_list,limit,escape_key)
+        actions.user.key_to_matching_element(key,prop_list,limit,escape_key,delay)
 
     def move_to_element(name: str):
         """Moves mouse to element"""
@@ -439,8 +619,6 @@ class Actions:
         el = ui.focused_element()
         try:
             rect = el.rect
-            print('rect: {rect} (type: {type(rect)})')
-            print(rect.x)
             if "left" in pos:
                 x = rect.x
             elif "right" in pos:

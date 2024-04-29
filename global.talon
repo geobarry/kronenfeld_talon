@@ -2,12 +2,16 @@ os: windows
 -
 # disabling talon
 hello hello: speech.disable()
-[hello] come [on] in$: speech.disable()
+hello come [on] in$: speech.disable()
 hello what's up: speech.disable()
 computer [go to] sleep: speech.disable()
 computer stop listening: speech.disable()
 computer close your ears: speech.disable()
 
+# windows accessibility
+clear highlights: user.clear_highlights()
+highlight focused element: user.highlight_focused()
+click focused element: user.click_focused()
 	
 # windows volume
 volume up: key(volup)
@@ -217,7 +221,7 @@ show calendar:
 	sleep(0.25)
 	key(enter)
 	sleep(2.5)
-	insert("cd C:\CaGIS Board Dropbox\cantaloupe bob\Barry\website\calendar")
+	insert("cd C:\\CaGIS Board Dropbox\\cantaloupe bob\\Barry\\website\\calendar")
 	key("enter")
 	sleep(0.5)
 	insert("python -m http.server 8080")

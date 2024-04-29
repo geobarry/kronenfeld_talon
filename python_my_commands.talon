@@ -3,10 +3,8 @@ tag: user.my_python
 -
 line comment: insert("# ")
 comment <user.text>: insert("# {text}")
-loop on:
-	user.insert_between('for ',' in :')
-check if:
-	user.insert_between('if ',' in :' )
+loop on: user.insert_between('for ',' in :')
+check if: user.insert_between('if ',' in :' )
 slide over:
 	key(end)
 	edit.left()
@@ -14,20 +12,13 @@ whack:
 	key('end')
 	insert(':')
 	edit.line_insert_down()
-set equal [to]:
-	insert(" = ")
-is equal [to]:
-	insert(" == ")
-[is] not equal [to]:
-	insert(" != ")
-[is] less then:
-	insert(" < ")
-[is] less than or equal [to]:
-	insert(" <= ")
-[is] greater than:
-	insert(" > ")
-[is] greater than or equal [to]:
-	insert(" >= ")
+set equal [to]: insert(" = ")
+is equal [to]: insert(" == ")
+[is] not equal [to]: insert(" != ")
+[is] less then: insert(" < ")
+[is] less than or equal [to]: insert(" <= ")
+[is] greater than: insert(" > ")
+[is] greater than or equal [to]: insert(" >= ")
 
 # FUNCTIONS
 define function: user.insert_between("def ",":")
@@ -70,7 +61,12 @@ for {user.variable_list} in {user.variable_list}: insert("for {variable_list_1} 
 while {user.variable_list}: insert("while {variable_list}")
 if {user.variable_list}: insert("if {variable_list}")
 if not {user.variable_list}: insert("if not {variable_list}")
+if {user.function_list}: user.insert_between("if {function_list}(",")")
 if length {user.variable_list}: insert("if len({variable_list})")
+else if {user.variable_list}: insert("elif {variable_list}")
+else if not {user.variable_list}: insert("elif not {variable_list}")
+else if length {user.variable_list}: insert("elif len({variable_list})")
+
 length {user.variable_list}: insert("len({variable_list})")
 range {user.variable_list}: insert("range({variable_list})")
 range length {user.variable_list}: insert("range(len({variable_list}))")
@@ -85,30 +81,22 @@ unzip {user.variable_list}: insert("zip(*{user.variable_list})")
 self dot {user.variable_list}: insert("self.{variable_list}")
 
 print variable {user.variable_list}:  insert("print('{user.variable_list}: {{{user.variable_list}}}')")
-string:
-	user.insert_between('"','"')
-raw string:
-	user.insert_between('r"','"')
-formatted string:
-	user.insert_between('f"','"')	
-unicode string:
-	user.insert_between('u"','"')
-dot format:
-	user.insert_between(".format(",")")
-dot split:
-	user.insert_between(".split(",")>")
-list:
-	user.insert_between("[","]")
-dictionary:
-	user.insert_between("{","}")
-tuple:
-	user.insert_between("(",")")
-empty list:
-	insert("[]")
-empty dictionary:
-	insert("{}")
-empty tuple:
-	insert("()")
+string: user.insert_between('"','"')
+raw string: user.insert_between('r"','"')
+formatted string: user.insert_between('f"','"')	
+unicode string: user.insert_between('u"','"')
+
+dot format: user.insert_between(".format(",")")
+dot split: user.insert_between(".split(",")>")
+dot lower: insert(".lower()")
+dot upper: insert(".upper()")
+
+list: user.insert_between("[","]")
+dictionary: user.insert_between("{","}")
+tuple: user.insert_between("(",")")
+empty list: insert("[]")
+empty dictionary: insert("{}")
+empty tuple: insert("()")
 
 
 # modules
