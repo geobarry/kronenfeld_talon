@@ -577,12 +577,7 @@ class Actions:
                     except:
                         pass
 
-
-
-
-    
-
-    def key_to_matching_element(key: str, prop_list: list, limit: int=35, escape_key: str=None, delay: float = 0.05):
+    def key_to_matching_element(key: str, prop_list: list, limit: int=99, escape_key: str=None, delay: float = 0.03):
         """press given key until the first matching element is reached"""
         i = 1
         last_el = element_information(ui.focused_element(),verbose = True)
@@ -596,10 +591,22 @@ class Actions:
                 actions.key(escape_key)
             i += 1
 
-    def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=35, escape_key: str=None, delay: float = 0.05):
+    def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=99, escape_key: str=None, delay: float = 0.03):
         """press key until element with exact value for one property is reached"""
         prop_list = [(prop,val)]
         actions.user.key_to_matching_element(key,prop_list,limit,escape_key,delay)
+
+    def key_to(key: str, name: str, class_name: str="",limit: int=99, escape_key: str=None, delay: float = 0.025):
+        """short function name to handle common case of using a key to navigate to an element by its name and optional classname"""
+        prop_list = [("name",name),("class_name",class_name)]
+        actions.user.key_to_matching_element(key,prop_list,limit,escape_key,delay)
+
+
+    def tab_to(name: str, class_name: str="",limit: int=99, escape_key: str=None, delay: float = 0.025):
+        """short function name to handle most common case of using tab key to navigate to an element by its name and optional classname"""
+        prop_list = [("name",name),("class_name",class_name)]
+        actions.user.key_to_matching_element("tab",prop_list,limit,escape_key,delay)
+        
 
     def move_to_element(name: str):
         """Moves mouse to element"""
