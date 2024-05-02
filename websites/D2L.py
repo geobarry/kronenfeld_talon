@@ -18,5 +18,11 @@ class Actions:
         actions.key("tab:3")
         actions.sleep(0.5)
         actions.key("enter")
-        
+    def D2L_assign_score(score: float):
+        """Navigates to the score input"""
+        prop_dict = [("name","Score"),("class_name","d2l-input.*")]
+        actions.user.key_to_matching_element("tab",prop_dict)
+        actions.sleep(0.2)
+        actions.insert(str(score))
+    
 ctx = Context()
