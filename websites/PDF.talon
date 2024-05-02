@@ -1,5 +1,5 @@
 app.exe: msedge.exe
-and win.title: /.*pdf.*/
+and   win.title: /.*pdf.*/
 -
 go to page <number>: 
 	key(ctrl-alt-g)

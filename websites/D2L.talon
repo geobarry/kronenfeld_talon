@@ -8,6 +8,13 @@ expand feedback:
 collapse feedback:
 	user.key_to("shift-tab","Collapse.*feedback.*","d2l-hpg-opener")
 go to feedback: user.tab_to("Feedback","mce-content-body d2l-html-block-rendered")
+add feedback:
+	user.tab_to("Options","d2l-dropdown-opener")
+	key(enter)
+	user.key_to("down","Add Feedback")
+	key(enter esc)
+	user.tab_to("Edit Overall Feedback")
+	user.click_focused()
 (save and continue|continue next): 
 	user.tab_to("Save and Continue","d2l-button")
 	key("enter")

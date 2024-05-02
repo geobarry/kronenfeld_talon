@@ -10,7 +10,7 @@ show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
 {user.arc_panel} (panel|pane|tab):
 	key(alt-v c t ctrl:down tab)
-	user.key_to_elem_by_val("down",arc_panel)
+	user.key_to_elem_by_val("down","{arc_panel}.*")
 	key(ctrl:up)
 {user.arc_button} button: 
 	user.tab_to_name(arc_button)

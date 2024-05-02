@@ -3,7 +3,7 @@
 copy accessible:
 	user.copy_accessible_elements_to_clipboard()
 	
-^click {user.dynamic_children}$:
+^click on {user.dynamic_children}$:
 	user.click_element_by_name(dynamic_children)
 ^click word <user.word>$:
 	user.click_element_by_name(word)
