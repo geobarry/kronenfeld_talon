@@ -23,7 +23,7 @@ show cheat sheet:
 	insert("Anaconda")
 	sleep(0.25)
 	key(enter)
-	sleep(2.5)
+	sleep(4.5)
 	insert("cd %appdata%/Talon/user/kronenfeld/cheat sheet")
 	key("enter")
 	sleep(0.5)
