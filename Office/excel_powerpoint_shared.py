@@ -75,31 +75,32 @@ class Actions:
         """moves to the cell in the same row where the given person's name can be found"""
         # get column of current cell
         actions.key("alt-f3")
-        actions.sleep(sleep_time)
+        actions.sleep(sleep_time*2)
         cur_cell = actions.edit.selected_text()
         col = "".join(x for x in cur_cell if not x.isdigit())
+        print(f"col: {col}")
         actions.key("enter")
-
+        actions.sleep(sleep_time*3)
         # use built-in search function to get row of cell with given name
         # NOTE: Need to set search parameters to search values not formulas
         actions.key("ctrl-f")
         actions.sleep(sleep_time)
         actions.insert(name)
-        actions.sleep(sleep_time)
+        actions.sleep(sleep_time*3)
         actions.key("enter")
-        actions.sleep(sleep_time)
+        actions.sleep(sleep_time*2)
         actions.key("esc")
-        actions.key("alt-f3")
-        actions.sleep(sleep_time)
+        actions.sleep(sleep_time*2)
+        actions.key("alt-f3 ctrl-a")
+        actions.sleep(sleep_time*2)
         cur_cell = actions.edit.selected_text()
         row = "".join(x for x in cur_cell if x.isdigit())
-        
         # navigate to row with name, current column
-        actions.key("alt-f3")
         actions.sleep(sleep_time)
         actions.insert(col + row)
-        actions.sleep(sleep_time)
+        actions.sleep(sleep_time*2)
         actions.key("enter")
+        actions.sleep(sleep_time)
 
     def power_tab_to(trg: str, occurrence: int = 1):
         """Presses tab until the target is reached"""

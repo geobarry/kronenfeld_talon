@@ -26,7 +26,7 @@ select column <user.letter>:
 	key(alt-f3)
 	insert("{letter}1")
 	key(enter ctrl-space)
-pasted into column <user.letter>	:
+paste into column <user.letter>:
 	key(alt-f3)
 	insert("{letter}1")
 	key(enter ctrl-space ctrl-v)
@@ -55,7 +55,11 @@ go to cell <user.letter> <number>:
 	insert("{user.letter}{number}")
 	key(enter)
 go to {user.person_list}: user.go_excel_row_by_person(person_list,0.2)
-	
+score {user.person_list} <user.real_number>:
+	user.go_excel_row_by_person(person_list,0.3)
+	sleep(0.2)
+	insert("{real_number}")
+	key(enter up)
 
 # [ribbon|menu] headings
 file [ribbon|menu]: key(alt-f)

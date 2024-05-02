@@ -1,7 +1,7 @@
 tag: user.slow_repeating
 -
 
-stop [repeating]:
+stop [(it|repeating)]:
 	user.stop_repeating()
 hard stop:
 	user.hard_stop_repeating()

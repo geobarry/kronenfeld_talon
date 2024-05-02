@@ -237,7 +237,7 @@ show calendar:
 	key("enter")
 
 
-stop: 
+stop [it]: 
 	user.mouse_scroll_stop()
 	user.stop_repeating()
 shutdown computer:
