@@ -5,7 +5,7 @@ mod = Module()
 
 time_last_pop = 0
 num_recent_pops = 0
-
+dummy = True
 
 @mod.capture(rule="<number> point <number>|<number>")
 def real_number(m) -> float:

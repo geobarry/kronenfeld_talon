@@ -12,6 +12,13 @@ choose panel: key(ctrl:up)
 	key(alt-v c t ctrl:down tab)
 	user.key_to_elem_by_val("down","{arc_panel}.*")
 	key(ctrl:up)
+catalog {user.arc_catalog_group}:
+	# first navigate to catalog pane
+	key(alt-v c t ctrl:down tab)
+	user.key_to_elem_by_val("down","Catalog.*")
+	key(ctrl:up)	
+	# tab to the tree view element
+	user.tab_to("","TreeView")
 {user.arc_button} button: 
 	user.tab_to_name(arc_button)
 	key(enter)
