@@ -689,7 +689,8 @@ class Actions:
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
         match = element_match(ui.focused_element(),[("class_name","TreeView")])
-        msg = element_information(el, verbose = True)
+        msg = element_information(el, headers = True)
+        msg += element_information(el, verbose = True)
         clip.set_text(msg)
         
     def copy_enabled_element_to_clipboard():
