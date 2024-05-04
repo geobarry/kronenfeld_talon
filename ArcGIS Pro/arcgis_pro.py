@@ -35,14 +35,20 @@ class Actions:
     def arc_tab_to_primary_symbology():
         """presses the tab key to get to the primary symbology combo box"""
         actions.user.key_to_matching_element("tab",[("name","Selected primary symbology")])
-    def tab_to_name(name: str):
-        """Presses tab into reaching an element whose name is ok"""
-        actions.user.key_to_matching_element("tab",[("name",name)])
+    #def tab_to_name(name: str):
+    #    """Presses tab into reaching an element whose name is ok"""
+    #    actions.user.key_to_matching_element("tab",[("name",name)])
     def arc_add_new_clause(and_or: str="AND"):
         """adds a new clause to a definition query"""
         actions.user.key_to_matching_element("tab",[("name","Add New Clause")])
         actions.key("enter shift-tab:3")
         actions.insert(and_or)
         actions.key("tab")
-        
+    def arc_symbology_tabs():
+        """From within the symbology panel, tabs to either the gallery or properties tab"""
+        prop_list = ["OR",[
+                        ["AND",[("name","Properties"),("class_name","ListBoxItem")]],
+                        ["AND",[("name","Gallery"),("class_name","ListBoxItem")]]
+                    ]]
+        actions.user.key_to_matching_element("tab",prop_list,delay = 0.05)
 ctx = Context()
