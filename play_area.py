@@ -20,7 +20,8 @@ class Actions:
         filename = filename.replace(" ","_")
         new_file = filename[:]
         print(f"Type: {type(new_file)}")
-
+    def test_launch_application(launch_app: str):
+        print(launch_app)
 
 
 ctx = Context()

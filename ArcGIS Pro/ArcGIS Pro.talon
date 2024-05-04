@@ -56,7 +56,6 @@ list by data source:
     user.mouse_helper_position_restore()
 
 symbology menu: key(alt j a d s)
-#symbology (pain|pane|panel): key(alt j a d s esc enter)
 primary symbology: user.arc_tab_to_primary_symbology()
 symbol:
 	user.arc_tab_to_primary_symbology()
