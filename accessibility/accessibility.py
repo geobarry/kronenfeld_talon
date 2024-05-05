@@ -357,9 +357,13 @@ class Actions:
         elements = list(get_every_child(root))
         # search for match
         for el in elements:
+            if el.name == "global.talon":
+                print("Houston, we have a match!")
+                print(f"prop_list: {prop_list}")
+                x = element_match(el,prop_list)
             if element_match(el,prop_list):
                 r.append(el)
-        print(f"{len(r)} matching elements found")
+        print(f"function matching_elements: {len(r)} matching elements found")
         return r  
 
     def highlight_elements(elements: list):
@@ -513,7 +517,8 @@ class Actions:
     def select_element_by_name(name: str):
         """Selects the first UI with a matching element name. Input is interpreted as a regex pattern string"""
         # get list of elements
-        elements = actions.user.matching_elements(name)
+        print(name)
+        elements = actions.user.matching_elements([("name",name)])
         if len(elements)  >= 1:
             select_element(elements[0])
             
@@ -690,7 +695,7 @@ class Actions:
         el = ui.focused_element()
         match = element_match(ui.focused_element(),[("class_name","TreeView")])
         msg = element_information(el, headers = True)
-        msg += element_information(el, verbose = True)
+        msg += "\n" + element_information(el, verbose = True)
         clip.set_text(msg)
         
     def copy_enabled_element_to_clipboard():
@@ -752,7 +757,9 @@ class Actions:
         elements = [root] + list(get_every_child(root))
         msg = element_information(root,headers = True)
         for el in elements:
-            msg += "\n" + element_information(el)
+            # remove line breaks from element information before adding
+            info = re.sub(r"\r?\n","<<new line>>",element_information(el))
+            msg += "\n" + info
         clip.set_text(msg)
         
         

@@ -13,6 +13,10 @@ zoom in: key(alt-v down:6 right enter)
 zoom out: key(alt-v down:6 right down enter)
 select block: key(ctrl-alt-b)
 
+# switch between tabs 
+tab {user.dynamic_children}: 
+	user.select_element_by_name(dynamic_children)
+
 	
 # commands for talon files
 press key: user.insert_between('key(',')')
