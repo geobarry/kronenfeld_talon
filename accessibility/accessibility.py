@@ -154,6 +154,7 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
     # or a list of ["OR",list] or ["AND",list]
     # or just a string, in which case property will be "name"
     # Conditions in the top level list are connected with an AND conjunction
+    print(f"{conjunction}: {prop_list}")
     def eval_cond(prop,trg_val):
         def value_match(prop_val,trg_val):
             if el.name == "All results" or el.name == "Top results":
@@ -190,13 +191,15 @@ def element_match(el: ax.Element, prop_list, conjunction="AND"):
         prop_list = [("name",prop_list)]
     # handle case that property list is of the form [conjunction,list]
     if prop_list[0] in ["AND","OR","and","or","And","Or"]:
-        return element_match(el,prop_list[1],prop_list[0])
+        r = element_match(el,prop_list[1],prop_list[0])
     # handle the case that property list is a list of (property, value) tuples
-    if conjunction == "AND":
-        return all([eval_cond(prop,val) for prop,val in prop_list])
-    if conjunction == "OR":
-        return any([eval_cond(prop,val) for prop,val in prop_list])
-
+    elif conjunction == "AND":
+        r =  all([eval_cond(prop,val) for prop,val in prop_list])
+    elif conjunction == "OR":
+        r = any([eval_cond(prop,val) for prop,val in prop_list])
+    #print(f"result: {r}")
+    return r
+    
 def select_element(el):
     # attempts to select input element
     if el:
@@ -512,8 +515,13 @@ class Actions:
         except:
             print('no rectangle found')
         
-       
-       
+    def select_elem(name: str, class_name: str=""):
+        """Shortcut to selecting an element based on its name and classname"""
+        prop_list = [("name",name),("class_name",class_name)]
+        elements = actions.user.matching_elements(prop_list)
+        if len(elements)  >= 1:
+            select_element(elements[0])
+        
     def select_element_by_name(name: str):
         """Selects the first UI with a matching element name. Input is interpreted as a regex pattern string"""
         # get list of elements
@@ -572,10 +580,13 @@ class Actions:
         last_el = element_information(ui.focused_element(),verbose = True)
         el = ui.focused_element()
         msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
+        print(f"ELEMENT: {el.name}")
         while (not element_match(ui.focused_element(),prop_list)) and (i < limit):            
             actions.key(key)
             if delay > 0:
                 actions.sleep(delay)
+            el = ui.focused_element()
+            print(f"ELEMENT: {el.name}")                                                                            
             if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
                 actions.key(escape_key)
             i += 1

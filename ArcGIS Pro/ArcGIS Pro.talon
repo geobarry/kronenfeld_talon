@@ -29,11 +29,13 @@ apply button:
 focus contents: 
 	key(alt-v c t)
 	user.arc_tab_to_layers()
+#focus layer <user.text>:
+#	key(alt-v c t)
+#	user.arc_tab_to_layers()
+#	user.arc_tab_to_layer(text)
 focus layer <user.text>:
-	key(alt-v c t)
-	user.arc_tab_to_layers()
-	user.arc_tab_to_layer(text)
-
+	user.select_elem("{text}.*")
+	key(down up)
 do test:
 	print("Is this working?")
 
@@ -58,14 +60,19 @@ primary symbology: user.arc_tab_to_primary_symbology()
 symbol:
 	user.arc_tab_to_primary_symbology()
 	key(tab)
-
 split down:
 	user.key_to_elem_by_val("tab","Grid splitter")
 	key(down)
 split up:
 	user.key_to_elem_by_val("tab","Grid splitter")
 	key(up)
-
+button burger: user.tab_to("$","Button_Burger")
+properties tab:
+	user.arc_symbology_tabs()
+	key(right)
+gallery tab:
+	user.arc_symbology_tabs()
+	key(left)
 focus Geoprocessing:
 	key(alt-v c t)
 	sleep(0.25)
@@ -121,9 +128,12 @@ expand level: key(ctrl-plus)
 collapse level: key(ctrl-minus)
 expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
-toggle layer: key(space)
+toggle visibility: key(space)
 definition query: user.slow_key_press("enter pageup:3 down:7 tab")
-toggle (label|labels|labeling): key(menu b)
+toggle (label|labels|labeling): 
+	key(menu)
+	user.key_to("up","Label$")
+	key(enter)
 (label|labels|labeling) properties: key(menu o)
 remove layer: user.slow_key_press("menu r")
 export features: key(alt t v e f)
