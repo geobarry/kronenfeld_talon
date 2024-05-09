@@ -3,9 +3,15 @@ mod = Module()
 mod.tag("excel_powerpoint_shared", desc="keyboard sequences that work in both excel and powerpoint")
 mod.list("power_go_to_target", "places we can go in powerpoint with the f6 button")
 mod.list("power_selection_target", "places we can go in powerpoint with the tab button")
+mod.list("excel_number_format","formats in the dropdown on the main menu")
 
 @mod.action_class
 class Actions:
+    def office_enable_editing():
+        """Enables editing in Microsoft word when it opens up in Protected Mode"""
+        prop_dict = [("name","Enable Editing")]
+        actions.user.invoke_matching_element(prop_dict)
+
     def power_object_menu():
         """opens the menu associated with the current object"""
         actions.key("alt j")
@@ -24,6 +30,12 @@ class Actions:
             elif el.name == "Graphics Tools":
                 actions.key("g")
                 break
+    def excel_set_number_format(excel_format: str):
+        """sets the number format for selected cells"""
+        actions.key("alt-h n alt-down")
+        actions.user.key_to_matching_element("down",[("name",f"{excel_format}.*")],12)
+        actions.key("enter")
+
     def unicode_word(unicode_code: str, font_name: str="Symbol"):
         """insert a unicode character into word"""
         def change_font(new_font):

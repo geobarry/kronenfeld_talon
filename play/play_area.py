@@ -1,4 +1,4 @@
-from talon import app, Context,Module,actions
+from talon import app, Context,Module,actions, ctrl
 mod = Module()
 
 app.notify(body="Hello world")
@@ -20,8 +20,9 @@ class Actions:
         filename = filename.replace(" ","_")
         new_file = filename[:]
         print(f"Type: {type(new_file)}")
-    def test_launch_application(launch_app: str):
-        print(launch_app)
+    def show_cursor():
+        """Displays the cursor"""
+        ctrl.cursor_visible(True)
 
 
 ctx = Context()

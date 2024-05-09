@@ -4,13 +4,7 @@ os: windows
 and app.exe: explorer.exe
 
 -
-open with notepad:
-	key(menu)
-	sleep(0.5)
-	key(w)
-	sleep(0.5)
-	key(n)
-	key(enter)
+open with notepad: user.slow_key_press("menu w n enter",0.5)
 
 # override default because default doesn't work
 go <user.system_path>:
@@ -39,14 +33,7 @@ go to <user.text>:
 
 # sorting
 extract: user.slow_key_press("menu t 2",2.5)
-sort [by name]: 
-	user.key_to_elem_by_val("tab","UIColumnHeader","class_name")
-	user.key_to_elem_by_val("right","Name")
-	key(enter)
-sort by date [modified]: 
-	user.key_to_elem_by_val("tab","UIColumnHeader","class_name")
-	user.key_to_elem_by_val("right","Date modified")
-	key(enter)
+sort by {user.explorer_heading}: user.file_explorer_sort_by(explorer_heading)
 address bar: key(alt-d)
 
 compress video [file]: user.compress_video_file()

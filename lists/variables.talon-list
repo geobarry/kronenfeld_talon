@@ -1,0 +1,463 @@
+list: user.variable_list
+-
+capital a:A
+a color:A_color
+be color:B_color
+be offset:B_offset
+be prime:B_prime
+be prime see prime:B_prime_C_prime
+center:C
+see offset:C_offset
+see prime:C_prime
+see:c
+dee:d
+fulcrum ex:FX
+fulcrum why:FY
+add vectors:add_vectors
+anchor
+angle
+area
+average distance:avgD
+axis:ax
+right axis:ax2
+axises:axes
+axis labels:axis_labels
+axis ticks:axis_ticks
+be:b
+bearing:b
+start bearing:b1
+finish bearing:b2
+beta center:bc
+beta ex difference:bdx
+beta wide difference:bdy
+beta I difference:bdy
+border
+brute force:brute_force
+constant:c
+color alpha:c1
+color beta:c2
+callback
+cardinal direction:card_dir
+cardinal directions:card_dirs
+case number:case_number
+cases
+city
+column:col
+component:comp
+compressed precipitation:comp_precip
+compressed precipitations:comp_precips
+completed
+continent
+cosine theatre:cos_theta
+country
+current:cur
+current change id:curChangeID
+current latitude:curLat
+current longitude:curLon
+current ex:curX
+current why:curY
+current position:cur_pos
+current tags:cur_tags
+curve definition:curve_def
+cutoff precipitations:cutoff_precips
+Centrex:cx
+distance:d
+distance a:da
+dark color:dark_color
+data
+distance be:db
+decimal places:decimal_places
+denominator
+destination:dest
+degrees of freedom:df
+data frame:df
+digits
+display interval I:display_interval_y
+distance per millisecond:dist_per_ms
+distance keys:dkeys
+double
+doubling:doubling_angle
+doubling theta:doubling_theta
+download folder:download_dir
+pi:dpi
+DPI:dpi
+dots per:dpi
+distance representation:dr
+ex difference:dx
+ex difference inflection:dx_inflection
+wide difference:dy
+why difference:dy
+element:el
+elapsed
+elapsed milliseconds:elapsed_ms
+elements
+elevation:elev_ft
+end location:endloc
+error
+distance function:f_distance
+feature:feat
+alpha feature:feat_a
+feature alpha:feat_a
+feature a function:feat_a_func
+beta feature:feat_b
+feature beta:feat_b
+feature be function:feat_b_func
+figure:fig
+filename
+file path:filepath
+files to move:files_to_move
+fill
+fill drought:fill_drought
+fill freezing:fill_freezing
+fil height:fill_ht
+feel stipple:fill_stipple
+fill stipple:fill_stipple
+finish
+finish distance:finish_dist
+finish offset:finish_offset
+first line:first_line
+format:fmt
+folder
+from position:from_pos
+folk rummer:fulcrum
+fulcrum
+horizontal alignment:ha
+high distance:highD
+high time:highT
+horizontal distanceI:hz_dist
+I:i
+eye:i
+eye dee:id
+image path:image_path
+interval distance:intervalD
+interval finish:interval_finish
+interval start:interval_start
+interval ex:interval_x
+interval:interval_x
+interval why:interval_y
+intervals
+ka:k
+kay:k
+key
+key sequence:key_seq
+key strings:key_strings
+kay segment:ks
+label intervals:label_intervals
+label variables:label_variables
+label:label_x
+label I:label_y
+labels above:labels_above
+last position:last_pos
+latitude:lat
+limit
+line generalization:line_gen
+location:loc
+longitude:lon
+low distance:lowD
+low time:lowT
+beta count:m
+maximum milliseconds:max_ms
+max standard deviations:max_st_dev
+max theta:max_theta
+max why:max_y
+mid ex:mid_x
+minimum milliseconds:min_ms
+minimum theta:min_theta
+missing column folder:missing_col_dir
+missing columns folder:missing_col_dir
+modified file:mod_file_name
+month
+month labels:month_labels
+months
+move the distance:move_dist
+move distance:move_dist
+move time:move_time
+move times:move_times
+message:msg
+mu
+an:n
+count:n
+numb missing:n_missing
+name
+near:nearPt
+near components:near_comps
+near location:nearloc
+new files:new_file
+new poly:new_poly
+new polyline:new_poly
+new year temp:new_year_temp
+near location alpha:nl1
+near location beta:nl2
+normal distribution:norm_dist
+numpy:np
+numb intervals:num_intervals
+numpy module:numpy
+origin:orig
+original feature:orig_feat
+original file:orig_file
+original line:orig_line
+operating system name:os_name
+output:out
+output file:output_file
+output folder:output_folder
+output path:output_path
+overwrite output:overwriteOutput
+pa:p
+pe:p
+precipitation:p
+be proportion:pB
+sea proportion:pC
+distance proportion:pD
+time proportion:pT
+paths
+perpendicular alpha:perp_1
+perpendicular beta:perp_2
+pie:pi
+plot finish:plot_finish
+plot height:plot_height
+plot start:plot_start
+plot temperatures:plot_temps
+plot title:plot_title
+plot width:plot_width
+plot I:plot_y
+plot why:plot_y
+plot:plt
+polyline:poly
+poly
+position:pos
+precipitation labels:precip_labels
+precipitation ticks:precip_ticks
+precipitations:precips
+probability density:prob_den
+vertices:pts
+perpendicular distance:q
+queue:q
+result:r
+radius start:r0
+radius:r1
+alpha radius:r1
+red alpha:r1
+beta radius:r2
+red beta:r2
+radiance:rad
+radius center:rc
+relative file path:rel_file_path
+remaining distance:rem_dist
+remaining milliseconds:rem_ms
+required columns:req_cols
+role:row
+scale
+scale vector:scale_vector
+sipe module:scipy
+section:sec
+section a:secA
+section be:secB
+segment:seg
+self
+shape
+sigma
+simplified line:simp_line
+sign theta:sin_theta
+singles
+smooth line:smooth_line
+smooth originals:smooth_orig
+smooth polyline:smooth_polyline
+smooth simplified:smooth_simp
+smooth vertex:smooth_vertex
+square root:sqrt
+start
+start distance:start_dist
+start offset:start_offset
+start position:start_pos
+start location:startloc
+state
+station
+stipple heights:stipple_hts
+temperature:t
+target milliseconds:target_ms
+temperature labels:temp_labels
+temperature months:temp_months
+temperature ticks:temp_ticks
+temperatures:temps
+term
+test:test_str
+seta:theta
+tick parameters:tick_params
+ticks above:ticks_above
+takes below:ticks_below
+ticks below:ticks_below
+times
+to position:to_pos
+total distance:totD
+total time:totT
+total area:tot_area
+total length:tot_len
+transparency
+target:trg
+target position:trg_pos
+target ex:trg_x
+target why:trg_y
+triangle area:triangle_area
+utils Hausdorff:utils_hausdorff
+vertex:v
+first vector:v1
+start vertex:v1
+second vector:v2
+Finnish vertex:v2
+finish vertex:v2
+third vertex:v3
+vertex near location:vNearLoc
+vertical alignment:va
+valid
+vector
+factors:vectors
+vectors
+verbose
+vertical exaggeration:vert_exagg
+vertex changes:vertex_changes
+vertex count:vertex_count
+vertex counts:vertex_counts
+vertical distance:vrt_dist
+window:w
+xs:x
+ex:x
+ex values:xVals
+ex coordinate:x_coord
+ex format:x_fmt
+XS:x_is_pct
+is percentage:x_is_pct
+ex label:x_label
+ex suffix:x_suffix
+ex maximum:xmax
+ex minimum:xmin
+ex tics:xticks
+why:y
+why concavity:y_concavity
+I maximum:ymax
+why maximum:ymax
+I minimum:ymin
+why minimum:ymin
+zoo label:z_label
+max distance:max_dist
+alias
+latitude:lat_str
+latitude label:lat_lbl
+latitude:lat
+current cell:cur_cell
+sleep time:sleep_time
+key sequence:key_seq
+sequential keys:key_seq
+sequence:key_seq
+list name:list_name
+found
+regex
+match
+selection:sel
+max adjustment:max_adj
+numb characters:num_char
+forward
+backward
+raster
+describe:desc
+extent:ext
+mean:meanCellWidth
+mean cell height:meanCellHeight
+left match position:left_match_pos
+match text:match_text
+right match position:right_match_pos
+match position:match_pos
+direction:arrow
+down key:down_key
+clickable points:clickable_points
+location marks:loc_marks
+mark
+child
+name parts:name_parts
+current type:cur_type
+start type:start_type
+phone list:phone_list
+park net:park_net
+neighbor distance:nbr_dist
+alternate distance:alt_dist
+neighbor:nbr
+original element:orig_el
+last element:last_el
+ja:j
+separator:sep
+neighbors:nbrs
+worklist:w
+current country:cur_country
+new folder:new_folder
+characters:chars
+property dictionary:prop_dict
+matches
+property:prop
+exact match:exact_match
+clickable
+object menu:object_menu
+object type:obj_type
+current message:cur_msg
+value:val
+conjunction
+property list:prop_list
+output
+icon names:icon_names
+reverse key:rev_key
+current value:cur_val
+parts
+words:word_list
+double you:w
+text:t
+horizontal position:hz_pos
+vertical position:vt_pos
+rectangle:rect
+crop position:crop_pos
+property value:prop_val
+target value:trg_val
+ex offset:x_offset
+I offset:y_offset
+splitter
+full message:full_msg
+representation:rep
+buffer:bf
+length a:len_A
+last distance:lastD
+effective interval:ei
+buffer percent:bf_pct
+target area:trg_area
+aspect ratio:aspect_ratio
+figure width:fig_w
+figure height:fig_h
+scale factor:scale_factor
+label:lbl
+selection
+marked elements:marked_elements
+container
+pattern
+grandchild
+container
+action
+element highlights:el_highlights
+delay
+milliseconds:ms
+property name:prop_name
+main properties:main_prop
+other properties:other_prop
+as text:as_text
+info
+item string:item_str
+item list:item_list
+item
+column name:col_name
+levels
+level
+panel name:panel_name
+spacing
+previous vertex:prev_v
+local spacing:local_spacing
+numb vertices:nv
+delta ex:dx
+delta why:dy
+segment max:seg_max
+Hausdorff distance:d_Hausdorff
+act now,action

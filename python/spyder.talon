@@ -5,53 +5,23 @@ and app.exe: pythonw.exe
 
 -
 tag(): user.my_python
-tag(): user.line_commands
+# tag(): user.line_commands - these don't work
 
-tab previous:
-	key(ctrl-pageup)
-tab next:
-	key(ctrl-pagedown)
-tab close:
-	key(ctrl-w)
+tab previous: key(ctrl-pageup)
+tab next: key(ctrl-pagedown)
+tab close: key(ctrl-w)
 
-save as:
-	key(ctrl-shift-s)
+save as: key(ctrl-shift-s)
 
 # focus on a particular pane
-focus code:
-	key(alt-v)
-	key(enter)
-	key(enter)
-	key(alt-v)
-	key(enter)
-	key(enter)
-focus project:
-	key(ctrl-shift-p)
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
-    sleep(0.5)
-    mouse_click(0)
-    sleep(0.05)
-    #user.mouse_helper_position_restore()
+focus code: key(alt-v enter:2 alt-v enter:2)
+focus {user.spyder_panel}: user.spyder_focus_panel("{spyder_panel}")
+close {user.spyder_panel}: user.spyder_close_panel("{spyder_panel}")
+open {user.spyder_panel}: user.spyder_open_panel("{spyder_panel}")
 
-focus outline:
-	key(ctrl-shift-o)
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
-    sleep(0.3)
-    mouse_click(0)
-focus (variable|variables):
-	key(ctrl-shift-v)
-focus (interpreter|console):
-	key(ctrl-shift-i)
-focus (plot|plots):
-	key(ctrl-shift-g)
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("spyder_hamburger_right_pane.png", 0, -50, 70)
-    sleep(0.05)
-    mouse_click(0)
-    sleep(0.05)
-    #user.mouse_helper_position_restore()
+
+# auto captures
+capture module names: user.spyder_capture_module_names()
 
 clear (plot|plots):
 	key(ctrl-shift-g)

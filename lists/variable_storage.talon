@@ -1,18 +1,20 @@
 #use this to save a list from storage into a CSV:
-# 	user.write_list("keywords.csv","keyword_list")
+# 	user.write_list("keywords.talon-list","keyword_list")
+
+switch order: user.switch_order()
 
 create person <user.text>:
-	user.save_to_list("persons.csv",text,edit.selected_text())
+	user.save_to_list("persons.talon-list",text,edit.selected_text())
 create variable <user.text>:
-	user.save_to_list("variables.csv",text,edit.selected_text())
+	user.save_to_list("variables.talon-list",text,edit.selected_text())
 create module <user.text>:
-	user.save_to_list("modules.csv",text,edit.selected_text())
+	user.save_to_list("modules.talon-list",text,edit.selected_text())
 create app <user.text>:
-	user.save_to_list("apps.csv",text,edit.selected_text())
+	user.save_to_list("apps.talon-list",text,edit.selected_text())
 create function <user.text>:
-	user.save_to_list("functions.csv",text,edit.selected_text())
+	user.save_to_list("functions.talon-list",text,edit.selected_text())
 create keyword <user.text>:
-	user.save_to_list("keywords.csv",text,edit.selected_text())
+	user.save_to_list("keywords.talon-list",text,edit.selected_text())
 
 customize {user.named_list}: user.customize_named_list(named_list)
 

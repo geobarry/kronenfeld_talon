@@ -1,0 +1,19 @@
+list: user.module_list
+-
+area preserving segment collapse:apsc
+arcpy
+chronos:cron
+douglas poiker:dp
+environment:env
+line generalization:line_gen
+line simplify:line_simplify
+math
+matplotlib
+numpy
+pie plot:pyplot
+si pi:scipy
+stats
+system:sys
+hidden math:__m
+user interface:ui
+

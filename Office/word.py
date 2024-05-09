@@ -5,10 +5,6 @@ mod = Module()
 
 @mod.action_class
 class Actions:
-    def word_enable_editing():
-        """Enables editing in Microsoft word when it opens up in Protected Mode"""
-        prop_dict = [("name","Enable Editing")]
-        actions.user.invoke_matching_element(prop_dict)
     def word_display_markup(display_option: str):
         """Selects what markup to show when tracking changes"""
         actions.key("alt r z t t d")

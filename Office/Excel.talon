@@ -19,6 +19,10 @@ move (tab|sheet|worksheet): key(alt-h o m)
 insert column: key(alt-h i c)
 delete column: key(alt-h d c)
 column width: key(alt-h o w)
+column width <number>:
+	key(alt-h o w)
+	insert("{number}")
+	key(enter)
 auto fit (column|width|column width): key(alt-h o i)
 select column: key(ctrl-space)
 hide column: key(ctrl-0)
@@ -95,7 +99,7 @@ format number <number> decimal places:
 	key(alt-h f m tab up:12 down alt-d)
 	insert(number)
 	key(enter)
-
+number format {user.excel_number_format}: user.excel_set_number_format(excel_number_format)
 # data menu
 sort: key(alt-a s:2)
 	

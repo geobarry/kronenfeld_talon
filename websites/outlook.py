@@ -3,6 +3,7 @@ from talon.windows import ax as ax
 import re
 mod = Module()
 
+mod.list("outlook_folder","folders in which email messages are stored in Microsoft outlook 365")
 
 @mod.action_class
 class Actions:
@@ -20,17 +21,12 @@ class Actions:
                 actions.user.click_matching_element(prop_dict)
                 actions.sleep(0.1)
                 actions.key("down")
-
         else:
             print("IN BOX")
             # first make sure focus is on page content
             actions.key("ctrl-f6")
             # then use random keyboard shortcut to get to messages
             actions.user.slow_key_press("ctrl-y down up",0.25) 
-        #actions.user.select_matching_element(prop_dict)
-#        el = ui.focused_element()
-#        print(el.name)
-
     def outlook_go_to_search():
         """Navigates to the search bar"""
         #prop_dict = [("name","Mail"),("class_name","fui-Button.*")]
@@ -50,14 +46,20 @@ class Actions:
         prop_dict = [("name","Unread.*")]
         actions.user.select_matching_element(prop_dict)
         actions.key("down up")
-    def outlook_go_to_inbox():
-        """Navigates Outlook to open the inbox"""
+    def outlook_go_to_folders():
+        """Navigates to and opens the folders section"""
         prop_list = [("name","^Folders$")]
         actions.user.click_matching_element(prop_list,50)
-        actions.sleep(0.1)
-        actions.user.click_matching_element(prop_list,50)
+        el = actions.user.matching_elements(prop_list)[0]
+        pattern = el.expandcollapse_pattern
+        pattern.expand()
+    def outlook_go_to_folder(folder_name: str):
+        """Navigates Outlook to open the inbox, drafts, junk and other named folders"""
+        actions.user.outlook_go_to_folders()
+        prop_list = [("name",f"^{folder_name}.*")]
         actions.sleep(0.2)
-        actions.key("down enter")
+        actions.user.key_to_matching_element("down",prop_list)
+        actions.key("enter")
     def outlook_click_button(command: str):
         """Runs a command on the message command bar"""
         prop_list = [("name",command),("class_name","ms-Button.*root-.*")]

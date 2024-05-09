@@ -1,0 +1,12 @@
+list: user.excel_number_format
+-
+Number
+Currency
+Accounting
+Short Date
+Long Date
+Time
+Percentage
+Fraction
+Scientific
+Text

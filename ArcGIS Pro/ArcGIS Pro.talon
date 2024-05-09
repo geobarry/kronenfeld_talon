@@ -12,33 +12,21 @@ choose panel: key(ctrl:up)
 	key(alt-v c t ctrl:down tab)
 	user.key_to_elem_by_val("down","{arc_panel}.*")
 	key(ctrl:up)
-catalog {user.arc_catalog_group}:
-	# first navigate to catalog pane
-	key(alt-v c t ctrl:down tab)
-	user.key_to_elem_by_val("down","Catalog.*")
-	key(ctrl:up)	
-	# tab to the tree view element
-	user.tab_to("","TreeView")
+catalog {user.arc_catalog_group}: user.arc_select_catalog_group(arc_catalog_group)
 {user.arc_button} button: 
-	user.tab_to_name(arc_button)
-	key(enter)
-edit button: user.tab_to_name("edit")
+	user.arc_tab_to_button(arc_button)
+	
 apply button:
 	user.tab_to_name("apply")
 	key(enter)
 focus contents: 
 	key(alt-v c t)
 	user.arc_tab_to_layers()
-#focus layer <user.text>:
-#	key(alt-v c t)
-#	user.arc_tab_to_layers()
-#	user.arc_tab_to_layer(text)
 focus layer <user.text>:
-	user.select_elem("{text}.*")
-	key(down up)
-do test:
-	print("Is this working?")
-
+	key(alt-v c t)
+	user.arc_tab_to_layers()
+	user.arc_tab_to_layer(text)
+layer {user.arc_layer_context_item}: user.arc_layer_context_item(arc_layer_context_item)
 list by drawing order:
     user.mouse_helper_position_save()
     user.mouse_helper_move_image_relative("ArcGIS Pro list by drawing order.png", 0)
@@ -122,6 +110,8 @@ refresh: key(f5)
 
 
 # Contents Pane
+next layer: user.arc_contents_nav_to_layer_item("down")
+previous layer: user.arc_contents_nav_to_layer_item("up")
 expand: key(right)
 collapse: key(left)
 expand level: key(ctrl-plus)

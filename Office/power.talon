@@ -6,7 +6,7 @@ and app.exe: POWERPNT.EXE
 tag(): user.excel_powerpoint_shared
 
 # experimental accessibility
-
+exit ribbon: user.power_exit_ribbon()
 toggle notes: user.focus_element_by_name("notes")
 focus workspace: user.click_element_by_name("home")
 mark for selection: 
@@ -88,7 +88,7 @@ apply bullets [filled] round:
 	key(enter)
 apply (default bullets|bullets default): key(alt h u home right enter)
 apply numbers: key(alt h n)
-apply numbers [with] dots:
+apply numbers [with] (dots|periods):
 	key(alt h n home)
 	user.key_to_elem_by_val("right", "1. 2. 3.")
 	key(enter)

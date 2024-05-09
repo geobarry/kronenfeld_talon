@@ -7,6 +7,14 @@ ctx = Context()
 
 @mod.action_class
 class Actions:
+    def power_exit_ribbon():
+        """Exits the ribbon while retaining the selected element"""
+        # Works on the observation that ribbon selection elements
+        # have class names that start with "NetUI"
+        i = 0
+        while actions.user.element_match(ui.focused_element(),[("class_name","NetUI.*")]) and i < 7:
+            actions.key("esc")
+            i += 1
     def power_tab_format_panel_top_row():
         """Presses tab until one of the icons on the top of the format panel is reached"""
         icon_names = ["Effects","Fill & Line","Picture", "Size & Properties"]

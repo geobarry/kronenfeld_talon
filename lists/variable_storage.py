@@ -1,4 +1,4 @@
-from talon import Context, Module, app, storage, actions
+from talon import Context, Module, app, storage, actions, clip
 import csv
 import os
 from pathlib import Path
@@ -40,7 +40,7 @@ class Actions:
         append_to_csv(rel_file_path,D)
     def customize_named_list(list_name: str):
         """edit a user's named list with the default editing application"""
-        rel_file_path = f"{list_name}.csv"
+        rel_file_path = f"{list_name}.talon-list"
         path = BASE_DIR / rel_file_path
         actions.user.edit_text_file(path)
         actions.sleep(0.5)
@@ -128,6 +128,18 @@ class Actions:
         ctx.lists["user.app_list"] = app_list
         storage.set("app_list", app_list)
 
+    def switch_order():
+        """temporary function to switch the order of talon-list lines converted from csv"""
+        actions.edit.select_line()
+        actions.sleep(0.05)
+        t=actions.edit.selected_text()
+        actions.sleep(0.05)
+        t=":".join(reversed(t.strip().strip(":").split(":"))).strip()
+        clip.set_text(t)
+        actions.sleep(0.05)
+        actions.edit.paste()
+        actions.sleep(0.05)
+        actions.key("esc down")
 
 def get_list_from_csv(
     rel_file_path: str, headers: tuple[str, str], default: dict[str, str] = {}
@@ -179,7 +191,7 @@ def get_list_from_csv(
 
 def append_to_csv(rel_file_path: str, rows: dict[str, str]):
     path = BASE_DIR / rel_file_path
-    assert rel_file_path.endswith(".csv")
+    assert rel_file_path.endswith(".talon-list")
 
     with open(str(path)) as file:
         line = None
@@ -192,48 +204,7 @@ def append_to_csv(rel_file_path: str, rows: dict[str, str]):
             writer.writerow([])
         d = OrderedDict(sorted(rows.items(), key=lambda t: t[1].upper()))
         for key, value in d.items():
-            writer.writerow([key] if key == value else [value, key])
+            writer.writerow([key] if key == value else [f"{key}: {value}"])
 
-def on_ready():
-    variable_list = get_list_from_csv(
-        "variables.csv",
-        headers=("Variable", "Spoken Form")
-    )
-    ctx.lists["user.variable_list"] = variable_list
-    # global person_list
-    #person_list = storage.get("person_list", {})
-    person_list = get_list_from_csv(
-        "persons.csv",
-        headers=("Name", "Spoken Form")
-    )
-    ctx.lists["user.person_list"] = person_list
-    # global module_list
-    #module_list = storage.get("module_list", {})
-    module_list = get_list_from_csv(
-        "modules.csv",
-        headers=("Module Name", "Spoken Form")
-    )
-    ctx.lists["user.module_list"] = module_list
-    # global function_list
-#    function_list = storage.get("function_list", {})
-    function_list = get_list_from_csv(
-        "functions.csv",
-        headers=("Function", "Spoken Form")
-    )
-    ctx.lists["user.function_list"] = function_list
-    # global keyword_list
-#    keyword_list = storage.get("keyword_list", {})
-    keyword_list = get_list_from_csv(
-        "keywords.csv",
-        headers=("Keyword", "Spoken Form")
-    )
-    ctx.lists["user.keyword_list"] = keyword_list
-    # global app_list
-#    app_list = storage.get("app_list", {})
-    app_list = get_list_from_csv(
-        "apps.csv",
-        headers=("App Name", "Spoken Form")
-    )
-    ctx.lists["user.app_list"] = app_list
 
-app.register("ready", on_ready)
+#app.register("ready", on_ready)

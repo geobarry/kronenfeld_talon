@@ -23,6 +23,13 @@ launch explorer: key(super-e)
 screen snip: 
 	sleep(5)
 	key(super-shift-s)
+go to Bluetooth:
+	key(super-a)
+	sleep(1)
+	key(right)
+	sleep(0.5)
+	key(tab enter)
+
 toggle Bluetooth: 
 	key(super-a)
 	sleep(1)

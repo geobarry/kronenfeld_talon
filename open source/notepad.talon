@@ -17,6 +17,14 @@ select block: key(ctrl-alt-b)
 tab {user.dynamic_children}: 
 	user.select_element_by_name(dynamic_children)
 
+# expanding and collapsing
+# collapse/expand require configuring in shortcut mapper to avoid win hotkey conflicts
+collapse: key(ctrl-alt-shift-e)
+expand: key(ctrl-alt-e)
+collapse all: key(alt-0)
+expand all: key(alt-shift-0)
+collapse level <number>: key("alt-{number}")
+expand level <number>: key("alt-shift-{number}")
 	
 # commands for talon files
 press key: user.insert_between('key(',')')

@@ -1,20 +1,21 @@
-Keyword,Spoken Form
-elif,elsif
+list: user.keyword_list
+-
+elsif:elif
 else
-False,false
+false:False
 for
 import
 in
 or
-True,true
+true:True
 while
 if
 pass
-try
 except
 while
 and
 break
-def,deaf
+deaf:def
 not
 in
+as

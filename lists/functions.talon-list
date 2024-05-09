@@ -1,0 +1,63 @@
+list: user.function_list
+-
+absolute value:abs
+absolute:abs
+average distance:avg_dist
+climograph
+compressed
+create example plots:create_example_plots
+expanded
+get data:get_data
+get move time:get_move_time
+index location:iloc
+integer:int
+join
+length:len
+list
+ceiling:math.ceil
+cosign:math.cos
+radiance:math.radians
+sign:math.sin
+max
+maximum:max
+minimum:min
+men:min
+move next:move_next
+print
+range
+round
+set I limit:set_ylim
+sordid:sorted
+string:str
+take parameters:tick_params
+time test:time_test
+type
+ex tic:xticks
+ex tick:xticks
+why ticks:yticks
+zigzag
+and zip:zip
+zip
+sleep:actions.sleep
+insert:actions.insert
+key:actions.key
+selected text:actions.edit.selected_text
+evaluate condition:eval_cond
+evaluate:eval
+all
+any
+float
+regex match:re.match
+regex pattern:re.pattern
+has attribute:hasattr
+do crop:do_crop
+plot:plt.plot
+draw rectangle:draw_rect
+element property value:el_prop_val
+key to element by value:user.key_to_elem_by_val
+distance
+hidden ceiling:__m.ceil
+has attribute:hasattr
+focused element:ui.focused_element
+set clipboard:clip.set_text
+clip.set_text:set clipboard text

@@ -1,0 +1,15 @@
+list: user.spyder_panel
+-
+interpreter: IPython Console, I
+variable explorer: Variable Explorer, V
+help: Help, H
+plots: Plots, G
+files: Files, x
+outline: Outline, O
+project: Project, P
+find: Find, F
+history: History, L
+profiler: Profiler, R
+breakpoints: Breakpoints, B
+code analysis: Code Analysis, C
+online help: Online help, D

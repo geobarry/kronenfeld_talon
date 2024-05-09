@@ -1,8 +1,8 @@
 app: Microsoft Word
 
 -
-toggle ribbon: key(ctrl-f1)
-enable editing: user.word_enable_editing()
+
+
 sub <user.letter>:
 	insert(" ")
 	edit.left()
@@ -269,6 +269,10 @@ zoom <number> [percent]:
 	
 # menu review
 track changes: key(alt r z t g f)
+next change: key(alt r h 1)
+previous change: key(alt r f)
+accept change: key(alt r a 2 m)
+reject change: key(alt r j m)
 new comment: key(alt r c 2)
 delete all comments: key(alt r d o)
 accept all changes [and stop tracking]: key(alt r a 2 s)

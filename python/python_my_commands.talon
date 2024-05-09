@@ -55,6 +55,10 @@ variable {user.variable_list}: insert(variable_list)
 {user.variable_list} [is] greater than or equal: insert("{variable_list} >= ")
 {user.variable_list} [is] less than: insert("{variable_list} < ")
 {user.variable_list} [is] less than or equal: insert("{variable_list}  <= ")
+{user.variable_list} plus: insert("{variable_list} + ")
+{user.variable_list} minus: insert("{variable_list} - ")
+{user.variable_list} times: insert("{variable_list} * ")
+{user.variable_list} divided by: insert("{variable_list} / ")
 
 for {user.variable_list} in: insert("for {variable_list} in ")
 for {user.variable_list} in {user.variable_list}: insert("for {variable_list_1} in {variable_list_2}:")
@@ -80,7 +84,7 @@ return {user.variable_list}: insert("return {variable_list}")
 unzip {user.variable_list}: insert("zip(*{user.variable_list})")
 self dot {user.variable_list}: insert("self.{variable_list}")
 
-print variable {user.variable_list}:  insert("print('{user.variable_list}: {{{user.variable_list}}}')")
+print variable {user.variable_list}:  insert("print(f'{user.variable_list}: {{{user.variable_list}}}')")
 string: user.insert_between('"','"')
 raw string: user.insert_between('r"','"')
 formatted string: user.insert_between('f"','"')	
@@ -96,7 +100,7 @@ dictionary: user.insert_between("{","}")
 tuple: user.insert_between("(",")")
 empty list: insert("[]")
 empty dictionary: insert("{}")
-empty tuple: insert("()")
+empty (arguments|tuple): insert("()")
 
 
 # modules
@@ -114,7 +118,7 @@ from {user.module_list} import {user.module_list}:
 	insert(module_list_2)
 module {user.module_list}:
 	insert(module_list)
-module {user.module_list} dot:
+{user.module_list} dot:
 	insert(module_list)
 	insert(".")
 

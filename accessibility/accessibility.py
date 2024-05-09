@@ -1,4 +1,4 @@
-from talon import Module, ui, Context, clip, ctrl, cron, actions, canvas, screen, ui
+from talon import Module, ui, Context, clip, ctrl, cron, actions, canvas, screen
 from talon.windows import ax as ax
 from talon.types import Point2d as Point2d
 from talon.skia import  Paint
@@ -32,9 +32,10 @@ class element_highlights:
         paint.style = paint.Style.STROKE
         paint.stroke_width = 7
         paint.dither = True
-        print(f"attempting to draw {len(self.rectangles)} elements")
-        for rect in self.rectangles:
-            canvas.draw_round_rect(rect,25,25,paint)
+        if len(self.rectangles) > 0:
+            print(f"attempting to draw {len(self.rectangles)} elements")
+            for rect in self.rectangles:
+                canvas.draw_round_rect(rect,25,25,paint)
 
         
     def disable(self):
@@ -58,7 +59,7 @@ class mouse_mover:
             print("milliseconds is it!")
             totT = ms
         else:
-            print("have to calculate MillyMilly")
+            print("have to calculate milliseconds")
             totT = self.get_move_time(totD)
         print(f"totD: {totD}  |  totT: {totT}")
         self.num_intervals = max(1,math.ceil(totT / 30))
@@ -111,8 +112,57 @@ class mouse_mover:
 mod = Module()
 
 mod.list("handle_position","position for grabbing ui elements")    
+mod.list("nav_key","keys commonly used to navigate UI elements")
 
-
+def match(el: ax.Element, prop_list: list, conjunction: str="AND", verbose: bool = False):
+    """Returns true if the element matches all of the properties in the property dictionary"""
+    # prop_list is either a list of form [(property, trg_val),...]
+    #     where trg_val is either a string (for case-insensitive match at start of string)
+    #     or a regex expression
+    # or a list of ["OR",list] or ["AND",list]
+    # or just a string, in which case property will be "name"
+    # Conditions in the top level list are connected with an AND conjunction
+    def eval_cond(prop,trg_val):
+        def value_match(prop_val,trg_val):
+            # if trg_val is a string, convert to a regex pa'ttern
+            if type(trg_val) == str:
+                trg_val = re.compile(trg_val,re.IGNORECASE)
+            # check if property value matches regex pattern
+            if type(trg_val) == re.Pattern:
+                return re.match(trg_val,prop_val) != None
+        if prop in ["AND","OR"]:
+            return match(el,trg_val,prop)
+        elif prop == "clickable":
+            clickable = True
+            try:
+                loc = el.clickable_point
+            except:
+                clickable = False
+            finally:
+                return trg_val == clickable
+        else:
+            prop_val = actions.user.el_prop_val(el, prop, as_text = True)
+            return value_match(prop_val, trg_val)
+        # if something is not properly specified, return true so that other conditions can be evaluated
+        print("ERROR in function actions.user.element_match (accessibility.py)")
+        print(f"No matching property found (looking for property: {prop})")
+        print(prop_list)
+        return True
+    # handle case that property list is a simple string
+    if type(prop_list) == str:
+        prop_list = [("name",prop_list)]
+    # handle case that property list is of the form [conjunction,list]
+    if prop_list[0] in ["AND","OR","and","or","And","Or"]:
+        r = match(el,prop_list[1],prop_list[0])
+    # handle the case that property list is a list of (property, value) tuples
+    elif conjunction == "AND":
+        r =  all([eval_cond(prop,val) for prop,val in prop_list])
+    elif conjunction == "OR":
+        r = any([eval_cond(prop,val) for prop,val in prop_list])
+    # next line as for debugging
+    if verbose:
+        print(f"{r} | element: {el.name[:25]} | rule: {prop_list}")
+    return r
 def get_every_child_alias(el: ax.Element):
     # apparently keeping elements in memory is very expensive,
     # would be better to find some way to do what you want with element properties
@@ -124,8 +174,6 @@ def get_every_child_alias(el: ax.Element):
             if len(texts) > 0:
                 yield " ".join(texts)
             yield from get_every_child_alias(child)
-
-
 def get_every_child(el: ax.Element):
     # apparently keeping elements in memory is very expensive,
     # would be better to find some way to do what you want with element properties
@@ -137,174 +185,29 @@ def get_every_child(el: ax.Element):
                 yield child
 
             yield from get_every_child(child)
-
 def all_element_information(el):
     msg = f'\n\n{el.name}: ' 
     for p,v in vars(el).items():
         msg += f'\n{type(v)}'
 
     return msg
-
-
-def element_match(el: ax.Element, prop_list, conjunction="AND"):
-    """Returns true if the element matches all of the properties in the property dictionary"""
-    # prop_list is either a list of form [(property, trg_val),...]
-    #     where trg_val is either a string (for case-insensitive match at start of string)
-    #     or a regex expression
-    # or a list of ["OR",list] or ["AND",list]
-    # or just a string, in which case property will be "name"
-    # Conditions in the top level list are connected with an AND conjunction
-    print(f"{conjunction}: {prop_list}")
-    def eval_cond(prop,trg_val):
-        def value_match(prop_val,trg_val):
-            if el.name == "All results" or el.name == "Top results":
-                print(f"prop_val: {prop_val}, trg_val: {trg_val}")
-            # if trg_val is a string, convert to a regex pa'ttern
-            if type(trg_val) == str:
-                trg_val = re.compile(trg_val,re.IGNORECASE)
-            # check if property value matches regex pattern
-            if type(trg_val) == re.Pattern:
-                return re.match(trg_val,prop_val) != None
-        if prop in ["AND","OR"]:
-            return element_match(el,trg_val,prop)
-        if prop.lower() == "name":
-            return value_match(el.name,trg_val)
-        if prop == "class_name":
-            return value_match(el.class_name,trg_val)
-        if prop == "help_text":
-            return value_match(el.help_text,trg_val)
-        if prop == "clickable":
-            clickable = True
-            try:
-                loc = el.clickable_point
-            except:
-                clickable = False
-            finally:
-                return trg_val == clickable
-        # if something is not properly specified, return true so that other conditions can be evaluated
-        print("ERROR in function element_match (accessibility.py)")
-        print(f"No matching property found (looking for property: {prop})")
-        print(prop_list)
-        return True
-    # handle case that property list is a simple string
-    if type(prop_list) == str:
-        prop_list = [("name",prop_list)]
-    # handle case that property list is of the form [conjunction,list]
-    if prop_list[0] in ["AND","OR","and","or","And","Or"]:
-        r = element_match(el,prop_list[1],prop_list[0])
-    # handle the case that property list is a list of (property, value) tuples
-    elif conjunction == "AND":
-        r =  all([eval_cond(prop,val) for prop,val in prop_list])
-    elif conjunction == "OR":
-        r = any([eval_cond(prop,val) for prop,val in prop_list])
-    #print(f"result: {r}")
-    return r
-    
-def select_element(el):
-    # attempts to select input element
-    if el:
-        try:
-            el.selectionitem_pattern.select()
-        except Exception as error:
-            print(f"Unable to select UI element with SelectionItemPattern")
-            print(error)
-            try:
-                el.legacyiaccessible_pattern.select(0)
-                print(f"Selected with legacy")
-            except Exception as error:
-                print(f"Unable to select UI element with LegacyIAccessiblePattern")        
-                print(error)
-
-def el_prop_val(el: ax.Element, prop_name, as_text = False):
-    """Returns the property value or None if the property value cannot be retrieved"""
-    try:
-        if prop_name.lower() == "name":
-            return el.name
-        elif prop_name.lower() == "class_name":
-            return el.class_name
-        elif prop_name.lower() == "help_text":
-            return el.help_text
-        elif prop_name.lower() == "clickable_.":
-            if as_text:
-                loc = el.clickable_point
-                return f"x: {loc.x}   y: {loc.y}"
-            else:
-                return el.clickable_point
-        elif prop_name.lower() == "pid":
-            return el.pid
-        elif prop_name.lower() == "access_key":
-            return el.access_key
-        elif prop_name.lower() == "has_keyboard_focus":
-            return el.has_keyboard_focus
-        elif prop_name.lower() == "is_keyboard_focusable":
-            return el.is_keyboard_focusable
-        elif prop_name == "is_enabled":
-            return el.is_enabled
-        elif prop_name.lower() == "automation_id":
-            return el.automation_id
-        elif prop_name.lower() == "children":
-            if as_text:
-                return str(len(el.children))
-            else:
-                return el.children
-        elif prop_name.lower() == "is_control_element":
-            return el.is_control_element
-        elif prop_name.lower() == "is_content_element":
-            return el.is_content_element
-        elif prop_name.lower() == "item_type":
-            return el.item_type
-        elif prop_name.lower() == "item_status":
-            return el.item_status
-        elif prop_name.lower() == "patterns":
-            return el.patterns
-        elif prop_name.lower() == "described_by":
-            return el.is_described_by
-        elif prop_name.lower() == "flows_to":
-            return el.flows_to
-        elif prop_name.lower() == "provider_description":
-            return el.provider_description
-        elif prop_name.lower() == "customnavigation_pattern":
-            return el.customnavigation_pattern
-        elif prop_name.lower() == "window_pattern":
-            return el.window_pattern
-        elif prop_name.lower() == "itemcontainer_pattern":
-            return el.itemcontainer_pattern
-        elif prop_name.lower() == "selection_pattern":
-            return el.selection_pattern
-        elif prop_name.lower() == "selection_pattern2":
-            return el.selection_pattern2
-        elif prop_name.lower() == "toggle_pattern":
-            return el.toggle_pattern
-        elif prop_name.lower() == "rect":
-            return el.rect
-        elif prop_name.lower() == "rect.x":
-            return el.rect.x
-        elif prop_name.lower() == "rect.y":
-            return el.rect.y
-        elif prop_name.lower() == "rect.width":
-            return el.rect.width
-        elif prop_name.lower() == "rect.height":
-            return el.rect.height
-
-    except:
-        if as_text:
-            return ''
-        else:
-            return  None
-
 def element_information(el: ax.Element, headers = False, verbose = False):
     msg = ""
     prop_list = ["name","class_name",
-                    "help_text","clickable_point",
+                    "help_text","automation_id",
+                    "children","patterns",
+                    "clickable_point",
                     "rect.x","rect.y",
-                    "rect.width","rect.height","patterns"
+                    "rect.width","rect.height"
                 ]
     other_prop = [
                 "pid","access_key","has_keyboard_focus",
-                "is_keyboard_focusable","is_enabled","automation_id",
+                "is_keyboard_focusable","is_enabled",
                 "children","is_control_element","is_content_element",
                 "item_type","item_status","described_by",
-                "flows_to","provider_description"
+                "flows_to","provider_description",
+                "value","value.is_read_only",
+                "legacy.value","legacy.selection"
             ]
     if verbose:
         prop_list += other_prop
@@ -313,7 +216,18 @@ def element_information(el: ax.Element, headers = False, verbose = False):
         return "\t".join(prop_list)
     else:
         # Get property values
-        return  "\t".join([str(el_prop_val(el,prop,as_text = True)) for prop in prop_list])
+        return  "\t".join([str(actions.user.el_prop_val(el,prop,as_text = True)) for prop in prop_list])
+def family_information(el: ax.Element, levels = 1):
+    msg = element_information(el, headers = True) + "\tlevel"
+    level = 0
+    w = [(el,level)]
+    while len(w) > 0:
+        el,level = w.pop()
+        msg += "\n" + element_information(el) + f"\t{level}"
+        if level < levels:
+            for child in actions.user.el_prop_val(el,"children"):
+                w.append((child,level))        
+    return msg
 
 ctx = Context()
 
@@ -339,19 +253,92 @@ def dynamic_children(_) -> dict[str,str]:
                 out[" ".join(singles[:2])] = str(el.name)
     return out
 
-
 @mod.action_class
 class Actions:
-
+    def el_prop_val(el: ax.Element, prop_name: str, as_text: bool = False):
+        """Returns the property value or None if the property value cannot be retrieved"""
+        try:
+            if prop_name.lower() == "name":
+                return el.name
+            elif prop_name.lower() == "class_name":
+                return el.class_name
+            elif prop_name.lower() == "help_text":
+                return el.help_text
+            elif prop_name.lower() == "clickable_.":
+                if as_text:
+                    loc = el.clickable_point
+                    return f"x: {loc.x}   y: {loc.y}"
+                else:
+                    return el.clickable_point
+            elif prop_name.lower() == "pid":
+                return el.pid
+            elif prop_name.lower() == "access_key":
+                return el.access_key
+            elif prop_name.lower() == "has_keyboard_focus":
+                return el.has_keyboard_focus
+            elif prop_name.lower() == "is_keyboard_focusable":
+                return el.is_keyboard_focusable
+            elif prop_name == "is_enabled":
+                return el.is_enabled
+            elif prop_name.lower() == "automation_id":
+                return el.automation_id
+            elif prop_name.lower() == "children":
+                if as_text:
+                    return str(len(el.children))
+                else:
+                    return el.children
+            elif prop_name.lower() == "is_control_element":
+                return el.is_control_element
+            elif prop_name.lower() == "is_content_element":
+                return el.is_content_element
+            elif prop_name.lower() == "item_type":
+                return el.item_type
+            elif prop_name.lower() == "item_status":
+                return el.item_status
+            elif prop_name.lower() == "patterns":
+                return el.patterns
+            elif prop_name.lower() == "described_by":
+                return el.is_described_by
+            elif prop_name.lower() == "flows_to":
+                return el.flows_to
+            elif prop_name.lower() == "provider_description":
+                return el.provider_description
+            elif prop_name.lower() == "children":
+                return el.children
+            elif prop_name.lower() == "rect":
+                return el.rect
+            elif prop_name.lower() == "rect.x":
+                return el.rect.x
+            elif prop_name.lower() == "rect.y":
+                return el.rect.y
+            elif prop_name.lower() == "rect.width":
+                return el.rect.width
+            elif prop_name.lower() == "rect.height":
+                return el.rect.height
+            elif prop_name.lower() == "value":
+                return el.value_pattern.value
+            elif prop_name.lower() == "value.is_read_only":
+                return el.value_pattern.is_read_only
+            elif prop_name.lower() == "legacy.value":
+                return el.legacyiaccessible_pattern.value
+            elif prop_name.lower() == "legacy.selection":
+                return el.legacyiaccessible_pattern.selection
+        except:
+            if as_text:
+                return ''
+            else:
+                return  None
+    def element_match(el: ax.Element, prop_list: list, conjunction: str="AND", verbose: bool = False):
+        """Returns true if the element matches all of the properties in the property dictionary"""
+        return match(el,prop_list,conjunction,verbose)
     def element_exists(prop_list: list):
         """Returns true if an element where the given properties exists"""
         root = ui.active_window().element
         elements = list(get_every_child(root))
         for el in elements:
-            if element_match(el,prop_list):            
+            if actions.user.element_match(el,prop_list):            
                 return True
         return False
-
     def matching_elements(prop_list: list):
         """Returns a list of all UI elements that match the property list"""
         r = []
@@ -363,62 +350,32 @@ class Actions:
             if el.name == "global.talon":
                 print("Houston, we have a match!")
                 print(f"prop_list: {prop_list}")
-                x = element_match(el,prop_list)
-            if element_match(el,prop_list):
+                x = actions.user.element_match(el,prop_list)
+            if actions.user.element_match(el,prop_list):
                 r.append(el)
         print(f"function matching_elements: {len(r)} matching elements found")
         return r  
-
-    def highlight_elements(elements: list):
-        """Adds all ui elements in the list to the list of elements to be highlighted"""
-        for el in elements:
+    def invoke_element(el: ax.Element):
+        """attempts to invoke element"""
+        try:
+            pattern = el.invoke_pattern
+            pattern.invoke()
+        except Exception as error:
+            print(f"Error in invoke_element: {error}")
+    def select_element(el: ax.Element):
+        """ attempts to select input element"""
+        if el:
             try:
-                rect = el.rect
-                el_highlights.add_element(rect)
-            except:
-                pass
-
-    def clear_highlights():
-        """Removes all ui elements from the highlight list"""
-        el_highlights.clear_elements()
-        
-    def element_list():
-        """returns_a_list_of_all_elements"""
-        root = ui.active_window().element
-        return list(get_every_child(root))
-
-    def element_property_value(property_name: str, sleep_time: float=0.02):
-        """returns the value of the given property for the currently focused element"""
-        actions.sleep(sleep_time)
-        el = ui.focused_element()
-        if property_name == "name":
-            return el.name
-        if property_name == "class_name":
-            return el.class_name
-        if property_name == "el.help_text":
-            return el.help_text
-
-    def peek_next_property_value(property_name: str, key: str="tab", rev_key: str=""):
-        """returns the value of the property of the next element and then returns the previous element"""
-        reverse_keys = {
-            "tab": "shift-tab",
-            "right": "left",
-            "down": "up",
-            "f6": "shift-f6"
-        }
-        if rev_key == "":
-            rev_key = reverse_keys[key]
-        actions.key(key)
-        val = actions.user.element_property_value(property_name)
-        actions.key(rev_key)
-        return val
-        
-    def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name"):
-        """Toggles current element until the next elements value meets the target value"""
-        cur_val = actions.user.peek_next_property_value(property_name,advance_key)
-        if cur_val != trg:
-            actions.key(toggle_key)
-
+                el.selectionitem_pattern.select()
+            except Exception as error:
+                print(f"Unable to select UI element with SelectionItemPattern")
+                print(error)
+                try:
+                    el.legacyiaccessible_pattern.select(0)
+                    print(f"Selected with legacy")
+                except Exception as error:
+                    print(f"Unable to select UI element with LegacyIAccessiblePattern")        
+                    print(error)
     def click_element(el: ax.Element, down_key: str='', ms: float = None):
         """clicks on the given element, with the given optional key pressed"""
         print("Attempting to run function click_element")
@@ -443,30 +400,59 @@ class Actions:
                 pass
         if down_key != "":
             actions.key(f"{down_key}:up")
-
-
+    def highlight_elements(elements: list):
+        """Adds all ui elements in the list to the list of elements to be highlighted"""
+        for el in elements:
+            try:
+                rect = el.rect
+                el_highlights.add_element(rect)
+            except:
+                pass
+    def clear_highlights():
+        """Removes all ui elements from the highlight list"""
+        el_highlights.clear_elements()
+    def element_list():
+        """returns_a_list_of_all_elements"""
+        root = ui.active_window().element
+        return list(get_every_child(root))
+    def element_property_value(property_name: str, sleep_time: float=0.02):
+        """returns the value of the given property for the currently focused element"""
+        actions.sleep(sleep_time)
+        el = ui.focused_element()
+        if property_name == "name":
+            return el.name
+        if property_name == "class_name":
+            return el.class_name
+        if property_name == "el.help_text":
+            return el.help_text
+    def peek_next_property_value(property_name: str, key: str="tab", rev_key: str=""):
+        """returns the value of the property of the next element and then returns the previous element"""
+        reverse_keys = {
+            "tab": "shift-tab",
+            "right": "left",
+            "down": "up",
+            "f6": "shift-f6"
+        }
+        if rev_key == "":
+            rev_key = reverse_keys[key]
+        actions.key(key)
+        val = actions.user.element_property_value(property_name)
+        actions.key(rev_key)
+        return val
+    def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name"):
+        """Toggles current element until the next elements value meets the target value"""
+        cur_val = actions.user.peek_next_property_value(property_name,advance_key)
+        if cur_val != trg:
+            actions.key(toggle_key)
     def click_focused(down_key: str=""):
         """ clicks on the currently focused element with the down key pressed"""
         actions.user.click_element(ui.focused_element(),down_key)
-#        if down_key != "":
-#            actions.key(f"{down_key}:down")
-#        el = ui.focused_element()
-#        try:
-#            loc = el.clickable_point
-#            mouse_obj = mouse_mover(loc,callback = ctrl.mouse_click)
-#        except:
-#            pass
-#        if down_key != "":
-#            actions.key(f"{down_key}:up")
-
-
     def mark_focused_element():
         """records the clickable point of the currently focused item"""
         global marked_elements
         el = ui.focused_element()
         print(f"Marking for selection: {element_information(el)}")
         marked_elements.append(el)
-        
     def select_marked():
         """clicks on recorded marks and then empties list"""
         global marked_elements
@@ -488,8 +474,6 @@ class Actions:
                 print(f"Error adding to selection in select_marked: {error}")        
         # reset list of marked elements
         marked_elements = []
-
-
     def click_element_by_name(name: str, exact_match: bool = False):
         """Moves mouse to and clicks on element"""
         if not exact_match:
@@ -498,13 +482,10 @@ class Actions:
         elements = actions.user.matching_elements(prop_list)
         if len(elements) > 0:
             actions.user.click_element(elements[0])
-    
-
     def highlight_elements_by_name(name: str):
         """Highlights all the elements matching the given name"""
         elements = actions.user.matching_elements(name)
         actions.user.highlight_elements(elements)
-    
     def highlight_focused():
         """Highlights the focused element"""
         el = ui.focused_element()
@@ -514,29 +495,25 @@ class Actions:
             el_highlights.add_element(rect)
         except:
             print('no rectangle found')
-        
     def select_elem(name: str, class_name: str=""):
         """Shortcut to selecting an element based on its name and classname"""
         prop_list = [("name",name),("class_name",class_name)]
         elements = actions.user.matching_elements(prop_list)
         if len(elements)  >= 1:
-            select_element(elements[0])
-        
+            actions.user.select_element(elements[0])
     def select_element_by_name(name: str):
         """Selects the first UI with a matching element name. Input is interpreted as a regex pattern string"""
         # get list of elements
         print(name)
         elements = actions.user.matching_elements([("name",name)])
         if len(elements)  >= 1:
-            select_element(elements[0])
-            
+            actions.user.select_element(elements[0])
     def select_matching_element(prop_list: list):
         """Attempts to select the first UI element that matches the property list"""
         # get list of elements
         elements = actions.user.matching_elements(prop_list)
         if len(elements)  >= 1:
-            select_element(elements[0])
-
+            actions.user.select_element(elements[0])
     def invoke_matching_element(prop_list: list):
         """Attempts to invoke the UI element that matches the property list"""
         # get list of elements
@@ -544,15 +521,12 @@ class Actions:
         if len(elements) == 1:
             el = elements[0]
             el.invoke_pattern.invoke()
-                
     def toggle_matching_element(prop_list: list):
         """Attempts to invoke the UI element that matches the property list"""
         elements = actions.user.matching_elements(prop_list)
         if len(elements) == 1:
             el = elements[0]
             el.invoke_pattern.invoke()
-        
-
     def click_matching_element(prop_list: list, ms: int = None):
         """clicks on the element that matches property dictionary"""
         # get list of elements
@@ -573,41 +547,36 @@ class Actions:
                     mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
                 except:
                     pass
-
-    def key_to_matching_element(key: str, prop_list: list, limit: int=99, escape_key: str=None, delay: float = 0.03):
+    def key_to_matching_element(key: str, prop_list: list, limit: int=19, escape_key: str=None, delay: float = 0.03, verbose: bool = False):
         """press given key until the first matching element is reached"""
         i = 1
-        last_el = element_information(ui.focused_element(),verbose = True)
+        last_el = ui.focused_element()
         el = ui.focused_element()
         msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
-        print(f"ELEMENT: {el.name}")
-        while (not element_match(ui.focused_element(),prop_list)) and (i < limit):            
+        if verbose:
+            print(f"ELEMENT: {el.name}")
+        while (not actions.user.element_match(el,prop_list,verbose = verbose)) and (i < limit):            
             actions.key(key)
             if delay > 0:
                 actions.sleep(delay)
             el = ui.focused_element()
-            print(f"ELEMENT: {el.name}")                                                                            
-            if (last_el == element_information(ui.focused_element(),verbose = True)) and (escape_key != None):
+            if verbose:
+                print(f"ELEMENT: {el.name}")                                                                            
+            if (last_el == ui.focused_element()) and (escape_key != None):
                 actions.key(escape_key)
             i += 1
-
     def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=99, escape_key: str=None, delay: float = 0.03):
         """press key until element with exact value for one property is reached"""
         prop_list = [(prop,val)]
         actions.user.key_to_matching_element(key,prop_list,limit,escape_key,delay)
-
     def key_to(key: str, name: str, class_name: str="",limit: int=99, escape_key: str=None, delay: float = 0.025):
         """short function name to handle common case of using a key to navigate to an element by its name and optional classname"""
         prop_list = [("name",name),("class_name",class_name)]
         actions.user.key_to_matching_element(key,prop_list,limit,escape_key,delay)
-
-
     def tab_to(name: str, class_name: str="",limit: int=99, escape_key: str=None, delay: float = 0.025):
         """short function name to handle most common case of using tab key to navigate to an element by its name and optional classname"""
         prop_list = [("name",name),("class_name",class_name)]
         actions.user.key_to_matching_element("tab",prop_list,limit,escape_key,delay)
-        
-
     def move_to_element(name: str):
         """Moves mouse to element"""
         root = ui.active_window().element
@@ -620,7 +589,6 @@ class Actions:
                 break
         else:
             print("Element not found")
-
     def move_mouse_to_focused_element(pos: str="center", x_offset: int=0, y_offset: int=0):
         """moves mouse to left,right or center and top,bottom or center of currently focused element"""
         el = ui.focused_element()
@@ -643,9 +611,6 @@ class Actions:
             ctrl.mouse_move(x,y)
         except:
             pass
-        
-
-
     def copy_elements_accessible_by_key(key: str, limit: int=95):
         """Gets information on elements accessible by pressing the input key"""        
         elements = [element_information(ui.focused_element(),headers = True)]
@@ -662,32 +627,21 @@ class Actions:
             full_msg = element_information(ui.focused_element(), verbose = True)    
             i += 1
         clip.set_text("\n".join(elements))
-                
-
-    def copy_near_elements_to_clipboard(max_dist: int=500):
-        """Copies elements with valid clickable point within given number of pixels"""
+    def copy_mouse_elements_to_clipboard():
+        """Copies elements with rectangle containing current mouse position"""
         pos = ctrl.mouse_pos()
         root = ui.active_window().element
         elements = list(get_every_child(root))
-        id = 0
         n = 0
-        msg = ""        
+        msg = element_information(elements[0],headers = True)
         for el in elements:
-            id += 1
-            
-            try:
-                loc = el.clickable_point
-                d = abs(loc.x-pos[0]) + abs(loc.y-pos[1])                
-                if d < max_dist:
-                    msg += element_information(el) + "\n"
-                    n += 1
-            except:
-                pass
+            r = actions.user.el_prop_val(el,"rect")
+            if r:
+                if (r.x < pos[0] < r.x + r.width) and (r.y < pos[1] < r.y + r.height):
+                    msg += "\n" + element_information(el)
+                    n += 1                
         msg += f"\n\n {n} elements found"
         clip.set_text(msg)
-
-        
-
     def copy_accessible_elements_to_clipboard():
         """Copies focusable elements to the clipboard"""
         root = ui.active_window().element
@@ -700,15 +654,17 @@ class Actions:
             msg += f"\n{id}: {el.name}"
 #            msg += f"\n{id}: {label} enabled: {el.is_enabled} loc: {el.clickable_point}"
         clip.set_text(msg)
-        
     def copy_focused_element_to_clipboard():
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
-        match = element_match(ui.focused_element(),[("class_name","TreeView")])
-        msg = element_information(el, headers = True)
+        msg = element_information(el, headers = True, verbose = True)
         msg += "\n" + element_information(el, verbose = True)
         clip.set_text(msg)
-        
+    def copy_focused_element_with_children(levels: int = 1):
+        """Copies information about currently focused element and children to the clipboard"""
+        el = ui.focused_element()
+        msg = family_information(el,levels)
+        clip.set_text(msg)
     def copy_enabled_element_to_clipboard():
         """Searches for the first enabled element and copies is information to the clipboard"""
         root = ui.active_window().element
@@ -718,7 +674,6 @@ class Actions:
             if element.is_enabled:
                 msg += element_information(element) +"\n"
         clip.set_text(msg)
-
     def copy_selected_elements_to_clipboard():
         """Copies selected element information to the clipboard"""
         root = ui.active_window().element
@@ -732,8 +687,6 @@ class Actions:
             except:
                 pass
         clip.set_text(msg)
-        
-        
     def copy_clickable_element_to_clipboard():
         """Searches for the first enabled element and copies is information to the clipboard"""
         root = ui.active_window().element
@@ -746,7 +699,6 @@ class Actions:
             except:
                 pass 
         clip.set_text(msg)
-        
     def copy_keyboard_element_to_clipboard():
         """Searches for elements that have keyboard focus and are clickable
         and copies information to clipboard"""
@@ -761,7 +713,6 @@ class Actions:
                 except:
                     pass 
         clip.set_text(msg)
-
     def test_copy_all():
         """Attempts to retrieve all properties from all elements"""
         root = ui.active_window().element
@@ -772,14 +723,6 @@ class Actions:
             info = re.sub(r"\r?\n","<<new line>>",element_information(el))
             msg += "\n" + info
         clip.set_text(msg)
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         

@@ -3,6 +3,8 @@ import subprocess
 import re
 mod = Module()
 
+mod.list("explorer_heading","headings that can be sorted by")
+
 time_last_pop = 0
 num_recent_pops = 0
 
@@ -13,7 +15,6 @@ class Actions:
         actions.user.file_explorer_copy_folder()
         process = subprocess.Popen(["cmd.exe"], cwd=clip.text())
         process.returncode = 0
-
     def replace_with_underscores():
         """Replaces any odd characters in currently selected file name with underscore"""
         actions.key("f2 ctrl-a")
@@ -36,7 +37,6 @@ class Actions:
         actions.key("esc")
         actions.sleep(0.2)
         actions.key("tab:5")
-
     def file_explorer_copy_full_path():
         """Copies the full path of the currently selected file to the clipboard"""
         actions.key("f2 ctrl-a")
@@ -49,5 +49,12 @@ class Actions:
         actions.key("esc")
         actions.sleep(0.2)
         actions.key("tab:5")
+    def file_explorer_sort_by(col_name: str):
+        """sort files and folders by column"""
+        print(col_name)
+        actions.user.key_to_matching_element("tab",[("class_name","UIColumnHeader")])
+        actions.user.key_to_matching_element("right",[("name",f"{col_name}.*")],limit = 15)
+        actions.key("enter")
+
 
 ctx = Context()
