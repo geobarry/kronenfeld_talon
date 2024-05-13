@@ -1,6 +1,7 @@
 list: user.app_list
 -
-note:notepad++
+notepad: notepad++  
+green frog:notepad++
 peace
 git command:Git cmd
 quantum:qgis
@@ -8,4 +9,4 @@ file locator:filelocator
 file zilla:filezilla
 arcgis:ArcGIS Pro
 arcgis pro:ArcGIS Pro
-ring among the palestinian people than anybody: 
+

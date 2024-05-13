@@ -25,6 +25,10 @@ collapse all: key(alt-0)
 expand all: key(alt-shift-0)
 collapse level <number>: key("alt-{number}")
 expand level <number>: key("alt-shift-{number}")
+
+# indentation
+(dedent|promote): user.notepad_promote()
+(indent|demote): user.notepad_demote()
 	
 # commands for talon files
 press key: user.insert_between('key(',')')

@@ -21,6 +21,11 @@ class element_highlights:
         print(f"There are now {len(self.rectangles)} elements in highlight list")
         self.canvas.move(0,0) # this forces canvas redraw
 
+    def remove_element(self,rect):
+        self.rectangles.remove(rect)
+        print(f"There are now {len(self.rectangles)} elements in highlight list")
+        self.canvas.move(0,0) # this forces canvas redraw
+        
     def clear_elements(self):
         self.rectangles = []
         self.canvas.move(0,0) # this forces canvas redraw
@@ -185,45 +190,13 @@ def get_every_child(el: ax.Element):
                 yield child
 
             yield from get_every_child(child)
-def all_element_information(el):
-    msg = f'\n\n{el.name}: ' 
-    for p,v in vars(el).items():
-        msg += f'\n{type(v)}'
-
-    return msg
-def element_information(el: ax.Element, headers = False, verbose = False):
-    msg = ""
-    prop_list = ["name","class_name",
-                    "help_text","automation_id",
-                    "children","patterns",
-                    "clickable_point",
-                    "rect.x","rect.y",
-                    "rect.width","rect.height"
-                ]
-    other_prop = [
-                "pid","access_key","has_keyboard_focus",
-                "is_keyboard_focusable","is_enabled",
-                "children","is_control_element","is_content_element",
-                "item_type","item_status","described_by",
-                "flows_to","provider_description",
-                "value","value.is_read_only",
-                "legacy.value","legacy.selection"
-            ]
-    if verbose:
-        prop_list += other_prop
-    # Construct headers
-    if headers:
-        return "\t".join(prop_list)
-    else:
-        # Get property values
-        return  "\t".join([str(actions.user.el_prop_val(el,prop,as_text = True)) for prop in prop_list])
 def family_information(el: ax.Element, levels = 1):
-    msg = element_information(el, headers = True) + "\tlevel"
+    msg = actions.user.element_information(el, headers = True) + "\tlevel"
     level = 0
     w = [(el,level)]
     while len(w) > 0:
         el,level = w.pop()
-        msg += "\n" + element_information(el) + f"\t{level}"
+        msg += "\n" + actions.user.element_information(el) + f"\t{level}"
         if level < levels:
             for child in actions.user.el_prop_val(el,"children"):
                 w.append((child,level))        
@@ -264,6 +237,20 @@ class Actions:
                 return el.class_name
             elif prop_name.lower() == "help_text":
                 return el.help_text
+            elif prop_name.lower() == "culture":
+                return el.culture
+            elif prop_name.lower() == "is_control_element":
+                return el.is_control_element
+            elif prop_name.lower() == "is_content_element":
+                return el.is_content_element
+            elif prop_name.lower() == "is_password":
+                return el.is_password
+            elif prop_name.lower() == "window_handle":
+                return el.window_handle
+            elif prop_name.lower() == "item_type":
+                return el.item_type
+            elif prop_name.lower() == "is_offscreen":
+                return el.is_offscreen
             elif prop_name.lower() == "clickable_.":
                 if as_text:
                     loc = el.clickable_point
@@ -287,12 +274,6 @@ class Actions:
                     return str(len(el.children))
                 else:
                     return el.children
-            elif prop_name.lower() == "is_control_element":
-                return el.is_control_element
-            elif prop_name.lower() == "is_content_element":
-                return el.is_content_element
-            elif prop_name.lower() == "item_type":
-                return el.item_type
             elif prop_name.lower() == "item_status":
                 return el.item_status
             elif prop_name.lower() == "patterns":
@@ -328,6 +309,36 @@ class Actions:
                 return ''
             else:
                 return  None
+    def element_information(el: ax.Element, headers: str = False, verbose: str = False):
+        """Returns information separated by tabs that can be pasted into a spreadsheet"""
+        msg = ""
+        prop_list = ["name","class_name",
+                        "help_text","automation_id",
+                        "value",
+                        "children","patterns",
+                        "is_offscreen",
+                        "clickable_point",
+                        "rect.x","rect.y",
+                        "rect.width","rect.height"
+                    ]
+        other_prop = [
+                    "pid","access_key","has_keyboard_focus",
+                    "is_keyboard_focusable","is_enabled",
+                    "children","is_control_element","is_content_element",
+                    "item_type","item_status","described_by",
+                    "flows_to","provider_description",
+                    "value.is_read_only",
+                    "legacy.value","legacy.selection"
+                ]
+        if verbose:
+            prop_list += other_prop
+        # Construct headers
+        if headers:
+            return "\t".join(prop_list)
+        else:
+            # Get property values
+            return  "\t".join([str(actions.user.el_prop_val(el,prop,as_text = True)) for prop in prop_list])
+
     def element_match(el: ax.Element, prop_list: list, conjunction: str="AND", verbose: bool = False):
         """Returns true if the element matches all of the properties in the property dictionary"""
         return match(el,prop_list,conjunction,verbose)
@@ -339,6 +350,13 @@ class Actions:
             if actions.user.element_match(el,prop_list):            
                 return True
         return False
+    def matching_element(prop_list: list, item_number: int = 0):
+        """returns the zero based nth item matching the property list, or None"""
+        matches = actions.user.matching_elements(prop_list)
+        if len(matches) > item_number:
+            return matches[item_number]
+        else:
+            return None
     def matching_elements(prop_list: list):
         """Returns a list of all UI elements that match the property list"""
         r = []
@@ -407,7 +425,23 @@ class Actions:
                 rect = el.rect
                 el_highlights.add_element(rect)
             except:
-                pass
+                print('Unable to highlight element: no rectangle found')
+    def highlight_element(el: ax.Element):
+        """Highlights a single element"""
+        actions.user.highlight_elements([el])
+    def remove_highlight(el: ax.Element):
+        """Remove element from highlights"""
+        try:
+            el_highlights.remove_element(el.rect)
+        except:
+            print("Unable to remove highlight: Element rectangle does not match any current highlight")
+    def highlight_elements_by_name(name: str):
+        """Highlights all the elements matching the given name"""
+        elements = actions.user.matching_elements(name)
+        actions.user.highlight_elements(elements)
+    def highlight_focused():
+        """Highlights the focused element"""
+        actions.user.highlight_elements([ui.focused_element()])
     def clear_highlights():
         """Removes all ui elements from the highlight list"""
         el_highlights.clear_elements()
@@ -439,9 +473,11 @@ class Actions:
         val = actions.user.element_property_value(property_name)
         actions.key(rev_key)
         return val
-    def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name"):
+    def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name", verbose: bool = False):
         """Toggles current element until the next elements value meets the target value"""
         cur_val = actions.user.peek_next_property_value(property_name,advance_key)
+        if verbose:
+            print(f"cur_val: {cur_val}")
         if cur_val != trg:
             actions.key(toggle_key)
     def click_focused(down_key: str=""):
@@ -451,7 +487,7 @@ class Actions:
         """records the clickable point of the currently focused item"""
         global marked_elements
         el = ui.focused_element()
-        print(f"Marking for selection: {element_information(el)}")
+        print(f"Marking for selection: {actions.user.element_information(el)}")
         marked_elements.append(el)
     def select_marked():
         """clicks on recorded marks and then empties list"""
@@ -459,7 +495,7 @@ class Actions:
         # clear any selection
         el = ui.focused_element()
         try:
-            print(f"Removing from selection: {element_information(el)}")
+            print(f"Removing from selection: {actions.user.element_information(el)}")
             pattern = el.selectionitem_pattern
             pattern.remove_from_selection()
         except Exception as error:
@@ -467,7 +503,7 @@ class Actions:
         # select all marked elements
         for el in marked_elements:
             try:
-                print(f"Adding to selection: {element_information(el)}")
+                print(f"Adding to selection: {actions.user.element_information(el)}")
                 pattern = el.selectionitem_pattern
                 pattern.add_to_selection()
             except Exception as error:
@@ -482,19 +518,7 @@ class Actions:
         elements = actions.user.matching_elements(prop_list)
         if len(elements) > 0:
             actions.user.click_element(elements[0])
-    def highlight_elements_by_name(name: str):
-        """Highlights all the elements matching the given name"""
-        elements = actions.user.matching_elements(name)
-        actions.user.highlight_elements(elements)
-    def highlight_focused():
-        """Highlights the focused element"""
-        el = ui.focused_element()
-        try:
-            rect = el.rect
-            print(rect)
-            el_highlights.add_element(rect)
-        except:
-            print('no rectangle found')
+
     def select_elem(name: str, class_name: str=""):
         """Shortcut to selecting an element based on its name and classname"""
         prop_list = [("name",name),("class_name",class_name)]
@@ -549,22 +573,43 @@ class Actions:
                     pass
     def key_to_matching_element(key: str, prop_list: list, limit: int=19, escape_key: str=None, delay: float = 0.03, verbose: bool = False):
         """press given key until the first matching element is reached"""
-        i = 1
-        last_el = ui.focused_element()
-        el = ui.focused_element()
+        i = 1        
+        # if the previous action has not completed an error can occur
+        # (e.g. PowerPoint accessing format panel from context menu)
+        # to avoid this, wrap in try except clause 
+        def focused_element():
+            n = 0
+            while n < 3:
+                try:
+                    return ui.focused_element()
+                except:
+                    n += 1
+                    actions.sleep(delay)
+            return None
+        el = focused_element()
+        last_el = el
         msg = f"name: {el.name} \tclass_name: {el.class_name} \thelp_text: {el.help_text}"
         if verbose:
             print(f"ELEMENT: {el.name}")
-        while (not actions.user.element_match(el,prop_list,verbose = verbose)) and (i < limit):            
-            actions.key(key)
-            if delay > 0:
-                actions.sleep(delay)
-            el = ui.focused_element()
-            if verbose:
-                print(f"ELEMENT: {el.name}")                                                                            
-            if (last_el == ui.focused_element()) and (escape_key != None):
-                actions.key(escape_key)
-            i += 1
+        if el:
+            while (not actions.user.element_match(el,prop_list,verbose = verbose)) and (i < limit):            
+                actions.key(key)
+                if delay > 0:
+                    actions.sleep(delay)
+                el = ui.focused_element()
+                if el:
+                    if verbose:
+                        print(f"ELEMENT: {el.name}")      
+                    if (last_el == ui.focused_element()) and (escape_key != None):
+                        actions.key(escape_key)
+                    last_el = el
+                    i += 1
+                else:
+                    break
+            if actions.user.element_match(el,prop_list):
+                return el
+            else:
+                return None
     def key_to_elem_by_val(key: str, val: str, prop: str="name", limit: int=99, escape_key: str=None, delay: float = 0.03):
         """press key until element with exact value for one property is reached"""
         prop_list = [(prop,val)]
@@ -611,34 +656,46 @@ class Actions:
             ctrl.mouse_move(x,y)
         except:
             pass
-    def copy_elements_accessible_by_key(key: str, limit: int=95):
+    def copy_elements_accessible_by_key(key: str, limit: int=25, delay: int = 0.03, verbose: bool = True):
         """Gets information on elements accessible by pressing the input key"""        
-        elements = [element_information(ui.focused_element(),headers = True)]
-        full_elements = []
         i = 1
-        actions.key(key)
-        cur_msg = element_information(ui.focused_element(), verbose = False)
-        full_msg = element_information(ui.focused_element(), verbose = True)
-        while (not full_msg in full_elements) and (i < limit):
-            elements.append(cur_msg)
-            full_elements.append(full_msg)
+        el = ui.focused_element()
+        msg = actions.user.element_information(el, verbose = verbose)
+        if verbose:
+            full_msg = msg
+        else:
+            full_msg = actions.user.element_information(el,verbose = True)
+        messages = [actions.user.element_information(el,verbose = verbose,headers = True)]
+        full_msgs = []
+        while (not full_msg in full_msgs) and (i < limit):
+            messages.append(msg)
+            full_msgs.append(full_msg)
+            actions.sleep(delay)
             actions.key(key)
-            cur_msg = element_information(ui.focused_element(), verbose = False)
-            full_msg = element_information(ui.focused_element(), verbose = True)    
+            try:
+                el = ui.focused_element()
+            except:
+                print("Could not obtain next element, try increasing delay.")
+            el = ui.focused_element()
+            msg = actions.user.element_information(el, verbose = verbose)    
+            if verbose:
+                full_msg = msg
+            else:
+                full_msg = actions.user.element_information(el,verbose = True)
             i += 1
-        clip.set_text("\n".join(elements))
+        clip.set_text("\n".join(messages))
     def copy_mouse_elements_to_clipboard():
         """Copies elements with rectangle containing current mouse position"""
         pos = ctrl.mouse_pos()
         root = ui.active_window().element
         elements = list(get_every_child(root))
         n = 0
-        msg = element_information(elements[0],headers = True)
+        msg = actions.user.element_information(elements[0],headers = True)
         for el in elements:
             r = actions.user.el_prop_val(el,"rect")
             if r:
                 if (r.x < pos[0] < r.x + r.width) and (r.y < pos[1] < r.y + r.height):
-                    msg += "\n" + element_information(el)
+                    msg += "\n" + actions.user.element_information(el)
                     n += 1                
         msg += f"\n\n {n} elements found"
         clip.set_text(msg)
@@ -657,8 +714,8 @@ class Actions:
     def copy_focused_element_to_clipboard():
         """Copies information about currently focused element to the clipboard"""
         el = ui.focused_element()
-        msg = element_information(el, headers = True, verbose = True)
-        msg += "\n" + element_information(el, verbose = True)
+        msg = actions.user.element_information(el, headers = True, verbose = True)
+        msg += "\n" + actions.user.element_information(el, verbose = True)
         clip.set_text(msg)
     def copy_focused_element_with_children(levels: int = 1):
         """Copies information about currently focused element and children to the clipboard"""
@@ -672,7 +729,7 @@ class Actions:
         msg = "ENABLED ELEMENT(S)\n"
         for element in elements:
             if element.is_enabled:
-                msg += element_information(element) +"\n"
+                msg += actions.user.element_information(element) +"\n"
         clip.set_text(msg)
     def copy_selected_elements_to_clipboard():
         """Copies selected element information to the clipboard"""
@@ -683,7 +740,7 @@ class Actions:
             try:
                 pattern = el.selectionitem_pattern                
                 if pattern.is_selected:
-                    msg += element_information(element) +"\n"
+                    msg += actions.user.element_information(element) +"\n"
             except:
                 pass
         clip.set_text(msg)
@@ -695,7 +752,7 @@ class Actions:
         for element in elements:
             try:
                 x = element.clickable_point
-                msg += element_information(element) +"\n"
+                msg += actions.user.element_information(element) +"\n"
             except:
                 pass 
         clip.set_text(msg)
@@ -709,7 +766,7 @@ class Actions:
             if element.has_keyboard_focus:
                 try:
                     x = element.clickable_point
-                    msg += element_information(element) +"\n"
+                    msg += actions.user.element_information(element) +"\n"
                 except:
                     pass 
         clip.set_text(msg)
@@ -717,10 +774,10 @@ class Actions:
         """Attempts to retrieve all properties from all elements"""
         root = ui.active_window().element
         elements = [root] + list(get_every_child(root))
-        msg = element_information(root,headers = True)
+        msg = actions.user.element_information(root,headers = True)
         for el in elements:
             # remove line breaks from element information before adding
-            info = re.sub(r"\r?\n","<<new line>>",element_information(el))
+            info = re.sub(r"\r?\n","<<new line>>",actions.user.element_information(el))
             msg += "\n" + info
         clip.set_text(msg)
         

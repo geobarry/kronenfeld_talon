@@ -7,21 +7,7 @@ and app.exe: explorer.exe
 open with notepad: user.slow_key_press("menu w n enter",0.5)
 
 # override default because default doesn't work
-go <user.system_path>:
-	key(alt-d)
-	sleep(0.2)
-	insert(system_path)
-	sleep(0.2)
-	key(enter)
-	# get rid of annoying dropdown suggestions that don't disappear on their own
-	sleep(0.5)
-	key(alt-d)
-	sleep(0.5)
-	key(esc tab:2)
-	sleep(0.5)
-	key(tab:5)
-	# returned to file area
-	user.file_explorer_tab_to_files()
+go <user.system_path>: user.explorer_navigate_to_folder(system_path)
 
 tab to files: user.file_explorer_tab_to_files()
 

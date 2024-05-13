@@ -61,3 +61,71 @@ has attribute:hasattr
 focused element:ui.focused_element
 set clipboard:clip.set_text
 clip.set_text:set clipboard text
+distance across:distAcross
+vertex distance across:vertDistAcross
+segment distance across:segDistAcross
+component distance:componentDistance
+component label: component_label
+component valid:compValid
+distance representation:distanceRepresentation
+effective interval:effectiveInterval
+segment distance:segDistance
+segment distance representation:segDistRep
+within unit interval:withinUnitInterval
+segment effective interval:segEffectiveInterval
+switch point:switchPoint
+vertex distance:vertDistance
+vertex distance representation:vertDistRep
+vertex effective interval:vertEffectiveInterval
+segment to segment switch point:segSegSwitchPoint
+vertex to segment switch point:vertSegSwitchPoint
+vertex to vertex which point:vertVertSwitchPoint
+bounding box:b_box
+segment index:seg_idx
+candidate components:candidateComponents
+near segment:nearSegment
+near component:nearComponent
+matching elements: actions.user.matching_elements
+element match: actions.user.element_match
+
+# functions from Hausdorff utilities module
+distance Across:distAcross
+vertex distance Across:vertDistAcross
+segment distance Across:segDistAcross
+component Distance:componentDistance
+component label:component_label
+component Valid:compValid
+distance Representation:distanceRepresentation
+effective Interval:effectiveInterval
+segment Distance:segDistance
+segment distance Rep:segDistRep
+within Unit Interval:withinUnitInterval
+segment Effective Interval:segEffectiveInterval
+switch Point:switchPoint
+vertex Distance:vertDistance
+vertex distance Rep:vertDistRep
+vertex Effective Interval:vertEffectiveInterval
+segment segment Switch Point:segSegSwitchPoint
+vertex segment Switch Point:vertSegSwitchPoint
+vertex vertex Switch Point:vertVertSwitchPoint
+bounding box:b_box
+segment index:seg_idx
+candidate Components:candidateComponents
+near Segment:nearSegment
+near Component:nearComponent
+near location:nearLoc
+check Segment:checkSegment
+
+# functions for testing efficiency
+Missouri
+cannonball
+copy to clipboard:copy2clip
+time test equal vertex counts:time_test_equal_vertex_counts
+time test unequal vertex counts:time_test_unequal_vertex_counts
+zigzag
+test same polyline:test_same_polyline
+time test equal:time_test_equal
+time test unequal:time_test_unequal
+time test zigzag:time_test_zigzag
+create example plots:create_example_plots
+approximate polyline distances:approx_polyline_distances

@@ -27,6 +27,4 @@ copy accessible:
 ^copy all element information$: user.test_copy_all()
 ^copy mouse element information$: user.copy_mouse_elements_to_clipboard()
 ^copy selected element information$: user.copy_selected_elements_to_clipboard()
-^copy tab element information$: user.copy_elements_accessible_by_key("tab",99)
-^copy <user.special_key> element information$: user.copy_elements_accessible_by_key(special_key)
-^copy <user.arrow_key> element information$: user.copy_elements_accessible_by_key(arrow_key)
+^copy {user.nav_key} element information$: user.copy_elements_accessible_by_key(nav_key)

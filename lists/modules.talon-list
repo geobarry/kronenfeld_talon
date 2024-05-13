@@ -16,4 +16,19 @@ stats
 system:sys
 hidden math:__m
 user interface:ui
-
+# Polyline Hausdorff Project
+animation creator:animation_creator
+Hangouet figure:Hangouet_fig13
+illustration
+integrals
+example usage:linesimplify_example_usage
+play area:play_area
+polyline hausdorff:polyline_hausdorff
+test efficiency:test_efficiency
+test geometry utilities:test_geom_utils
+test integrals:test_integrals
+test polyline hausdorff utils:test_polyline_hausdorff_utils
+test polyline hausdorff:test_polyline_hausdorff
+test utilities:test_utils
+geometry utilities:utils_geom
+Hausdorff utilities:utils_hausdorff

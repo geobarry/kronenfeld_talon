@@ -1,6 +1,5 @@
 list: user.variable_list
 -
-capital a:A
 a color:A_color
 be color:B_color
 be offset:B_offset
@@ -461,3 +460,21 @@ delta why:dy
 segment max:seg_max
 Hausdorff distance:d_Hausdorff
 act now,action
+end
+module: mod
+module name: mod_name
+function name: func_name
+context: ctx
+matches
+number: n
+horizontal or vertical: horizontal_or_vertical
+messages
+first element: first_el
+full messages: full_msgs
+row messages: row_messages
+to polyline: B
+from polyline: A
+part
+children
+next children: next_children
+id

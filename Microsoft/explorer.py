@@ -55,6 +55,22 @@ class Actions:
         actions.user.key_to_matching_element("tab",[("class_name","UIColumnHeader")])
         actions.user.key_to_matching_element("right",[("name",f"{col_name}.*")],limit = 15)
         actions.key("enter")
+    def explorer_navigate_to_folder(path: str):
+        """navigates to given folder in ff explorer like application or dialog"""
+        actions.key("alt-d")
+        actions.sleep(0.2)
+        actions.insert(path)
+        actions.sleep(0.2)
+        actions.key("enter")
+        # get rid of annoying dropdown suggestions that don't disappear on their own
+        actions.sleep(0.5)
+        actions.key("alt-d")
+        actions.sleep(0.5)
+        actions.key("esc tab:2")
+        actions.sleep(0.5)
+        actions.key("tab:5")
+        # returned to file area
+        actions.user.file_explorer_tab_to_files()
 
-
+    
 ctx = Context()

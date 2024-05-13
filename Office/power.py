@@ -15,6 +15,39 @@ class Actions:
         while actions.user.element_match(ui.focused_element(),[("class_name","NetUI.*")]) and i < 7:
             actions.key("esc")
             i += 1
+    def power_position(horizontal_or_vertical: str = "",val: float = None):
+        """navigates to the position section of the powerpoint format panel"""
+        # right click to open the format panel
+        actions.key("menu o right")
+        # tab to gallery button
+        print("pressing tab key")
+        prop_list = [("class_name","NetUIGalleryButton")]
+        actions.user.key_to_matching_element("tab",prop_list,delay = 0.05,verbose = False)
+        # press right to get to the Size & Properties gallery button
+        print("pressing right key")
+        prop_list = [("name","Size & Properties")]
+        actions.user.key_to_matching_element("right",prop_list,delay = 0.05,verbose = False)
+        # press tab to get to the Horizontal Position group
+        prop_list = [("name","Position"),("class_name","NetUIRibbonButton")]        
+        actions.user.key_to_matching_element("tab",prop_list,verbose = False)
+        # makes sure the toggle is open
+        print("Toggling the horizontal position group")
+        actions.user.toggle_for_next_value("Horizontal position","enter",verbose=True)
+        # set value if specified
+        print(f'horizontal_or_vertical: {horizontal_or_vertical}')
+        print(f'val: {val}')
+        if horizontal_or_vertical.lower() in ["horizontal","vertical"]:
+            print("inside horizontal or vertical")
+            if horizontal_or_vertical.lower() == "horizontal":
+                print(" in horizontal")
+                actions.key("o")
+            else:
+                print(" inside vertical")
+                actions.key("v")
+            if val != None:
+                actions.sleep(0.1)
+                actions.insert(val)
+                actions.key("enter")
     def power_tab_format_panel_top_row():
         """Presses tab until one of the icons on the top of the format panel is reached"""
         icon_names = ["Effects","Fill & Line","Picture", "Size & Properties"]

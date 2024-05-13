@@ -54,11 +54,10 @@ paste into row <number>:
 
 # cells
 go to cell: key(alt-f3)
-go to cell <user.letter> <number>:  
+go to [cell] <user.letter> <number>:  
 	key(alt-f3)
 	insert("{user.letter}{number}")
 	key(enter)
-go to {user.person_list}: user.go_excel_row_by_person(person_list,0.2)
 score {user.person_list} <user.real_number>:
 	user.go_excel_row_by_person(person_list,0.3)
 	sleep(0.2)
@@ -90,6 +89,9 @@ paste single line:
 	user.make_clipboard_one_line(", ")
 	key(ctrl-v)
 font color:  key(alt-h f c)
+apply bold: key(alt h 1)
+apply italics: key(alt h 2)
+apply underline: key(alt h 3)
 highlight cell:
 	key(alt-h h)
 	sleep(0.1)
@@ -100,6 +102,7 @@ format number <number> decimal places:
 	insert(number)
 	key(enter)
 number format {user.excel_number_format}: user.excel_set_number_format(excel_number_format)
+
 # data menu
 sort: key(alt-a s:2)
 	

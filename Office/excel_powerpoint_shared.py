@@ -7,11 +7,6 @@ mod.list("excel_number_format","formats in the dropdown on the main menu")
 
 @mod.action_class
 class Actions:
-    def office_enable_editing():
-        """Enables editing in Microsoft word when it opens up in Protected Mode"""
-        prop_dict = [("name","Enable Editing")]
-        actions.user.invoke_matching_element(prop_dict)
-
     def power_object_menu():
         """opens the menu associated with the current object"""
         actions.key("alt j")
