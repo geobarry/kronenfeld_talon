@@ -478,3 +478,31 @@ part
 children
 next children: next_children
 id
+child name: child_name
+file parts: file_parts
+module names: mod_names
+function names: func_names
+module: mod
+context: ctx
+a: a
+left
+right
+horizontal centre: hz_center
+top
+bottom
+vertical center: vrt_center
+handle position: hnd_pos
+index: idx
+max distance: max_dist
+some distance: sum_dist
+vertex ratio: vertex_ratio
+simple poly: simp_poly
+simple polyline: simp_poly
+method
+elapsed seconds: elapsed_sec
+direction
+message line: msg_line
+dense polyline: dense_poly
+army count: nA
+blue count: nB
+length: L

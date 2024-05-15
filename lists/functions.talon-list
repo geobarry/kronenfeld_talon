@@ -116,7 +116,23 @@ near Component:nearComponent
 near location:nearLoc
 check Segment:checkSegment
 
-# functions for testing efficiency
+## module: utils_geom
+angle
+area
+densify
+distance
+project pt to line:project_pt_to_line
+distance to line:distance_to_line
+is monotonic:is_monotonic
+distance to segment:distance_to_segment
+intersection
+kay value: kvalue
+location
+project out:project_out
+rotate points:rotate_pts
+rotate horizontal:rotate_horizontal
+
+## module: test_efficiency
 Missouri
 cannonball
 copy to clipboard:copy2clip
@@ -129,3 +145,19 @@ time test unequal:time_test_unequal
 time test zigzag:time_test_zigzag
 create example plots:create_example_plots
 approximate polyline distances:approx_polyline_distances
+create entry: create_entry
+module: Module
+context: Context
+densify
+compare with approximate: compare_with_approx
+
+## module: polyline_hausdorff
+polyline hausdorff:polyline_hausdorff
+Hausdorff average distance:Hausdorff_average_distance
+near components:near_components
+directional polyline hausdorff:directional_polyline_hausdorff
+segment hausdorff:segment_hausdorff
+segment distance integral:segment_dist_integral
+segment traversal:segment_traversal
+report row: report_row
+add message line: add_msg_line

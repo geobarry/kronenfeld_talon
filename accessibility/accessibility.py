@@ -101,18 +101,21 @@ class mouse_mover:
     def move_next(self):
         """Moves mouse by one interval until destination reached"""
         # handle last move
-        if self.completed >= self.num_intervals - 1:
+        if self.completed >= self.num_intervals:
+            print(f"final move - moving mouse to x: {self.dest.x}")
             ctrl.mouse_move(self.dest.x,self.dest.y)
             cron.cancel(self.job)
             if self.callback != None:
+                print("calling callback function")
                 self.callback()
         else:
             # handle previous moves
             self.completed += 1
             x = round(self.orig[0] + self.interval_x * self.completed)
             y = round(self.orig[1] + self.interval_y * self.completed)
+            print(f"moving mouse to x: {x}")
             ctrl.mouse_move(x,y)
-
+            
 
 mod = Module()
 
@@ -394,6 +397,10 @@ class Actions:
                 except Exception as error:
                     print(f"Unable to select UI element with LegacyIAccessiblePattern")        
                     print(error)
+    def slow_mouse(x: int, y: int, ms: float = None):
+        """moves the mouse slowly towards the target"""
+        loc = Point2d(x,y)
+        mouse_obj = mouse_mover(loc, ms = ms)
     def click_element(el: ax.Element, down_key: str='', ms: float = None):
         """clicks on the given element, with the given optional key pressed"""
         print("Attempting to run function click_element")

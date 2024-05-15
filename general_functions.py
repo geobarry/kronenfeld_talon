@@ -1,4 +1,4 @@
-from talon import Context,Module,actions,clip
+from talon import Context,Module,actions,clip,ctrl
 import time
 import re
 mod = Module()
@@ -137,4 +137,7 @@ class Actions:
         """Inserts the nth word in the given string, as defined by the separator"""
 #        actions.insert(text.split(sep)[n])
         return text.split(sep)[n]
+    def report_mouse_location():
+        """reports the mouse location"""
+        print(f"mouse pos: {ctrl.mouse_pos()}")
 ctx = Context()

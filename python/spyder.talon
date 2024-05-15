@@ -55,6 +55,7 @@ go [to line] <number>:
 	key(enter)
 go to line:	key(esc ctrl-l)
 select [lines] <number> through <number>: user.spyder_select_lines(number_1,number_2)
+select <number>: user.spyder_select_lines(number,number)
 maximize pane: key(ctrl-alt-shift-m)
 format out:
 	insert('{}')
@@ -72,12 +73,19 @@ step into: key(ctrl-f11)
 continue: key(ctrl-f12)
 stop code: key(ctrl-shift-f12)
 toggle breakpoint: key(f12)
-toggle comment: key(ctrl-1)
+(toggle) comment$: key(ctrl-1)
+comment <user.text>: insert("# {text}")
 doc string: 
 	key('" " "')
 	sleep(0.8)
 	key(enter)
 go to definition: key(ctrl-g)
+# splitter
+split left: user.spyder_move_split("left")
+split left <number>: user.spyder_move_split("left",number)
+split right: user.spyder_move_split("right")
+split right <number>: user.spyder_move_split("right",number)
+
 
 # menus
 file menu: key(alt-f)

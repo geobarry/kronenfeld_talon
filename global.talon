@@ -12,6 +12,7 @@ computer close your ears: speech.disable()
 clear highlights: user.clear_highlights()
 highlight focused element: user.highlight_focused()
 click focused element: user.click_focused()
+report mouse location: user.report_mouse_location()
 	
 # windows volume
 volume up: key(volup)
