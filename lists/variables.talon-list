@@ -506,3 +506,6 @@ dense polyline: dense_poly
 army count: nA
 blue count: nB
 length: L
+feature name: feat_name
+shape file: sf
+shape file name: sf_name

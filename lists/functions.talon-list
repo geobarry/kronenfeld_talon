@@ -161,3 +161,5 @@ segment distance integral:segment_dist_integral
 segment traversal:segment_traversal
 report row: report_row
 add message line: add_msg_line
+get sample feature: get_sample_feature
+feature from data folder: feature_from_data_folder

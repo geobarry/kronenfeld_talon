@@ -9,7 +9,7 @@ open with notepad: user.slow_key_press("menu w n enter",0.5)
 # override default because default doesn't work
 go <user.system_path>: user.explorer_navigate_to_folder(system_path)
 
-tab to files: user.file_explorer_tab_to_files()
+panel files: user.file_explorer_tab_to_files()
 
 copy full path: user.file_explorer_copy_full_path()
 copy folder: user.file_explorer_copy_folder()
