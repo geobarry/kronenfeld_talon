@@ -40,6 +40,7 @@ def create_talon_list_entry(text):
 def get_child_names(panel_name):
     """returns a list of names of children"""
     actions.user.spyder_focus_panel(panel_name)
+    actions.sleep(0.05)
     pattern = ui.focused_element().grid_pattern
     children = [str(pattern.get_item(row,0).name) for row in range(pattern.row_count)]
     return children
@@ -95,9 +96,11 @@ class Actions:
     def spyder_go_to_function(func_name: str):
         """Opens the function in the code editor"""
         children = get_child_names("Outline")
-        [actions.key("up") for child in children]            
+        actions.sleep(0.1)
+        n = len(children)
+        actions.user.slow_key_press(f"up:{n}",0.03)
         pos = children.index(func_name)
-        actions.key(f"down:{pos} enter")
+        actions.user.slow_key_press(f"down:{pos} enter",0.03)
     def spyder_select_lines(start: int,end: int):
         """Selects the line range"""
         if start > end:

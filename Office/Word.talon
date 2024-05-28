@@ -143,54 +143,23 @@ export to PDF:
 	key(a)
 
 #home menu ribbon shortcuts
-font:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
-	key(f)
-font size:
-	key(alt-h)
-	key(f)
-	key(s)
+font: key(alt h f:2)
+font size: key(alt h f s)
 font size <number>:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
-	key(s)
-	sleep(0.05)
+	key(alt h f s)
 	insert(number)
 	sleep(0.05)
-	key(enter)
-font color:
-	key(alt-h)
-	sleep(0.05)
-	key(f)
-	key(c)
-paragraph formatting:
-	key(alt-h)
-	sleep(0.05)
-	key(p)
-	key(g)
+	key(enter esc)
+font color: key(alt h f c)
+paragraph formatting: key(alt h p g)
 remove (paragraph|line) spacing:
-	key(alt-h)
-	sleep(0.05)
-	key(p)
-	key(g)
-	key(alt-f)
+	key(alt h p g alt-f)
 	insert("0")
-	key(enter)
-apply bold:
-	key(alt-h)
-	key(1)
-apply (italic|italics):
-	key(alt-h)
-	key(2)
-apply underline:
-	key(alt-h)
-	key(3)
-apply strike through:
-	key(alt-h)
-	key(4)
+	key(enter esc)
+apply bold: key(alt h 1)
+apply (italic|italics): key(alt h 2)
+apply underline: key(alt h 3)
+apply strike through: key(alt h 4)
 apply subscript: key(alt-h f n alt-b enter)
 apply superscript: key(alt-h f n alt-p enter)
 (demote|list indent): key(alt-h a i)
@@ -200,16 +169,9 @@ align center: key(alt-h a c)
 align right: key(alt-h a r)
 justify top: key(alt-h)
 	
-
-	
 # insert menu shortcuts
-insert table:
-	key(alt-n)
-	key(t)
-insert comment:
-	key(alt-n)
-	key(l)
-
+insert table: key(alt n t)
+insert comment: key(alt n l)
 	
 #edit ribbon shortcuts
 paste without formatting:
@@ -426,94 +388,39 @@ toggle [lock] picture aspect [ratio]:
 	sleep(0.1)
 	key(a)
 	key(enter)
-picture height:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	key(p)
-	key(h)
+picture height: key(alt j p h)
 picture height <number>:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	key(p)
-	key(h)
+	key(alt j p h)
 	sleep(0.1)
 	insert(number)
-	key(enter)
-	key(esc)
+	key(enter esc)
+picture width: key(alt j p w)
+picture width <number>:
+	key(alt j p w)
+	sleep(0.1)
+	insert(number)
+	key(enter esc)
+
 picture color options:
 	key(alt)
 	sleep(0.2)
 	key(j p i c)
 	
 # equation menu 
-insert equation:
-	key(alt)
-	sleep(0.2)
-	key(n)
-	key(e)
-	key(i)
-(equation|insert) script:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	sleep(0.2)
-	key(e)
-	key(s)
-equation subscript:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	sleep(0.2)
-	key(e s)
-	sleep(0.2)
-	key(left:50 right enter)
-	sleep(0.2)
-	key(left:2)
-equation superscript:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	sleep(0.2)
-	key(e s)
-	sleep(0.2)
-	key(left:50 enter)
-	sleep(0.2)
-	key(left:2)
+insert equation: key(alt n e i)
+equation menu: user.word_open_menu("Equation")
+equation {user.word_equation_menu_item}: user.word_open_menu_item("Equation",word_equation_menu_item)
+equation {user.word_equation_script}: user.word_equation_script(word_equation_script)
 
-(equation|insert) fraction:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	key(e)
-	key(f)
-(equation|insert) accent:
-	key(alt)
-	sleep(0.2)
-	key(j)
-	key(e)
-	key(a)
-equation symbol:
-	key(alt)
-	sleep(0.2)
-	key(j e q)
-equation arrow left:
-	key(alt)
-	sleep(0.2)
-	key(j e q down:2 right:8 enter)
-equation arrow up:
-	key(alt)
-	sleep(0.2)
-	key(j e q down:2 right:9 enter)
-equation arrow right:
-	key(alt)
-	sleep(0.2)
-	key(j e q down:2 right:10 enter)
-equation arrow down:
-	key(alt)
-	sleep(0.2)
-	key(j e q down:2 right:11 enter)
+
+equation subscript: key(alt j e s left:50 right enter left:2)
+equation superscript: key(alt j e s left:50 enter left:2)
+equation arrow left: key(alt j e q down:2 right:8 enter)
+equation arrow up: key(alt j e q down:2 right:9 enter)
+equation arrow right: key(alt j e q down:2 right:10 enter)
+equation arrow down: key(alt j e q down:2 right:11 enter)
+equation parentheses: key(alt j e b pageup:9 home enter)
+
 	
 # common operations	
 copy style:
@@ -617,14 +524,9 @@ finish export styles:
 
 #special symbols
 insert symbol:
-	key(alt-n)
-	key(u)
-	key(m)
-	sleep(0.2)
-	key(alt-f)
+	key(alt n u m alt-f)
 	insert("symbol")
-	key(enter)
-	key(tab)
+	key(enter tab)
 insert dot symbol: user.unicode_word("2022","Times New Roman")
 insert (times|multiply|multiplication) symbol: user.unicode_word("00d7","Times New Roman")
 insert checkmark: user.unicode_word("2713","Times New Roman")
@@ -643,8 +545,10 @@ insert up arrow: user.unicode_word("00ad","Symbol")
 insert right arrow: user.unicode_word("00ae","Symbol")
 insert down arrow: user.unicode_word("00af","Symbol")
 insert cursive el: user.unicode_word("2113","Times New Roman")
-insert circled <user.letter>: user.circle_letter_word(letter)
 insert cursive look: user.unicode_word("2113","times new roman")
+insert not equals sign: user.unicode_word("00b9","Symbol")
+
+insert circled <user.letter>: user.circle_letter_word(letter)
 
 equation <user.letter>: user.letter_word(letter,"1D44E","Cambria Math")
 equation (sky|shift|ship) <user.letter>: user.letter_word(letter,"1D434","Cambria Math")

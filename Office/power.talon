@@ -15,12 +15,14 @@ mark for selection:
 	user.mark_focused_element()
 select marked: user.select_marked()
 go to {user.power_go_to_target}: user.power_go_to(power_go_to_target)
-select [<user.ordinals>] {user.power_selection_target}: user.power_tab_to(power_selection_target,ordinals or 1)
-select inside [<user.ordinals>] {user.power_selection_target}:
+object [<user.ordinals>] {user.power_selection_target}: user.power_tab_to(power_selection_target,ordinals or 1)
+object inside [<user.ordinals>] {user.power_selection_target}:
 	user.power_tab_to(power_selection_target,ordinals or 1)
 	sleep(0.2)
 	key("f2")
-
+notes up [<number>]: user.power_notes_adjust_height(number or 100)
+notes down [<number>]: user.power_notes_adjust_height(number or 100,-1)
+toggle notes: user.power_toggle_notes()
 go to slide <number>: user.power_go_to_slide(number)
 
 #main menu headings
@@ -221,9 +223,9 @@ zoom <number> [percent]:
 #shape format menu
 [shape] format panel: key(menu o)
 position: user.power_position()
-position top: user.power_position("vertical")
+position top$: user.power_position("vertical")
 position top <user.real_number>: user.power_position("vertical",real_number)
-position left: user.power_position("horizontal")
+position left$: user.power_position("horizontal")
 position left <user.real_number>: user.power_position("horizontal",real_number)
 toggle aspect ratio:
 	key(menu o)

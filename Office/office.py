@@ -5,8 +5,9 @@ mod = Module()
 class Actions:
     def office_enable_editing():
         """Enables editing in Microsoft word when it opens up in Protected Mode"""
-        prop_dict = [("name","Enable Editing")]
-        actions.user.invoke_matching_element(prop_dict)
+        prop_list = [("name","Enable Editing")]
+        el = actions.user.matching_element(prop_list,max_level = 8)
+        el.invoke_pattern.invoke()
     def close_recovery_panel():
         """Navigates to the recovery panel"""
         prop_list = [("name", "Close"),("class_name","NetUIButton")]

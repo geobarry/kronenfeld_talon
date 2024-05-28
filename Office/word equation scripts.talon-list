@@ -1,0 +1,6 @@
+list: user.word_equation_script
+-
+superscript:Equation Structure Superscript
+subscript:Equation Structure Subscript
+double script:Equation Structure Subscript-Superscript
+left script:Equation Structure Left Subscript-Superscript

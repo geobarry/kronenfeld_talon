@@ -47,7 +47,7 @@ class Actions:
             if val != None:
                 actions.sleep(0.1)
                 actions.insert(val)
-                actions.key("enter")
+                actions.key("enter ctrl-space c")
     def power_tab_format_panel_top_row():
         """Presses tab until one of the icons on the top of the format panel is reached"""
         icon_names = ["Effects","Fill & Line","Picture", "Size & Properties"]
@@ -83,7 +83,32 @@ class Actions:
             do_crop(180,0,5)
         elif pos == "bottom":
             do_crop(0,0,-5)
-            
+    def power_notes_adjust_height(dh: int, direction: int = 1):
+        """direction: 1 = up   -1 = down"""
+        gap = 18 # mouse has to be placed as many pixels above top of notes panel
+        dh = dh * direction
+        prop_list = [("name","Slide Notes")]
+        el = actions.user.matching_element(prop_list)
+        # If notes are hidden, coordinates will be ridiculously negative
+        if el.rect.x < -1000000:
+            actions.user.power_toggle_notes()
+            actions.sleep(0.3)
+            el = actions.user.matching_element(prop_list)
+            try:
+                cur_ht = el.rect.height
+                dh -= cur_ht
+            except:
+                pass
+        x = el.rect.x + int(el.rect.width/2)
+        y = el.rect.y - gap        
+        ctrl.mouse_move(x,y)
+        actions.user.mouse_drag(0)
+        actions.user.slow_mouse(x,y - dh,callback = actions.user.mouse_drag_end)
+    def power_toggle_notes():
+        """Hides or restores notes pane"""
+        prop_list = [("name","Notes"),("class_name","NetUISimpleButton")]
+        el = actions.user.matching_element(prop_list)
+        el.invoke_pattern.invoke()
     def power_go_to_slide(n: int):
         """Quickly navigate to a slide by number"""
         keys = ["f5"] + [x for x in str(n)] + ["enter","esc"]

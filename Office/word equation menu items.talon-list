@@ -1,0 +1,23 @@
+list: user.word_equation_menu_item
+-
+Equation:Equation,NetUIAnchor,EquationInsertGallery
+Ink :Ink Equation,NetUIRibbonButton,InkEquation
+Unicode:Unicode,NetUIRibbonButton,EquationUnicodeFormat
+LaTeX:LaTeX,NetUIRibbonButton,EquationLaTexFormat
+Text:Text,NetUIRibbonButton,EquationNormalText
+Convert:Convert,NetUISplitButtonAnchor,
+Options:Equation Options...,NetUISimpleButton,EquationOptions
+Symbols:Equation Symbols,NetUISimpleButton,
+Fraction:Fraction,NetUIAnchor,EquationFractionGallery
+Script:Script,NetUIAnchor,EquationScriptGallery
+Radical:Radical,NetUIAnchor,EquationRadicalGallery
+Integral:Integral,NetUIAnchor,EquationIntegralGallery
+Large Operator:Large Operator,NetUIAnchor,EquationLargeOperatorGallery
+Bracket:Bracket,NetUIAnchor,EquationDelimiterGallery
+Function:Function,NetUIAnchor,EquationFunctionGallery
+Accent:Accent,NetUIAnchor,EquationAccentGallery
+Limit and Log:Limit and Log,NetUIAnchor,EquationLimitGallery
+Log:Limit and Log,NetUIAnchor,EquationLimitGallery
+Limit:Limit and Log,NetUIAnchor,EquationLimitGallery
+Operator:Operator,NetUIAnchor,EquationOperatorGallery
+Matrix:Matrix,NetUIAnchor,EquationMatrixGallery

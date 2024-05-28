@@ -1,0 +1,25 @@
+list: user.arc_layout_menu_item
+-
+Layout Paste:esri_core_editPasteSplitButton
+Navigate:esri_layouts_pageNavigateTool
+Zoom to Page:esri_layouts_pageZoomFullButton
+Previous Extent:esri_layouts_pagePrevExtentButton
+Page Width:esri_layouts_pageZoomPageWidthButton
+Zoom one hundred:esri_layouts_pageZoom100PercentButton
+Select:esri_layouts_selectToolPalette
+Select All:esri_layouts_selectAllButton
+Duplicate Layout:esri_layouts_duplicateLayoutGallery
+Layout Size:esri_layouts_pageSizeGallery
+layout Orientation:esri_layouts_pageOrientationGallery
+Page from Printer:esri_layouts_customPageSizeFromPrinter
+layout Properties:PART_DialogLauncherButton
+Toggle Rulers:esri_layouts_showHideRulersCheck
+Toggle Guides:esri_layouts_showHideGuidesCheck
+Activate Map:esri_layouts_activateMap
+Zoom Full Extent:esri_mapping_zoomFullButton
+Layout Zoom In:esri_mapping_fixedZoomInButton
+Layout Previous Extent:esri_mapping_prevExtentButton
+Layout Zoom Out:esri_mapping_fixedZoomOutButton
+Zoom To Map View:layout_zoomToMapViewGallery
+Bookmarks:esri_mapping_bookmarksNavigateGallery
+Check Spelling:esri_layouts_showSpellCheckPane

@@ -4,6 +4,9 @@ and tag: user.power_recording
 stop recording: 
 	speech.enable()
 	key(s)	
+so lets <user.text>$:
+	speech.enable()
+	key(s)
 next slide$:
 	speech.enable()
 	key(s)

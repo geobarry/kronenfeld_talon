@@ -7,16 +7,38 @@ time_last_pop = 0
 num_recent_pops = 0
 dummy = True
 
-@mod.capture(rule="<number> point <number>|<number>")
+@mod.capture(rule="[(minus|negative)] <number> [point <number>]")
 def real_number(m) -> float:
     """a spoken float"""
     print("CAPTURE: real_number")
-    print(type(m))
-    
+
+    print(f'm: {m}')
+    print(f'type(m): {type(m)}')
+    m = list(m)
+    for part in m:
+        print(f'part: {part}')
+        print(f'type(part): {type(part)}')
+        #
+#    m = str(m).replace("minus ","-")
+#    m = str(m).replace("negative ","-")
     if len(m) == 1:
+        # positive integer
         return float(m[0])
+    if "point" in m:
+        # decimal
+        pos = list(m).index("point")
+        print(f'pos: {pos}')
+        if pos == 1:
+            # positive decimal
+            return float(m[0]) + float(m[2]/(10**len(str(m[2]))))
+        else:
+            # negative decimal
+            power_of_ten = 10**len(str(m[3]))
+            return -1 * (float(m[1]) + float(m[3]/power_of_ten))
     else:
-        return float(m[0]) + float(m[2]/(10**len(str(m[2]))))
+        # negative integer
+        return -1 * float(m[1])
+
 
 @mod.action_class
 class Actions:

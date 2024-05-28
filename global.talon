@@ -8,12 +8,6 @@ computer [go to] sleep: speech.disable()
 computer stop listening: speech.disable()
 computer close your ears: speech.disable()
 
-# windows accessibility
-clear highlights: user.clear_highlights()
-highlight focused element: user.highlight_focused()
-click focused element: user.click_focused()
-report mouse location: user.report_mouse_location()
-	
 # windows volume
 volume up: key(volup)
 volume down: key(voldown)

@@ -1,0 +1,18 @@
+list: user.arc_menu_tab
+-
+Project:PART_ApplicationButton
+Map:esri_mapping_homeTab
+Layout:esri_layouts_homeTab
+Active Layout:esri_layouts_ActivateMapTab
+Insert:esri_core_insertTab
+Analysis:esri_core_analysisTab
+View:esri_core_viewTab
+Edit:esri_editing_EditingTab
+Imagery:esri_datasourcesraster_imageryCoreTab
+Share:esri_sharing_shareTab
+Help:esri_core_helpTab
+Feature Layer:esri_mapping_featureLayerAppearanceTab
+Labeling:esri_mapping_labelingTab
+Data:esri_mapping_featureLayerDataTab
+Linear Referencing:esri_mapping_linearReferencingTab
+Map Frame:esri_layouts_FormatTab

@@ -1,8 +1,9 @@
 os: windows
 and app.name: Python
+and win.class: Qt5152QWindowIcon
 os: windows
 and app.exe: pythonw.exe
-
+and win.class: Qt5152QWindowIcon
 -
 tag(): user.my_python
 

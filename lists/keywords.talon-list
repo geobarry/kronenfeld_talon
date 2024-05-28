@@ -22,3 +22,7 @@ in
 as
 is
 None
+float
+integer: int
+string: str
+boolean: bool

@@ -1,6 +1,6 @@
 tag: user.my_python
 -
-import matplotlib:l insert("import matplotlib.pyplot as plt")
+import matplotlib: insert("import matplotlib.pyplot as plt")
 import matplotlib patches: insert("import matplotlib.patches as mpatches")
 import matplotlib path: insert("import matplotlib.path as mpath\nPath = mpath.Path")
 [matplotlib] create subplots: user.insert_between("fig, axes = plt.subplots(",")")

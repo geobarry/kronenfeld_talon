@@ -31,4 +31,7 @@ test polyline hausdorff utils:test_polyline_hausdorff_utils
 test polyline hausdorff:test_polyline_hausdorff
 test utilities:test_utils
 geometry utilities:utils_geom
+data utilities:utils_data
 Hausdorff utilities:utils_hausdorff
+discernability
+discernability testing

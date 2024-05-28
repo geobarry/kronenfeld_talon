@@ -15,6 +15,7 @@ join
 length:len
 list
 ceiling:math.ceil
+floor:math.floor
 cosign:math.cos
 radiance:math.radians
 sign:math.sin
@@ -85,6 +86,7 @@ segment index:seg_idx
 candidate components:candidateComponents
 near segment:nearSegment
 near component:nearComponent
+matching element: actions.user.matching_element
 matching elements: actions.user.matching_elements
 element match: actions.user.element_match
 
@@ -163,3 +165,19 @@ report row: report_row
 add message line: add_msg_line
 get sample feature: get_sample_feature
 feature from data folder: feature_from_data_folder
+ex limit:xlim
+why limit:ylim
+a slow key press: actions.user.slow_key_press
+now mover: mouse_mover
+ensure focus: ensure_focus
+key to matching element: actions.user.key_to_matching_element
+
+## module: discernability
+gap size:gap_size
+path length: path_length
+create polyline shapefile: create_polyline_shapefile
+test gap transition: test_gap_transition
+test path length transition: test_path_length_transition
+segment segment conflict region: ss_conflict_region
+some: sum
+gap transition: gap_transition

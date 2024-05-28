@@ -4,6 +4,7 @@ tag: user.teams
 
 -
 unmute:
-	key(ctrl-shift-m)
 	speech.disable()	
+	key(ctrl-shift-m)
+
 test teams tag: print("Teams tag is active")

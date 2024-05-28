@@ -1,5 +1,33 @@
 list: user.variable_list
 -
+# probably should create a capture that includes both user.variable_list & user.letter
+army:a
+blue:b
+cap:c
+drum:d
+easy:e
+fire:f
+gust:g
+harp:h
+idle:i
+jury:j
+kayak:k
+look:l
+made:m
+near:n
+orange:o
+poke:p
+quench:q
+rust:r
+son:s
+trap:t
+urge:u
+voice:v
+wash:w
+plex:x
+yank:y
+zoo:z
+
 a color:A_color
 be color:B_color
 be offset:B_offset
@@ -47,7 +75,7 @@ compressed precipitation:comp_precip
 compressed precipitations:comp_precips
 completed
 continent
-cosine theatre:cos_theta
+cosine theta:cos_theta
 country
 current:cur
 current change id:curChangeID
@@ -257,6 +285,7 @@ shape
 sigma
 simplified line:simp_line
 sign theta:sin_theta
+
 singles
 smooth line:smooth_line
 smooth originals:smooth_orig
@@ -301,10 +330,21 @@ utils Hausdorff:utils_hausdorff
 vertex:v
 first vector:v1
 start vertex:v1
+first vertex:v1
 second vector:v2
+second vertex:v2
 Finnish vertex:v2
 finish vertex:v2
 third vertex:v3
+fourth vertex:v4
+first segment:s1
+second segment:s2
+third segment:s3
+fourth segment:s4
+first parameter:beta1
+second parameter:beta2
+third parameter:beta3
+fourth parameter:beta4
 vertex near location:vNearLoc
 vertical alignment:va
 valid
@@ -509,3 +549,79 @@ length: L
 feature name: feat_name
 shape file: sf
 shape file name: sf_name
+near segment: nearSeg
+from vertex: fromVertex
+from component: fromComp
+to component: toComp
+Hausdorff from segment: h_from_seg
+from segment: fromSeg
+cue vertex: q_vert
+kay segment: k_seg
+kay vertex: k_vert
+tolerance: tol
+exact max: exact_max
+approximate max: approx_max
+error count: error_count
+expected max: exp_max
+report interval: report_interval
+current email: cur_email
+account name: acct_name
+height difference: dh
+mouse subject: mouse_obj
+gap
+current height: cur_ht
+current level: cur_level
+max level: max_level
+element info:el_info
+element information:el_info
+source: src
+current id: cur_id
+next id: next_id
+child id: child_id
+parent id: parent_id
+element id: el_id
+include tree: include_tree
+element queue: Q
+root element: root_el
+route: root
+ribbon control: RibbonControl
+app button: AppButton
+tab strip: TabStrip
+classname: class_name
+tab name: tab_name
+item name: item_name
+parent
+item info: item_info
+metta: m
+ranges
+sections: secs
+feature set:feat_set
+output feature: out_feat
+output file: out_file
+output folder: out_folder
+relative position: k
+segment relative position: ks
+segment length: L
+first vertex relative position: kb0
+length between start points: l_a0_b0
+length between starting points: l_a0_b0
+minimum gap: gmin
+minimum length: lmin
+minimum ratio: minr
+numerator
+transition kay: k_trans
+be after a: b_gt_a
+be pointed right: kb1_gt_kb0
+answer
+path length: l_path
+segment lengths: seg_lens
+first transition:trans1
+second transition:trans2
+third transition:trans3
+fourth transition:trans4
+candidate transitions:cand_trans
+path length transition: path_length_transition
+gap transition: gt
+path length transition: plt
+zone boundaries: zone_bounds
+zone bounds: zone_bounds

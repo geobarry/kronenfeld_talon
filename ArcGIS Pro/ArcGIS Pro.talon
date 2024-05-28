@@ -2,13 +2,30 @@ os: windows
 and app.exe: arcgispro.exe
 
 -
+# main menu
+menu {user.arc_menu_tab}: user.arc_open_menu_tab(arc_menu_tab)
+
+# MAIN MENU
+menu table:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(t)
+	key(v)
+menu animation:
+	key(esc:5)
+	key(alt)
+	sleep(0.2)
+	key(x a)
+
+
 # A tab is within a group, i.e. [maps,layouts,tables] or [catalog, ...]
 tab close: key(ctrl-f4)
 tab next: key(ctrl-f6)
 tab previous: key(ctrl-shift-f6)
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
-{user.arc_panel} (panel|pane|tab):
+(panel|pane|tab) {user.arc_panel}:
 	key(alt-v c t ctrl:down tab)
 	user.key_to_elem_by_val("down","{arc_panel}.*")
 	key(ctrl:up)
@@ -42,6 +59,8 @@ list by data source:
     mouse_click(0)
     sleep(0.05)
     user.mouse_helper_position_restore()
+
+representative fraction: user.arc_scale_text()
 
 symbology menu: key(alt j a d s)
 primary symbology: user.arc_tab_to_primary_symbology()
@@ -204,70 +223,7 @@ look left:
 
 
 
-# MAIN MENU
-menu project:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(p)
-menu map:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(m)
-menu insert:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(n)
-menu analysis:
-	key(esc:5)
-	key(alt)	
-	sleep(.2)
-	key(a)
-menu view: 
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(v)
-menu edit:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(e)
-menu imagery:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(i)
-menu share:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(s)
-menu (layout|lay out):
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(y)
-menu table:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(t)
-	key(v)
-menu lay out:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(j l)
-menu feature layer: user.slow_key_press("esc:5 alt j a",0.5)
-menu animation:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(x a)
-menu map frame: key(esc:5 alt j 5) 
+
 
 # map menu shortcuts
 zoom [to] (world|full extent): key(alt-m f e)
@@ -294,7 +250,9 @@ clear selection: key(esc:5 alt m c x)
 # new map command already mapped above
 new layout: key(alt n n l)
 new custom layout: key(alt n n l c tab:4)
-place map frame: key(alt n m g)
+(new|add) map frame: key(alt n m g)
+place map frame: user.arc_draw_rectangle_on_layout()
+horizontal position: user.arc_horizontal_position()
 
 # analysis menu shortcuts
 new jupyter notebook: user.slow_key_press("alt-a p f down right:3 enter",1.0)
@@ -307,12 +265,13 @@ save edits:
 	key(e s v)
 	
 # layout menu shortcuts
+{user.arc_layout_menu_item}: user.arc_invoke_menu_item("esri_layouts_homeTab",arc_layout_menu_item)
 activate map:
 	key(esc:5)
 	key(alt)
 	sleep(0.2)
 	key(y a)
-close activation: key(esc:5 alt j l c)
+close activation: user.arc_close_activation()
 
 place straight text: 
 	# make sure focuses on map layout
