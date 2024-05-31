@@ -152,9 +152,6 @@ horizontal alignment:ha
 high distance:highD
 high time:highT
 horizontal distanceI:hz_dist
-I:i
-eye:i
-eye dee:id
 image path:image_path
 interval distance:intervalD
 interval finish:interval_finish
@@ -517,7 +514,7 @@ from polyline: A
 part
 children
 next children: next_children
-id
+id: i
 child name: child_name
 file parts: file_parts
 module names: mod_names
@@ -555,6 +552,7 @@ from component: fromComp
 to component: toComp
 Hausdorff from segment: h_from_seg
 from segment: fromSeg
+to segment: toSeg
 cue vertex: q_vert
 kay segment: k_seg
 kay vertex: k_vert
@@ -625,3 +623,12 @@ gap transition: gt
 path length transition: plt
 zone boundaries: zone_bounds
 zone bounds: zone_bounds
+polyline index: poly_idx
+segment worklist: sw
+vertex worklist: vw
+candidates: cands
+candidate: cand
+conflicts
+current section: cur_sec
+middle
+dummy

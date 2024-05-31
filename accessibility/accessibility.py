@@ -410,8 +410,11 @@ class Actions:
         elements = list(get_every_child(root,max_level = max_level))
         # search for match
         for el in elements:
-            if actions.user.element_match(el,prop_list):
-                r.append(el)
+            try:
+                if actions.user.element_match(el,prop_list):
+                    r.append(el)
+            except:
+                pass
         print(f"function matching_elements: {len(r)} matching elements found")
         return r  
     def invoke_element(el: ax.Element):
@@ -513,7 +516,10 @@ class Actions:
         if rev_key == "":
             rev_key = reverse_keys[key]
         actions.key(key)
-        val = actions.user.element_property_value(property_name)
+        try:
+            val = actions.user.element_property_value(property_name)
+        except:
+            pass
         actions.key(rev_key)
         return val
     def toggle_for_next_value(trg: str, toggle_key: str, advance_key: str="tab", property_name: str="name", verbose: bool = False):
@@ -617,7 +623,7 @@ class Actions:
                     mouse_obj = mouse_mover(loc, ms = ms, callback = ctrl.mouse_click)
                 except:
                     pass
-    def key_to_matching_element(key: str, prop_list: list, limit: int=19, escape_key: str=None, delay: float = 0.03, verbose: bool = False):
+    def key_to_matching_element(key: str, prop_list: list, limit: int=39, escape_key: str=None, delay: float = 0.03, verbose: bool = False):
         """press given key until the first matching element is reached"""
         i = 1        
         # if the previous action has not completed an error can occur
@@ -638,21 +644,26 @@ class Actions:
         if verbose:
             print(f"ELEMENT: {el.name}")
         if el:
-            while (not actions.user.element_match(el,prop_list,verbose = verbose)) and (i < limit):            
-                actions.key(key)
-                if delay > 0:
-                    actions.sleep(delay)
-                el = ui.focused_element()
-                if el:
-                    if verbose:
-                        print(f"ELEMENT: {el.name}")      
-                    if (last_el == ui.focused_element()) and (escape_key != None):
-                        actions.key(escape_key)
-                    last_el = el
-                    i += 1
-                else:
-                    break
+            try:
+                while (not actions.user.element_match(el,prop_list,verbose = verbose)) and (i < limit):            
+                    actions.key(key)
+                    if delay > 0:
+                        actions.sleep(delay)
+                    el = ui.focused_element()
+                    if el:
+                        if verbose:
+                            print(f"ELEMENT: {el.name}")      
+                        if (last_el == ui.focused_element()) and (escape_key != None):
+                            actions.key(escape_key)
+                        last_el = el
+                        i += 1
+                    else:
+                        break
+            except Exception as error:
+                print(error)
             if actions.user.element_match(el,prop_list):
+                if verbose:
+                    print(f"MATCH FOUND: {actions.user.element_information(el)}")
                 return el
             else:
                 return None
@@ -706,7 +717,7 @@ class Actions:
             ctrl.mouse_move(x,y)
         except:
             pass
-    def copy_elements_accessible_by_key(key: str, limit: int=25, delay: int = 0.03, verbose: bool = True):
+    def copy_elements_accessible_by_key(key: str, limit: int=50, delay: int = 0.03, verbose: bool = True):
         """Gets information on elements accessible by pressing the input key"""        
         i = 1
         el = ui.focused_element()

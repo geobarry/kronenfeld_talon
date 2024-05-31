@@ -26,3 +26,5 @@ float
 integer: int
 string: str
 boolean: bool
+raise
+exception: Exception

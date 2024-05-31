@@ -16,6 +16,7 @@ layout Properties:PART_DialogLauncherButton
 Toggle Rulers:esri_layouts_showHideRulersCheck
 Toggle Guides:esri_layouts_showHideGuidesCheck
 Activate Map:esri_layouts_activateMap
+Activate:esri_layouts_activateMap
 Zoom Full Extent:esri_mapping_zoomFullButton
 Layout Zoom In:esri_mapping_fixedZoomInButton
 Layout Previous Extent:esri_mapping_prevExtentButton

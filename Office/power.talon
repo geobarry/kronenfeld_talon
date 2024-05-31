@@ -24,6 +24,9 @@ notes up [<number>]: user.power_notes_adjust_height(number or 100)
 notes down [<number>]: user.power_notes_adjust_height(number or 100,-1)
 toggle notes: user.power_toggle_notes()
 go to slide <number>: user.power_go_to_slide(number)
+paste {user.handle_position}: user.power_paste_adjacent(handle_position)
+
+
 
 #main menu headings
 menu file: key(alt-f)

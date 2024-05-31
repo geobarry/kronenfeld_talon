@@ -5,6 +5,39 @@ from talon.types import Point2d as Point2d
 mod = Module()
 ctx = Context()
 
+def get_position():
+    """Gets the top, left, width and height of focused element"""
+    # right click to open the format panel
+    print("opening format panel")
+    actions.key("menu o right")
+    # tab to gallery button
+    prop_list = [("class_name","NetUIGalleryButton")]
+    actions.user.key_to_matching_element("tab",prop_list,delay = 0.05,verbose = False)
+    # press right to get to the Size & Properties gallery button
+    print("pressing right key to get to the size and properties gallery button")
+    prop_list = [("name","Size & Properties")]
+    actions.user.key_to_matching_element("right",prop_list,delay = 0.05,verbose = False)
+    # press tab to get to the Horizontal Position group
+    print("pressing the tab key to get to the position heading")
+    prop_list = [("name","Position"),("class_name","NetUIRibbonButton")]        
+    actions.user.key_to_matching_element("tab",prop_list,verbose = False,delay = 0.07)
+    # makes sure the toggle is open
+    print("making sure the toggle is open...")
+    actions.user.toggle_for_next_value("Horizontal position","enter",verbose=True)
+    # get horizontal position (left)
+    print("getting left position")
+    actions.key("o ctrl-a")
+    left = actions.edit.selected_text()
+    print(f'left: {left}')
+    print("getting top position")
+    actions.key("tab:2 ctrl-a")
+    top = actions.edit.selected_text()
+    print(f'top: {top}')
+
+    print("exiting panel")
+    actions.key("esc enter ctrl-space c")
+    return left,top
+
 @mod.action_class
 class Actions:
     def power_exit_ribbon():
@@ -15,6 +48,7 @@ class Actions:
         while actions.user.element_match(ui.focused_element(),[("class_name","NetUI.*")]) and i < 7:
             actions.key("esc")
             i += 1
+
     def power_position(horizontal_or_vertical: str = "",val: float = None):
         """navigates to the position section of the powerpoint format panel"""
         # right click to open the format panel
@@ -115,4 +149,6 @@ class Actions:
         for key in keys:
             actions.key(key)
 
-            
+    def power_paste_adjacent(handle_position: str):
+        """Pastes what's on the clipboard to the indicated position relative to thywhile e currently selected    element"""
+        left,top = get_position() 

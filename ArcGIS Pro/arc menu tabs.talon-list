@@ -16,3 +16,6 @@ Labeling:esri_mapping_labelingTab
 Data:esri_mapping_featureLayerDataTab
 Linear Referencing:esri_mapping_linearReferencingTab
 Map Frame:esri_layouts_FormatTab
+Tile Layer:esri_mapping_tiledLayerAppearanceTab
+Fields:esri_mapping_homeDesignViewTab
+Table:esri_mapping_tableTab

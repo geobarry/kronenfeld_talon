@@ -7,7 +7,10 @@ mod.list("arc_button","buttons that can be accessed with standard keyboard short
 mod.list("arc_catalog_group","groups of items in the catalog pane")
 mod.list("arc_layer_context_item","menu items available when right clicking on map layer")
 mod.list("arc_menu_tab","Main menu tab automation ids")
-mod.list("arc_layout_menu_item","Items on main layout menu tab")
+mod.list("arc_layout_menu_item","Items on layout menu tab")
+mod.list("arc_insert_menu_item","Items on insert menu tab")
+mod.list("arc_map_menu_item","Items on map menu tab")
+mod.list("arc_contents_list_style","List style for contents panel")
 
 def ensure_focus():
     """ watch out for the windows airspace popup that steals the focus!!"""
@@ -21,9 +24,10 @@ class Actions:
     def arc_navigate_to_panel(panel_name: str):
         """navigates to a currently open panel"""
         ensure_focus()
-        user.key("alt-v c t ctrl:down tab")
-        actions.user.key_to_elem_by_val("down","{arc_panel}.*",limit = 20,verbose = True)
-        user.key("ctrl:up")
+        actions.key("alt-v c t ctrl:down tab")
+        prop_list = [("name",f"{panel_name}.*")]
+        actions.user.key_to_matching_element("down",prop_list)
+        actions.key("ctrl:up")
     def pan_arcgis_pro_map(direction: str, duration: float):
         """Pans the map for duration expressed relative to the default duration 
         which is 0.5 seconds."""
@@ -114,6 +118,19 @@ class Actions:
         else:
             prop_list = [("automation_id",f"mappingTOCItem_{layer_type}.*")]
         actions.user.key_to_matching_element(up_or_down,prop_list)
+    def arc_contents_list_by(contents_list_style: str):
+        """Chooses a style for the Contents Panel; uses arc_contents_list_style"""
+        # first make sure the focus is on the contents panel
+        actions.user.arc_navigate_to_panel("Contents")
+        # press tab until we get to a ListBoxItem
+        # later this should be changed to have a direct route through the accessibility tree
+        prop_list = [("class_name","ListBoxItem")]
+        actions.user.key_to_matching_element("tab",prop_list)
+        # press the Home key to get all the way to the left
+        actions.key("home")
+        # now press the right key until we get to the is designated style
+        prop_list = [("automation_id",contents_list_style)]
+        actions.user.key_to_matching_element("right",prop_list)
     def arc_open_menu_tab(automation_id: str):
         """Opens the menu; use talon list user.arc_menu_tab"""
         # get parent element
@@ -161,12 +178,22 @@ class Actions:
         actions.key("enter")
     def arc_invoke_menu_item(menu_id: str,item_id: str):
         """Invokes item on layout menu"""
+        print(f'item_id: {item_id}')
         actions.user.arc_open_menu_tab(menu_id)
         actions.sleep(0.1)
         prop_list = [("automation_id",item_id)]
         actions.user.key_to_matching_element("tab",prop_list)
+        actions.sleep(0.1)
+        
         el = ui.focused_element()
+        print(f"automation_id: {el.automation_id}")
 #        el = actions.user.matching_element(prop_list,max_level = 6)
         el.invoke_pattern.invoke()
+    def arc_insert_text():
+        """Selects a text insertion option from the insert menu"""
+        # first navigate to the "Additional Surrounds" item just to the left of the text options
+        actions.user.arc_invoke_menu_item("esri_core_insertTab","esri_layouts_newProductionSplitButton")
+        # tab one more time to get element, entered open it up and tabbed to move to first option
+        actions.key("tab enter tab")
 ctx = Context()
 

@@ -2,27 +2,29 @@ os: windows
 and app.exe: arcgispro.exe
 
 -
-# main menu
+# MAIN MENU
 menu {user.arc_menu_tab}: user.arc_open_menu_tab(arc_menu_tab)
 
-# MAIN MENU
-menu table:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(t)
-	key(v)
-menu animation:
-	key(esc:5)
-	key(alt)
-	sleep(0.2)
-	key(x a)
+# eventually replace these with one general command
+layout {user.arc_layout_menu_item}: user.arc_invoke_menu_item("esri_layouts_homeTab",arc_layout_menu_item)
+insert {user.arc_insert_menu_item}: user.arc_invoke_menu_item("esri_core_insertTab",arc_insert_menu_item)
+map {user.arc_map_menu_item}: user.arc_invoke_menu_item("esri_mapping_homeTab",arc_map_menu_item)
 
+# exceptions - menu items that require special handling
+insert text: user.arc_insert_text()
 
+# GENERAL CONVENIENCE
+# say this after selecting any command that requires you to then draw a rectangle onto the layout
+place (on|onto) layout: user.arc_draw_rectangle_on_layout()
+
+# TABS (MAPS,LAYOUTS,TABLES)
 # A tab is within a group, i.e. [maps,layouts,tables] or [catalog, ...]
 tab close: key(ctrl-f4)
 tab next: key(ctrl-f6)
 tab previous: key(ctrl-shift-f6)
+representative fraction: user.arc_scale_text()
+
+# PANELS
 show panels: key(ctrl:down tab)
 choose panel: key(ctrl:up)
 (panel|pane|tab) {user.arc_panel}:
@@ -30,12 +32,9 @@ choose panel: key(ctrl:up)
 	user.key_to_elem_by_val("down","{arc_panel}.*")
 	key(ctrl:up)
 catalog {user.arc_catalog_group}: user.arc_select_catalog_group(arc_catalog_group)
-{user.arc_button} button: 
-	user.arc_tab_to_button(arc_button)
-	
-apply button:
-	user.tab_to_name("apply")
-	key(enter)
+{user.arc_button} button: user.arc_tab_to_button(arc_button)
+
+# CONTENTS PANEL
 focus contents: 
 	key(alt-v c t)
 	user.arc_tab_to_layers()
@@ -44,24 +43,9 @@ focus layer <user.text>:
 	user.arc_tab_to_layers()
 	user.arc_tab_to_layer(text)
 layer {user.arc_layer_context_item}: user.arc_layer_context_item(arc_layer_context_item)
-list by drawing order:
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("ArcGIS Pro list by drawing order.png", 0)
-    sleep(0.05)
-    mouse_click(0)
-    sleep(0.05)
-    user.mouse_helper_position_restore()
+list by {user.arc_contents_list_style}: user.arc_contents_list_by(arc_contents_list_style)
 
-list by data source:
-    user.mouse_helper_position_save()
-    user.mouse_helper_move_image_relative("ArcGIS Pro list by data source.png", 0)
-    sleep(0.05)
-    mouse_click(0)
-    sleep(0.05)
-    user.mouse_helper_position_restore()
-
-representative fraction: user.arc_scale_text()
-
+# SYMBOLOGY PANEL
 symbology menu: key(alt j a d s)
 primary symbology: user.arc_tab_to_primary_symbology()
 symbol:
@@ -80,13 +64,6 @@ properties tab:
 gallery tab:
 	user.arc_symbology_tabs()
 	key(left)
-focus Geoprocessing:
-	key(alt-v c t)
-	sleep(0.25)
-	key(alt-v t s)
-	sleep(0.25)
-    user.mouse_helper_move_image_relative("ArcGIS Pro Geoprocessing selected.png", 0, 20, 50)
-	mouse_click(0)
 
 add data:
 	key(esc:5)
@@ -251,7 +228,7 @@ clear selection: key(esc:5 alt m c x)
 new layout: key(alt n n l)
 new custom layout: key(alt n n l c tab:4)
 (new|add) map frame: key(alt n m g)
-place map frame: user.arc_draw_rectangle_on_layout()
+
 horizontal position: user.arc_horizontal_position()
 
 # analysis menu shortcuts
@@ -265,7 +242,7 @@ save edits:
 	key(e s v)
 	
 # layout menu shortcuts
-{user.arc_layout_menu_item}: user.arc_invoke_menu_item("esri_layouts_homeTab",arc_layout_menu_item)
+
 activate map:
 	key(esc:5)
 	key(alt)

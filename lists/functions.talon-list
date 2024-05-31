@@ -181,3 +181,7 @@ test path length transition: test_path_length_transition
 segment segment conflict region: ss_conflict_region
 some: sum
 gap transition: gap_transition
+set
+polyline sections to features: polyline_sections_to_features
+merge sections: merge_sections
+discernability conflicts:discernability_conflicts
