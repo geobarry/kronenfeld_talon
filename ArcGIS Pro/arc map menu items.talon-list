@@ -1,6 +1,5 @@
 list: user.arc_map_menu_item
 -
-Map:esri_mapping_homeTab
 Paste:esri_core_editPasteSplitButton
 Cut:esri_core_editCutButton
 Copy:esri_core_editCopyButton

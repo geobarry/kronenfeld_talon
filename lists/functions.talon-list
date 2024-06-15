@@ -19,6 +19,7 @@ floor:math.floor
 cosign:math.cos
 radiance:math.radians
 sign:math.sin
+square root:math.sqrt
 max
 maximum:max
 minimum:min
@@ -48,6 +49,8 @@ evaluate:eval
 all
 any
 float
+some: sum
+set
 regex match:re.match
 regex pattern:re.pattern
 has attribute:hasattr
@@ -173,15 +176,18 @@ ensure focus: ensure_focus
 key to matching element: actions.user.key_to_matching_element
 
 ## module: discernability
-gap size:gap_size
-path length: path_length
-create polyline shapefile: create_polyline_shapefile
-test gap transition: test_gap_transition
-test path length transition: test_path_length_transition
-segment segment conflict region: ss_conflict_region
-some: sum
-gap transition: gap_transition
-set
-polyline sections to features: polyline_sections_to_features
-merge sections: merge_sections
 discernability conflicts:discernability_conflicts
+polyline sections to features:polyline_sections_to_features
+merge sections:merge_sections
+
+segment distance transition:segDistTrans
+segment distance path length:segDistPathLen
+segment distance path length transition:segDistPathLenTrans
+segment distance ratio transition:segDistRatioTrans
+segment conflict region:seg_conflict_region
+vertex distance transition:vrtDistTrans
+vertex distance path length:vrtDistPathLen
+vertex distance path length transition:vrtDistPathLenTrans
+vertex distance ratio transition:vrtDistRatioTrans
+
+

@@ -1,12 +1,22 @@
 list: user.app_list
 -
 notepad: notepad++  
+double plus: notepad++ 
 green frog:notepad++
 peace
 git command:Git cmd
 quantum:qgis
 file locator:filelocator
 file zilla:filezilla
+arc:ArcGIS Pro
 arcgis:ArcGIS Pro
 arcgis pro:ArcGIS Pro
-
+slack
+file explorer
+explorer: file explorer
+gimp
+inkscape
+outlook
+excel
+edge
+powerpoint

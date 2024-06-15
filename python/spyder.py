@@ -3,7 +3,8 @@ from talon.windows import ax as ax
 import re
 mod = Module()
 
-mod.list("spyder_panel","Panels  in the spyder application")
+mod.list("spyder_panel","Panels in the spyder application")
+mod.list("spyder_search_command","Commands in the search bar")
 
 def split_name(name):
     r = []
@@ -117,6 +118,28 @@ class Actions:
         for i in range(end - start):
             actions.edit.extend_line_down()
         actions.edit.extend_line_end()
+    def spyder_search_command(cmd_num: str):
+        """Invokes a command in the open search bar; use spyder_search_command"""
+        # Get parent element containing all commands for search and replace
+        prop_list = [("class_name","FindReplace")]
+        el = actions.user.matching_element(prop_list)
+        if not el == None:
+            print("Spyder search elements found!!!")
+            print(f"{len(el.children)} children...")
+            children = el.children
+            cmd_num = int(cmd_num)            
+            # Need to check if search results element exists (class: QLabel)
+            if cmd_num > 1:
+                if actions.user.el_prop_val(children[2],"class_name") == "QLabel":
+                    cmd_num += 1
+            if cmd_num < len(children):
+                el = children[cmd_num]
+                print(f"Clicking on child {cmd_num}")
+#                if "Invoke" in el.patterns:
+#                    el.invoke_pattern.invoke()
+                actions.user.click_element(el)
+            for child in children:
+                print(f'child: {child} {child.patterns} {child.rect}')
     def spyder_move_split(direction: str, distance: int = 0):
         """moves splitter to the right of the code panel"""
         prop_list = [("name","Editor"),("class_name","SpyderDockWidget")]
@@ -141,4 +164,11 @@ class Actions:
             actions.user.slow_mouse(x,y,200)
             actions.sleep(0.3)
             actions.user.mouse_drag_end()
+    def spyder_run_code():
+        """Runs code after making sure the interpreter is showing"""
+        print("Running code in spyder...")
+        actions.user.spyder_focus_panel("IPython Console, I")
+        actions.sleep(1.5)
+        actions.key("alt-v enter:2 alt-v enter:2 f5")
+
 ctx = Context()

@@ -1,0 +1,10 @@
+list: user.outlook_menu_heading
+# values are automation_id; elements are at level eight
+-
+Home:TabMail
+Send Receive:TabSendReceive
+Folder:TabFolder
+View:TabView
+Developer:TabDeveloper
+Help:HelpTab
+File:FileTabButton

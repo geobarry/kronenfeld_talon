@@ -7,7 +7,7 @@ tag(): user.excel_powerpoint_shared
 
 # experimental accessibility
 exit ribbon: user.power_exit_ribbon()
-toggle notes: user.focus_element_by_name("notes")
+toggle notes: user.select_element_by_name("notes")
 focus workspace: user.click_element_by_name("home")
 mark for selection: 
 	# make sure selected item is also focused item

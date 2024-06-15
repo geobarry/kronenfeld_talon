@@ -28,3 +28,6 @@ string: str
 boolean: bool
 raise
 exception: Exception
+list
+dictionary:dict
+tuple

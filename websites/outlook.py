@@ -22,7 +22,7 @@ class Actions:
                 actions.sleep(0.1)
                 actions.key("down")
         else:
-            print("IN BOX")
+            print("INBOX")
             # first make sure focus is on page content
             actions.key("ctrl-f6")
             # then use random keyboard shortcut to get to messages

@@ -1,0 +1,7 @@
+list: user.outlook_main_panel
+-
+menu:NetUIRibbonTab
+apps:NetUIListViewItem
+folders:NetUITreeViewContent
+messages:LeafRow
+current message:_WwG

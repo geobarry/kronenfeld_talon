@@ -19,3 +19,5 @@ Map Frame:esri_layouts_FormatTab
 Tile Layer:esri_mapping_tiledLayerAppearanceTab
 Fields:esri_mapping_homeDesignViewTab
 Table:esri_mapping_tableTab
+Scale Bar:esri_layouts_FormatTab
+Design:esri_layouts_compositeDesignTab

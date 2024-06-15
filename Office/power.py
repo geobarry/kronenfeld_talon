@@ -5,38 +5,102 @@ from talon.types import Point2d as Point2d
 mod = Module()
 ctx = Context()
 
-def get_position():
-    """Gets the top, left, width and height of focused element"""
+def set_position(left=None,top=None,width=None,height=None):
+    """Gets the left, top, width and height of focused element"""
     # right click to open the format panel
-    print("opening format panel")
     actions.key("menu o right")
+
     # tab to gallery button
     prop_list = [("class_name","NetUIGalleryButton")]
     actions.user.key_to_matching_element("tab",prop_list,delay = 0.05,verbose = False)
+
     # press right to get to the Size & Properties gallery button
-    print("pressing right key to get to the size and properties gallery button")
     prop_list = [("name","Size & Properties")]
     actions.user.key_to_matching_element("right",prop_list,delay = 0.05,verbose = False)
-    # press tab to get to the Horizontal Position group
-    print("pressing the tab key to get to the position heading")
+
+    # press tab to get to the Size group
+    prop_list = [("name","Size"),("class_name","NetUIRibbonButton")]        
+    actions.user.key_to_matching_element("tab",prop_list,verbose = False,delay = 0.07)
+
+    # makes sure the toggle is open
+    actions.user.toggle_for_next_value("Height","enter",verbose=False)
+
+    # get width and height
+    actions.key("tab")
+    if height != None:
+        ui.focused_element().value_pattern.value = str(height)
+        actions.key("enter")
+    actions.key("tab")
+    if width != None:
+        ui.focused_element().value_pattern.value = str(width)
+        actions.key("enter")
+
+    # press tab to get to the Position group
     prop_list = [("name","Position"),("class_name","NetUIRibbonButton")]        
     actions.user.key_to_matching_element("tab",prop_list,verbose = False,delay = 0.07)
-    # makes sure the toggle is open
-    print("making sure the toggle is open...")
-    actions.user.toggle_for_next_value("Horizontal position","enter",verbose=True)
-    # get horizontal position (left)
-    print("getting left position")
-    actions.key("o ctrl-a")
-    left = actions.edit.selected_text()
-    print(f'left: {left}')
-    print("getting top position")
-    actions.key("tab:2 ctrl-a")
-    top = actions.edit.selected_text()
-    print(f'top: {top}')
 
-    print("exiting panel")
-    actions.key("esc enter ctrl-space c")
-    return left,top
+    # makes sure the toggle is open
+    actions.user.toggle_for_next_value("Horizontal position","enter",verbose=False)
+
+    # get horizontal position (left)
+    actions.key("o ctrl-a")
+    if left != None:
+        ui.focused_element().value_pattern.value = str(left)
+        actions.key("enter")
+    actions.key("tab:2 ctrl-a")
+    if top != None:
+        ui.focused_element().value_pattern.value = str(top)
+        actions.key("enter")
+    
+    # exit panel
+    actions.user.slow_key_press("ctrl-space c")
+def get_position():
+    """Gets the left, top, width and height of focused element"""
+    # right click to open the format panel
+    actions.key("menu o right")
+
+    # tab to gallery button
+    prop_list = [("class_name","NetUIGalleryButton")]
+    actions.user.key_to_matching_element("tab",prop_list,delay = 0.05,verbose = False)
+
+    # press right to get to the Size & Properties gallery button
+    prop_list = [("name","Size & Properties")]
+    actions.user.key_to_matching_element("right",prop_list,delay = 0.05,verbose = False)
+
+    # press tab to get to the Size group
+    prop_list = [("name","Size"),("class_name","NetUIRibbonButton")]        
+    actions.user.key_to_matching_element("tab",prop_list,verbose = False,delay = 0.07)
+
+    # makes sure the toggle is open
+    actions.user.toggle_for_next_value("Height","enter",verbose=False)
+
+    # get width and height
+    actions.key("tab")
+    height = actions.user.el_prop_val(ui.focused_element(),"value")
+    height = float(height.replace('"',''))
+    actions.key("tab")
+    width = actions.user.el_prop_val(ui.focused_element(),"value")
+    width = float(width.replace('"',''))
+
+    # press tab to get to the Position group
+    prop_list = [("name","Position"),("class_name","NetUIRibbonButton")]        
+    actions.user.key_to_matching_element("tab",prop_list,verbose = False,delay = 0.07)
+
+    # makes sure the toggle is open
+    actions.user.toggle_for_next_value("Horizontal position","enter",verbose=False)
+
+    # get horizontal position (left)
+    actions.key("o ctrl-a")
+    left = actions.user.el_prop_val(ui.focused_element(),"value")
+    left = float(left.replace('"',''))
+    actions.key("tab:2 ctrl-a")
+    top = actions.user.el_prop_val(ui.focused_element(),"value")
+    top = float(top.replace('"',''))
+    
+    # exit panel
+    actions.user.slow_key_press("ctrl-space c")
+    
+    return left,top,width,height
 
 @mod.action_class
 class Actions:
@@ -48,35 +112,26 @@ class Actions:
         while actions.user.element_match(ui.focused_element(),[("class_name","NetUI.*")]) and i < 7:
             actions.key("esc")
             i += 1
-
     def power_position(horizontal_or_vertical: str = "",val: float = None):
         """navigates to the position section of the powerpoint format panel"""
         # right click to open the format panel
         actions.key("menu o right")
         # tab to gallery button
-        print("pressing tab key")
         prop_list = [("class_name","NetUIGalleryButton")]
         actions.user.key_to_matching_element("tab",prop_list,delay = 0.05,verbose = False)
         # press right to get to the Size & Properties gallery button
-        print("pressing right key")
         prop_list = [("name","Size & Properties")]
         actions.user.key_to_matching_element("right",prop_list,delay = 0.05,verbose = False)
         # press tab to get to the Horizontal Position group
         prop_list = [("name","Position"),("class_name","NetUIRibbonButton")]        
         actions.user.key_to_matching_element("tab",prop_list,verbose = False)
         # makes sure the toggle is open
-        print("Toggling the horizontal position group")
-        actions.user.toggle_for_next_value("Horizontal position","enter",verbose=True)
+        actions.user.toggle_for_next_value("Horizontal position","enter",verbose=False)
         # set value if specified
-        print(f'horizontal_or_vertical: {horizontal_or_vertical}')
-        print(f'val: {val}')
         if horizontal_or_vertical.lower() in ["horizontal","vertical"]:
-            print("inside horizontal or vertical")
             if horizontal_or_vertical.lower() == "horizontal":
-                print(" in horizontal")
                 actions.key("o")
             else:
-                print(" inside vertical")
                 actions.key("v")
             if val != None:
                 actions.sleep(0.1)
@@ -87,11 +142,13 @@ class Actions:
         icon_names = ["Effects","Fill & Line","Picture", "Size & Properties"]
         i = 1
         limit = 15
-        val = actions.user.element_property_value("name",sleep_time=0.2)
+        actions.sleep(0.2)
+        val = actions.user.el_prop_val("name")
         while (not val in icon_names) and (i < limit):
             print(f"FUNCTION: power_tab_format_panel_top_row: {val}")
             actions.key("tab")
-            val = actions.user.element_property_value("name")
+            actions.sleep(0.02)
+            val = actions.user.el_prop_val("name")
             i += 1
         actions.sleep(0.05)
     def power_crop_picture(pos: str):
@@ -148,7 +205,28 @@ class Actions:
         keys = ["f5"] + [x for x in str(n)] + ["enter","esc"]
         for key in keys:
             actions.key(key)
+    def power_paste_adjacent(hnd_pos: str):
+        """Pastes what's on the clipboard to the indicated position relative to the currently selected element; use user.handle_position"""
+        # get position of currently selected element
+        anchor_left,anchor_top,anchor_width,anchor_height = get_position() 
+        actions.key("ctrl-v")
+        # get position of newly pasted element
+        left,top,width,height = get_position()
 
-    def power_paste_adjacent(handle_position: str):
-        """Pastes what's on the clipboard to the indicated position relative to thywhile e currently selected    element"""
-        left,top = get_position() 
+        # calculate position of element to paste
+        if "top" in hnd_pos or "upper" in hnd_pos:
+            top = anchor_top - height
+        elif "bottom" in hnd_pos or "lower" in hnd_pos:
+            top = anchor_top + anchor_height
+        else:
+            top = anchor_top
+        if "left" in hnd_pos:
+            left = anchor_left - width
+        elif "right" in hnd_pos:
+            left = anchor_left + anchor_width
+            print(f'anchor_left: {anchor_left}')
+            print(f'anchor_width: {anchor_width}')
+            print(f'left: {left}')
+        else:
+            left = anchor_left
+        set_position(top = top,left = left)

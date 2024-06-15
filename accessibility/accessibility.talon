@@ -2,16 +2,19 @@ os: windows
 -
 
 # COMMANDS USING DYNAMIC CAPTURES
-^click on {user.dynamic_children}$: user.click_element_by_name(dynamic_children)
-^move [to] {user.dynamic_children}$: user.move_to_element(dynamic_children)
-^access {user.dynamic_children}$: user.focus_element_by_name(dynamic_children)
+^(element click|click on) {user.dynamic_children}$: user.click_element_by_name(dynamic_children)
+^[element] hover {user.dynamic_children}$: user.hover_element_by_name(dynamic_children)
+^element select {user.dynamic_children}$: user.select_element_by_name(dynamic_children)
+^[element] highlight {user.dynamic_children}$: user.highlight_elements_by_name(dynamic_children)
+
 # COMMANDS SEARCHING FOR SPECIFIC WORDS OR LETTERS
 ^click word <user.word>$: user.click_element_by_name(word)
 ^click letter <user.letter>$: user.click_element_by_name(letter,1)
-# NAVIGATION BY KEYBOARD
+
+# COMMANDS TO NAVIGATE TWO A TARGET USING KEYS
 ^{user.nav_key} to <user.text>$:
 	key("{nav_key}")
-	user.key_to(nav_key,"{text}.*","",20)
+	user.key_to_elem_by_val(nav_key,"{text}.*","name",20)
 	
 # HIGHLIGHTS
 click focused element: user.click_focused()
@@ -19,6 +22,7 @@ hover focused element: user.hover_focused()
 clear highlights: user.clear_highlights()
 highlight focused element: user.highlight_focused()
 ^{user.nav_key} highlight$:
+	user.clear_highlights()
 	key("{nav_key}")
 	user.highlight_focused()
 

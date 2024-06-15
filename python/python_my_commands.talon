@@ -80,8 +80,6 @@ range <number>: insert("range({number})")
 {user.variable_list} sub: user.insert_between("{variable_list}[","]")
 {user.variable_list} sub {user.variable_list}: insert("{variable_list_1}[{variable_list_2}]")
 {user.variable_list} sub <number>: insert("{variable_list}[{number}]")
-return {user.variable_list}: insert("return {variable_list}")
-return none: insert("return None")
 {user.variable_list} dot: insert("{variable_list}.")
 {user.variable_list} dot append: user.insert_between("{variable_list}.append(",")")
 {user.variable_list} dot add: user.insert_between("{variable_list}.add(",")")
@@ -89,17 +87,34 @@ lambda {user.variable_list}: insert("lambda {variable_list}: ")
 unzip {user.variable_list}: insert("zip(*{user.variable_list})")
 self dot {user.variable_list}: insert("self.{variable_list}")
 
-print variable {user.variable_list}: insert("print(f'{user.variable_list}: {{{user.variable_list}}}')")
+# return statements
+return {user.variable_list}: insert("return {variable_list}")
+return {user.function_list}: user.insert_between("return {function_list}(",")")
+return {user.module_list}: user.insert_between("return {module_list}(",")")
+return none: insert("return None")
+return empty list: insert("return []")
+return list: user.insert_between("return [","]")
+return tuple: user.insert_between("return (",")")
+
+# print statements
+print variable {user.variable_list}: insert("print(f'{variable_list}: {{{variable_list}}}')")
 print type {user.variable_list}: insert("print(f'type({user.variable_list}): {{type({user.variable_list})}}')")
+print formatted [string]: user.insert_between('print(f"','")')
+print raw [string]: user.insert_between('print(r"','")')
+print unicode [string]: user.insert_between('print(u"','")')
+
+# strings
 string: user.insert_between('"','"')
 raw string: user.insert_between('r"','"')
 formatted string: user.insert_between('f"','"')	
 unicode string: user.insert_between('u"','"')
-
-dot format: user.insert_between(".format(",")")
 dot split: user.insert_between(".split(",")>")
 dot lower: insert(".lower()")
 dot upper: insert(".upper()")
+
+test {user.variable_list} equals <user.real_number>: 
+	insert("print(f'{variable_list}: {{{variable_list}}} (exp: {{{real_number}}})')")
+	
 
 list: user.insert_between("[","]")
 dictionary: user.insert_between("{","}")

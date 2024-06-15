@@ -1,0 +1,21 @@
+list: user.spyder_search_command
+-
+Close Search:0
+Search Text:1
+Toggle Replace Text:2
+Toggle Replace:2
+Search Previous:3
+Search Next:4
+Regular Expressions:5
+Use Regular Expressions:5
+Case Sensitive:6
+Enable Case Sensitive Searches:6
+Only search for whole words:7
+Replace Text:8
+Replace That:9
+Replace Current:9
+Replace Next Occurrence:9
+Replace Occurrences in Selection:10
+Replace in Selection:10
+Replace All Occurrences:11
+Replace All:11

@@ -522,11 +522,7 @@ function names: func_names
 module: mod
 context: ctx
 a: a
-left
-right
 horizontal centre: hz_center
-top
-bottom
 vertical center: vrt_center
 handle position: hnd_pos
 index: idx
@@ -600,6 +596,7 @@ output folder: out_folder
 relative position: k
 segment relative position: ks
 segment length: L
+vertex relative position: kv
 first vertex relative position: kb0
 length between start points: l_a0_b0
 length between starting points: l_a0_b0
@@ -632,3 +629,29 @@ conflicts
 current section: cur_sec
 middle
 dummy
+height
+width
+anchor height: anchor_height
+anchor width: anchor_width
+anchor top: anchor_top
+anchor left: anchor_left
+coordinates: coords
+command name: cmd_name
+numb tabs: num_tabs
+command number: cmd_num
+relative distance: q
+distance between components: l_ab
+beta
+signed term: signed_term
+square root: math.sqrt
+first solution: s1
+second solution: s2
+bracketed term: bracketed_term
+third solution: s3
+fourth solution: s4
+focused element: focused_el
+status
+ratio transition: r_trans
+item number: item_num
+distance transition: dt
+minimum distance: dmin

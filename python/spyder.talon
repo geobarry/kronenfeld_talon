@@ -13,6 +13,13 @@ tab close: key(ctrl-w)
 
 save as: key(ctrl-shift-s)
 
+# search commands
+search: key(ctrl-f)
+replace: key(ctrl-r)
+search next: key(f3)
+search previous: key(shift-f3)
+{user.spyder_search_command}: user.spyder_search_command(spyder_search_command)
+
 # focus on a particular pane
 [focus] panel code: key(alt-v enter:2 alt-v enter:2)
 focus panel {user.spyder_panel}: user.spyder_focus_panel("{spyder_panel}")
@@ -67,7 +74,7 @@ format <number> decimal places:
 	insert("{:.")
 	insert(number_1)
 	insert("f}")
-run code: key(f5)
+run code: user.spyder_run_code()
 debug: key(ctrl-f5)
 step: key(ctrl-f10)
 step into: key(ctrl-f11)

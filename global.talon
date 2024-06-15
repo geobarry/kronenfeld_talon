@@ -8,6 +8,15 @@ computer [go to] sleep: speech.disable()
 computer stop listening: speech.disable()
 computer close your ears: speech.disable()
 
+# modes
+mixed mode:
+	# Why isn't this working????
+	mode.disable("sleep")
+	mode.disable("dictation")
+	mode.disable("command")
+	mode.enable("mixed")
+	
+
 # windows volume
 volume up: key(volup)
 volume down: key(voldown)
@@ -216,27 +225,6 @@ delete line:
 	user.search_with_search_engine(search_engine, "")
 	sleep(0.5)
 
-show calendar:
-	key(super)
-	sleep(0.2)
-	insert("Anaconda")
-	sleep(0.25)
-	key(enter)
-	sleep(2.5)
-	insert("cd C:\\CaGIS Board Dropbox\\cantaloupe bob\\Barry\\website\\calendar")
-	key("enter")
-	sleep(0.5)
-	insert("python -m http.server 8080")
-	sleep(0.5)
-	key("enter")
-	key(super)
-	sleep(0.2)
-	insert("Edge")
-	sleep(0.5)
-	key("enter")
-	sleep(0.3)
-	insert("localhost:8080/calendar.html")
-	key("enter")
 
 
 stop [it]: 

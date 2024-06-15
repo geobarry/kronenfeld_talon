@@ -10,6 +10,7 @@ mod.list("arc_menu_tab","Main menu tab automation ids")
 mod.list("arc_layout_menu_item","Items on layout menu tab")
 mod.list("arc_insert_menu_item","Items on insert menu tab")
 mod.list("arc_map_menu_item","Items on map menu tab")
+mod.list("arc_scale_bar_menu_item","Items on scale bar menu tab")
 mod.list("arc_contents_list_style","List style for contents panel")
 
 def ensure_focus():

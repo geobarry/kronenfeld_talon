@@ -1,0 +1,39 @@
+list: user.arc_scale_bar_menu_item
+-
+Current Selection:esri_layouts_subElementComboBox
+Element Properties:PART_DialogLauncherButton
+Text:ArcGISProMainWindow
+Dynamic Text:esri_layouts_dynamicTextGallery
+Insert Graphics:PART_DialogLauncherButton
+Rotate Or Flip:esri_layouts_rotateOrFlipMenu
+Merge Shapes:esri_layouts_mergeShapesMenu
+Reshape:esri_layouts_reshapeMapFrameToolPalette
+Scale Bar Gallery:esri_layouts_scaleBarStyleGalleryInLine
+Selected Color:colorComboBox
+Symbol:PART_EditableTextBox
+Format Scale Bar:PART_DialogLauncherButton
+Stroke:PART_EditableTextBox
+Grow Font:esri_layouts_textSymbolIncreaseSizeButton
+Shrink Font:esri_layouts_textSymbolDecreaseSizeButton
+Align Left:Position_HorizontalAlignmentLeftButton
+align Center:Position_HorizontalAlignmentCenterButton
+Align Right:Position_HorizontalAlignmentRightButton
+Align Justified:Position_HorizontalAlignmentJustifiedButton
+Format Text Symbol:PART_DialogLauncherButton
+Align:esri_layouts_alignMenu
+Distribute:esri_layouts_distributeMenu
+Group:esri_layouts_GroupUngroupMenu
+Order:esri_layouts_orderMenu
+anchor top left:AnchorTopLeft
+anchor top middle:AnchorTopMid
+anchor top right:AnchorTopRight
+anchor left middle:AnchorLeftMid
+anchor center:AnchorCenter
+anchor right middle:AnchorRightMid
+anchor bottom left:BottomLeft
+anchor bottom middle:AnchorBottomMid
+anchor bottom right:AnchorBottomRight
+ex:X
+why:Y
+lock aspect ratio:LockedAspectRatio
+Toggle Minimization:unpinButton

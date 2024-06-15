@@ -9,6 +9,7 @@ menu {user.arc_menu_tab}: user.arc_open_menu_tab(arc_menu_tab)
 layout {user.arc_layout_menu_item}: user.arc_invoke_menu_item("esri_layouts_homeTab",arc_layout_menu_item)
 insert {user.arc_insert_menu_item}: user.arc_invoke_menu_item("esri_core_insertTab",arc_insert_menu_item)
 map {user.arc_map_menu_item}: user.arc_invoke_menu_item("esri_mapping_homeTab",arc_map_menu_item)
+scale bar {user.arc_scale_bar_menu_item}: user.arc_invoke_menu_item("esri_layouts_FormatTab",arc_scale_bar_menu_item)
 
 # exceptions - menu items that require special handling
 insert text: user.arc_insert_text()
@@ -57,7 +58,7 @@ split down:
 split up:
 	user.key_to_elem_by_val("tab","Grid splitter")
 	key(up)
-button burger: user.tab_to("$","Button_Burger")
+button burger: user.key_to_name_and_class("tab","$","Button_Burger")
 properties tab:
 	user.arc_symbology_tabs()
 	key(right)
@@ -116,12 +117,6 @@ expand all: key(ctrl-shift-plus)
 collapse all: key(ctrl-shift-minus)
 toggle visibility: key(space)
 definition query: user.slow_key_press("enter pageup:3 down:7 tab")
-toggle (label|labels|labeling): 
-	key(menu)
-	user.key_to("up","Label$")
-	key(enter)
-(label|labels|labeling) properties: key(menu o)
-remove layer: user.slow_key_press("menu r")
 export features: key(alt t v e f)
 export table: key(alt t v e t)
 layer properties: 

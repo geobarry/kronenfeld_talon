@@ -1,0 +1,11 @@
+# buttons shared by both main window and message window in classic outlook!
+list: user.outlook_shared_button
+-
+minimize: Minimize
+restore:Restore
+close:Close
+reply:Reply
+reply all:Reply All
+forward:Forward
+teams menu:Teams Menu
+other actions:Other Actions

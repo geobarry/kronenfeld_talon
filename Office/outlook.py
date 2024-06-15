@@ -1,9 +1,12 @@
-from talon import Context,Module,actions,clip
+from talon import Context,Module,ui,actions,clip
 import re
 mod = Module()
 
 mod.list("email_account","Email accounts to access using outlook at least")
 mod.list("email_folder","Folders shown in outlook for any email account")
+mod.list("outlook_main_panel","class_name of UI sections accessible with F6 key")
+mod.list("outlook_menu_heading","Menu headings in main Outlook window")
+mod.list("outlook_shared_button","buttons shared by both main window and message window in classic outlook")
 
 cur_email = ""
 
@@ -29,6 +32,9 @@ class Actions:
         try:
             if el.expandcollapse_pattern.state == "Collapsed":
                 el.expandcollapse_pattern.expand()
+            else:
+                el.expandcollapse_pattern.collapse()
+                el.expandcollapse_pattern.expand()
         except:
             pass
             
@@ -37,7 +43,6 @@ class Actions:
         prop_list = [("name",f"{folder}.*")]
         el = [child for child in el.children if actions.user.element_match(child,prop_list)][0]
         actions.user.select_element(el)
-#        actions.key("up down")
     def outlook_refresh():
         """Refresh all email folders"""
         prop_list = [("automation_id","SendReceiveAll")]
@@ -105,4 +110,20 @@ class Actions:
         prop_list = [("automation_id",id)]
         el = actions.user.matching_element(prop_list,max_level = 12)
         el.invoke_pattern.invoke()        
+    def outlook_go_to_message():
+        """Selects the body element"""
+        prop_list = [("automation_id","Body")]
+        el = actions.user.matching_element(prop_list,max_level = 7)
+        if el != None:
+            actions.user.hover_element(el)
+            actions.user.select_element(el)
+    def outlook_go_to_main_panel(panel_name: str):
+        """Presses the F6 key to get to the desired panel"""
+        prop_list = [("class_name",f"{panel_name}.*")]
+        actions.user.key_to_matching_element("f6",prop_list,limit = 7,delay = 0.1)
+        actions.user.hover_element(ui.focused_element())
+    def outlook_click_button(button_name: str):
+        """Finds button by printout and then invokes it; should work on both main window and message window"""
+        prop_list = [("printout",f".*button.*{button_name}'.*") ]
+        actions.user.invoke_matching_element(prop_list)
 ctx = Context()

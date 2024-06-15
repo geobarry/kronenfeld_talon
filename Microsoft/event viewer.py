@@ -20,25 +20,15 @@ class Actions:
         prop_list = [("name","Filter Current Log..."),("class_name","TaskButton")]
         el = actions.user.matching_element(prop_list)
         el.invoke_pattern.invoke()
-    def ev_next_bug_check(limit: int = 9):
+    def ev_next_bug_check(limit: int = 499):
         """Moves down the list to the next bug check"""
+
         # determine where in the list we are already
-        start = 0
+        i = 0
         el = ui.focused_element()
-        i = el.automation_id[13:]
-        print(f"automation_id: {el.automation_id}")
-        print(f'current element id: {i}')
-        if i.isnumeric():
-            print(f"starting at item {i}")
-            start = int(i)
-        else:
-            print("could not find current element id")
-        prop_list = [("automation_id","mainListView")]
-        el = actions.user.matching_element(prop_list,max_level = 13)
-        print(f"number of the events: {len(el.children)}")
-        print(f"#3 element: {el.children[3].name}")
-        for el in el.children[start + 3:]:
-            if el.children[2].name == "BugCheck":
-                el.invoke_pattern.invoke()
-                break
+        while el.children[2].name != "BugCheck" and i < limit:
+            actions.key("down")
+            el = ui.focused_element()
+            i += 1
+            actions.sleep(0.07)
 ctx = Context()
